@@ -1,0 +1,226 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "1767244872a0596b52": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_0da8e8b_xra3Gx": {
+          "type": "ai_gen_block_0da8e8b",
+          "settings": {
+            "image": "shopify://shop_images/481276879_658544173367973_4366813331353394425_n.jpg",
+            "image_position": "center",
+            "banner_height_mobile": 400,
+            "banner_height_desktop": 500,
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "overline": "",
+            "heading": "About us",
+            "subheading": "",
+            "content_max_width": 600,
+            "content_spacing": 20,
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "center",
+            "content_padding_mobile": 30,
+            "content_padding_desktop": 60,
+            "overline_color": "#ffffff",
+            "overline_size_mobile": 12,
+            "overline_size_desktop": 14,
+            "heading_color": "#ffffff",
+            "heading_size_mobile": 32,
+            "heading_size_desktop": 50,
+            "text_color": "#ffffff",
+            "text_size_mobile": 16,
+            "text_size_desktop": 18,
+            "text_shadow": 20,
+            "button_text": "Shop now",
+            "button_link": "",
+            "button_color": "#ea1e26",
+            "button_text_color": "#ffffff",
+            "button_hover_color": "#b30000",
+            "button_text_size": 16,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 32,
+            "button_border_radius": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_0da8e8b_xra3Gx"
+      ],
+      "settings": {}
+    },
+    "rich_text_gWbzYG": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_pT3yxy": {
+          "type": "heading",
+          "settings": {
+            "title": "Who We Are"
+          }
+        },
+        "text_Y9EFhC": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>T Squared Putters was founded with one purpose in mind to build putters for golfers who understand that putting is not just a stroke but a confidence builder.</p><p>We design and manufacture state of the art golf putters for players who value feel, speed, balance, and consistency on the greens. Whether you are a weekend golfer or a competitive player, our goal is simple to create putters that fit naturally in your hands and perform under pressure when it matters most.</p><p>Rather than following trends, we focus on building putters that allow golfers to putt with confidence round after round.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pT3yxy",
+        "text_Y9EFhC"
+      ],
+      "name": "t:sections.rich-text.presets.rich_text.name",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "text_and_image_G38wwn": {
+      "type": "text-and-image",
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/713i_Face_Lander.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "Our Story",
+        "text": "<p>T Squared Putters was founded by brothers Tony and Mike Tuber Jr in Orchard Park New York inside a family owned dental and medical machine shop equipped with high precision CNC mills.<br/><br/>What started as access to advanced machining quickly turned into an opportunity. Tony, an avid golfer, wanted a Circle T style putter but understood that level of craftsmanship came at a premium. When one of the shop’s engineers suggested machining one in<br/>house, the idea became reality. That first putter sparked what would become T Squared Putters.<br/><br/>Mike, involved from the beginning, recognized the potential to take the concept beyond a single build. Together, he and Tony brought the brand to market combining engineering level precision with a golfer’s demand for feel, balance, and performance.</p><p>Like many golfers, we were frustrated by the inconsistency and lack of refinement found in mass produced equipment. We believed golfers deserved better. From that belief came our commitment to designing and manufacturing custom golf putters centered on performance, accuracy, and trust starting with exceptional design because the best putters always do.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_DJrYRU": {
+      "type": "text-and-image",
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/461560968_18000049853663614_1633040629894449766_n.jpg",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "<p>Built Not Bent Technology</p>",
+        "text": "<p>At the core of every T Squared putter is our patented Built Not Bent technology.</p><p>Every putter is built to the golfer’s exact specifications from the start. We do not heat or bend putters after machining. These methods can introduce stress, compromise structural integrity, and diminish long-term consistency.<br/><br/>Instead, lie angle, loft, balance, and configuration are achieved through precision machining and component based engineering. The result is a putter that maintains its integrity while delivering consistent performance and feel round after round.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_J4ibEa": {
+      "type": "text-and-image",
+      "custom_css": [
+        "a {border-bottom: none !important;}"
+      ],
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/598712848_18050742338663614_5940856146987300431_n.jpg",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "<p>Craftsmanship You Can Feel</p>",
+        "text": "<p>Quality should not just be seen. It should be felt.</p><p>Every T Squared putter is fully milled and assembled in Orchard Park New York inside our family owned machine shop. Each putter is produced using a precision CNC machining process and inspected by hand to ensure it meets our exacting standards.</p><p>We are proud to be a <a href=\"/\" target=\"_blank\" title=\"/\">Golf Putters Made in USA</a> brand that values craftsmanship over volume. We do not rush production. We do not cut corners. Every putter that leaves our building reflects meticulous attention to detail, consistent balance, and long term durability.<br/><br/>We take pride in every putter we build because our name is on every one.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_qCyMxf": {
+      "type": "text-and-image",
+      "custom_css": [
+        "a {border-bottom: none !important;}"
+      ],
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/587652654_18050116709663614_4700174378431117122_n.jpg",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "<p>Why Choose </p><p>T Squared Putters</p>",
+        "text": "<ul><li>Precision crafted <a href=\"/collections/custom-putters\" target=\"_blank\" title=\"Custom Putters\">custom golf putters</a> built to exact specifications</li><li>Fully milled and assembled in Orchard Park New York</li><li>Patented Built Not Bent technology with no heat or bending</li><li>Balanced designs focused on feel control and consistency</li><li>Family owned golf putter manufacturer</li><li>Proudly Golf Putters Made in USA</li><li>Built for golfers who care about performance not mass production</li></ul>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_E4HTHm": {
+      "type": "text-and-image",
+      "custom_css": [
+        "a {border-bottom: none !important;}"
+      ],
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/598146379_18050741549663614_9120082548780552168_n.jpg",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "<p>Our Mission</p>",
+        "text": "<p>Our mission is simple to help golfers putt with confidence.<br/><br/>We believe the right putter can be transformative on the green. That is why we remain committed to building golf putters that deliver performance trust and consistency without compromise.<br/><br/>Every T Squared putter is a reflection of our love for the game and our pride in<br/>craftsmanship. We are here to help you step onto the green with confidence because every putt matters.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1767244872a0596b52",
+    "rich_text_gWbzYG",
+    "text_and_image_G38wwn",
+    "text_and_image_DJrYRU",
+    "text_and_image_J4ibEa",
+    "text_and_image_qCyMxf",
+    "text_and_image_E4HTHm"
+  ]
+}

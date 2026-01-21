@@ -1,0 +1,396 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "rich_text_n9d9RJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_NAGcFR": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "T Squared Trade-In Program"
+          }
+        },
+        "text_QypbDa": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<h1>T Squared Trade-In Program</h1>"
+          }
+        },
+        "text_cCypRc": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p><strong>Upgrade Your Putter with the T Squared Trade-In Program - </strong>Exchange any putter, regardless of brand or condition, and receive <strong>$150</strong> towards the purchase of a new T Squared Putter of your choice. It’s a simple and seamless way to improve your game with a premium, precision-crafted putter. Visit us today to take advantage of this exclusive offer and elevate your putting performance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NAGcFR",
+        "text_QypbDa",
+        "text_cCypRc"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_8qhPW6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_CwXU4h": {
+          "type": "heading",
+          "settings": {
+            "title": "Two easy ways to trade in"
+          }
+        },
+        "text_NUwmjW": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Trade in your putter and save $150 on a new one! For online trade-ins, simply mail us your putter. Prefer in-person? Drop it off at our store to redeem your discount instantly.</p><p>If you are interested in the program, please provide your shipping address and email in the contact form below.</p>"
+          }
+        },
+        "button_4TKV9L": {
+          "type": "button",
+          "settings": {
+            "link": "https://tsquaredputters.com/pages/contact",
+            "link_text": "Contact"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CwXU4h",
+        "text_NUwmjW",
+        "button_4TKV9L"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "faq_Ayc6Xm": {
+      "type": "faq",
+      "blocks": {
+        "question_rRBKtJ": {
+          "type": "question",
+          "settings": {
+            "title": "What if I'm not ready to buy something?",
+            "text": "<p>No problem. We can put the $150 store credit  on a Gift Card that you can use anytime.</p>"
+          }
+        },
+        "question_EkTpyJ": {
+          "type": "question",
+          "settings": {
+            "title": "Can I trade in more than one putter on the same order?",
+            "text": "<p><strong>No — only one trade-in is allowed per order.</strong>Our Trade-In Program is designed to offer fair value on a one-to-one basis. If you have multiple putters you'd like to trade in, you'll need to submit separate orders for each trade-in credit to be applied individually.</p>"
+          }
+        },
+        "question_rmwjwF": {
+          "type": "question",
+          "settings": {
+            "title": "What are the condition requirements for my putter to qualify for the program?",
+            "text": "<p>Your putter can be in any condition to qualify for the program; it just needs to be intact</p>"
+          }
+        },
+        "question_RUhcfz": {
+          "type": "question",
+          "settings": {
+            "title": "When will I receive my new putter after trading in mine?",
+            "text": "<p>You will receive your new putter once we have received your trade-in and payment has been processed. The building and shipping of your new putter will take 2-3 weeks or less.</p>"
+          }
+        },
+        "question_93bYA7": {
+          "type": "question",
+          "settings": {
+            "title": "Can I customize my new putter?",
+            "text": "<p>Yes, this process is the same as a regular order, except you're sending in your putter to receive $150 off a T Squared Putter.</p>"
+          }
+        },
+        "question_8WTFqR": {
+          "type": "question",
+          "settings": {
+            "title": "Am I able to return the new T Squared putter I receive?",
+            "text": "<p>All sales are final for the Trade-In Program, and returns are not accepted for the new T Squared putter received through this offer</p>"
+          }
+        },
+        "question_JRqH69": {
+          "type": "question",
+          "settings": {
+            "title": "Why can't I see the Trade-In Program option at checkout?",
+            "text": "<p>The Trade-In Program is not available directly at checkout. To participate, you must first complete the contact form on our website. After submitting the form, a T Squared representative will send you a prepaid shipping label for your putter. Once we have received your trade-in, you will be sent a unique discount code to apply towards your new T Squared Putter at checkout.</p>"
+          }
+        },
+        "question_GWzxRy": {
+          "type": "question",
+          "settings": {
+            "title": "When and how will I receive credit for my trade-in?",
+            "text": "<p>Once we receive your trade-in, we'll send you a unique code to use at checkout to redeem your $150 store credit.</p>"
+          }
+        },
+        "question_pwNFUX": {
+          "type": "question",
+          "settings": {
+            "title": "Can I combine discount codes or promotions?",
+            "text": "<p>No, discount codes and promotional offers cannot be combined. Only one discount or promotion may be applied per order.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_rRBKtJ",
+        "question_EkTpyJ",
+        "question_rmwjwF",
+        "question_RUhcfz",
+        "question_93bYA7",
+        "question_8WTFqR",
+        "question_JRqH69",
+        "question_GWzxRy",
+        "question_pwNFUX"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "164384067442799df5": {
+      "type": "testimonials",
+      "blocks": {
+        "1643840674cf932491-0": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "1643840674cf932491-1": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "1643840674cf932491-2": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "testimonial_BzcFjy": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "1643840674cf932491-3": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "1643840674cf932491-4": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "testimonial_HVLrM7": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        }
+      },
+      "block_order": [
+        "1643840674cf932491-0",
+        "1643840674cf932491-1",
+        "1643840674cf932491-2",
+        "testimonial_BzcFjy",
+        "1643840674cf932491-3",
+        "1643840674cf932491-4",
+        "testimonial_HVLrM7"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Customers Rave About the TS-1104",
+        "align_text": "center",
+        "round_images": true,
+        "color_background": "#f9f9f9",
+        "color_text": "#1c1d1d"
+      }
+    },
+    "16438402045a878c4f": {
+      "type": "featured-product",
+      "blocks": {
+        "16438402036c32b3ed-0": {
+          "type": "price",
+          "settings": {}
+        },
+        "6255f47e-75b5-41e3-ab9f-b5909282e631": {
+          "type": "separator",
+          "settings": {}
+        },
+        "16438402036c32b3ed-2": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": false,
+            "picker_type": "dropdown",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "16438402036c32b3ed-1": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "16438402036c32b3ed-3": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "647e4d54-7421-496a-9516-5e0cadbf583b": {
+          "type": "share",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "16438402036c32b3ed-0",
+        "6255f47e-75b5-41e3-ab9f-b5909282e631",
+        "16438402036c32b3ed-2",
+        "16438402036c32b3ed-1",
+        "16438402036c32b3ed-3",
+        "647e4d54-7421-496a-9516-5e0cadbf583b"
+      ],
+      "disabled": true,
+      "settings": {
+        "featured_product": "demo-putters",
+        "divider": false,
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "d61d2d09-e58d-49dd-9641-a6b2e54cd0e1": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15349666119867__d61d2d09-e58d-49dd-9641-a6b2e54cd0e1-1670357947ebcf7e8f-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "terms and conditions"
+          }
+        },
+        "template--15349666119867__d61d2d09-e58d-49dd-9641-a6b2e54cd0e1-1670357947ebcf7e8f-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "enlarge_text": false,
+            "text": "<p><strong>T SQUARED PUTTERS Demo Program:</strong><br/>1. The T SQUARED PUTTERS Demo Program allows you to try one T SQUARED PUTTER at a time for up to 14 days per household, and is limited to stock on hand.</p><p>2. Once you’ve selected your demo putter, you will be charged a service fee of $50 upon checkout. <em>Note: We do not guarantee that you will receive a brand new club for demo through this program.</em></p><p>3. By ordering a demo putter, you are giving us the right to charge your credit card at a later date if it is not returned.</p><p>4. If you fail to return your demo putter following the 14-day trial period, <em><strong>you will be charged full retail price </strong></em>for that particular putter.</p><p>5. If you choose to keep your Demo Putter, <em><strong>you will be charged the current advertised price </strong></em>for that model.</p><p>6. If you like the club you tested but want to purchase a brand new one, return the demo putter within the 14-day trial period. And then order your new T SQUARED PUTTER.</p><p>7. During checkout, you must provide your email address and phone number in order to receive communications and instructions from us, regarding our Demo Program.</p><p>8. Once we’ve processed your order, we will ship the club(s) to you. <em>Note: Your 14-day trial period begins once you </em><em><strong>receive </strong></em><em>the club and not when your club was processed or shipped. This will be determined by the delivery scan from our shipper.</em></p><p>9. Once your club has shipped, we will send you an email alerting you that your demo putter is on the way.</p><p>10. All T SQUARED Demo Putters are built to standard specifications: 34\" length, 4 degree loft and 70 degree lie specifications, and come with a mid-size T Squared grip.</p><p>11. Demo Putters are only available when in stock, and this program is limited to customers within the continental U.S., Alaska and Hawaii.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15349666119867__d61d2d09-e58d-49dd-9641-a6b2e54cd0e1-1670357947ebcf7e8f-0",
+        "template--15349666119867__d61d2d09-e58d-49dd-9641-a6b2e54cd0e1-1670357947ebcf7e8f-1"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "16438407523ecb9714": {
+      "type": "faq",
+      "blocks": {
+        "164384075225d87f8a-0": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "164384075225d87f8a-1": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "164384075225d87f8a-0",
+        "164384075225d87f8a-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "rich_text_n9d9RJ",
+    "main",
+    "rich_text_8qhPW6",
+    "faq_Ayc6Xm",
+    "164384067442799df5",
+    "16438402045a878c4f",
+    "d61d2d09-e58d-49dd-9641-a6b2e54cd0e1",
+    "16438407523ecb9714",
+    "shogun-optimizer"
+  ]
+}

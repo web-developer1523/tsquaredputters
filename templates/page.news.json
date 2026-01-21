@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "1634070474a78fdd84": {
+      "type": "promo-grid",
+      "blocks": {
+        "1b23ab26-84be-4b98-b0ff-e39fd1b5dad9": {
+          "type": "simple",
+          "settings": {
+            "link": "",
+            "text": "<p>Frequently Asked Questions</p>",
+            "image": "shopify://shop_images/Putter1-1fds.png",
+            "width": "100",
+            "height": 200,
+            "color_tint": "#000000",
+            "color_tint_opacity": 8,
+            "framed": false
+          }
+        }
+      },
+      "block_order": [
+        "1b23ab26-84be-4b98-b0ff-e39fd1b5dad9"
+      ],
+      "settings": {
+        "full_width": false,
+        "gutter_size": 20,
+        "space_above": true,
+        "space_below": true
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq-1": {
+          "type": "question",
+          "settings": {
+            "title": "Where is T Squared Putters located?",
+            "text": "<p>T Squared Putters is located in Orchard Park, New York which is a small suburb about 15 miles south of Buffalo.</p><p></p><p>Mailing Address: 10 Centre Drive, Orchard Park, New York 14127<br/><br/></p>"
+          }
+        },
+        "faq-2": {
+          "type": "question",
+          "settings": {
+            "title": "How do I contact T Squared Putters?",
+            "text": "<p>If you have any questions regarding ordering, shipping, customization or any other putter-related questions, you can contact us at (716) 667-9217 to speak with a T Squared Putters representative. We can also be reached via email at info@tsquaredputters.com.We are here in the office Monday through Friday from 8:30am – 5:00pm EST.</p>"
+          }
+        },
+        "faq-4": {
+          "type": "question",
+          "settings": {
+            "title": "What is your <strong> Distributor </strong> Return Policy?",
+            "text": "<p>Products purchased from T Squared Putters can be returned for an exchange or credit towards a future purchase.<br/>All returns from distributor customers must be in original packaging and unused. The products will be inspected upon return and based on inspection, it will be T Squared Putters option to allow the return credited in full or denied.<br/>All putter returns are subject to a 15% restocking fee based on received condition of said product. No cash refunds. <strong>No returns on custom orders. </strong>No returns or exchanges will be accepted without prior consent.<br/></p>"
+          }
+        },
+        "ffbafbb0-cb75-414a-9782-c67d99a93725": {
+          "type": "question",
+          "settings": {
+            "title": "What is your <strong> Customer </strong> Return Policy?",
+            "text": "<p>All non-custom products are available for a return or exchange if they are not used.<br/>Customer incurs shipping cost.</p><p><strong>No returns on custom orders.</strong></p>"
+          }
+        },
+        "aaa6e291-3929-413b-853a-38713359d63e": {
+          "type": "question",
+          "settings": {
+            "title": "What is your Warranty Policy?",
+            "text": "<p><strong>Limited Five-Year Warranty</strong><br/>Except as otherwise stated on the product or packaging, T Squared Putters warrants its putters, components, and other products purchased from T Squared Putters or authorized distributor to be free of defects in material and workmanship for five years. T Squared Putters will, without charge to the consumer, repair or replace any product or component or part thereof that is defective or becomes defective during normal use within five years after the date of purchase from T Squared Putters or authorized distributor. At its option, T Squared Putters may replace the product with a new or refurbished product.<br/>T Squared Putters does not warrant its products against damage caused by third parties. This warranty does not cover paint scratches, cosmetic blemishes or other normal wear and tear. T Squared Putters will fix such blemishes and scratches for a small fee.<br/>To obtain warranty service on a T Squared Putters product, return the product directly to T Squared Putters or authorized distributor. For more information, please contact a T Squared Putters representative directly at (716) 667-9215.</p>"
+          }
+        },
+        "f3e5d739-6326-419e-b7b2-bbbd2f3c425c": {
+          "type": "question",
+          "settings": {
+            "title": "Does T Squared Putters handle repairs and additional customization?",
+            "text": "<p>The T Squared Putters Repair Department performs general club repairs such as reshafting, loft and lie adjustments, and regripping.<br/>If you would like to have your putter repaired or modified, please contact a T Squared Putters representative at (716) 667-9215 or via email at info@tsquaredputters.com. A representative can discuss our pricing and return policy.*Putters repaired by a third party may affect the integrity of the putter and render it unserviceable by T Squared Putters.</p>"
+          }
+        },
+        "3cfb65d1-861e-4fe7-b768-b042c388ad95": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for my T Squared Putter?",
+            "text": "<p>Putters can be cleaned with mild soap and water and then dried with a soft cotton cloth. We recommend your putter and headcover be completely dry prior to storage. To prolong the life of your T Squared Putter, we recommend these few easy steps:</p><p>• Always dry your putter at the end of the day with a soft cloth.</p><p>• We suggest storing the cloth in your cover durning the round and even wiping down the putter a few times during the round.</p><p>• Always use a dry headcover.</p><p>• Never leave your putter in damp or cold atmospheres.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-4",
+        "ffbafbb0-cb75-414a-9782-c67d99a93725",
+        "aaa6e291-3929-413b-853a-38713359d63e",
+        "f3e5d739-6326-419e-b7b2-bbbd2f3c425c",
+        "3cfb65d1-861e-4fe7-b768-b042c388ad95"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "1634242221defa481c": {
+      "type": "newsletter",
+      "blocks": {
+        "1634242221defa481c-0": {
+          "type": "title",
+          "settings": {
+            "title": "Sign up and save"
+          }
+        },
+        "1634242221defa481c-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          }
+        },
+        "1634242221defa481c-2": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "1634242221defa481c-0",
+        "1634242221defa481c-1",
+        "1634242221defa481c-2"
+      ],
+      "settings": {
+        "color_background": "#f9f9f9",
+        "color_text": "#1c1d1d"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1634070474a78fdd84",
+    "faq",
+    "1634242221defa481c"
+  ]
+}

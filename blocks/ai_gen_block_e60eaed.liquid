@@ -1,0 +1,655 @@
+{% doc %}
+  @prompt
+    I want to add a scrolling image gallery underneath the main product media. These will be real lifestyle and detail photos of the product that I will upload. Please enable a horizontal scrollable section (carousel or swipeable row) below the primary product images so customers can browse these additional photos.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-gallery-{{ ai_gen_id }} {
+    width: 100%;
+    padding: {{ block.settings.spacing_top }}px 0 {{ block.settings.spacing_bottom }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-product-gallery__heading-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    padding: 0 20px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    text-align: {{ block.settings.heading_alignment }};
+  }
+
+  .ai-product-gallery__container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ai-product-gallery__track-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.image_spacing }}px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 20px;
+  }
+
+  .ai-product-gallery__track-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-product-gallery__item-{{ ai_gen_id }} {
+    flex: 0 0 auto;
+    width: {{ block.settings.image_width }}px;
+    position: relative;
+  }
+
+  .ai-product-gallery__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    background-color: #f4f4f4;
+    cursor: pointer;
+  }
+
+  .ai-product-gallery__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-product-gallery__image-wrapper-{{ ai_gen_id }}:hover .ai-product-gallery__image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-product-gallery__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-product-gallery__placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-product-gallery__nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: {{ block.settings.nav_button_color }};
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    opacity: 0.9;
+  }
+
+  .ai-product-gallery__nav-{{ ai_gen_id }}:hover {
+    opacity: 1;
+    background-color: {{ block.settings.nav_button_hover_color }};
+  }
+
+  .ai-product-gallery__nav-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-product-gallery__nav--prev-{{ ai_gen_id }} {
+    left: 10px;
+  }
+
+  .ai-product-gallery__nav--next-{{ ai_gen_id }} {
+    right: 10px;
+  }
+
+  .ai-product-gallery__nav-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+    stroke: {{ block.settings.nav_button_icon_color }};
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .ai-product-gallery__lightbox-{{ ai_gen_id }} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .ai-product-gallery__lightbox-{{ ai_gen_id }}.active {
+    display: flex;
+  }
+
+  .ai-product-gallery__lightbox-content-{{ ai_gen_id }} {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .ai-product-gallery__lightbox-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .ai-product-gallery__lightbox-close-{{ ai_gen_id }} {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .ai-product-gallery__lightbox-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 24px;
+    border-radius: 4px;
+  }
+
+  .ai-product-gallery__lightbox-nav-{{ ai_gen_id }}:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .ai-product-gallery__lightbox-nav--prev-{{ ai_gen_id }} {
+    left: 20px;
+  }
+
+  .ai-product-gallery__lightbox-nav--next-{{ ai_gen_id }} {
+    right: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-gallery__item-{{ ai_gen_id }} {
+      width: {{ block.settings.image_width_mobile }}px;
+    }
+
+    .ai-product-gallery__nav-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-product-gallery__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<product-gallery-{{ ai_gen_id }} class="ai-product-gallery-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.heading != blank %}
+    <h2 class="ai-product-gallery__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="ai-product-gallery__container-{{ ai_gen_id }}">
+    {% if block.settings.show_nav_buttons %}
+      <button
+        class="ai-product-gallery__nav-{{ ai_gen_id }} ai-product-gallery__nav--prev-{{ ai_gen_id }}"
+        aria-label="Previous image"
+        data-nav="prev"
+      >
+        <svg viewBox="0 0 24 24">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    {% endif %}
+
+    <div class="ai-product-gallery__track-{{ ai_gen_id }}" data-track>
+      {% for i in (1..8) %}
+        {% assign image_key = 'image_' | append: i %}
+        {% assign image = block.settings[image_key] %}
+        
+        {% if image != blank %}
+          <div class="ai-product-gallery__item-{{ ai_gen_id }}" data-index="{{ forloop.index0 }}">
+            <div class="ai-product-gallery__image-wrapper-{{ ai_gen_id }}">
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                alt="{{ image.alt | escape }}"
+                loading="lazy"
+                width="800"
+                height="800"
+                class="ai-product-gallery__image-{{ ai_gen_id }}"
+              >
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% if block.settings.image_1 == blank and block.settings.image_2 == blank and block.settings.image_3 == blank %}
+        {% for i in (1..4) %}
+          <div class="ai-product-gallery__item-{{ ai_gen_id }}">
+            <div class="ai-product-gallery__placeholder-{{ ai_gen_id }}">
+              {{ 'product-1' | placeholder_svg_tag }}
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if block.settings.show_nav_buttons %}
+      <button
+        class="ai-product-gallery__nav-{{ ai_gen_id }} ai-product-gallery__nav--next-{{ ai_gen_id }}"
+        aria-label="Next image"
+        data-nav="next"
+      >
+        <svg viewBox="0 0 24 24">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    {% endif %}
+  </div>
+
+  {% if block.settings.enable_lightbox %}
+    <div class="ai-product-gallery__lightbox-{{ ai_gen_id }}" data-lightbox>
+      <div class="ai-product-gallery__lightbox-content-{{ ai_gen_id }}">
+        <button class="ai-product-gallery__lightbox-close-{{ ai_gen_id }}" data-lightbox-close aria-label="Close">
+          ×
+        </button>
+        <img src="" alt="" class="ai-product-gallery__lightbox-image-{{ ai_gen_id }}" data-lightbox-image>
+        <button class="ai-product-gallery__lightbox-nav-{{ ai_gen_id }} ai-product-gallery__lightbox-nav--prev-{{ ai_gen_id }}" data-lightbox-nav="prev" aria-label="Previous">
+          ‹
+        </button>
+        <button class="ai-product-gallery__lightbox-nav-{{ ai_gen_id }} ai-product-gallery__lightbox-nav--next-{{ ai_gen_id }}" data-lightbox-nav="next" aria-label="Next">
+          ›
+        </button>
+      </div>
+    </div>
+  {% endif %}
+</product-gallery-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductGallery{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.track = this.querySelector('[data-track]');
+        this.items = this.querySelectorAll('.ai-product-gallery__item-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('[data-nav="prev"]');
+        this.nextButton = this.querySelector('[data-nav="next"]');
+        this.lightbox = this.querySelector('[data-lightbox]');
+        this.lightboxImage = this.querySelector('[data-lightbox-image]');
+        this.currentIndex = 0;
+        this.images = [];
+      }
+
+      connectedCallback() {
+        this.items.forEach((item, index) => {
+          const img = item.querySelector('.ai-product-gallery__image-{{ ai_gen_id }}');
+          if (img) {
+            this.images.push({
+              src: img.src,
+              alt: img.alt
+            });
+            
+            if (this.lightbox) {
+              item.addEventListener('click', () => this.openLightbox(index));
+            }
+          }
+        });
+
+        if (this.prevButton && this.nextButton) {
+          this.prevButton.addEventListener('click', () => this.scroll('prev'));
+          this.nextButton.addEventListener('click', () => this.scroll('next'));
+          this.track.addEventListener('scroll', () => this.updateNavButtons());
+          this.updateNavButtons();
+        }
+
+        if (this.lightbox) {
+          const closeButton = this.querySelector('[data-lightbox-close]');
+          const prevLightboxButton = this.querySelector('[data-lightbox-nav="prev"]');
+          const nextLightboxButton = this.querySelector('[data-lightbox-nav="next"]');
+
+          closeButton.addEventListener('click', () => this.closeLightbox());
+          prevLightboxButton.addEventListener('click', () => this.navigateLightbox('prev'));
+          nextLightboxButton.addEventListener('click', () => this.navigateLightbox('next'));
+          
+          this.lightbox.addEventListener('click', (e) => {
+            if (e.target === this.lightbox) {
+              this.closeLightbox();
+            }
+          });
+
+          document.addEventListener('keydown', (e) => {
+            if (!this.lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') this.closeLightbox();
+            if (e.key === 'ArrowLeft') this.navigateLightbox('prev');
+            if (e.key === 'ArrowRight') this.navigateLightbox('next');
+          });
+        }
+      }
+
+      scroll(direction) {
+        const scrollAmount = this.track.offsetWidth * 0.8;
+        const currentScroll = this.track.scrollLeft;
+        
+        if (direction === 'next') {
+          this.track.scrollLeft = currentScroll + scrollAmount;
+        } else {
+          this.track.scrollLeft = currentScroll - scrollAmount;
+        }
+      }
+
+      updateNavButtons() {
+        if (!this.prevButton || !this.nextButton) return;
+
+        const isAtStart = this.track.scrollLeft <= 0;
+        const isAtEnd = this.track.scrollLeft + this.track.offsetWidth >= this.track.scrollWidth - 1;
+
+        this.prevButton.disabled = isAtStart;
+        this.nextButton.disabled = isAtEnd;
+      }
+
+      openLightbox(index) {
+        this.currentIndex = index;
+        this.updateLightboxImage();
+        this.lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeLightbox() {
+        this.lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      navigateLightbox(direction) {
+        if (direction === 'next') {
+          this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        } else {
+          this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        }
+        this.updateLightboxImage();
+      }
+
+      updateLightboxImage() {
+        const image = this.images[this.currentIndex];
+        this.lightboxImage.src = image.src;
+        this.lightboxImage.alt = image.alt;
+      }
+    }
+
+    customElements.define('product-gallery-{{ ai_gen_id }}', ProductGallery{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product image gallery",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Spacing below heading",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_7",
+      "label": "Image 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_8",
+      "label": "Image 8"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "label": "Image width (desktop)",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_width_mobile",
+      "min": 200,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "label": "Image width (mobile)",
+      "default": 280
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1 / 1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4 / 3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "16 / 9",
+          "label": "Wide (16:9)"
+        },
+        {
+          "value": "3 / 4",
+          "label": "Portrait (3:4)"
+        }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "range",
+      "id": "image_spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Space between images",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "Show navigation buttons",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "Button color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_hover_color",
+      "label": "Button hover color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_icon_color",
+      "label": "Icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Lightbox"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lightbox",
+      "label": "Enable lightbox on click",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product image gallery"
+    }
+  ]
+}
+{% endschema %}

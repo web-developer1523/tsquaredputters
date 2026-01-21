@@ -1,0 +1,600 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "163640658021db15c9": {
+      "type": "hero-video",
+      "settings": {
+        "title": "Custom Golf Putters <br> Built for Performance.<br> Designed for you",
+        "title_size": 40,
+        "subheading": "",
+        "link_text": "shop putters",
+        "link": "shopify://collections/putters",
+        "color_accent": "#ea1e26",
+        "text_align": "vertical-center horizontal-left",
+        "video_url": "https://youtu.be/Hk0bKIY0vHI",
+        "overlay_opacity": 0,
+        "section_height": "650px",
+        "mobile_height": "300px"
+      }
+    },
+    "17664994056238499e": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "176762968612ad8719": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8260758_BJtxEC": {
+          "type": "ai_gen_block_8260758",
+          "settings": {
+            "headline": "New Year. New You. New Putter.",
+            "subheadline": "$100 off all custom and stock putters",
+            "expiry_text": "Offer ends January 31",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "primary_button_label": "Shop Stock Putters",
+            "primary_button_link": "https://tsquaredputters.com/collections/putters",
+            "primary_button_bg": "#000000",
+            "primary_button_text_color": "#ffffff",
+            "primary_button_hover_bg": "#ea1e26",
+            "primary_button_hover_text": "#ffffff",
+            "secondary_button_label": "Build a Custom Putter",
+            "secondary_button_link": "https://tsquaredputters.com/collections/custom-putters",
+            "secondary_button_bg": "#ffffff",
+            "secondary_button_text_color": "#000000",
+            "secondary_button_border": "#000000",
+            "secondary_button_hover_bg": "#000000",
+            "secondary_button_hover_text": "#ffffff",
+            "secondary_button_hover_border": "#000000",
+            "background_color": "#ffffff",
+            "headline_color": "#000000",
+            "subheadline_color": "#ea1e26",
+            "expiry_color": "#000000",
+            "product_bg_color": "#ffffff",
+            "product_title_color": "#000000",
+            "product_price_color": "#b30000",
+            "section_padding": 60,
+            "headline_size": 48,
+            "subheadline_size": 24,
+            "expiry_size": 16,
+            "button_font_size": 16,
+            "button_border_radius": 0,
+            "product_border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8260758_BJtxEC"
+      ],
+      "settings": {}
+    },
+    "featured_collection_acTr8j": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.featured_collection.name",
+      "settings": {
+        "title": "T Squared custom shop",
+        "home_featured_products": "custom-putters",
+        "per_row": 4,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "promo_grid_MXijTb": {
+      "type": "promo-grid",
+      "blocks": {
+        "advanced_tGwE4P": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "Limited time",
+            "heading": "T Squared Putters: Father’s Day Exclusive Offer",
+            "textarea": "$100 OFF Custom Putters – Limited Time Only",
+            "cta_text1": "",
+            "cta_link1": "",
+            "cta_text2": "Shop All",
+            "cta_link2": "https://tsquaredputters.com/collections/putters",
+            "image": "shopify://shop_images/263416871_276891371034922_861190369552206248_n.jpg",
+            "video_url": "",
+            "width": "50",
+            "height": 500,
+            "text_size": 100,
+            "text_align": "vertical-center horizontal-center",
+            "color_accent": "rgba(0,0,0,0)",
+            "boxed": false,
+            "framed": false
+          }
+        }
+      },
+      "block_order": [
+        "advanced_tGwE4P"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "gutter_size": 20,
+        "space_above": true,
+        "space_below": true,
+        "lazyload_images": true
+      }
+    },
+    "featured_product_KxkDV7": {
+      "type": "featured-product",
+      "blocks": {
+        "price_gVQgME": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_FftPG6": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "variant_picker_P86HWP": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "buy_buttons_meqpgg": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "price_gVQgME",
+        "description_FftPG6",
+        "variant_picker_P86HWP",
+        "buy_buttons_meqpgg"
+      ],
+      "disabled": true,
+      "settings": {
+        "featured_product": "buffalo-bills-themed-ball-marker",
+        "divider": false,
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "text_and_image_FWJhk8": {
+      "type": "text-and-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2024-03-27_at_4.22.22_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "the TS-912 Earns an outstanding 94 Overall rating",
+        "text": "<p><strong>Discover the TS-912 Putter - MyGolfSpy's Top 3 Choice with a Stellar 94 Rating! Dominate Your Putts from 10 Feet and Experience Elite Performance on the Green! </strong>(<em>By </em>Phillip Bishop)</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "featured_product_Wye9aB": {
+      "type": "featured-product",
+      "blocks": {
+        "price_mtaL6D": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_nxFtwM": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "variant_picker_4cdTGA": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "buy_buttons_8YaUBR": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "price_mtaL6D",
+        "description_nxFtwM",
+        "variant_picker_4cdTGA",
+        "buy_buttons_8YaUBR"
+      ],
+      "disabled": true,
+      "settings": {
+        "featured_product": "ts-1104-special",
+        "divider": false,
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "unmuted"
+      }
+    },
+    "2c939109-3df2-4a17-b003-45b8154052a8": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-heading-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "912 sale happening now"
+          }
+        },
+        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Don't let this exclusive 21% discount on all 912 models pass you by; it's available only until September 21st. Elevate your game with a brand-new, handcrafted 912 putter  designed by a tour professional for ultimate performance and precision.</p>"
+          }
+        },
+        "f06e4d26-5d17-4ad1-b3b2-32e862ddbbd5": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>google-site-verification: google15ea093d797e288e.html</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-heading-1",
+        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-text-1",
+        "f06e4d26-5d17-4ad1-b3b2-32e862ddbbd5"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "86deb567-8a28-4f82-a202-0509ba2ed80d": {
+      "type": "text-and-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/ScreenShot2023-12-26at4.10.20PM.png",
+        "image_mask": "none",
+        "image2": "shopify://shop_images/ScreenShot2023-12-26at3.46.44PM.png",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "New Years sale $125 off 1106+ and 905 models",
+        "text": "<p>Perfect your putt in style this New Year with exclusive savings on our 1106+ and 905 models. Elevate your game with precision engineering and unparalleled performance. Seize the opportunity to enhance your putting prowess with this limited-time discount</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "4690b693-cacc-4d49-a398-748314391f84": {
+      "type": "text-and-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/1106-silver_-single-bend_-shaft-in_-_face-balanced_---black-slimRevB_95d6651d-0b50-400b-9517-a1e6fbc693e0.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Save Today",
+        "title": "Holiday Sale Happening $150 off all putter models",
+        "text": "<p>Happy Holidays Special: Sink More Savings with $150 Off on All Putter Models</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "163406921145b72a4b": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/587652654_18050116709663614_4700174378431117122_n.jpg",
+        "image_mask": "square",
+        "image2_mask": "square",
+        "subtitle": "100% USA Built",
+        "title": "Uniquely Designed for You",
+        "text": "<p>Every T Squared Putter is custom built at our U.S. factory to match your stroke and specifications. Our engineers focus on precision, balance, and control so your putter performs exactly how you need it to. Finish it your way with dozens of design options including colors, alignment aids, names, logos, and personal messages. Build a truly one of a kind premium putter.</p>",
+        "button_label": "design your putter",
+        "button_link": "shopify://collections/custom-putters",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "66",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "176651208336719ae0": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_JmKdjq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_JmKdjq"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "1632306127a25fc521": {
+      "type": "slideshow",
+      "blocks": {
+        "1632306127a25fc521-0": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "PROUDLY MADE IN THE USA",
+            "title_size": 47,
+            "subheading": "T Squared isn’t just another golf company. We design, mill, assemble, and personalize every putter in-house at our Buffalo, New York facility with one goal in mind: absolute perfection",
+            "link": "shopify://pages/about",
+            "link_text": "About T-Squared Putters",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ea1e26",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/Group2.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 32
+          }
+        }
+      },
+      "block_order": [
+        "1632306127a25fc521-0"
+      ],
+      "settings": {
+        "section_height": "750px",
+        "mobile_height": "400px",
+        "parallax": false,
+        "style": "bars",
+        "autoplay": false,
+        "autoplay_speed": 7,
+        "lazyload_images": true
+      }
+    },
+    "163407003164a35c44": {
+      "type": "featured-collections",
+      "blocks": {
+        "163407003164a35c44-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "blade-putters",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "163407003164a35c44-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "mid-mallet-putters",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "163407003164a35c44-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "mallet-putters",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "163407003164a35c44-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "putters",
+            "title": "All Putters",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "163407003164a35c44-0",
+        "163407003164a35c44-1",
+        "163407003164a35c44-2",
+        "163407003164a35c44-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Shop By Putter Style",
+        "divider": false,
+        "per_row": 4,
+        "enable_gutter": true
+      }
+    },
+    "1638473849f3e6addd": {
+      "type": "promo-grid",
+      "blocks": {
+        "d89c138d-1101-4edd-90cc-fe34cf8fdff9": {
+          "type": "banner",
+          "settings": {
+            "heading": "",
+            "text": "",
+            "link": "",
+            "label": "",
+            "color_tint": "#000000",
+            "color_tint_opacity": 8,
+            "framed": false
+          }
+        }
+      },
+      "block_order": [
+        "d89c138d-1101-4edd-90cc-fe34cf8fdff9"
+      ],
+      "settings": {
+        "full_width": true,
+        "gutter_size": 0,
+        "space_above": false,
+        "space_below": false,
+        "lazyload_images": true
+      }
+    },
+    "16340689613dd51383": {
+      "type": "promo-grid",
+      "blocks": {
+        "0a8257eb-b7ce-455e-bf0f-2c113486cbf7": {
+          "type": "banner",
+          "disabled": true,
+          "settings": {
+            "heading": "Get 10% Off",
+            "text": "Your First T SQUARED PUTTER  *Exclusions Apply*",
+            "link": "",
+            "label": "",
+            "color_tint": "#67635d",
+            "color_tint_opacity": 14,
+            "framed": false
+          }
+        },
+        "16340689613dd51383-1": {
+          "type": "advanced",
+          "disabled": true,
+          "settings": {
+            "subheading": "- Unlock Your Putting Potential-",
+            "heading": "Customized for Precision and Performance",
+            "textarea": "When it comes to golf, every stroke counts, and the putter is a key weapon in your arsenal. That's why customizing your golf putter, right from the factory, can make all the difference in your game. By BUILDING the putter to your specific needs and preferences, you can enhance your precision, control, and overall performance on the green.\n\nCustomization options often include length, lie, grip style, etc...\nbut only T SQUARED PUTTERS offers dozens of additional design options like adding accent colors, names, team or business logos, personal messages and numerous alignment aid options.\n\nWhether you're a seasoned pro or a recreational golfer, investing in a customized putter ensures that it becomes an extension of your playing style, providing you with the confidence and consistency needed to sink those crucial putts. Don't settle for a one-size-fits-all approach—unleash your putting potential through personalized customization and elevate your golf game to new heights.",
+            "cta_text1": "Shop Putters",
+            "cta_link1": "shopify://collections/putters",
+            "cta_text2": "contact our builders",
+            "cta_link2": "shopify://pages/contact",
+            "image": "shopify://shop_images/Putter1-1fds.png",
+            "video_url": "",
+            "width": "100",
+            "height": 520,
+            "text_size": 110,
+            "text_align": "vertical-center horizontal-center",
+            "color_accent": "rgba(0,0,0,0)",
+            "boxed": false,
+            "framed": false
+          }
+        },
+        "70a58f62-89c3-4e8f-b9de-9787d9c53a36": {
+          "type": "advanced",
+          "disabled": true,
+          "settings": {
+            "subheading": "- SUMMER Special -",
+            "heading": "Get $100 OFF any stock Putter",
+            "textarea": "Want to know how you can improve your game? Our PUTTER BUILDERS will take the guesswork out of selecting and configuring your new putter - for perfect stroke alignment. Just answer a few questions, and we will help you choose between various types or styles based on what's right for YOU (not some other guy). Most orders are built and shipped in just 2 weeks.",
+            "cta_text1": "Shop Putters",
+            "cta_link1": "shopify://collections/putters",
+            "cta_text2": "Shop All",
+            "cta_link2": "shopify://collections/all-products",
+            "image": "shopify://shop_images/Putter1-1fds.png",
+            "video_url": "",
+            "width": "100",
+            "height": 520,
+            "text_size": 110,
+            "text_align": "vertical-center horizontal-center",
+            "color_accent": "rgba(0,0,0,0)",
+            "boxed": false,
+            "framed": false
+          }
+        }
+      },
+      "block_order": [
+        "0a8257eb-b7ce-455e-bf0f-2c113486cbf7",
+        "16340689613dd51383-1",
+        "70a58f62-89c3-4e8f-b9de-9787d9c53a36"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "gutter_size": 21,
+        "space_above": true,
+        "space_below": true,
+        "lazyload_images": true
+      }
+    },
+    "map": {
+      "type": "map",
+      "disabled": true,
+      "settings": {
+        "map_title": "Our retail store",
+        "address": "<p>301 Front St W<br/>Toronto, Canada</p><p>Mon - Fri, 8:30am - 10:30pm<br/>Saturday, 8:30am - 10:30pm<br/>Sunday, 8:30am - 10:30pm</p>",
+        "map_address": "301 Front St W, Toronto, ON M5V 2T6",
+        "api_key": "",
+        "show_button": true,
+        "lazyload_images": true
+      }
+    }
+  },
+  "order": [
+    "163640658021db15c9",
+    "17664994056238499e",
+    "176762968612ad8719",
+    "featured_collection_acTr8j",
+    "promo_grid_MXijTb",
+    "featured_product_KxkDV7",
+    "text_and_image_FWJhk8",
+    "featured_product_Wye9aB",
+    "2c939109-3df2-4a17-b003-45b8154052a8",
+    "86deb567-8a28-4f82-a202-0509ba2ed80d",
+    "4690b693-cacc-4d49-a398-748314391f84",
+    "163406921145b72a4b",
+    "176651208336719ae0",
+    "1632306127a25fc521",
+    "163407003164a35c44",
+    "1638473849f3e6addd",
+    "16340689613dd51383",
+    "map"
+  ]
+}

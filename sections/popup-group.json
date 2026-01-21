@@ -1,0 +1,102 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.popups",
+  "name": "t:sections.popup-group.name",
+  "sections": {
+    "newsletter-popup": {
+      "type": "newsletter-popup",
+      "disabled": true,
+      "settings": {
+        "disable_for_account_holders": true,
+        "popup_seconds": 5,
+        "popup_days": 30,
+        "popup_title": "Sign up and save",
+        "popup_text": "<p>Get access to special deals – subscribe for exclusive offers</p>",
+        "popup_image": "shopify://shop_images/Screen_Shot_2023-05-08_at_10.58.25_AM.png",
+        "image_position": "left",
+        "show_social_icons": true,
+        "enable_newsletter": true,
+        "button_label": "Trade-In program",
+        "button_link": "https://tsquaredputters.com/pages/trade-in-program"
+      }
+    },
+    "blocks_9dK3wE": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_14485d1_XyaPAB": {
+          "type": "ai_gen_block_14485d1",
+          "settings": {
+            "hand_label": "Hand",
+            "grip_label": "Grip Style",
+            "shaft_label": "Shaft Length"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_14485d1_XyaPAB"
+      ],
+      "disabled": true,
+      "name": "Custom product options",
+      "settings": {}
+    },
+    "age-verification-popup": {
+      "type": "age-verification-popup",
+      "disabled": true,
+      "settings": {
+        "enable_test_mode": false,
+        "blur_image": false,
+        "heading": "Confirm your age",
+        "text": "<p>Are you 18 years old or older?</p>",
+        "decline_button_label": "No I'm not",
+        "approve_button_label": "Yes I am",
+        "decline_heading": "Come back when you're older",
+        "decline_text": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.</p>",
+        "return_button_label": "Oops, I entered incorrectly"
+      }
+    },
+    "blocks_JbA96k": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_573dcc4_E6FgdQ": {
+          "type": "ai_gen_block_573dcc4",
+          "disabled": true,
+          "settings": {
+            "heading": "<em><strong>Customizer Disclaimer</strong></em>",
+            "text": "All selected colors will appear during the section of customization where they are chosen. When you switch to another section, some visual changes may not carry over in the preview. All of your selections are saved and will appear in the itemized list at checkout. Your putter will be built exactly to the specifications you choose.",
+            "heading_color": "#000000",
+            "heading_size": 16,
+            "text_color": "#000000",
+            "text_size": 14,
+            "text_spacing": 8,
+            "background_color": "#f5f5f5",
+            "padding": 16,
+            "border_radius": 4,
+            "spacing_top": 20,
+            "spacing_bottom": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_573dcc4_E6FgdQ"
+      ],
+      "name": "Customizer disclaimer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "newsletter-popup",
+    "blocks_9dK3wE",
+    "age-verification-popup",
+    "blocks_JbA96k"
+  ]
+}

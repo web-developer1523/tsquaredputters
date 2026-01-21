@@ -1,0 +1,1452 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+{{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+<section class="main-section">
+    <div class="tabs">
+        <!-- Tab Radios -->
+        {% comment %} <input type="radio" id="tab1" name="tab-control" checked />
+        <label for="tab1" title="Tab 1"><span>Style</span></label>
+
+        <input type="radio" id="tab2" name="tab-control" />
+        <label for="tab2" title="Tab 2"><span>Extra</span></label>
+
+        <input type="radio" id="tab3" name="tab-control" />
+        <label for="tab3" title="Tab 3"><span>Summary</span></label> {% endcomment %}
+
+        <!-- Tab Content -->
+        <div class="content">
+            
+            <!-- Tab 1: Leather Customization -->
+            <section class="tab1">
+                <div class="style-tab">
+                    <div class="sidebar" id="tabMenu">
+                        <div class="tab active" data-tab="Finish">Finish</div>
+                        <div class="tab" data-tab="Shaft">Shaft</div>
+                        <div class="tab" data-tab="Balance">Balance<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg></div>
+                        <div class="tab" data-tab="Short_plumber_neck"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m560-120-57-57 144-143H200v-480h80v400h367L503-544l56-57 241 241-240 240Z"/></svg>Short Plumbers Neck</div>
+                        <div class="tab" data-tab="Long_plumber_neck"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m560-120-57-57 144-143H200v-480h80v400h367L503-544l56-57 241 241-240 240Z"/></svg>Long Plumbers Neck</div>
+                        <div class="tab" data-tab="Hosel_color">Hosel Color</div>
+                        <div class="tab" data-tab="Back_plate_color">Back Plate Color</div>
+                        <div class="tab" data-tab="Sightline_color">Sightline Color</div>
+                        <div class="tab" data-tab="Bottom_t">Bottom T Fill</div>
+                        <div class="tab" data-tab="Face_t">Face T Fill</div>
+                        <div class="tab" data-tab="Club_lie">Club lie</div>
+                        <div class="tab" data-tab="Club_loft">Club loft</div>
+                        <div class="tab" data-tab="Hand">Hand</div>
+                        <div class="tab" data-tab="Grip_style">Grip Style</div>
+                        <div class="tab" data-tab="Shaft_length">Shaft Length</div>
+                    </div>
+                    <div class="color-selector">
+                        <div class="cross-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></div>
+                        <div class="section-title" id="sectionTitle"></div>
+                        <div class="color-grid" id="colorGrid">
+                            <!-- Color boxes will be injected here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="image-wrapper">
+                    <div class="default-image-sides" id="custom-image-preview">
+                        <img class="side-images front-only active" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png"/>
+                        <img class="side-images side-only active" style="display: none;" src="https://tsquaredputters.com/cdn/shop/files/TS-713_Top_Silver.png"/>
+                        <img class="back-side back-only active" style="display: none;" src="https://tsquaredputters.com/cdn/shop/files/TS-713_Back_Silver_Short.png"/>
+                        <img class="balance balance-only active" style="display: none;" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png"/>
+                    </div>
+                </div>
+                <div class="all-other-images">
+                    <div class="Finish" style="display: none;">
+                        <img class="first finish front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_finish_link_1.png" alt="ts_503_finish_1" finish_color="Silver"/>
+                        <img class="first finish front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_finish_link_2.png" alt="ts_503_finish_2" finish_color="Black"/>
+                    </div>
+                    <div class="Shaft" style="display: none;">
+                        <img class="first shaft front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_shaft_link_1.png" alt="ts_503_shaft_1" shaft_color="Silver"/>
+                        <img class="first shaft front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_shaft_link_2.png" alt="ts_503_shaft_2" shaft_color="Black"/>
+                    </div>
+                    <div class="Balance" style="display: none;">
+                        <img class="first balance balance-only" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png" alt="ts_503_select_balance_1" balance="Short Plumbers Neck"/>
+                        <img class="first balance balance-only" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Long.png" alt="ts_503_select_balance_2" balance="Long Plumbers Neck"/>
+                    </div>
+                     <div class="Short_plumber_neck" style="display: none;">
+                        <img class="first short_plumber_neck balance-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_short_plumber_neck_link_1.png" alt="ts_503_short_plumber_neck_1" short_plumber_neck_color="Silver"/>
+                        <img class="first short_plumber_neck balance-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_short_plumber_neck_link_2.png" alt="ts_503_short_plumber_neck_2" short_plumber_neck_color="Black"/>
+                      
+                    </div> 
+                    <div class="Long_plumber_neck" style="display: none;">
+                        <img class="first long_plumber_neck balance-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_long_plumber_neck_link_1.png" alt="ts_503_long_plumber_neck_1" long_plumber_neck_color="Silver"/>
+                        <img class="first long_plumber_neck balance-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_long_plumber_neck_link_2.png" alt="ts_503_long_plumber_neck_2" long_plumber_neck_color="Black"/>
+                      
+                    </div> 
+                    <div class="Hosel_color" style="display: none;">
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_1.png" alt="ts_503_hosel_color_1" hosel_color="Red"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_2.png" alt="ts_503_hosel_color_2" hosel_color="Black"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_3.png" alt="ts_503_hosel_color_3" hosel_color="Blue"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_4.png" alt="ts_503_hosel_color_4" hosel_color="Green"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_5.png" alt="ts_503_hosel_color_5" hosel_color="Gold"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_6.png" alt="ts_503_hosel_color_6" hosel_color="Pink"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_7.png" alt="ts_503_hosel_color_7" hosel_color="Purple"/>
+                        <img class="first hosel_color front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_hosel_color_link_8.png" alt="ts_503_hosel_color_8" hosel_color="Orange"/>
+                    </div> 
+                    <div class="Back_plate_color" style="display: none;">
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_1.png" alt="ts_713_back_plate_color_1" back_plate_color="Red"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_2.png" alt="ts_713_back_plate_color_2" back_plate_color="Black"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_3.png" alt="ts_713_back_plate_color_3" back_plate_color="Blue"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_4.png" alt="ts_713_back_plate_color_4" back_plate_color="Green"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_5.png" alt="ts_713_back_plate_color_5" back_plate_color="Gold"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_6.png" alt="ts_713_back_plate_color_6" back_plate_color="Pink"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_7.png" alt="ts_713_back_plate_color_7" back_plate_color="Purple"/>
+                        <img class="first back_plate back-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_color_link_8.png" alt="ts_713_back_plate_color_8" back_plate_color="Orange"/>
+
+                    </div>
+                    <div class="Sightline_color" style="display: none;">
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_1.png" alt="ts_713_sightline_color_1" sightline_color="White"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_2.png" alt="ts_713_sightline_color_2" sightline_color="Red"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_3.png" alt="ts_713_sightline_color_3" sightline_color="Black"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_4.png" alt="ts_713_sightline_color_4" sightline_color="Blue"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_5.png" alt="ts_713_sightline_color_5" sightline_color="Green"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_6.png" alt="ts_713_sightline_color_6" sightline_color="Gold"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_7.png" alt="ts_713_sightline_color_7" sightline_color="Pink"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_8.png" alt="ts_713_sightline_color_8" sightline_color="Purple"/>
+                        <img class="first sightline_color side-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_color_link_9.png" alt="ts_713_sightline_color_9" sightline_color="Orange"/>
+                    </div> 
+                    <div class="Bottom_t" style="display: none;">
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_1.png" alt="ts_503_bottom_t_1" bottom_t_color="Red"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_2.png" alt="ts_503_bottom_t_2" bottom_t_color="Black"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_3.png" alt="ts_503_bottom_t_3" bottom_t_color="Blue"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_4.png" alt="ts_503_bottom_t_4" bottom_t_color="Green"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_5.png" alt="ts_503_bottom_t_5" bottom_t_color="Gold"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_6.png" alt="ts_503_bottom_t_6" bottom_t_color="Pink"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_7.png" alt="ts_503_bottom_t_7" bottom_t_color="Purple"/>
+                        <img class="first bottom_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_bottom_t_link_8.png" alt="ts_503_bottom_t_8" bottom_t_color="Orange"/>
+                    </div>
+                    <div class="Face_t" style="display: none;">
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_1.png" alt="ts_503_face_t_1" face_t_color="Red"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_2.png" alt="ts_503_face_t_2" face_t_color="Black"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_3.png" alt="ts_503_face_t_3" face_t_color="Blue"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_4.png" alt="ts_503_face_t_4" face_t_color="Green"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_5.png" alt="ts_503_face_t_5" face_t_color="Gold"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_6.png" alt="ts_503_face_t_6" face_t_color="Pink"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_7.png" alt="ts_503_face_t_7" face_t_color="Purple"/>
+                        <img class="first face_t front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_face_t_link_8.png" alt="ts_503_face_t_8" face_t_color="Orange"/>
+                    </div>
+                    <div class="Club_lie" style="display: none;">
+                        {% for variant in product.variants offset:1%}
+                            <img class="first club_lie front-only" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png" alt="ts_1106_Club_lie_{{ forloop.index }}" club_lie="{{variant.title}}"/>
+                        {% endfor %}   
+                    </div>
+                    <div class="Club_loft" style="display: none;">
+                        <img class="first club_loft front-only" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png" alt="ts_503_club_loft_1" club_loft="2°"/>
+                        <img class="first club_loft front-only" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png" alt="ts_503_club_loft_2" club_loft="3°"/>
+                        <img class="first club_loft front-only" src="https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png" alt="ts_503_club_loft_3" club_loft="4° (Standard)"/>
+                    </div>
+                    <div class="Hand" style="display: none;">
+                        <img class="first hand_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_hand_style_1" hand_style="Right hand"/>
+                        <img class="first hand_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_hand_style_2" hand_style="Left hand"/>
+                    </div>
+                    <div class="Grip_style" style="display: none;">
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_1" grip_style="Black Standard"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_2" grip_style="Black Pistol Oversize"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_3" grip_style="Red Standard"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_4" grip_style="Red Pistol Oversize"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_5" grip_style="Flat Cat Fat Original"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_6" grip_style="Flat Cat Svelte Tak"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_7" grip_style="Flat Cat Standard Tak"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_8" grip_style="Flat Cat Standard Solution (Weighted)"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_9" grip_style="Flat Cat Standard Original"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_10" grip_style="Flat Cat Original Svelte"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_11" grip_style="Flat Cat Solution Pistol (Weighted)"/>
+                        <img class="first grip_style front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_grip_style_12" grip_style="Flat Cat Pistol"/>
+                    </div>
+                    <div class="Shaft_length" style="display: none;">
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_1" shaft_length="33"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_2" shaft_length="33.5"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_3" shaft_length="34"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_4" shaft_length="34.5"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_5" shaft_length="35"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_6" shaft_length="35.5"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_7" shaft_length="36"/>
+                        <img class="first shaft_length front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png" alt="ts_713_shaft_length_8" shaft_length="36.5"/>
+                    </div>
+                </div>
+                <button id="merge-btn" style="display:none;">Generate Combined Image</button>
+                <img id="final-combined" style="margin-top:20px;max-width:100%;display:none;">
+                <input type="hidden" id="shareable-link" placeholder="Permanent URL will appear here" style="width:100%; margin-top:10px;" readonly="">
+                <div class="cart-button">
+                    <a class="cst-custom-add-to-cart" href="javascript:void(0);" data-variant="{{ product.selected_or_first_available_variant.id }}"><span class="loader" style="border: 2px solid #ccc; border-top: 2px solid #333; border-radius: 50%; width: 16px; height: 16px; display: none; animation: spin 1s linear infinite;"></span>Add to Cart - {{ product.price | money }}</a>
+                    <div class="alert-message" style="display:none;"></div>
+                </div>
+            </section>
+
+            <!-- Tab 2 -->
+            <section>
+                <h3>Second Tab</h3>
+                <p>This is content for Tab 2.</p>
+            </section>
+
+            <!-- Tab 3 -->
+            <section>
+                <h3>Third Tab</h3>
+                <p>This is content for Tab 3.</p>
+            </section>
+        </div>
+    </div>
+</section>
+
+<style>
+    .color-selector {
+        height: 920px;
+        overflow-y: scroll;
+    }
+    .color-selector::-webkit-scrollbar {
+        width: 0px;
+    }
+    {% comment %} size length {% endcomment %}
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_1"])::after {
+        content: "33'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_2"])::after {
+        content: "33.5'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_3"])::after {
+        content: "34'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_4"])::after {
+        content: "34.5'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_5"])::after {
+        content: "35'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_6"])::after {
+        content: "35.5'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_7"])::after {
+        content: "36'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_shaft_length_8"])::after {
+        content: "36.5'";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    {% comment %} grip style {% endcomment %}
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_1"])::after {
+        content: "Black Standard";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_2"])::after {
+        content: "Black Pistol Oversize";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_3"])::after {
+        content: "Red Standard";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_4"])::after {
+        content: "Red Pistol Oversize";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_5"])::after {
+        content: "Flat Cat Fat Original";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_6"])::after {
+        content: "Flat Cat Svelte Tak";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_7"])::after {
+        content: "Flat Cat Standard Tak";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_8"])::after {
+        content: "Flat Cat Standard Solution (Weighted)";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_9"])::after {
+        content: "Flat Cat Standard Original";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_10"])::after {
+        content: "Flat Cat Original Svelte";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_11"])::after {
+        content: "Flat Cat Solution Pistol (Weighted)";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_grip_style_12"])::after {
+        content: "Flat Cat Pistol";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    {% comment %} hand style {% endcomment %}
+    #colorGrid .color-box:has(img[alt="ts_713_hand_style_1"])::after {
+        content: "Right Hand";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+    #colorGrid .color-box:has(img[alt="ts_713_hand_style_2"])::after {
+        content: "Left Hand";
+        position: absolute;
+        color: #000;
+        top: 50% !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+    }
+{% comment %} end {% endcomment %}
+.alert-message {
+    color: red;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 15px;
+    max-width: 258px;
+}
+
+.cart-button {
+    width: 25%;
+    margin-top: 20px;
+} 
+{% comment %} club lie css {% endcomment %}
+
+.color-box:has(img[alt="ts_1106_Club_lie_1"]) .club-lie-title {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    position: absolute;
+    padding: 0px 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_1"]) img {
+    opacity: 0;
+    height:100%;
+    width:100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_1"]) {
+    border: 1px solid #000;
+    border-radius:5px;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_2"]) .club-lie-title {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    position: absolute;
+    padding: 0px 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_2"]) img {
+    opacity: 0;
+    height:100%;
+    width:100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_2"]) {
+    border: 1px solid #000;
+    border-radius:5px;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_3"]) .club-lie-title {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    position: absolute;
+    padding: 0px 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_3"]) img {
+    opacity: 0;
+    height:100%;
+    width:100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_3"]) {
+    border: 1px solid #000;
+    border-radius:5px;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_4"]) .club-lie-title {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    position: absolute;
+    padding: 0px 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_4"]) img {
+    opacity: 0;
+    height:100%;
+    width:100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_4"]) {
+    border: 1px solid #000;
+    border-radius:5px;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_5"]) .club-lie-title {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    position: absolute;
+    padding: 0px 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_5"]) img {
+    opacity: 0;
+    height:100%;
+    width:100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_5"]) {
+    border: 1px solid #000;
+    border-radius:5px;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_6"]) .club-lie-title {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    position: absolute;
+    padding: 0px 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.color-box:has(img[alt="ts_1106_Club_lie_6"]) img {
+    opacity: 0;
+    height:100%;
+    width:100%;
+}
+.color-box:has(img[alt="ts_1106_Club_lie_6"]) {
+    border: 1px solid #000;
+    border-radius:5px;
+}
+{% comment %} end {% endcomment %}
+    .cst-disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+    .cst-custom-add-to-cart:hover{
+    background: red;
+    height: fit-content;
+    clip-path: polygon(4% 0, 100% 0%, 96% 100%, 0% 100%);
+    padding: 11px 30px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    }
+    .cst-custom-add-to-cart {
+    background: red;
+    height: fit-content;
+    clip-path: polygon(4% 0, 100% 0%, 96% 100%, 0% 100%);
+    padding: 11px 30px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    }
+    .default-image-sides img.active {
+        left: 0;
+        width: 100%;
+    }
+      /* For select_balance_1 */
+.color-box:has(img[alt="ts_503_select_balance_1"])::after {
+content: "Short Plumbers Neck";
+display: block;
+margin-top: 5px;
+font-size: 14px;
+color: #000;
+text-align: center;
+}
+
+/* For select_balance_2 */
+.color-box:has(img[alt="ts_503_select_balance_2"])::after {
+content: "Long Plumbers Neck";
+display: block;
+margin-top: 5px;
+font-size: 14px;
+color: #000;
+text-align: center;
+}
+
+.sidebar .tab.active[data-tab="Short_plumber_neck"] svg {
+    fill: #fff;
+}
+.sidebar .tab[data-tab="Short_plumber_neck"] {
+    display: flex;
+    justify-content: flex-start;
+}
+.sidebar .tab.active[data-tab="Long_plumber_neck"] svg {
+    fill: #fff;
+}
+.sidebar .tab[data-tab="Long_plumber_neck"] {
+    display: flex;
+    justify-content: flex-start;
+}
+.sidebar .tab[data-tab="Balance"] {
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar .tab.active[data-tab="Balance"] svg {
+    fill: #fff;
+}
+
+.default-image-sides img.active {
+    display: block;
+}
+.default-image-sides img {
+    display: none;
+}
+.default-image-sides {
+    position: relative;
+}
+.default-image-sides .front-only {
+    position: absolute;
+    top: 0;
+}
+.default-image-sides .balance-only {
+    position: absolute;
+    top: 0;
+}
+.default-image-sides .back-only {
+    position: absolute;
+    top: 0;
+}
+.default-image-sides .side-only {
+    position: absolute;
+    top: 0;
+}
+.color-image {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    border:1px solid #000;
+    position:relative;
+    z-index:2;
+}
+.tab1 {
+    display: flex !important;
+    flex-direction: row;
+    height: 920px;
+}
+
+.tab1 .image-wrapper {
+    width: 50%;
+}
+.style-tab {
+    display: flex !important;
+    width: 30%;
+}
+/* General Tab Styles */
+.tabs {
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs > label {
+    display: inline-block;
+    padding: 15px 25px;
+    cursor: pointer;
+    background: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    transition: background 0.3s;
+    border-right: 1px solid #fff;
+}
+
+.tabs > label:last-of-type {
+    border-right: none;
+}
+
+.tabs input[type="radio"]:checked + label {
+    background: #fff;
+    color: #4caf50;
+    border-bottom: 2px solid #4caf50;
+    position: relative;
+    z-index: 2;
+}
+
+.tabs .content {
+    background: #fff;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.tabs .content section {
+    display: none;
+}
+
+#tab1:checked ~ .content section:nth-of-type(1),
+#tab2:checked ~ .content section:nth-of-type(2),
+#tab3:checked ~ .content section:nth-of-type(3) {
+    display: block;
+}
+
+/* Style-tab Section */
+section.style-tab {
+    display: flex;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background: #f8f8f8;
+    border-right: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.tab {
+    padding: 12px 16px;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s;
+}
+
+.tab.active {
+    background: #222;
+    color: white;
+}
+
+.color-selector {
+    flex: 1;
+    padding: 10px 0 0 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.color-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    border-radius:10px;
+}
+
+.info-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 3px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    display:none;
+}
+{% comment %} responsive {% endcomment %}
+.cross-btn {
+    display: none;
+}
+@media (max-width: 991px) { 
+    .cart-button {
+        width: 100%;
+        padding: 0 10px;
+        max-width: 100%;
+        text-align: center;
+    }
+    .alert-message {
+        max-width: 100%;
+    }
+    a.cst-custom-add-to-cart {
+        width: 100%;
+        margin: 0!important;
+        width: 100%!important;
+        display: inline-block;
+        max-width: 208px !important;
+    }
+    .cross-btn {
+        display: block;
+    }
+    .color-selector {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #fff;
+        padding: 24px;
+        z-index: 99;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        transform: translateX(-243px);
+        transition: all .3s ease;
+        height: 100vh;
+        overflow: auto;
+    }
+    
+    .color-selector.active {
+    transform: translateX(0px);
+    }
+    }
+    {% comment %}  {% endcomment %}
+@media (max-width: 768px) {
+    section.style-tab {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .color-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+{% comment %} responsive {% endcomment %}
+
+@media (max-width:575px) { 
+    {% comment %} .color-selector {
+    width: 167px;
+    } {% endcomment %}
+    
+    .color-box {
+    width: 120px;
+    height: 120px;
+    }
+    }
+{% comment %} design css {% endcomment %}
+
+@media (min-width: 1320px) and (max-width: 1755px) {
+    .style-tab {
+        width: 40% !important;
+    }
+}
+
+
+@media (max-width: 1320px) {
+    .style-tab {
+        width: 40% !important;
+    }
+    .color-box {
+        width: 110px;
+        height: 110px;
+    }
+
+    .color-grid {
+        grid-template-columns: repeat(2, minmax(110px, 1fr));
+    }
+}
+
+
+@media (max-width: 1110px) {
+    .style-tab {
+        width: 40% !important;
+    }
+    .color-box {
+        width: 80px;
+        height: 80px;
+    }
+
+    .color-grid {
+        grid-template-columns: repeat(2, minmax(80px, 1fr));
+    }
+}
+</style>
+<script>
+$(document).ready(function () {
+// Initially hide the divs you want to show
+$('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').hide();
+$('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').hide();
+
+// Use event delegation for dynamically added images
+$(document).on('click', '#colorGrid .color-image', function() {
+  var altText = $(this).attr('alt');
+  console.log(altText);
+
+  {% comment %} // Hide both tabs first
+  $('.tab1 .style-tab .sidebar .tab[data-tab="Center_shaft"]').hide();
+  $('.tab1 .style-tab .sidebar .tab[data-tab="Face_neck"]').hide(); {% endcomment %}
+
+  // Show corresponding div based on which image is clicked
+  if (altText === 'ts_503_select_balance_1') {
+    $('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').show();
+    $('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').hide();
+   
+      console.log('here clicked-1');
+    $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+
+  } else if (altText === 'ts_503_select_balance_2') {
+    $('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').hide();
+    $('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').show();
+
+    console.log('here clicked-2');
+    $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+
+  }
+
+});
+
+$('#colorGrid').on('click', '.color-box .color-image', function () {
+    $('.color-box').css('border','1px solid #000');
+    $(this).parent().css('border','3px solid #000');
+    const altText = $(this).attr('alt');
+    const container = $('.tab1 .image-wrapper .default-image-sides');
+  
+    // 1. Store which image types were previously active
+    const wasFrontActive = container.find('img.front-only.active').length > 0;
+    const wasSideActive = container.find('img.side-only.active').length > 0;
+    const wasBalanceActive = container.find('img.balance-only.active').length > 0;
+  
+    // 2. Find all images in source with the same alt
+    const matchedImgs = $('.all-other-images img').filter(function () {
+      return $(this).attr('alt') === altText;
+    });
+  
+    if (matchedImgs.length === 0) {
+      console.warn('No matching images found for alt:', altText);
+      return;
+    }
+  
+    // 3. Get the group class: finish, shaft, balance, etc.
+    const groupClass = matchedImgs.first().attr('class').split(/\s+/).find(cls =>
+      ['finish','shaft','balance','short_plumber_neck','long_plumber_neck','hosel_color','back_plate','sightline_color','bottom_t','face_t','club_lie','club_loft','hand_style','grip_style','shaft_length'].includes(cls)
+    );
+  
+    if (!groupClass) {
+      console.warn('No valid group class found in matched image.');
+      return;
+    }
+  
+    // 4. Remove existing images for this group
+    container.find(`img.${groupClass}.front-only`).remove();
+    container.find(`img.${groupClass}.side-only`).remove();
+    container.find(`img.${groupClass}.balance-only`).remove();
+    container.find(`img.${groupClass}.back-only`).remove();
+
+    // helper to clone + preserve active state + preserve custom attributes
+    function appendCloned(img, wasActive) {
+        if (img.length) {
+            const cloned = img.clone();
+            if (wasActive) cloned.addClass('active');
+    
+            // copy custom attributes dynamically
+            $.each(img[0].attributes, function () {
+            if (this.specified && !['src','class','alt'].includes(this.name)) {
+                cloned.attr(this.name, this.value);
+            }
+            if (this.name.toLowerCase().includes("club_lie")) {
+                console.log("Club Lie Title:", this.name, this.value);
+        
+                // Set the add-to-cart button's data-variant with the actual variant ID
+                // But we'll use the title in properties later
+                $('.cst-custom-add-to-cart').attr('data-variant', img.closest('.Club_lie').find('img[alt="' + altText + '"]').data('variant-id') || {{ product.selected_or_first_available_variant.id }});
+                
+            }
+            });
+    
+            container.append(cloned);
+        }
+    }
+  
+    // 5. Find and clone the front, side, and balance images for the selected color
+    appendCloned(matchedImgs.filter(`.front-only.${groupClass}`).first(), wasFrontActive);
+    appendCloned(matchedImgs.filter(`.side-only.${groupClass}`).first(), wasSideActive);
+    appendCloned(matchedImgs.filter(`.balance-only.${groupClass}`).first(), wasBalanceActive);
+    appendCloned(matchedImgs.filter(`.back-only.${groupClass}`).first(), wasBalanceActive);
+});
+
+  $('.tab1 .style-tab .sidebar .tab').click(function () {
+    if ($(this).data('tab') === 'Sightline_color') {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+    } else if ($(this).data('tab') === 'Balance') {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+
+    } else if ($(this).data('tab') === 'Short_plumber_neck') {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+    } else if ($(this).data('tab') === 'Long_plumber_neck') {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+    } else if ($(this).data('tab') === 'Back_plate_color') {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .back-only').show();
+    } else {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+    }
+});
+
+
+    {% comment %} get image from club lie variant {% endcomment %}
+    window.clubLieVariants = [
+        {% for variant in product.variants offset:1 %}
+            {% if variant.title %}
+                {
+                    id: {{ variant.id }},
+                    url: "{{ variant.image | image_url }}",
+                    alt: "ts_1106_Club_lie_{{ forloop.index }}",
+                    title: {{ variant.title | json }}
+                }{% unless forloop.last %},{% endunless %}
+            {% endif %}
+        {% endfor %}
+    ];
+
+    {% comment %} these are the image that will show as a color options {% endcomment %}
+    const colorOptions = {
+        Finish: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_silver_chrome.png", alt: "ts_503_finish_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black_chrome.png", alt: "ts_503_finish_2" },
+        ],
+        Shaft: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_silver_chrome.png", alt: "ts_503_shaft_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black_chrome.png", alt: "ts_503_shaft_2" },
+        ],
+        Balance: [
+            { url: "https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Short.png", alt: "ts_503_select_balance_1" },
+            { url: "https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Long.png", alt: "ts_503_select_balance_2" },
+        ],
+        Short_plumber_neck: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_silver_chrome.png", alt: "ts_503_short_plumber_neck_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black_chrome.png", alt: "ts_503_short_plumber_neck_2" },
+        ],
+        Long_plumber_neck: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_silver_chrome.png", alt: "ts_503_long_plumber_neck_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black_chrome.png", alt: "ts_503_long_plumber_neck_2" },
+        ],
+        Hosel_color: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_red.png", alt: "ts_503_hosel_color_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black.png", alt: "ts_503_hosel_color_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_blue.png", alt: "ts_503_hosel_color_3" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_green.png", alt: "ts_503_hosel_color_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_gold.png", alt: "ts_503_hosel_color_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_pink.png", alt: "ts_503_hosel_color_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_purple.png", alt: "ts_503_hosel_color_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_orange.png", alt: "ts_503_hosel_color_8" },
+        ],
+        Back_plate_color: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_red.png", alt: "ts_713_back_plate_color_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black.png", alt: "ts_713_back_plate_color_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_blue.png", alt: "ts_713_back_plate_color_3" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_green.png", alt: "ts_713_back_plate_color_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_gold.png", alt: "ts_713_back_plate_color_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_pink.png", alt: "ts_713_back_plate_color_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_purple.png", alt: "ts_713_back_plate_color_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_orange.png", alt: "ts_713_back_plate_color_8" },
+        ],
+        Sightline_color: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_white.png", alt: "ts_713_sightline_color_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_red.png", alt: "ts_713_sightline_color_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black.png", alt: "ts_713_sightline_color_3" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_blue.png", alt: "ts_713_sightline_color_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_green.png", alt: "ts_713_sightline_color_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_gold.png", alt: "ts_713_sightline_color_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_pink.png", alt: "ts_713_sightline_color_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_purple.png", alt: "ts_713_sightline_color_8" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_orange.png", alt: "ts_713_sightline_color_9" },
+        ],
+        Bottom_t: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_red.png", alt: "ts_503_bottom_t_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black.png", alt: "ts_503_bottom_t_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_blue.png", alt: "ts_503_bottom_t_3" },             
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_green.png", alt: "ts_503_bottom_t_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_gold.png", alt: "ts_503_bottom_t_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_pink.png", alt: "ts_503_bottom_t_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_purple.png", alt: "ts_503_bottom_t_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_orange.png", alt: "ts_503_bottom_t_8" },
+        ],
+        Face_t: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_red.png", alt: "ts_503_face_t_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_black.png", alt: "ts_503_face_t_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_blue.png", alt: "ts_503_face_t_3" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_green.png", alt: "ts_503_face_t_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_gold.png", alt: "ts_503_face_t_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_pink.png", alt: "ts_503_face_t_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_purple.png", alt: "ts_503_face_t_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/global_orange.png", alt: "ts_503_face_t_8" },
+        ],
+        Club_lie: window.clubLieVariants || [],
+        Club_loft: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_club_loft_1.png", alt: "ts_503_club_loft_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_club_loft_2.png", alt: "ts_503_club_loft_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_club_loft_3.png", alt: "ts_503_club_loft_3" },
+        ],
+        Hand: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_hand_style_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_hand_style_2" },
+        ],
+        Grip_style: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_3" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_8" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_9" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_10" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_11" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_grip_style_12" },
+        ],
+        Shaft_length: [
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_1" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_2" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_3" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_4" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_5" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_6" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_7" },
+            { url: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/test.png", alt: "ts_713_shaft_length_8" },
+        ],
+        // Add more for other sections as needed...
+    };
+
+    const tabs = document.querySelectorAll(".tab");
+    const sectionTitle = document.getElementById("sectionTitle");
+    const colorGrid = document.getElementById("colorGrid");
+
+
+    function loadColors(tabName) {
+        sectionTitle.textContent = `${tabName}`;
+        colorGrid.innerHTML = "";
+        const colors = colorOptions[tabName] || [];
+
+        colors.forEach((color) => {
+            const box = document.createElement("div");
+            box.className = "color-box";
+
+            const img = document.createElement("img");
+            img.src = color.url;
+            img.alt = color.alt;
+            img.className = "color-image";
+
+            const info = document.createElement("div");
+            info.className = "info-button";
+            info.textContent = "+ info";
+
+            box.appendChild(img);
+            box.appendChild(info);
+
+            // ✅ Add title ONLY for Club_lie
+            if(tabName === "Club_lie" && color.title){
+                const titleEl = document.createElement("div");
+                titleEl.className = "club-lie-title";
+                titleEl.textContent = color.title;
+                box.appendChild(titleEl);
+            }
+
+            colorGrid.appendChild(box);
+        });
+    }
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            document.querySelector(".tab.active")?.classList.remove("active");
+            tab.classList.add("active");
+            const selectedTab = tab.getAttribute("data-tab");
+            loadColors(selectedTab);
+        });
+    });
+
+    // Initial load
+    loadColors("Finish");
+
+   {% comment %} combined image into one {% endcomment %}
+
+   const CLOUD_NAME = "dl2scmfzl";
+   const UPLOAD_PRESET = "combined image";
+   
+   document.getElementById("merge-btn").addEventListener("click", function() {
+       console.log('here');
+     const container = document.getElementById("custom-image-preview");
+     {% comment %} const images = Array.from(container.querySelectorAll(".default-image-sides img.active")).filter(img => window.getComputedStyle(img).display !== "none"); // Filter visible images {% endcomment %}
+     const images = Array.from(container.querySelectorAll(".default-image-sides img.front-only"));
+       if (!images.length) return;
+   
+     const canvas = document.createElement("canvas");
+     const ctx = canvas.getContext("2d");
+     canvas.width = images[0].naturalWidth;
+     canvas.height = images[0].naturalHeight;
+   
+     let loaded = 0;
+     images.forEach(img => {
+       const tempImg = new Image();
+       tempImg.crossOrigin = "anonymous";
+       tempImg.src = img.src;
+       tempImg.onload = function() {
+         ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+         loaded++;
+         if (loaded === images.length) uploadToCloudinary(canvas);
+       };
+     });
+   
+     function uploadToCloudinary(canvas) {
+       const base64Data = canvas.toDataURL("image/png").split(",")[1];
+       const formData = new FormData();
+       formData.append("file", "data:image/png;base64," + base64Data);
+       formData.append("upload_preset", UPLOAD_PRESET);
+   
+       fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+         method: "POST",
+         body: formData
+       })
+       .then(res => res.json())
+       .then(data => {
+         if(data.secure_url){
+           document.getElementById("final-combined").src = canvas.toDataURL("image/png");
+           document.getElementById("shareable-link").value = data.secure_url;
+   
+           // ✅ Add to cart attributes if form exists
+           const cartForm = document.querySelector("form[action*='/cart']");
+           if(cartForm){
+             cartForm.insertAdjacentHTML(
+               "beforeend",
+               `<input type="hidden" name="attributes[Image]" value="${canvas.toDataURL("image/png")}">`
+             );
+           }
+         }
+            {% comment %} add to cart ajax {% endcomment %}
+            var variant_id = $('.cst-custom-add-to-cart').data('variant');
+            var quantity = 1;
+            var imageLink = $('#shareable-link').val();  // Get the image link value
+            console.log(imageLink); 
+    
+            var properties = {
+                "Image": imageLink
+            };    
+        
+             // Loop through ALL images in preview (not just active ones)
+            $('#custom-image-preview img').each(function() {
+                $.each(this.attributes, function() {
+                if (this.specified) {
+                    // Check for custom attributes (finish_color, shaft_color, balance, etc.)
+                    if (this.name.endsWith('_color') || this.name === 'balance' || this.name === 'club_loft' || this.name === 'club_lie' || this.name === 'hand_style' || this.name === 'grip_style' || this.name === 'shaft_length') {
+                    // Format key nicely
+                    let key = this.name.replace('_color', '')
+                                        .replace('_', ' ') 
+                                        .replace(/\b\w/g, c => c.toUpperCase()); 
+    
+                    // Only set property if not already set (to avoid duplicates)
+                    if (!properties[key]) {
+                        properties[key] = this.value;
+                    }
+                    }
+                }
+                });
+            });
+    
+            var addData = {
+                id: variant_id,
+                quantity: quantity,
+                properties: properties
+            };
+            console.log("Final properties being sent:", properties);
+    
+            $.ajax({
+                type: 'POST',
+                url: '/cart/add.js',
+                dataType: 'json',
+                data: addData,
+                success: function(res) {
+                    console.log('Item added to cart:', res);
+                    $('.cst-custom-add-to-cart .loader').hide();
+                    $('.cst-custom-add-to-cart').removeClass('cst-disabled');
+                    window.location.href="/cart";
+                },
+                error: function(err) {
+                    console.error('Error adding to cart:', err);
+                }
+            });  
+        })
+        .catch(err => console.error("Cloudinary upload error:", err));
+      }
+    });
+      
+   {% comment %} end {% endcomment %}
+   
+   {% comment %} add to cart ajax {% endcomment %}
+   
+   $(document).on('click', '.cst-custom-add-to-cart', function(e) {
+       e.preventDefault();
+
+            {% comment %} check validation {% endcomment %}
+            const container = $('.tab1 .image-wrapper .default-image-sides');
+            const requiredGroups = ['finish','shaft','balance','hosel_color','back_plate','sightline_color','bottom_t','face_t','club_lie','club_loft','hand_style','grip_style','shaft_length'];
+            
+            let missing = [];
+
+            // Check if each required group exists in the preview
+            requiredGroups.forEach(group => {
+                if (container.find('img.' + group).length === 0) {
+                missing.push(group.replace(/_/g, ' '));
+                }
+            });
+
+            // Check which balance type is selected
+            const balanceImg = container.find('img.balance');
+            const balanceAlt = balanceImg.attr('alt');
+
+            if (balanceAlt === 'ts_503_select_balance_1') {
+                // plumbers neck required
+                if (container.find('img.short_plumber_neck').length === 0) {
+                missing.push('Short Plumbers Neck');
+                }
+            } else if (balanceAlt === 'ts_503_select_balance_2') {
+                // center shaft required
+                if (container.find('img.long_plumber_neck').length === 0) {
+                missing.push('Long Plumbers Neck');
+                }
+            }
+
+            if (missing.length > 0) {
+                const alertBox = $('.alert-message');
+                const formattedMissing = missing.map(name =>
+                  name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '));
+                  const message = 'Please select: ' + formattedMissing.join(', ') + ' before adding to cart.';
+    
+                alertBox.html(message).stop(true, true).fadeIn(200).delay(4000);
+                return false;
+            }
+            {% comment %} end validation {% endcomment %}
+
+       $('.cst-custom-add-to-cart .loader').css('display','inline-block');
+       $('.cst-custom-add-to-cart').addClass('cst-disabled');
+       $('#merge-btn').trigger('click');
+   
+   });
+   
+
+    {% comment %} responsive open and close {% endcomment %}
+    $('.cross-btn').click(function(){
+        $('.color-selector').removeClass('active');
+    });
+
+    $('#tabMenu .tab').click(function(){
+        $('.color-selector').addClass('active');
+    });
+
+});
+
+    </script>

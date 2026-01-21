@@ -1,0 +1,459 @@
+{% doc %}
+  @prompt
+    Display product images in a clean, modern, high-end layout with a large main image and minimal thumbnail navigation. Keep the design simple, balanced, and elegant with ample white space. Avoid borders, overlays, or unnecessary UI elements. The goal is a polished, premium presentation that highlights the putter’s details without clutter., Create a clean, modern image section where I can manually upload and display my own product photos. Do not pull from existing product images. Use a large main image with a neat set of smaller thumbnails that switch the main image when clicked. Keep the layout minimal with plenty of white space, smooth transitions, and no borders, overlays, or extra text. The design should feel premium and showcase the craftsmanship of the putter., to big make it a scrolling gallery 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-scroll-gallery-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-scroll-gallery__container-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-scroll-gallery__scroll-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-scroll-gallery__track-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.image_spacing }}px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 4px;
+  }
+
+  .ai-scroll-gallery__track-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-scroll-gallery__image-wrapper-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: {{ block.settings.image_width }}px;
+    height: {{ block.settings.image_height }}px;
+    background-color: {{ block.settings.background_color }};
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-scroll-gallery__image-wrapper-{{ ai_gen_id }}:active {
+    cursor: grabbing;
+  }
+
+  .ai-scroll-gallery__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  .ai-scroll-gallery__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.background_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-scroll-gallery__placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.08;
+  }
+
+  .ai-scroll-gallery__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .ai-scroll-gallery__nav-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: {{ block.settings.nav_spacing }}px;
+  }
+
+  .ai-scroll-gallery__nav-button-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 300ms ease;
+    padding: 0;
+    color: {{ block.settings.nav_color }};
+  }
+
+  .ai-scroll-gallery__nav-button-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-scroll-gallery__nav-button-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-scroll-gallery__nav-button-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-scroll-gallery-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.6 }}px 0;
+    }
+
+    .ai-scroll-gallery__image-wrapper-{{ ai_gen_id }} {
+      width: {{ block.settings.image_width | times: 0.7 }}px;
+      height: {{ block.settings.image_height | times: 0.7 }}px;
+    }
+
+    .ai-scroll-gallery__track-{{ ai_gen_id }} {
+      gap: {{ block.settings.image_spacing | times: 0.7 }}px;
+    }
+
+    .ai-scroll-gallery__nav-{{ ai_gen_id }} {
+      margin-top: {{ block.settings.nav_spacing | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<scroll-gallery-{{ ai_gen_id }} class="ai-scroll-gallery-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-scroll-gallery__container-{{ ai_gen_id }}">
+    <div class="ai-scroll-gallery__scroll-wrapper-{{ ai_gen_id }}">
+      <div class="ai-scroll-gallery__track-{{ ai_gen_id }}" data-track>
+        {% assign has_images = false %}
+        {% for i in (1..8) %}
+          {% assign image_key = 'image_' | append: i %}
+          {% if block.settings[image_key] != blank %}
+            {% assign has_images = true %}
+            <div class="ai-scroll-gallery__image-wrapper-{{ ai_gen_id }}">
+              <img
+                src="{{ block.settings[image_key] | image_url: width: 1000 }}"
+                alt="{{ block.settings[image_key].alt | escape }}"
+                width="{{ block.settings[image_key].width }}"
+                height="{{ block.settings[image_key].height }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                class="ai-scroll-gallery__image-{{ ai_gen_id }}"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% unless has_images %}
+          <div class="ai-scroll-gallery__image-wrapper-{{ ai_gen_id }}">
+            <div class="ai-scroll-gallery__placeholder-{{ ai_gen_id }}">
+              {{ 'product-1' | placeholder_svg_tag }}
+              <div class="ai-scroll-gallery__empty-state-{{ ai_gen_id }}">
+                Upload images
+              </div>
+            </div>
+          </div>
+        {% endunless %}
+      </div>
+    </div>
+
+    {% if has_images and block.settings.show_navigation %}
+      <div class="ai-scroll-gallery__nav-{{ ai_gen_id }}">
+        <button
+          type="button"
+          class="ai-scroll-gallery__nav-button-{{ ai_gen_id }}"
+          data-nav-prev
+          aria-label="Previous image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="ai-scroll-gallery__nav-button-{{ ai_gen_id }}"
+          data-nav-next
+          aria-label="Next image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</scroll-gallery-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ScrollGallery{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('[data-track]');
+        this.prevButton = this.querySelector('[data-nav-prev]');
+        this.nextButton = this.querySelector('[data-nav-next]');
+
+        if (!this.track) return;
+
+        this.isDragging = false;
+        this.startX = 0;
+        this.scrollLeft = 0;
+
+        this.setupDragScroll();
+        
+        if (this.prevButton && this.nextButton) {
+          this.setupNavigation();
+        }
+      }
+
+      setupDragScroll() {
+        this.track.addEventListener('mousedown', (e) => {
+          this.isDragging = true;
+          this.startX = e.pageX - this.track.offsetLeft;
+          this.scrollLeft = this.track.scrollLeft;
+        });
+
+        this.track.addEventListener('mouseleave', () => {
+          this.isDragging = false;
+        });
+
+        this.track.addEventListener('mouseup', () => {
+          this.isDragging = false;
+        });
+
+        this.track.addEventListener('mousemove', (e) => {
+          if (!this.isDragging) return;
+          e.preventDefault();
+          const x = e.pageX - this.track.offsetLeft;
+          const walk = (x - this.startX) * 2;
+          this.track.scrollLeft = this.scrollLeft - walk;
+        });
+
+        this.track.addEventListener('touchstart', (e) => {
+          this.startX = e.touches[0].pageX - this.track.offsetLeft;
+          this.scrollLeft = this.track.scrollLeft;
+        });
+
+        this.track.addEventListener('touchmove', (e) => {
+          const x = e.touches[0].pageX - this.track.offsetLeft;
+          const walk = (x - this.startX) * 2;
+          this.track.scrollLeft = this.scrollLeft - walk;
+        });
+      }
+
+      setupNavigation() {
+        this.prevButton.addEventListener('click', () => {
+          const scrollAmount = this.track.offsetWidth * 0.8;
+          this.track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        this.nextButton.addEventListener('click', () => {
+          const scrollAmount = this.track.offsetWidth * 0.8;
+          this.track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        this.track.addEventListener('scroll', () => {
+          this.updateNavButtons();
+        });
+
+        this.updateNavButtons();
+      }
+
+      updateNavButtons() {
+        const isAtStart = this.track.scrollLeft <= 0;
+        const isAtEnd = this.track.scrollLeft >= this.track.scrollWidth - this.track.offsetWidth - 1;
+
+        this.prevButton.disabled = isAtStart;
+        this.nextButton.disabled = isAtEnd;
+      }
+    }
+
+    customElements.define('scroll-gallery-{{ ai_gen_id }}', ScrollGallery{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scrolling image gallery",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload up to 8 custom images. Scroll horizontally to view all images."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_7",
+      "label": "Image 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_8",
+      "label": "Image 8"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image height",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_spacing",
+      "label": "Space between images",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "nav_spacing",
+      "label": "Navigation spacing",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "nav_color",
+      "label": "Navigation color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling image gallery"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "blocks_iK4qwj": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_c0753ad_d93zEn": {
+          "type": "ai_gen_block_c0753ad",
+          "settings": {
+            "headline": "Premium Corporate Gifting",
+            "body_copy": "<p>Ideal for client gifts, employee recognition, tournaments, outings, and special events. All corporate orders are custom quoted based on quantity, customization, and timeline.</p>",
+            "bullet_1": "Custom quoting for every order",
+            "bullet_2": "Branding and customization options available",
+            "bullet_3": "Production and delivery timeline support",
+            "bullet_4": "Dedicated account support",
+            "reassurance_text": "<p>Our team will confirm pricing, options, and delivery timeline within 1 business day.</p>",
+            "cta_text": "Request a Custom Quote",
+            "carousel_image_1": "shopify://shop_images/IMG_9953.jpg",
+            "carousel_image_2": "shopify://shop_images/IMG_9869.heic",
+            "carousel_image_3": "shopify://shop_images/IMG_9823.heic",
+            "carousel_image_4": "shopify://shop_images/IMG_9826.jpg",
+            "carousel_image_5": "shopify://shop_images/IMG_3DCA1E2A4ACD-1.jpg",
+            "carousel_image_6": "shopify://shop_images/IMG_3D220025C152-1.jpg",
+            "form_title": "Request a Custom Quote",
+            "form_submit_text": "Submit Request",
+            "success_message": "<p>Thank you for your inquiry! Our team will respond within 1 business day with pricing, options, and timeline details.</p>",
+            "how_it_works_title": "How It Works",
+            "step_1_title": "Submit your request",
+            "step_1_description": "Fill out the form with your requirements and timeline",
+            "step_2_title": "We confirm pricing and options",
+            "step_2_description": "Our team reviews and sends a detailed quote within 1 business day",
+            "step_3_title": "Approve details and finalize",
+            "step_3_description": "Review the quote, approve, and we begin production",
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "accent_color": "#ea1e26",
+            "button_color": "#ea1e26",
+            "button_hover_color": "#b30000",
+            "button_text_color": "#ffffff",
+            "form_background_color": "#f8f8f8",
+            "input_border_color": "#cccccc",
+            "how_it_works_bg": "#ffffff",
+            "section_padding": 60,
+            "headline_size": 42,
+            "body_size": 18,
+            "button_size": 18,
+            "form_title_size": 36,
+            "image_border_radius": 12,
+            "form_border_radius": 12,
+            "carousel_image_width": 320,
+            "carousel_image_height": 240,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_c0753ad_d93zEn"
+      ],
+      "name": "Corporate gifts program",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "blocks_iK4qwj"
+  ]
+}
