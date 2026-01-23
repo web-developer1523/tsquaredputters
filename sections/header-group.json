@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header-group.name",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "header-0": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/TSquaredPutters_FullColor_Horizontal_1.png",
+            "desktop_logo_width": 250,
+            "mobile_logo_width": 180
+          }
+        }
+      },
+      "block_order": [
+        "header-0"
+      ],
+      "settings": {
+        "main_menu_link_list": "main-menu",
+        "hover_menu": true,
+        "mega_menu_images": true,
+        "main_menu_alignment": "left-center",
+        "header_style": "sticky",
+        "sticky_index": false,
+        "sticky_collection": false,
+        "toolbar_menu": "",
+        "toolbar_social": true,
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "show_currency_flags": true
+      }
+    },
+    "announcement": {
+      "type": "announcement",
+      "blocks": {
+        "announcement_84kajy": {
+          "type": "announcement",
+          "settings": {
+            "text": "New Year. New You. New Putter. $100 off all custom and stock putters Offer ends January 31",
+            "link_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_84kajy"
+      ],
+      "settings": {
+        "announcement_compact": true
+      }
+    },
+    "blocks_iPWfXe": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_14485d1_yppAqw": {
+          "type": "ai_gen_block_14485d1",
+          "settings": {
+            "hand_label": "Hand",
+            "grip_label": "Grip Style",
+            "shaft_label": "Shaft Length"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_14485d1_yppAqw"
+      ],
+      "disabled": true,
+      "name": "Custom product options",
+      "settings": {}
+    },
+    "1766422757ef0b3406": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1766423840ba9ffc65": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1766424491359346eb": {
+      "type": "_blocks",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "announcement",
+    "blocks_iPWfXe",
+    "1766422757ef0b3406",
+    "1766423840ba9ffc65",
+    "1766424491359346eb"
+  ]
+}

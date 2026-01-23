@@ -1,0 +1,307 @@
+{% doc %}
+  @prompt
+    I need you to create a new section on this product page that matches the exact styling, layout, and typography of the current theme. This new section should appear underneath the existing product options.
+    
+    The section must include three new required dropdown selectors:
+    
+    Hand
+    
+    Right Hand
+    
+    Left Hand
+    
+    Grip Style
+    
+    Black Standard
+    
+    Black Pistol Oversize
+    
+    Red Standard
+    
+    Red Pistol Oversize
+    
+    Flat Cat Fat Original
+    
+    Flat Cat Svelte Tak
+    
+    Flat Cat Standard Tak
+    
+    Flat Cat Standard Solution (Weighted)
+    
+    Flat Cat Standard Original
+    
+    Flat Cat Original Svelte
+    
+    Flat Cat Solution Pistol (Weighted)
+    
+    Flat Cat Pistol
+    
+    Shaft Length
+    
+    33"
+    
+    33.5"
+    
+    34"
+    
+    34.5"
+    
+    35"
+    
+    35.5"
+    
+    36"
+    
+    36.5"
+    
+    Each field must be styled exactly like the existing theme’s input fields and must show a dropdown menu identical in look and behavior to the ones already on other product pages (such as on the TS-503 page).
+    
+    Make sure these dropdowns:
+    
+    Are marked as required
+    
+    Are tied into line item properties so they pass through to checkout
+    
+    Are responsive and match all spacing, font size, and alignment of the current design
+    
+    Do NOT change the current code on the page — simply generate a new section block that I can insert temporarily until I add the full custom options code.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-custom-options-{{ ai_gen_id }} {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ai-custom-options__field-{{ ai_gen_id }} {
+    margin-bottom: 20px;
+  }
+
+  .ai-custom-options__label-{{ ai_gen_id }} {
+    display: block;
+    font-family: {{ settings.type_header_font_family.family }}, {{ settings.type_header_font_family.fallback_families }};
+    font-weight: {{ settings.type_header_font_family.weight }};
+    font-style: {{ settings.type_header_font_family.style }};
+    font-size: 14px;
+    letter-spacing: {{ settings.type_header_spacing | divided_by: 1000.0 }}em;
+    {% if settings.type_header_capitalize %}
+      text-transform: uppercase;
+    {% endif %}
+    color: {{ settings.color_body_text }};
+    margin-bottom: 8px;
+  }
+
+  .ai-custom-options__required-{{ ai_gen_id }} {
+    color: {{ settings.color_savings_text }};
+    margin-left: 4px;
+  }
+
+  .ai-custom-options__select-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    font-family: {{ settings.type_base_font_family.family }}, {{ settings.type_base_font_family.fallback_families }};
+    font-weight: {{ settings.type_base_font_family.weight }};
+    font-style: {{ settings.type_base_font_family.style }};
+    font-size: {{ settings.type_base_size }}px;
+    letter-spacing: {{ settings.type_base_spacing | divided_by: 1000.0 }}em;
+    line-height: {{ settings.type_base_line_height }};
+    color: {{ settings.color_body_text }};
+    background-color: {{ settings.color_body_bg }};
+    border: 1px solid {{ settings.color_borders }};
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23{{ settings.color_body_text | remove: '#' }}' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+    {% if settings.button_style == 'square' %}
+      border-radius: 0;
+    {% elsif settings.button_style == 'round-slight' %}
+      border-radius: 4px;
+    {% elsif settings.button_style == 'round' %}
+      border-radius: 8px;
+    {% elsif settings.button_style == 'angled' %}
+      clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    {% endif %}
+  }
+
+  .ai-custom-options__select-{{ ai_gen_id }}:hover {
+    border-color: {{ settings.color_button }};
+  }
+
+  .ai-custom-options__select-{{ ai_gen_id }}:focus {
+    outline: 2px solid {{ settings.color_button }};
+    outline-offset: 2px;
+    border-color: {{ settings.color_button }};
+  }
+
+  .ai-custom-options__select-{{ ai_gen_id }}:invalid {
+    border-color: {{ settings.color_savings_text }};
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-custom-options__select-{{ ai_gen_id }} {
+      font-size: 16px;
+    }
+  }
+{% endstyle %}
+
+<custom-product-options-{{ ai_gen_id }} class="ai-custom-options-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-custom-options__field-{{ ai_gen_id }}">
+    <label for="ai-custom-hand-{{ ai_gen_id }}" class="ai-custom-options__label-{{ ai_gen_id }}">
+      {{ block.settings.hand_label }}
+      <span class="ai-custom-options__required-{{ ai_gen_id }}">*</span>
+    </label>
+    <select
+      id="ai-custom-hand-{{ ai_gen_id }}"
+      name="properties[{{ block.settings.hand_label }}]"
+      class="ai-custom-options__select-{{ ai_gen_id }}"
+      required
+      aria-required="true"
+    >
+      <option value="" disabled selected>Select {{ block.settings.hand_label }}</option>
+      <option value="Right Hand">Right Hand</option>
+      <option value="Left Hand">Left Hand</option>
+    </select>
+  </div>
+
+  <div class="ai-custom-options__field-{{ ai_gen_id }}">
+    <label for="ai-custom-grip-{{ ai_gen_id }}" class="ai-custom-options__label-{{ ai_gen_id }}">
+      {{ block.settings.grip_label }}
+      <span class="ai-custom-options__required-{{ ai_gen_id }}">*</span>
+    </label>
+    <select
+      id="ai-custom-grip-{{ ai_gen_id }}"
+      name="properties[{{ block.settings.grip_label }}]"
+      class="ai-custom-options__select-{{ ai_gen_id }}"
+      required
+      aria-required="true"
+    >
+      <option value="" disabled selected>Select {{ block.settings.grip_label }}</option>
+      <option value="Black Standard">Black Standard</option>
+      <option value="Black Pistol Oversize">Black Pistol Oversize</option>
+      <option value="Red Standard">Red Standard</option>
+      <option value="Red Pistol Oversize">Red Pistol Oversize</option>
+      <option value="Flat Cat Fat Original">Flat Cat Fat Original</option>
+      <option value="Flat Cat Svelte Tak">Flat Cat Svelte Tak</option>
+      <option value="Flat Cat Standard Tak">Flat Cat Standard Tak</option>
+      <option value="Flat Cat Standard Solution (Weighted)">Flat Cat Standard Solution (Weighted)</option>
+      <option value="Flat Cat Standard Original">Flat Cat Standard Original</option>
+      <option value="Flat Cat Original Svelte">Flat Cat Original Svelte</option>
+      <option value="Flat Cat Solution Pistol (Weighted)">Flat Cat Solution Pistol (Weighted)</option>
+      <option value="Flat Cat Pistol">Flat Cat Pistol</option>
+    </select>
+  </div>
+
+  <div class="ai-custom-options__field-{{ ai_gen_id }}">
+    <label for="ai-custom-shaft-{{ ai_gen_id }}" class="ai-custom-options__label-{{ ai_gen_id }}">
+      {{ block.settings.shaft_label }}
+      <span class="ai-custom-options__required-{{ ai_gen_id }}">*</span>
+    </label>
+    <select
+      id="ai-custom-shaft-{{ ai_gen_id }}"
+      name="properties[{{ block.settings.shaft_label }}]"
+      class="ai-custom-options__select-{{ ai_gen_id }}"
+      required
+      aria-required="true"
+    >
+      <option value="" disabled selected>Select {{ block.settings.shaft_label }}</option>
+      <option value="33&quot;">33"</option>
+      <option value="33.5&quot;">33.5"</option>
+      <option value="34&quot;">34"</option>
+      <option value="34.5&quot;">34.5"</option>
+      <option value="35&quot;">35"</option>
+      <option value="35.5&quot;">35.5"</option>
+      <option value="36&quot;">36"</option>
+      <option value="36.5&quot;">36.5"</option>
+    </select>
+  </div>
+</custom-product-options-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomProductOptions{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.selects = this.querySelectorAll('.ai-custom-options__select-{{ ai_gen_id }}');
+      }
+
+      connectedCallback() {
+        this.setupValidation();
+      }
+
+      setupValidation() {
+        const form = this.closest('form');
+        if (!form) return;
+
+        form.addEventListener('submit', (event) => {
+          let isValid = true;
+          
+          this.selects.forEach((select) => {
+            if (!select.value) {
+              isValid = false;
+              select.style.borderColor = '{{ settings.color_savings_text }}';
+            } else {
+              select.style.borderColor = '{{ settings.color_borders }}';
+            }
+          });
+
+          if (!isValid) {
+            event.preventDefault();
+            this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+
+        this.selects.forEach((select) => {
+          select.addEventListener('change', () => {
+            if (select.value) {
+              select.style.borderColor = '{{ settings.color_borders }}';
+            }
+          });
+        });
+      }
+    }
+
+    if (!customElements.get('custom-product-options-{{ ai_gen_id }}')) {
+      customElements.define('custom-product-options-{{ ai_gen_id }}', CustomProductOptions{{ ai_gen_id }});
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom product options",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Field labels"
+    },
+    {
+      "type": "text",
+      "id": "hand_label",
+      "label": "Hand field label",
+      "default": "Hand"
+    },
+    {
+      "type": "text",
+      "id": "grip_label",
+      "label": "Grip field label",
+      "default": "Grip Style"
+    },
+    {
+      "type": "text",
+      "id": "shaft_label",
+      "label": "Shaft field label",
+      "default": "Shaft Length"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom product options"
+    }
+  ]
+}
+{% endschema %}

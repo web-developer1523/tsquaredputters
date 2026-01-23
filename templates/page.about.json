@@ -1,0 +1,439 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slideshow-0": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "T SQUARED PUTTERS",
+            "title": "in the NEWS",
+            "title_size": 66,
+            "subheading": "Follow along as we continue to grow the T SQUARED brand and gain more and more attention in the golf industry.",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/3putters_dkheader.jpg",
+            "image_mobile": "shopify://shop_images/3putters_dkheader.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "slideshow-0"
+      ],
+      "settings": {
+        "section_height": "450px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 7,
+        "lazyload_images": true
+      }
+    },
+    "163424317842a0d48f": {
+      "type": "hero-video",
+      "disabled": true,
+      "settings": {
+        "title": "T Squared Putters\nBy Golfers <strong> For Golfers</strong>",
+        "title_size": 59,
+        "subheading": "",
+        "link_text": "",
+        "link": "",
+        "color_accent": "rgba(0,0,0,0)",
+        "text_align": "vertical-center horizontal-center",
+        "video_url": "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Putter_Header_Video2.mp4?v=1635258209",
+        "overlay_opacity": 0,
+        "section_height": "650px",
+        "mobile_height": "auto"
+      }
+    },
+    "16342430740d757988": {
+      "type": "rich-text",
+      "blocks": {
+        "16342430740d757988-1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>As we continue to grow, <strong>T SQUARED PUTTERS</strong> has been featured in both local and national golf industry publications. Below we have compiled some of our favorites!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "16342430740d757988-1"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "text_and_image_Az9iHB": {
+      "type": "text-and-image",
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2025-10-07_at_11.12.48_AM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Fall 2025",
+        "title": "Golf Magic",
+        "text": "<p>T-Squared Putters Review: Why this upstart putter brand should be on your radar</p>",
+        "button_label": "read the article",
+        "button_link": "https://www.golfmagic.com/equipment/putters/t-squared-putters-review",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_UC99XG": {
+      "type": "text-and-image",
+      "name": "t:sections.text-and-image.presets.image_with_text.name",
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2025-09-29_at_8.45.07_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Fall 2025",
+        "title": "Golf Monthly",
+        "text": "<p>The Ryder Cup Has Begun, But It's A Milled Putter From New York That Has Caught My Attention</p>",
+        "button_label": "Read the article",
+        "button_link": "https://www.golfmonthly.com/reviews/putters/t-squared-ts-1104-putter-review",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_bmdPWd": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2024-03-27_at_4.22.22_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Spring 2024",
+        "title": "MyGolfSpy",
+        "text": "<p><strong>Discover the TS-912 Putter - MyGolfSpy's Top 3 Choice with a Stellar 94 Rating! Dominate Your Putts from 10 Feet and Experience Elite Performance on the Green! </strong>(<em>by </em>Phillip Bishop)</p>",
+        "button_label": "Read the article",
+        "button_link": "https://mygolfspy.com/reviews/blade-putters/t-squared-ts-912-putter/",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_cxnTeH": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2024-05-21_at_1.04.30_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Spring 2024",
+        "title": "MYgolfspy",
+        "text": "<p><strong>Discover the TS-1106+, proudly ranked among MyGolfSpy's Top 5 Mallet Putters for 2024. </strong>(by Phillip Bishop)</p>",
+        "button_label": "read the article",
+        "button_link": "https://mygolfspy.com/buyers-guides/mallet-putters/the-best-mallet-putter/",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "text_and_image_wQRxBd": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2024-03-26_at_12.53.28_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Spring 2024",
+        "title": "Teknovation",
+        "text": "<p><strong>T Squared Putters could be the future for custom golf clubs</strong> (by Katelyn Keenehan)</p>",
+        "button_label": "Read the article",
+        "button_link": "https://www.teknovation.biz/t-squared-putters-could-be-the-future-for-custom-golf-clubs/",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "6f2b8c40-6365-49ef-aa25-c51304c23792": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2021-06-29_at_12.32.29_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Summer 2021",
+        "title": "LINKS Magazine",
+        "text": "<p><strong>5 Boutique Putters Actually Worth Considering   </strong><em>(by Shaun Tolson)</em></p>",
+        "button_label": "read the article",
+        "button_link": "https://www.linksmagazine.com/5-boutique-putters-actually-worth-considering/?fbclid=IwAR2sy7wwsPhA-v4yvOy8bpwbKWG5iS4eZgGbFgsIvYw7_LkDNj8E4w-EXbw",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "81a1aeea-98a0-4f33-a29d-8fa65f5ec5bf": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/WKBW-Cover-Story-Tsquared-Putters.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "June 2021",
+        "title": "Cover Story",
+        "text": "<p><strong>WKBW-Buffalo \"</strong>19-year-old opens ‘Tees and Taps’ golf lounge in Orchard Park\"</p>",
+        "button_label": "Read the article",
+        "button_link": "https://www.wkbw.com/open/19-year-old-opens-tees-and-taps-golf-lounge-in-orchard-park?fbclid=IwAR0bnfPzYTPCM-ElT7oG3klAjZrHKE5CBXJchb4S1VXfenyroxVYgENpU20",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "364379b3-275b-4fbd-ac8a-ca71b332f21d": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2023-10-23_at_11.46.13_AM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Summer 2020",
+        "title": "Tee 2 green",
+        "text": "<p><strong>Recap of T Squared Putters with Kevin Sylvester</strong></p>",
+        "button_label": "see the video",
+        "button_link": "https://www.youtube.com/watch?v=_DWMoRTbkn0",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "bd07de16-6fc2-4220-966c-b3fe7522d291": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2023-10-20_at_1.35.53_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "January 2020",
+        "title": "WRX Review",
+        "text": "<p><strong>Spotlight Putter Review: T Squared Ts-713i Standard Series Putter</strong></p>",
+        "button_label": "Read the article",
+        "button_link": "https://www.golfwrx.com/589284/wrx-spotlight-review-t-squared-ts-713i-standard-series-putter/",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "81fa1bbc-c1e4-4e56-8274-abacc3708682": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2023-10-20_at_2.00.41_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "August 2019",
+        "title": "MYGOLFSPY",
+        "text": "<p><strong>A T-Squared manufacturing tour, and review   </strong><em>(by Jmikecpa)</em></p>",
+        "button_label": "read the article",
+        "button_link": "https://forum.mygolfspy.com/topic/33014-t-squared-putters/",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "eecf1267-5f40-49bd-96e6-ab4f70f99230": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2023-10-20_at_1.43.32_PM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "February 2019",
+        "title": "MYGOLFSPY",
+        "text": "<p><strong>Meet T-Squared: Not Your Average Putter Company   </strong><em>(by John Barba)</em></p>",
+        "button_label": "read the article",
+        "button_link": "https://mygolfspy.com/news-opinion/meet-t-squared-not-your-average-putter-company/",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "6b65172a-fdfb-4e16-a501-c045a441c5b6": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Screen_Shot_2023-10-23_at_11.37.19_AM.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "November 2018",
+        "title": "Tee 2 green",
+        "text": "<p><strong>Interview with Kevin Sylvester</strong></p>",
+        "button_label": "see the video",
+        "button_link": "https://www.youtube.com/watch?v=ICNbfXcUOOI&t=6s",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "left",
+        "divider": true,
+        "top_padding": true,
+        "bottom_padding": true,
+        "lazyload_images": true
+      }
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "title": "Are you looking for a new putter?"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>The T-Squared Putter is the most loved putter in the world. It’s packed with features that make golfing easier, more entertaining and more enjoyable. It’s the perfect putter for anyone who wants to improve their putting game. There’s a T-Squared Putter for everyone!</p>"
+          }
+        },
+        "2ad7bb31-65fd-4238-8ac3-8d7f7729445a": {
+          "type": "button",
+          "settings": {
+            "link": "https://tsquaredputters.com/collections/putters",
+            "link_text": "Purchase a T-Squared Putter Today!"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "2ad7bb31-65fd-4238-8ac3-8d7f7729445a"
+      ],
+      "disabled": true,
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "1634243269e7c72305": {
+      "type": "newsletter",
+      "blocks": {
+        "1634243269e7c72305-0": {
+          "type": "title",
+          "settings": {
+            "title": "Sign up and save",
+            "heading_size": "h2"
+          }
+        },
+        "1634243269e7c72305-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          }
+        },
+        "1634243269e7c72305-2": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "1634243269e7c72305-0",
+        "1634243269e7c72305-1",
+        "1634243269e7c72305-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "align_text": "center",
+        "image_width": "33",
+        "image_mask": "none",
+        "image_position": "right",
+        "color_background": "#f9f9f9",
+        "color_text": "#1c1d1d",
+        "top_padding": true,
+        "bottom_padding": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow",
+    "163424317842a0d48f",
+    "16342430740d757988",
+    "text_and_image_Az9iHB",
+    "text_and_image_UC99XG",
+    "text_and_image_bmdPWd",
+    "text_and_image_cxnTeH",
+    "text_and_image_wQRxBd",
+    "6f2b8c40-6365-49ef-aa25-c51304c23792",
+    "81a1aeea-98a0-4f33-a29d-8fa65f5ec5bf",
+    "364379b3-275b-4fbd-ac8a-ca71b332f21d",
+    "bd07de16-6fc2-4220-966c-b3fe7522d291",
+    "81fa1bbc-c1e4-4e56-8274-abacc3708682",
+    "eecf1267-5f40-49bd-96e6-ab4f70f99230",
+    "6b65172a-fdfb-4e16-a501-c045a441c5b6",
+    "rich-text",
+    "1634243269e7c72305"
+  ]
+}

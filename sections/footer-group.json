@@ -1,0 +1,137 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:sections.footer-group.name",
+  "sections": {
+    "footer-promotions": {
+      "type": "footer-promotions",
+      "blocks": {
+        "footer-promotions-0": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ezgif.com-gif-maker.jpg",
+            "image_mask": "none",
+            "title": "Site-wide promotion",
+            "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>",
+            "button_label": "Optional button",
+            "button_link": ""
+          }
+        },
+        "footer-promotions-1": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ezgif.com-gif-maker_1.jpg",
+            "image_mask": "none",
+            "title": "Site-wide promotion",
+            "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>",
+            "button_label": "Optional button",
+            "button_link": ""
+          }
+        },
+        "footer-promotions-2": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/ezgif.com-gif-maker_2.jpg",
+            "image_mask": "none",
+            "title": "Site-wide promotion",
+            "text": "<p>Use this section to promote content throughout every page of your site. Add images for further impact.</p>",
+            "button_label": "Optional button",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "footer-promotions-0",
+        "footer-promotions-1",
+        "footer-promotions-2"
+      ],
+      "settings": {
+        "hide_homepage": true
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "1494301487049": {
+          "type": "menu",
+          "settings": {
+            "show_footer_title": false,
+            "menu": "footer",
+            "container_width": 25
+          }
+        },
+        "7c252959-1c26-4ca5-b347-33648f04a695": {
+          "type": "menu",
+          "settings": {
+            "show_footer_title": false,
+            "menu": "customer-account-main-menu",
+            "container_width": 25
+          }
+        },
+        "custom_GfdxhL": {
+          "type": "custom",
+          "settings": {
+            "show_footer_title": true,
+            "title": "Contact",
+            "text": "<p>10 Centre Orchard Park, New York 14127 United States</p><p><a href=\"tel:7166679215\" title=\"tel:7166679215\">7166679215</a></p><p><a href=\"mailto:info@tsquaredputters.com\" title=\"mailto:info@tsquaredputters.com\">info@tsquaredputters.com</a></p>",
+            "container_width": 25
+          }
+        },
+        "1494292487693": {
+          "type": "newsletter",
+          "settings": {
+            "show_footer_title": true,
+            "title": "T Squared Access",
+            "text": "<p>Early access to limited drops, exclusive offers, and behind-the-scenes updates from T-Squared.</p>",
+            "container_width": 25
+          }
+        },
+        "80f8694c-0dfc-4027-a823-23c224f649fc": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "show_footer_title": false,
+            "menu": "footer",
+            "container_width": 25
+          }
+        }
+      },
+      "block_order": [
+        "1494301487049",
+        "7c252959-1c26-4ca5-b347-33648f04a695",
+        "custom_GfdxhL",
+        "1494292487693",
+        "80f8694c-0dfc-4027-a823-23c224f649fc"
+      ],
+      "custom_css": [
+        "a {border-bottom: 0px;}"
+      ],
+      "settings": {
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "show_currency_flags": true,
+        "show_payment_icons": true,
+        "show_copyright": true,
+        "copyright_text": "• Site by MM • Video by Eyeline Media"
+      }
+    }
+  },
+  "order": [
+    "footer-promotions",
+    "footer"
+  ]
+}

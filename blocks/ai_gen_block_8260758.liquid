@@ -1,0 +1,588 @@
+{% doc %}
+  @prompt
+    Create a full-width promotional content block for the New Year sale.
+    Headline
+    New Year. New You. New Putter.
+    Subheadline
+    $100 off all custom and stock putters
+    Offer ends January 31
+    Layout requirements
+    Display a mix of stock putters and custom putters in the same section
+    Use high-quality product images with a premium, minimal look
+    Balance the layout evenly so neither stock nor custom feels secondary
+    Buttons
+    Primary button: Shop Stock Putters
+    Secondary button: Build a Custom Putter
+    Behavior
+    Buttons should link to the stock collection and the custom putter builder
+    Section should be mobile responsive and visually clean
+    Do not clutter with extra text
+    Style
+    Modern, premium, golf-focused
+    Black, white, and neutral tones
+    Confident and minimal design that emphasizes craftsmanship
+    Notes
+    This is a limited-time New Year promotion
+    Do not add extra promotional language beyond what is provided
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-new-year-promo-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-new-year-promo__container-{{ ai_gen_id }} {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .ai-new-year-promo__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .ai-new-year-promo__headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 20px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .ai-new-year-promo__subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheadline_size }}px;
+    color: {{ block.settings.subheadline_color }};
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+
+  .ai-new-year-promo__expiry-{{ ai_gen_id }} {
+    font-size: {{ block.settings.expiry_size }}px;
+    color: {{ block.settings.expiry_color }};
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .ai-new-year-promo__products-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .ai-new-year-promo__product-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    background-color: {{ block.settings.product_bg_color }};
+    border-radius: {{ block.settings.product_border_radius }}px;
+  }
+
+  .ai-new-year-promo__product-image-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .ai-new-year-promo__product-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-new-year-promo__product-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-new-year-promo__product-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .ai-new-year-promo__product-info-{{ ai_gen_id }} {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .ai-new-year-promo__product-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    color: {{ block.settings.product_title_color }};
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+
+  .ai-new-year-promo__product-price-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.product_price_color }};
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .ai-new-year-promo__buttons-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ai-new-year-promo__button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-width: 200px;
+  }
+
+  .ai-new-year-promo__button--primary-{{ ai_gen_id }} {
+    background-color: {{ block.settings.primary_button_bg }};
+    color: {{ block.settings.primary_button_text_color }};
+    border-color: {{ block.settings.primary_button_bg }};
+  }
+
+  .ai-new-year-promo__button--primary-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.primary_button_hover_bg }};
+    border-color: {{ block.settings.primary_button_hover_bg }};
+    color: {{ block.settings.primary_button_hover_text }};
+  }
+
+  .ai-new-year-promo__button--secondary-{{ ai_gen_id }} {
+    background-color: {{ block.settings.secondary_button_bg }};
+    color: {{ block.settings.secondary_button_text_color }};
+    border-color: {{ block.settings.secondary_button_border }};
+  }
+
+  .ai-new-year-promo__button--secondary-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.secondary_button_hover_bg }};
+    color: {{ block.settings.secondary_button_hover_text }};
+    border-color: {{ block.settings.secondary_button_hover_border }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-new-year-promo-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.6 }}px 15px;
+    }
+
+    .ai-new-year-promo__header-{{ ai_gen_id }} {
+      margin-bottom: 30px;
+    }
+
+    .ai-new-year-promo__headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.6 }}px;
+      margin-bottom: 15px;
+    }
+
+    .ai-new-year-promo__subheadline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheadline_size | times: 0.75 }}px;
+    }
+
+    .ai-new-year-promo__expiry-{{ ai_gen_id }} {
+      font-size: {{ block.settings.expiry_size | times: 0.85 }}px;
+    }
+
+    .ai-new-year-promo__products-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .ai-new-year-promo__buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .ai-new-year-promo__button-{{ ai_gen_id }} {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .ai-new-year-promo__products-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstyle %}
+
+<new-year-promo-{{ ai_gen_id }}
+  class="ai-new-year-promo-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-new-year-promo__container-{{ ai_gen_id }}">
+    <div class="ai-new-year-promo__header-{{ ai_gen_id }}">
+      {% if block.settings.headline != blank %}
+        <h2 class="ai-new-year-promo__headline-{{ ai_gen_id }}">
+          {{ block.settings.headline }}
+        </h2>
+      {% endif %}
+
+      {% if block.settings.subheadline != blank %}
+        <p class="ai-new-year-promo__subheadline-{{ ai_gen_id }}">
+          {{ block.settings.subheadline }}
+        </p>
+      {% endif %}
+
+      {% if block.settings.expiry_text != blank %}
+        <p class="ai-new-year-promo__expiry-{{ ai_gen_id }}">
+          {{ block.settings.expiry_text }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="ai-new-year-promo__products-{{ ai_gen_id }}">
+      {% for i in (1..4) %}
+        {% liquid
+          assign product_key = 'product_' | append: i
+          assign product = block.settings[product_key]
+        %}
+
+        {% if product != blank %}
+          <div class="ai-new-year-promo__product-{{ ai_gen_id }}">
+            <div class="ai-new-year-promo__product-image-{{ ai_gen_id }}">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 800 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  loading="lazy"
+                  width="800"
+                  height="800"
+                >
+              {% else %}
+                <div class="ai-new-year-promo__product-placeholder-{{ ai_gen_id }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="ai-new-year-promo__product-info-{{ ai_gen_id }}">
+              <h3 class="ai-new-year-promo__product-title-{{ ai_gen_id }}">
+                {{ product.title }}
+              </h3>
+              <p class="ai-new-year-promo__product-price-{{ ai_gen_id }}">
+                {{ product.price | money }}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="ai-new-year-promo__buttons-{{ ai_gen_id }}">
+      {% if block.settings.primary_button_label != blank %}
+        <a
+          href="{{ block.settings.primary_button_link }}"
+          class="ai-new-year-promo__button-{{ ai_gen_id }} ai-new-year-promo__button--primary-{{ ai_gen_id }}"
+        >
+          {{ block.settings.primary_button_label }}
+        </a>
+      {% endif %}
+
+      {% if block.settings.secondary_button_label != blank %}
+        <a
+          href="{{ block.settings.secondary_button_link }}"
+          class="ai-new-year-promo__button-{{ ai_gen_id }} ai-new-year-promo__button--secondary-{{ ai_gen_id }}"
+        >
+          {{ block.settings.secondary_button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</new-year-promo-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class NewYearPromo{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('new-year-promo-{{ ai_gen_id }}', NewYearPromo{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "New Year sale promo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "New Year. New You. New Putter."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "$100 off all custom and stock putters"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "expiry_text",
+      "label": "Expiry text",
+      "default": "Offer ends January 31"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Product 4"
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_label",
+      "label": "Text",
+      "default": "Shop Stock Putters"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_bg",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_hover_bg",
+      "label": "Hover background",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_hover_text",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Text",
+      "default": "Build a Custom Putter"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_border",
+      "label": "Border",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_hover_bg",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_hover_text",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "secondary_button_hover_border",
+      "label": "Hover border",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subheadline_color",
+      "label": "Subheadline",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "color",
+      "id": "expiry_color",
+      "label": "Expiry text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_bg_color",
+      "label": "Product background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_price_color",
+      "label": "Product price",
+      "default": "#b30000"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Headline size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size",
+      "label": "Subheadline size",
+      "min": 14,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "expiry_size",
+      "label": "Expiry text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "product_border_radius",
+      "label": "Product border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Year sale promo"
+    }
+  ]
+}
+{% endschema %}

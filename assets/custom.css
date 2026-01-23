@@ -1,0 +1,110 @@
+
+
+.color-box:has(img[alt="ts_1029_select_balance_1"])::after {
+margin-bottom: 15px;
+}
+.main-section .sidebar{
+padding:0;
+}
+.main-section .tabs .content{
+padding:0 ; 
+}
+.main-section .cst-custom-add-to-cart{
+margin-top:10px;
+}
+.main-section .color-grid {
+gap: 15px;
+}   
+
+@media screen and (max-width: 1280px) {
+.site-nav__item a.site-nav__link , .site-nav__link--has-dropdown {
+font-size: 14px !important;
+}
+}
+@media screen and (max-width: 1200px) {
+.main-section .cst-custom-add-to-cart {
+font-size: 14px !important;
+padding: 11px 20px !important;
+}
+.main-section .tab {
+font-size: 14px;
+background: #f8f8f8;
+}
+}
+@media screen and (max-width: 991px) {
+.main-section .tabs .content section:nth-child(2) , .main-section .tabs .content section:nth-child(3){
+display:none;
+}
+body.template-product .main-content {
+min-height: auto;
+}
+.main-section .tabs .content section {
+flex-wrap: wrap;
+}
+
+.main-section .tabs .content {
+padding: 0;
+}
+.main-section .tab1 .image-wrapper {
+width: 40%;
+}
+.main-section a.cst-custom-add-to-cart {
+width: 100%;
+max-width: 850px;
+margin: 30px 30px 0;
+}
+.main-section .tab1 {
+height: 100%;
+gap: 50px;
+}
+}
+@media screen and (max-width: 789px) {
+.main-section  .section-title {
+font-size: 14px;
+}
+.main-section .tab1 .image-wrapper {
+width: 50%;
+margin: 0 auto;
+}
+}
+@media screen and (max-width: 670px) {
+.main-section .tab1 {
+gap:0;
+}
+.main-section .style-tab {
+width: 35%;
+}
+}
+@media screen and (max-width: 575px) {
+.main-section .style-tab {
+width: 40%;
+}
+.main-section .tab1 .image-wrapper {
+width: 60%;
+}
+.main-section .section-title {
+letter-spacing: 0;
+font-size: 13px;
+}
+/* .main-section .color-grid {
+gap: 25px;
+} */
+.main-section  .color-box::after {
+font-size: 13px !important;
+letter-spacing: 0;
+}
+.main-section  .color-selector{
+padding:20px;
+}
+}
+@media screen and (max-width: 480px) {
+.main-section .style-tab {
+overflow-y: scroll;
+height: 266px;
+}
+.main-section .tab1 .image-wrapper img {
+height: 255px;
+}
+
+
+}

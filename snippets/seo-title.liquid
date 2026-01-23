@@ -1,0 +1,36 @@
+{%- assign custom_title = '' -%}
+{%- assign custom_description = '' -%}
+
+{%- if request.path == '/policies/terms-of-service' -%}
+  {%- assign custom_title = 'T Squared Putters Terms of Service Guide You Should Know' -%}
+  {%- assign custom_description = 'T Squared Putters makes golf simple and safe. Review our Terms of Service to know your responsibilities. Stay informed and put with confidence every game.' -%}
+{%- elsif request.path == '/policies/refund-policy' -%}
+  {%- assign custom_title = 'T Squared Putters Easy Refunds for Every Purchase' -%}
+  {%- assign custom_description = 'Looking for risk-free shopping? T Squared Putters ensures simple, clear, and fast returns. Check our refund policy and enjoy shopping with peace of mind now.' -%}
+{%- endif -%}
+
+{%- capture seo_title -%}
+<title>
+  {%- if custom_title != '' -%}
+    {{ custom_title }}
+  {%- else -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%}
+      &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {% comment %} {%- unless page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%} {% endcomment %}
+  {%- endif -%}
+</title>
+
+{%- if custom_description != '' -%}
+  <meta name="description" content="{{ custom_description }}">
+{%- endif -%}
+{%- endcapture -%}
+
+{{ seo_title }}

@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "ca3d64ee-dbb3-45d7-9494-cdccabfa9585": {
+      "type": "slideshow",
+      "blocks": {
+        "image_WXyB9C": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "Personalize your T-Squared Putter",
+            "title_size": 80,
+            "subheading": "Craft your perfect stroke",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/TS-713_C.jpg",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_WXyB9C"
+      ],
+      "settings": {
+        "section_height": "750px",
+        "mobile_height": "300px",
+        "parallax": false,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "rich_text_XFwV9D": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kRgzUA": {
+          "type": "heading",
+          "settings": {
+            "title": "Beta Tab for Exploration Only"
+          }
+        },
+        "text_BpMAJk": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>\"Please note that this section is part of our beta program, intended solely for exploring options. Customers are kindly encouraged to proceed to the 'Putters' tab and input their desired specifications for purchase. Thank you for your understanding and cooperation.\"</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kRgzUA",
+        "text_BpMAJk"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "1717426456ebc333bc": {
+      "type": "apps",
+      "blocks": {
+        "paas3d_customizer_3d_ar_paas3d_model_YazBnn": {
+          "type": "shopify://apps/paas3d-customizer-3d-ar/blocks/paas3d-model/6032630f-b350-4493-8ea1-f1f9bbb97dac",
+          "settings": {
+            "height": 800,
+            "product": "build-your-ts-713i",
+            "isShowVar": true,
+            "isShowAddToCart": true
+          }
+        }
+      },
+      "block_order": [
+        "paas3d_customizer_3d_ar_paas3d_model_YazBnn"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "171742812413a9df04": {
+      "type": "apps",
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ca3d64ee-dbb3-45d7-9494-cdccabfa9585",
+    "rich_text_XFwV9D",
+    "1717426456ebc333bc",
+    "171742812413a9df04"
+  ]
+}

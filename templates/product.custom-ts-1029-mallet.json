@@ -1,0 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "dropdown",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "sales_point": {
+          "type": "sales_point",
+          "settings": {
+            "icon": "truck",
+            "text": "Free domestic shipping"
+          }
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "disabled": true,
+          "settings": {
+            "inventory_threshold": 10,
+            "inventory_transfers_enable": false
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "title": "Shipping information",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "page": ""
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "disabled": true,
+          "settings": {
+            "title": "Ask a question",
+            "phone": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price",
+        "separator",
+        "variant_picker",
+        "sales_point",
+        "inventory_status",
+        "buy_buttons",
+        "description",
+        "tab",
+        "contact",
+        "share"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_height": "flexible",
+        "thumbnail_arrows": true,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "blocks_nTQedx": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_573dcc4_iqCzcj": {
+          "type": "ai_gen_block_573dcc4",
+          "settings": {
+            "heading": "Customizer Disclaimer",
+            "text": "All selected colors will appear during the section of customization where they are chosen. When you switch to another section, some visual changes may not carry over in the preview. All of your selections are saved and will appear in the itemized list at checkout. Your putter will be built exactly to the specifications you choose.",
+            "heading_color": "#000000",
+            "heading_size": 16,
+            "text_color": "#000000",
+            "text_size": 14,
+            "text_spacing": 8,
+            "background_color": "#f5f5f5",
+            "padding": 16,
+            "border_radius": 4,
+            "spacing_top": 20,
+            "spacing_bottom": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_573dcc4_iqCzcj"
+      ],
+      "name": "Customizer disclaimer",
+      "settings": {}
+    },
+    "1764789953e0eb8065": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b2428fb_wfwm8A": {
+          "type": "ai_gen_block_b2428fb",
+          "settings": {
+            "heading": "Customization Options",
+            "subtitle": "Make it uniquely yours",
+            "color_title": "Custom Color Matching",
+            "color_description": "<p>Send us a reference image (URL) and we'll match the color perfectly. Whether it's your team colors, favorite design, or a specific shade, we can customize it for you.</p>",
+            "engraving_title": "Custom Engraving & Logos",
+            "engraving_description": "<p>Add a personal touch with custom engraving or your logo. Perfect for corporate gifts, tournament prizes, or making your putter truly one-of-a-kind.</p>",
+            "form_title": "Bring your vision to life.",
+            "message_placeholder": "Tell us about your customization needs...",
+            "button_text": "Submit Request",
+            "success_message": "Thank you! We'll be in touch within 24 hours to discuss your customization.",
+            "background_color": "#f8f8f8",
+            "heading_color": "#000000",
+            "text_color": "#000000",
+            "icon_color": "#ea1e26",
+            "card_background": "#ffffff",
+            "card_border_color": "#e0e0e0",
+            "form_background": "#ffffff",
+            "border_color": "#e0e0e0",
+            "input_border_color": "#cccccc",
+            "button_color": "#ea1e26",
+            "button_text_color": "#ffffff",
+            "button_hover_color": "#b30000",
+            "heading_size": 32,
+            "subtitle_size": 16,
+            "card_title_size": 20,
+            "text_size": 16,
+            "button_text_size": 16,
+            "border_radius": 8,
+            "border_width": 1,
+            "card_border_radius": 6,
+            "input_border_radius": 4,
+            "button_border_radius": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b2428fb_wfwm8A"
+      ],
+      "custom_css": [
+        ".ai-customization-options-anwjlwhvuudrouklyeaigenblockb2428fbwfwm8a {padding: 40px 0px;}"
+      ],
+      "settings": {}
+    },
+    "sub": {
+      "type": "product-full-width",
+      "disabled": true,
+      "settings": {
+        "max_width": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_recommendations_heading": "You may also like",
+        "related_count": 5,
+        "products_per_row": 3
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "recent_count": 5
+      }
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "blocks_nTQedx",
+    "1764789953e0eb8065",
+    "sub",
+    "product-recommendations",
+    "recently-viewed",
+    "collection-return"
+  ]
+}
