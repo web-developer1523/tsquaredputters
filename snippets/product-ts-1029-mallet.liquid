@@ -166,9 +166,10 @@
 </section>
 
 <style>
-    img.finish-overlay.first.first-only.active {
+
+    {% comment %} img.finish-overlay.first.first-only.active {
         display: none;
-    }
+    } {% endcomment %}
     .hosel-overlay.first.side-only.active {
         display: none;
     }
@@ -962,7 +963,108 @@ $(document).ready(function () {
             $('#custom-image-preview img.front-only.active').hide();
             console.log('here clicked-1');
             $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+            var get_main_image = $(this).attr('src');
+            var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
             
+
+            const shaftOverlayColorMap = {
+                Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_shaft_link_1.png',
+                Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_shaft_link_2.png'
+              };
+              
+              function updateShaftOverlayImage() {
+                const color = $('#custom-image-preview img.shaft')
+                  .attr('shaft_color')
+                  ?.trim();
+              
+                const container = document.querySelector('#custom-image-preview');
+                if (!container || !shaftOverlayColorMap[color]) return;
+              
+                // 🔥 REMOVE ANY DUPLICATES FIRST
+                const existingImages = container.querySelectorAll('img.shaft-overlay');
+              
+                let img;
+                if (existingImages.length) {
+                  img = existingImages[0];
+              
+                  // remove extra ones if Shopify duplicated DOM
+                  existingImages.forEach((el, i) => {
+                    if (i !== 0) el.remove();
+                  });
+                } else {
+                  img = document.createElement('img');
+                  img.className = 'shaft-overlay cst-balance-shaft-overlay-1 active';
+                  container.appendChild(img);
+                }
+                $('.cst-balance-shaft-overlay-1').css('top','0');
+                $('.cst-balance-shaft-overlay-1').css('position','absolute');
+                $('.cst-balance-shaft-overlay-1').css('z-index','9');
+                // 🔁 REPLACE IMAGE (never append)
+                if (img.src !== shaftOverlayColorMap[color]) {
+                  img.src = shaftOverlayColorMap[color];
+                }
+              }
+              
+              // 🔥 Run on every click
+              $(document).on('click', '.your-color-selector, .shaft', function () {
+                setTimeout(updateShaftOverlayImage, 50);
+              });
+              
+              // 🔥 Also run once on load
+              updateShaftOverlayImage();
+
+              const finishBalanceColorMap = {
+                Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
+                Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
+                Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
+                Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_4.png?v=1764769451',
+                Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_5.png?v=1764841001',
+                Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_6.png?v=1764841027',
+                Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_7.png?v=1764841051',
+                Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_8.png?v=1764841077'
+              };
+              
+              function updateFinishBalanceImage() {
+                const color = $('#custom-image-preview img.finish')
+                  .attr('finish_color')
+                  ?.trim();
+              
+                const container = document.querySelector('#custom-image-preview');
+                if (!container || !finishBalanceColorMap[color]) return;
+              
+                // 🔥 REMOVE ANY DUPLICATES FIRST
+                const existingImages = container.querySelectorAll('img.balance-overlay');
+              
+                let img;
+                if (existingImages.length) {
+                  img = existingImages[0];
+              
+                  // remove extra ones if Shopify duplicated DOM
+                  existingImages.forEach((el, i) => {
+                    if (i !== 0) el.remove();
+                  });
+                } else {
+                  img = document.createElement('img');
+                  img.className = 'balance-overlay cst-balance-finish-overlay-1 active';
+                  container.appendChild(img);
+                }
+                $('.cst-balance-finish-overlay-1').css('top','0'); 
+                $('.cst-balance-finish-overlay-1').css('position','absolute');
+                $('.cst-balance-finish-overlay-1').css('z-index','9');
+                // 🔁 REPLACE IMAGE (never append)
+                if (img.src !== finishBalanceColorMap[color]) {
+                  img.src = finishBalanceColorMap[color];
+                }
+              }
+              
+              // 🔥 Run on every click
+              $(document).on('click', '.your-color-selector, .finish', function () {
+                setTimeout(updateFinishBalanceImage, 50);
+              });
+              
+              // 🔥 Also run once on load
+              updateFinishBalanceImage();
+              
 
         } else if (altText === 'ts_1029_select_balance_2') {
             $('.tab1 .style-tab .sidebar .tab[data-tab="Plumbers_neck"]').hide();
@@ -970,7 +1072,106 @@ $(document).ready(function () {
             $('#custom-image-preview img.front-only.active').hide();
             console.log('here clicked-2');
             $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
-            
+            var get_main_image = $(this).attr('src');
+            var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
+
+            const shaftOverlayColorMap = {
+                Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_1.png',
+                Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_2.png'
+              };
+              
+              function updateShaftOverlayImage() {
+                const color = $('#custom-image-preview img.shaft')
+                  .attr('shaft_color')
+                  ?.trim();
+              
+                const container = document.querySelector('#custom-image-preview');
+                if (!container || !shaftOverlayColorMap[color]) return;
+              
+                // 🔥 REMOVE ANY DUPLICATES FIRST
+                const existingImages = container.querySelectorAll('img.shaft-overlay');
+              
+                let img;
+                if (existingImages.length) {
+                  img = existingImages[0];
+              
+                  // remove extra ones if Shopify duplicated DOM
+                  existingImages.forEach((el, i) => {
+                    if (i !== 0) el.remove();
+                  });
+                } else {
+                  img = document.createElement('img');
+                  img.className = 'shaft-overlay cst-balance-shaft-overlay-2 active';
+                  container.appendChild(img);
+                }
+                $('.cst-balance-shaft-overlay-2').css('top','0');
+                $('.cst-balance-shaft-overlay-2').css('position','absolute');
+                $('.cst-balance-shaft-overlay-2').css('z-index','9');
+                // 🔁 REPLACE IMAGE (never append)
+                if (img.src !== shaftOverlayColorMap[color]) {
+                  img.src = shaftOverlayColorMap[color];
+                }
+              }
+              
+              // 🔥 Run on every click
+              $(document).on('click', '.your-color-selector, .shaft', function () {
+                setTimeout(updateShaftOverlayImage, 50);
+              });
+              
+              // 🔥 Also run once on load
+              updateShaftOverlayImage();
+
+              const finishBalanceColorMap = {
+                Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
+                Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
+                Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
+                Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_4.png?v=1764769451',
+                Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_5.png?v=1764841001',
+                Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_6.png?v=1764841027',
+                Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_7.png?v=1764841051',
+                Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_8.png?v=1764841077'
+              };
+              
+              function updateFinishBalanceImage() {
+                const color = $('#custom-image-preview img.finish')
+                  .attr('finish_color')
+                  ?.trim();
+              
+                const container = document.querySelector('#custom-image-preview');
+                if (!container || !finishBalanceColorMap[color]) return;
+              
+                // 🔥 REMOVE ANY DUPLICATES FIRST
+                const existingImages = container.querySelectorAll('img.balance-overlay');
+              
+                let img;
+                if (existingImages.length) {
+                  img = existingImages[0];
+              
+                  // remove extra ones if Shopify duplicated DOM
+                  existingImages.forEach((el, i) => {
+                    if (i !== 0) el.remove();
+                  });
+                } else {
+                  img = document.createElement('img');
+                  img.className = 'balance-overlay cst-balance-finish-overlay-2 active';
+                  container.appendChild(img);
+                }
+                $('.cst-balance-finish-overlay-2').css('top','0');
+                $('.cst-balance-finish-overlay-2').css('position','absolute');
+                $('.cst-balance-finish-overlay-2').css('z-index','9');
+                // 🔁 REPLACE IMAGE (never append)
+                if (img.src !== finishBalanceColorMap[color]) {
+                  img.src = finishBalanceColorMap[color];
+                }
+              }
+              
+              // 🔥 Run on every click
+              $(document).on('click', '.your-color-selector, .finish', function () {
+                setTimeout(updateFinishBalanceImage, 50);
+              });
+              
+              // 🔥 Also run once on load
+              updateFinishBalanceImage();
         } 
     });
 
@@ -1045,7 +1246,7 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
             
-            const colorMap = {
+            const finishOverlayColorMap = {
                 Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
                 Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
@@ -1056,13 +1257,13 @@ $(document).ready(function () {
                 Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_8.png?v=1764841077'
               };
               
-              function updateFinishImage() {
+              function updateFinishOverlayImage() {
                 const color = $('#custom-image-preview img.finish')
                   .attr('finish_color')
                   ?.trim();
               
                 const container = document.querySelector('#custom-image-preview');
-                if (!container || !colorMap[color]) return;
+                if (!container || !finishOverlayColorMap[color]) return;
               
                 // 🔥 REMOVE ANY DUPLICATES FIRST
                 const existingImages = container.querySelectorAll('img.finish-overlay');
@@ -1077,23 +1278,23 @@ $(document).ready(function () {
                   });
                 } else {
                   img = document.createElement('img');
-                  img.className = 'finish-overlay first first-only active';
+                  img.className = 'finish-overlay cst-balance-finish-overlay active';
                   container.appendChild(img);
                 }
               
                 // 🔁 REPLACE IMAGE (never append)
-                if (img.src !== colorMap[color]) {
-                  img.src = colorMap[color];
+                if (img.src !== finishOverlayColorMap[color]) {
+                  img.src = finishOverlayColorMap[color];
                 }
               }
               
               // 🔥 Run on every click
               $(document).on('click', '.your-color-selector, .finish', function () {
-                setTimeout(updateFinishImage, 50);
+                setTimeout(updateFinishOverlayImage, 50);
               });
               
               // 🔥 Also run once on load
-              updateFinishImage();
+              updateFinishOverlayImage();
             
         } else if ($(this).data('tab') === 'Center_shaft') {
             $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
@@ -1133,7 +1334,7 @@ $(document).ready(function () {
                   });
                 } else {
                   img = document.createElement('img');
-                  img.className = 'balance-overlay first balance-only active';
+                  img.className = 'balance-overlay cst-center_shaft-finish-overlay active';
                   container.appendChild(img);
                 }
               
@@ -1150,13 +1351,13 @@ $(document).ready(function () {
               
               // 🔥 Also run once on load
               updateFinishImage();
+              $('.cst-balance-shaft-overlay-1').css('display','none');
 
         } else if ($(this).data('tab') === 'Plumbers_neck') {
             $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('#tabMenu .tab[data-tab="Hosel_color"]').show();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-
 
             const colorMap = {
                 Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
@@ -1190,7 +1391,7 @@ $(document).ready(function () {
                   });
                 } else {
                   img = document.createElement('img');
-                  img.className = 'balance-overlay first balance-only active';
+                  img.className = 'balance-overlay cst-plumbers_neck-finish-overlay active';
                   container.appendChild(img);
                 }
               
@@ -1230,13 +1431,14 @@ $(document).ready(function () {
                 const finish_color = $('#custom-image-preview img.finish')
                   .attr('finish_color')
                   ?.trim();
-              
+                const finishKey = finish_color ? (finish_color.charAt(0).toUpperCase() + (finish_color.slice(1) || '').toLowerCase()) : '';
+                alert('finish_color: ' + finish_color);
                 const container = document.querySelector('#custom-image-preview');
-                if (!container || !FinishMap[finish_color]) return;
+                if (!container || !FinishMap[finishKey]) return;
               
                 // 🔥 enforce SINGLE image instance
-                const existingImages = container.querySelectorAll('img.sightline-overlay');
-              
+                const existingImages = container.querySelectorAll('img.finish-overlay');
+                alert('existingImages: ' + existingImages.length);
                 let img;
                 if (existingImages.length) {
                   img = existingImages[0];
@@ -1247,14 +1449,13 @@ $(document).ready(function () {
                   });
                 } else {
                   img = document.createElement('img');
-                  img.className = 'sightline-overlay first side-only active';
+                  img.className = 'finish-overlay cst-sightline_color-finish-overlay active';
                   container.appendChild(img);
                 }
-              
-                // 🔁 replace image only
-                if (img.src !== FinishMap[finish_color]) {
-                  img.src = FinishMap[finish_color];
-                }
+                // set src from FinishMap so it's correct for both new and existing images
+                const imageUrl = FinishMap[finishKey];
+                img.src = imageUrl;
+                alert('img.src: ' + img.src);
               }
               
               // 🔥 update on every interaction
@@ -1290,7 +1491,7 @@ $(document).ready(function () {
                   });
                 } else {
                   img = document.createElement('img');
-                  img.className = 'shaft-overlay first side-only active';
+                  img.className = 'shaft-overlay cst-sightline_color-shaft-overlay active';
                   container.appendChild(img);
                 }
               
@@ -1304,6 +1505,7 @@ $(document).ready(function () {
               $(document).on('click', '#colorGrid .color-image, .shaft', function () {
                 setTimeout(updateShaftImage, 50);
             });
+
             updateShaftImage();
               
               const Hoselmap = {
@@ -1338,7 +1540,7 @@ $(document).ready(function () {
                   });
                 } else {
                   img = document.createElement('img');
-                  img.className = 'hosel-overlay first side-only active';
+                  img.className = 'hosel-overlay cst-sightline_color-hosel-overlay active';
                   container.appendChild(img);
                 }
               
@@ -1354,9 +1556,32 @@ $(document).ready(function () {
             });
             updateHoselImage();
 
-            
+            $('.cst-balance-finish-overlay-1').css('display','none');
+            $('.cst-balance-shaft-overlay-1').css('display','block');  
+            $('.cst-balance-finish-overlay').css('top','0');
+            $('.cst-balance-finish-overlay').css('position','absolute');
+            $('.cst-balance-finish-overlay').css('z-index','9');
             {% comment %}  {% endcomment %}
-        } else {
+        }
+        else if ($(this).data('tab') === 'Base_plate') {
+           
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+            $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+            {% comment %} $('.cst-balance-finish-overlay-1').css('display','none');
+            $('.cst-balance-shaft-overlay-1').css('display','none');
+            $('.cst-balance-finish-overlay').css('display','none'); 
+            .cst-balance-shaft-overlay-1, .cst-balance-finish-overlay-1, .cst-balance-finish-overlay{
+    display: none !important;
+}
+
+img.first.shaft.front-only {
+    display: none;
+}
+            {% endcomment %}
+            
+        }
+        else {
             $('.tab1 .image-wrapper .default-image-sides .front-only').show();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
