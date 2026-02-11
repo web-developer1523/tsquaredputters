@@ -687,10 +687,12 @@ text-align: center;
 .default-image-sides .front-only {
     position: absolute;
     top: 0;
+
 }
 .default-image-sides .balance-only {
     position: absolute;
     top: 0;
+
 }
 .default-image-sides .side-only {
     position: absolute;
@@ -967,7 +969,7 @@ $(document).ready(function () {
             var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
             
 
-            const shaftOverlayColorMap = {
+            {% comment %} const shaftOverlayColorMap = {
                 Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_shaft_link_1.png',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_shaft_link_2.png'
               };
@@ -1005,8 +1007,8 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 Run on every click
-              $(document).on('click', '.your-color-selector, .shaft', function () {
+              // 🔥 Run on every click (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .shaft').on('click', '.your-color-selector, .shaft', function () {
                 setTimeout(updateShaftOverlayImage, 50);
               });
               
@@ -1057,14 +1059,19 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 Run on every click
-              $(document).on('click', '.your-color-selector, .finish', function () {
+              // 🔥 Run on every click (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .finish').on('click', '.your-color-selector, .finish', function () {
                 setTimeout(updateFinishBalanceImage, 50);
               });
               
               // 🔥 Also run once on load
-              updateFinishBalanceImage();
+              updateFinishBalanceImage(); {% endcomment %}
+              alert('ts_1029_select_balance_1')
               
+                $('.front-only').show();
+                $('.front-only').css('z-index','9');
+                $('.shaft-overlay').hide();
+         
 
         } else if (altText === 'ts_1029_select_balance_2') {
             $('.tab1 .style-tab .sidebar .tab[data-tab="Plumbers_neck"]').hide();
@@ -1072,6 +1079,7 @@ $(document).ready(function () {
             $('#custom-image-preview img.front-only.active').hide();
             console.log('here clicked-2');
             $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+
             var get_main_image = $(this).attr('src');
             var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
 
@@ -1113,15 +1121,15 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 Run on every click
-              $(document).on('click', '.your-color-selector, .shaft', function () {
+              // 🔥 Run on every click (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .shaft').on('click', '.your-color-selector, .shaft', function () {
                 setTimeout(updateShaftOverlayImage, 50);
               });
               
               // 🔥 Also run once on load
               updateShaftOverlayImage();
 
-              const finishBalanceColorMap = {
+              {% comment %} const finishBalanceColorMap = {
                 Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
                 Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
@@ -1165,17 +1173,21 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 Run on every click
-              $(document).on('click', '.your-color-selector, .finish', function () {
+              // 🔥 Run on every click (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .finish').on('click', '.your-color-selector, .finish', function () {
                 setTimeout(updateFinishBalanceImage, 50);
               });
               
               // 🔥 Also run once on load
-              updateFinishBalanceImage();
-        } 
-        if (altText === 'ts_1029_select_balance_2') {
+              updateFinishBalanceImage(); {% endcomment %}
+              alert('ts_1029_select_balance_2')
+                $('.finish.front-only').show();
+                $('.finish.front-only').css('z-index','9');
+                $('.shaft-overlay').show();
+            } 
+            else{
 
-        }
+            }
     });
 
     $('#colorGrid').on('click', '.color-box .color-image', function () {
@@ -1245,11 +1257,11 @@ $(document).ready(function () {
 
     $('.tab1 .style-tab .sidebar .tab').click(function () {
         if ($(this).data('tab') === 'Balance') {
-            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+            $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
-            $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
             
-            const finishOverlayColorMap = {
+            {% comment %} const finishOverlayColorMap = {
                 Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
                 Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
@@ -1291,25 +1303,44 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 Run on every click
-              $(document).on('click', '.your-color-selector, .finish', function () {
+              // 🔥 Run on every click (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .finish').on('click', '.your-color-selector, .finish', function () {
                 setTimeout(updateFinishOverlayImage, 50);
               });
               
               // 🔥 Also run once on load
-              updateFinishOverlayImage();
-            
+              updateFinishOverlayImage(); {% endcomment %}
+              alert('Balance');
+              $('.finish.front-only').show();
+             {% comment %} if ($frontImg.hasClass('center_shaft')) {
+                alert('found-center shaft')
+                $('.front-only').hide();
+                $('.balance-only').show();
+                
+            } else {
+                
+            } {% endcomment %}
         } 
         else if ($(this).data('tab') === 'Finish') {
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
 
             // only show if it has the center_shaft class
             if ($frontImg.hasClass('center_shaft')) {
-                $('.first.shaft.front-only').hide();
+                $('.front-only').show();
+                $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
                 $('.center_shaft').show();
                 $('.cst-balance-shaft-overlay-2').hide();
+                $('.sightline_color').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();
+               
+                $('.plumbers_neck ').hide();
             } else {
-                $('.first.shaft.front-only').show(); // or just omit this line if you don't care
+                $('.front-only').show(); 
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();// or just omit this line if you don't care
             }
         }
         else if ($(this).data('tab') === 'Shaft') {
@@ -1317,12 +1348,21 @@ $(document).ready(function () {
 
             // only show if it has the center_shaft class
             if ($frontImg.hasClass('center_shaft')) {
-                
-                $('.first.shaft.front-only').show();
+                alert('center_shaft-1');
+                $('.first.shaft.front-only').hide();
                 $('.center_shaft').show();
                 $('.cst-balance-shaft-overlay-2').hide();
+                const colorMap = {
+                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_1.png',
+                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_2.png'
+                };
+                    var center_shaft_image = $('.first.shaft.front-only').attr('src');
+                    var center_shaft_color = $('.first.shaft.front-only').attr('shaft_color');
+                    var center_shaft_url = colorMap[center_shaft_color];
+                    $('.center_shaft.balance-only').attr('src', center_shaft_url);
+
             } else {
-                
+                alert('center_shaft-2');
                 $('.first.shaft.front-only').show(); // or just omit this line if you don't care
             }
         }
@@ -1332,7 +1372,7 @@ $(document).ready(function () {
             $('#tabMenu .tab[data-tab="Hosel_color"]').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
 
-            const colorMap = {
+            {% comment %} const colorMap = {
                 Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
                 Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
@@ -1374,16 +1414,16 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 Run on every click
-              $(document).on('click', '.your-color-selector, .finish', function () {
+              // 🔥 Run on every click (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .finish').on('click', '.your-color-selector, .finish', function () {
                 setTimeout(updateFinishImage, 50);
             });
               
               // 🔥 Also run once on load
               updateFinishImage();
-              $('.cst-balance-shaft-overlay-1').css('display','none');
+              $('.cst-balance-shaft-overlay-1').css('display','none'); {% endcomment %}
 
-              function hideShaft() {
+              {% comment %} function hideShaft() {
                 $('.first.shaft.front-only:visible').hide();
               }
               
@@ -1391,7 +1431,14 @@ $(document).ready(function () {
               hideShaft();
               
               // keep checking as the user interacts
-              setInterval(hideShaft, 50); // every 300ms
+              setInterval(hideShaft, 50); // every 300ms {% endcomment %}
+          
+                $('.finish.front-only').show();
+                $('.shaft-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+        
+
+              
 
         } else if ($(this).data('tab') === 'Plumbers_neck') {
             $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
@@ -1399,7 +1446,7 @@ $(document).ready(function () {
             $('#tabMenu .tab[data-tab="Hosel_color"]').show();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
 
-            const colorMap = {
+            {% comment %} const colorMap = {
                 Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_1.png?v=1764769372',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_2.png?v=1764769402',
                 Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_finish_link_3.png?v=1764769431',
@@ -1447,16 +1494,16 @@ $(document).ready(function () {
             });
               
               // 🔥 Also run once on load
-              updateFinishImage();
+              updateFinishImage(); {% endcomment %}
 
               var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
 
               // only show if it has the center_shaft class
               if ($frontImg.hasClass('center_shaft')) {
-                  $('.first.shaft.front-only').hide();
-                  $('.center_shaft').show();
+                  $('.front-only').hide();
+                  $('.center_shaft').hide();
               } else {
-                  $('.first.shaft.front-only').show(); // or just omit this line if you don't care
+                  $('.front-only').show(); // or just omit this line if you don't care
               }
 
         } else if ($(this).data('tab') === 'Sightline_color') {
@@ -1506,12 +1553,14 @@ $(document).ready(function () {
                 img.src = imageUrl;
                
               }
-              
-              // 🔥 update on every interaction
-              $(document).on('click', '.your-color-selector, .finish_color', function () {
+             
+              // 🔥 update on every interaction (ensure only one handler)
+              $(document).off('click', '.your-color-selector, .finish_color').on('click', '.your-color-selector, .finish_color', function () {
                 setTimeout(updateFinishImage, 50);
+
             });
               
+            
               // 🔥 update on initial load
               updateFinishImage();
 
@@ -1550,8 +1599,8 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 update on every interaction that can change hosel color
-              $(document).on('click', '#colorGrid .color-image, .shaft', function () {
+              // 🔥 update on every interaction that can change shaft color (ensure only one handler)
+              $(document).off('click', '#colorGrid .color-image, .shaft').on('click', '#colorGrid .color-image, .shaft', function () {
                 setTimeout(updateShaftImage, 50);
             });
 
@@ -1599,19 +1648,31 @@ $(document).ready(function () {
                 }
               }
               
-              // 🔥 update on every interaction that can change hosel color
-              $(document).on('click', '#colorGrid .color-image, .hosel_color', function () {
+              // 🔥 update on every interaction that can change hosel color (ensure only one handler)
+              $(document).off('click', '#colorGrid .color-image, .hosel_color').on('click', '#colorGrid .color-image, .hosel_color', function () {
                 setTimeout(updateHoselImage, 50);
             });
             updateHoselImage();
 
-            $('.cst-balance-finish-overlay-1').hide();
-            $('.cst-balance-finish-overlay-2').hide();
-            $('.cst-balance-shaft-overlay-1').show();  
-            $('.cst-balance-finish-overlay').css('top','0');
-            $('.cst-balance-finish-overlay').css('position','absolute');
-            $('.cst-balance-finish-overlay').css('z-index','9');
+            var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+
+            if ($frontImg.hasClass('center_shaft')) {
+                $('.side-only').show();
+                $('.cst-sightline_color-finish-overlay').show();
+                $('.cst-sightline_color-finish-overlay').css('position','absolute');
+                $('.cst-sightline_color-finish-overlay').css('z-index','9');
+                $('.cst-balance-shaft-overlay-2').show();
+            }
+            else {
+                $('.cst-sightline_color-finish-overlay').css('position','absolute');
+                $('.cst-sightline_color-finish-overlay').css('z-index','9');
+                $('.cst-balance-shaft-overlay-2').show();
+                $('.cst-sightline_color-finish-overlay').show();
+                $('.sightline_color').show();
+                $('.hosel-overlay').show();
+            }
             {% comment %}  {% endcomment %}
+           
         }
         
         else if ($(this).data('tab') === 'Hosel_color') {
@@ -1619,37 +1680,56 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .front-only').show();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
-            $('.cst-balance-finish-overlay-1').hide();
-            $('.cst-balance-shaft-overlay-1').hide();
-            $('.cst-balance-finish-overlay').hide();
-            $('.first.shaft.front-only').show(); 
-            function hideHoselOverlay() {
-                $('.cst-sightline_color-hosel-overlay:visible').hide();
+
+            {% comment %} function hideHoselOverlay() {
+                $('.cst-sightline_color-hosel-overlay:visible')
+                  .not('.hosel-overlay')
+                  .hide();
               }
               // run once on load
               hideHoselOverlay();
               
               // keep checking as the user interacts
-              setInterval(hideHoselOverlay, 50); // every 300ms
+              setInterval(hideHoselOverlay, 50); // every 300ms {% endcomment %}
+
+              var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+
+              // only show if it has the center_shaft class
+              if ($frontImg.hasClass('center_shaft')) {
+              $('.cst-sightline_color-finish-overlay').hide();
+              $('.cst-sightline_color-finish-overlay').hide()
+              $('.cst-balance-shaft-overlay-2').hide();
+              $('.cst-sightline_color-hosel-overlay').hide();
+              } else {
+                  $('.front-only').show(); 
+                  $('.cst-sightline_color-finish-overlay').hide();
+                  $('.cst-balance-shaft-overlay-2').hide();
+                  $('.side-only').hide();
+                  $('.sightline_color').hide();
+                  $('.cst-sightline_color-hosel-overlay').hide();// or just omit this line if you don't care
+              }
         }
         else if ($(this).data('tab') === 'Base_plate') {
-           
-            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
-            $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
-            $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
-            $('.cst-balance-finish-overlay-1').hide();
-            $('.cst-balance-shaft-overlay-1').hide();
-            $('.cst-balance-finish-overlay').hide();
+
             // find the front image (adjust selector if needed)
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
 
             // only show if it has the center_shaft class
             if ($frontImg.hasClass('center_shaft')) {
-                $('.first.shaft.front-only').hide();
-                $('.center_shaft').show();
-                $('.cst-balance-shaft-overlay-2').hide();
+            $('.cst-sightline_color-finish-overlay').hide();
+            $('.cst-balance-shaft-overlay-2').hide();
+            $('.sightline_color').hide();
+            $('.front-only').show(); 
+            $('.balance-only').show();
+            $('.center_shaft').show();
+            $('.side-only').hide();
+            $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
             } else {
-                $('.first.shaft.front-only').show(); // or just omit this line if you don't care
+                $('.front-only').show(); 
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();
+                $('.sightline_color').hide();// or just omit this line if you don't care
             }
         }
         else if ($(this).data('tab') === 'Hand') {
@@ -1906,8 +1986,12 @@ const UPLOAD_PRESET = "combined image";
 document.getElementById("merge-btn").addEventListener("click", function() {
     console.log('here');
   const container = document.getElementById("custom-image-preview");
-  {% comment %} const images = Array.from(container.querySelectorAll(".default-image-sides img.active")).filter(img => window.getComputedStyle(img).display !== "none"); // Filter visible images {% endcomment %}
-  const images = Array.from(container.querySelectorAll(".default-image-sides img.front-only"));
+  const images = Array.from(container.querySelectorAll(".default-image-sides img.active"))
+  .filter(img => window.getComputedStyle(img).display === "block"); // only display: block
+  {% comment %} images.forEach(img => {
+        console.log(img.src);
+  });   {% endcomment %}
+{% comment %} const images = Array.from(container.querySelectorAll(".default-image-sides img.front-only")); {% endcomment %}
     if (!images.length) return;
 
   const canvas = document.createElement("canvas");
