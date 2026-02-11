@@ -1328,14 +1328,15 @@ $(document).ready(function () {
             if ($frontImg.hasClass('center_shaft')) {
                 $('.front-only').show();
                 $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
+                $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
                 $('.center_shaft').show();
                 $('.cst-balance-shaft-overlay-2').hide();
                 $('.sightline_color').hide();
                 $('.cst-sightline_color-finish-overlay').hide();
                 $('.cst-balance-shaft-overlay-2').hide();
                 $('.side-only').hide();
-               
                 $('.plumbers_neck ').hide();
+                $('.hosel_color').hide();
             } else {
                 $('.front-only').show(); 
                 $('.cst-sightline_color-finish-overlay').hide();
@@ -1350,6 +1351,9 @@ $(document).ready(function () {
             if ($frontImg.hasClass('center_shaft')) {
                 alert('center_shaft-1');
                 $('.first.shaft.front-only').hide();
+                // Option 1: hide after showing everything
+                $('.shaft.front-only[alt="ts_1029_shaft_1"]').show();
+                $('.shaft.front-only[alt="ts_1029_shaft_2"]').show();
                 $('.center_shaft').show();
                 $('.cst-balance-shaft-overlay-2').hide();
                 const colorMap = {
@@ -1363,7 +1367,11 @@ $(document).ready(function () {
 
             } else {
                 alert('center_shaft-2');
-                $('.first.shaft.front-only').show(); // or just omit this line if you don't care
+                $('.front-only').show(); 
+                $('.sightline_color').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();
             }
         }
         else if ($(this).data('tab') === 'Center_shaft') {
@@ -1503,7 +1511,9 @@ $(document).ready(function () {
                   $('.front-only').hide();
                   $('.center_shaft').hide();
               } else {
-                  $('.front-only').show(); // or just omit this line if you don't care
+                  $('.front-only').show();
+                  $('.cst-sightline_color-finish-overlay').hide();
+                  $('.cst-balance-shaft-overlay-2').hide();
               }
 
         } else if ($(this).data('tab') === 'Sightline_color') {
@@ -1655,7 +1665,9 @@ $(document).ready(function () {
             updateHoselImage();
 
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
-
+            $('.cst-sightline_color-hosel-overlay').show();
+            $('.cst-sightline_color-hosel-overlay').css('position','absolute');
+            $('.cst-sightline_color-hosel-overlay').css('z-index','9');
             if ($frontImg.hasClass('center_shaft')) {
                 $('.side-only').show();
                 $('.cst-sightline_color-finish-overlay').show();
@@ -1693,20 +1705,21 @@ $(document).ready(function () {
               setInterval(hideHoselOverlay, 50); // every 300ms {% endcomment %}
 
               var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
-
+              $('.cst-sightline_color-hosel-overlay').hide();
+              $('.cst-sightline_color-shaft-overlay').hide();
               // only show if it has the center_shaft class
               if ($frontImg.hasClass('center_shaft')) {
               $('.cst-sightline_color-finish-overlay').hide();
               $('.cst-sightline_color-finish-overlay').hide()
               $('.cst-balance-shaft-overlay-2').hide();
-              $('.cst-sightline_color-hosel-overlay').hide();
+             
               } else {
                   $('.front-only').show(); 
                   $('.cst-sightline_color-finish-overlay').hide();
                   $('.cst-balance-shaft-overlay-2').hide();
                   $('.side-only').hide();
                   $('.sightline_color').hide();
-                  $('.cst-sightline_color-hosel-overlay').hide();// or just omit this line if you don't care
+                  // or just omit this line if you don't care
               }
         }
         else if ($(this).data('tab') === 'Base_plate') {
@@ -1724,6 +1737,10 @@ $(document).ready(function () {
             $('.center_shaft').show();
             $('.side-only').hide();
             $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
+            $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
+            $('.plumbers_neck').hide(); 
+            $('.cst-sightline_color-hosel-overlay').hide();
+            $('.hosel_color').hide();
             } else {
                 $('.front-only').show(); 
                 $('.cst-sightline_color-finish-overlay').hide();
