@@ -946,11 +946,17 @@ $(document).ready(function () {
             $('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').hide();
             console.log('here clicked-1');
             $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+            $('.sidebar .tab[data-tab="Short_plumber_neck"]').trigger('click');
+            $('div#colorGrid img').first().trigger('click'); 
         } else if (altText === 'ts_912_select_balance_2') {
             $('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').hide();
             $('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').show();
             console.log('here clicked-2');
             $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+            $('.sidebar .tab[data-tab="Long_plumber_neck"]').trigger('click');
+            $('div#colorGrid img').first().trigger('click'); 
         }
     });
 
@@ -1029,21 +1035,62 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
         } else if ($(this).data('tab') === 'Balance') {
-            $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
 
-        } else if ($(this).data('tab') === 'Short_plumber_neck') {
-            $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        } 
+        else if ($(this).data('tab') === 'Shaft') {
+
+            $('div#custom-image-preview img.active:first-child').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png');
+
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
+            $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+            $('.shaft').css('z-index','9');
+            setTimeout(function() {
+                if ($('.short_plumber_neck.balance-only').length > 0) {
+                  console.log('short_plumber_neck found');
+                  $('.short_plumber_neck.balance-only').css('z-index','9');
+                }
+                else{
+                  
+                }
+            }, 50);
+        }
+        else if ($(this).data('tab') === 'Short_plumber_neck') {
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                  console.log('short_plumber_neck found');
+                  $container.find('img.short_plumber_neck.balance-only').css('z-index','9');
+                }
+              }, 50);
         } else if ($(this).data('tab') === 'Long_plumber_neck') {
-            $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+            setTimeout(function() {
+                if ($('.long_plumber_neck.balance-only').length > 0) {
+                    console.log('long_plumber_neck found');
+                    var get_main_image = $('.balance.balance-only').attr('src') 
+                    
+                    $('div#custom-image-preview img.active:first-child').attr('src', get_main_image);
+                    $('.shaft').hide();
+                  }
+                  else{
+                    
+                  }
+               
+            }, 50);
+
         } else if ($(this).data('tab') === 'Back_plate_color') {
             $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
@@ -1235,11 +1282,11 @@ $(document).ready(function () {
     const CLOUD_NAME = "dl2scmfzl";
     const UPLOAD_PRESET = "combined image";
 
+    // Improved merge: composite only visible/active images then upload
     document.getElementById("merge-btn").addEventListener("click", function() {
-        console.log('here');
         const container = document.getElementById("custom-image-preview");
-        {% comment %} const images = Array.from(container.querySelectorAll(".default-image-sides img.active")).filter(img => window.getComputedStyle(img).display !== "none"); // Filter visible images {% endcomment %}
-        const images = Array.from(container.querySelectorAll(".default-image-sides img.front-only"));
+        const images = Array.from(container.querySelectorAll(".default-image-sides img.active"))
+            .filter(img => window.getComputedStyle(img).display === "block");
         if (!images.length) return;
 
         const canvas = document.createElement("canvas");
@@ -1253,9 +1300,13 @@ $(document).ready(function () {
             tempImg.crossOrigin = "anonymous";
             tempImg.src = img.src;
             tempImg.onload = function() {
-            ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
-            loaded++;
-            if (loaded === images.length) uploadToCloudinary(canvas);
+                ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+                loaded++;
+                if (loaded === images.length) uploadToCloudinary(canvas);
+            };
+            tempImg.onerror = function() {
+                loaded++;
+                if (loaded === images.length) uploadToCloudinary(canvas);
             };
         });
 
@@ -1266,74 +1317,49 @@ $(document).ready(function () {
             formData.append("upload_preset", UPLOAD_PRESET);
 
             fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-            method: "POST",
-            body: formData
+                method: "POST",
+                body: formData
             })
             .then(res => res.json())
             .then(data => {
-            if(data.secure_url){
-                document.getElementById("final-combined").src = canvas.toDataURL("image/png");
-                document.getElementById("shareable-link").value = data.secure_url;
+                if (data.secure_url) {
+                    document.getElementById("final-combined").src = canvas.toDataURL("image/png");
+                    document.getElementById("shareable-link").value = data.secure_url;
 
-                // ✅ Add to cart attributes if form exists
-                const cartForm = document.querySelector("form[action*='/cart']");
-                if(cartForm){
-                cartForm.insertAdjacentHTML(
-                    "beforeend",
-                    `<input type="hidden" name="attributes[Image]" value="${canvas.toDataURL("image/png")}">`
-                );
+                    // add to cart form attribute if present
+                    const cartForm = document.querySelector("form[action*='/cart']");
+                    if (cartForm) {
+                        cartForm.insertAdjacentHTML("beforeend",
+                            `<input type="hidden" name="attributes[Image]" value="${canvas.toDataURL("image/png")}">`);
+                    }
                 }
-            }
-                {% comment %} add to cart ajax {% endcomment %}
+
                 var variant_id = $('.cst-custom-add-to-cart').data('variant');
                 var quantity = 1;
-                var imageLink = $('#shareable-link').val();  // Get the image link value
-                console.log(imageLink); 
-        
-                var properties = {
-                    "Image": imageLink
-                };    
-            
-                // Loop through ALL images in preview (not just active ones)
-                $("#custom-image-preview img").each(function () {
-                    $.each(this.attributes, function () {
+                var imageLink = $('#shareable-link').val();
+
+                var properties = { "Image": imageLink };
+
+                // Collect custom attributes from all preview images
+                $('#custom-image-preview img').each(function() {
+                    $.each(this.attributes, function() {
                         if (this.specified) {
-                            // Check for custom attributes (finish_color, shaft_color, balance, etc.)
-                            if (
-                                this.name.endsWith("_color") ||
-                                this.name === "balance" ||
-                                this.name === "club_loft" ||
-                                this.name === "club_lie" || this.name === 'hand_style' || this.name === 'grip_style' || this.name === 'shaft_length'
-                            ) {
-                                // Format key nicely
-                                let key = this.name
-                                    .replace("_color", "")
-                                    .replace("_", " ")
-                                    .replace(/\b\w/g, (c) => c.toUpperCase());
-                
-                                // Only set property if not already set (to avoid duplicates)
-                                if (!properties[key]) {
-                                    properties[key] = this.value;
-                                }
+                            if (this.name.endsWith('_color') || this.name === 'balance' || this.name === 'club_lie' || this.name === 'club_loft' || this.name === 'hand_style' || this.name === 'grip_style' || this.name === 'shaft_length' || this.name === 'back_plate_color') {
+                                let key = this.name.replace('_color','').replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+                                if (!properties[key]) properties[key] = this.value;
                             }
                         }
                     });
-                });                
-        
-                var addData = {
-                    id: variant_id,
-                    quantity: quantity,
-                    properties: properties
-                };
-                console.log("Final properties being sent:", properties);
-        
+                });
+
+                var addData = { id: variant_id, quantity: quantity, properties: properties };
+
                 $.ajax({
                     type: 'POST',
                     url: '/cart/add.js',
                     dataType: 'json',
                     data: addData,
                     success: function(res) {
-                        console.log('Item added to cart:', res);
                         $('.cst-custom-add-to-cart .loader').hide();
                         $('.cst-custom-add-to-cart').removeClass('cst-disabled');
                         window.location.href="/cart";
@@ -1341,11 +1367,11 @@ $(document).ready(function () {
                     error: function(err) {
                         console.error('Error adding to cart:', err);
                     }
-                });  
+                });
             })
             .catch(err => console.error("Cloudinary upload error:", err));
         }
-        });
+    });
    
     {% comment %} end {% endcomment %}
     {% comment %} add to cart ajax {% endcomment %}
