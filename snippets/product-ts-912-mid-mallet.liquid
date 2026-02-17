@@ -942,6 +942,7 @@ $(document).ready(function () {
 
         // Show corresponding div based on which image is clicked
         if (altText === 'ts_912_select_balance_1') {
+            alert('here clicked-1');
             $('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').show();
             $('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').hide();
             console.log('here clicked-1');
@@ -949,7 +950,12 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .front-only').show();
             $('.sidebar .tab[data-tab="Short_plumber_neck"]').trigger('click');
             $('div#colorGrid img').first().trigger('click'); 
+            const short_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png";
+           
+            $('div#custom-image-preview img.active:first-child').attr('src', short_plumber_neck_shaft_image);
+            $('div#custom-image-preview .balance').attr('src', short_plumber_neck_shaft_image);
         } else if (altText === 'ts_912_select_balance_2') {
+            alert('here clicked-2');
             $('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').hide();
             $('.tab1 .style-tab .sidebar .tab[data-tab="Long_plumber_neck"]').show();
             console.log('here clicked-2');
@@ -957,6 +963,19 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .front-only').show();
             $('.sidebar .tab[data-tab="Long_plumber_neck"]').trigger('click');
             $('div#colorGrid img').first().trigger('click'); 
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+                  alert('long_plumber_neck found');
+                  $('.long_plumber_neck.balance-only').show().css('z-index','9');
+
+                  const long_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Long_v2.png"
+                 
+                  $('div#custom-image-preview img.active:first-child').attr('src', long_plumber_neck_shaft_image);
+                  $('div#custom-image-preview .balance').attr('src', long_plumber_neck_shaft_image);
+                  $('.shaft').hide();
+                } 
+            }, 50);
         }
     });
 
@@ -1039,24 +1058,78 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-
+            $('#colorGrid .color-box .color-image').first().trigger('click');
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                  alert('short_plumber_neck found');
+                  var image_src = $('.balance').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png');
+                  $('div#custom-image-preview img.active:first-child').attr('src', image_src); 
+                  $('.shaft').show();
+                } else {
+                  $('.shaft').show();
+                }
+            }, 50);
         } 
+        else if ($(this).data('tab') === 'Finish') {
+            {% comment %} $('div#custom-image-preview img.active:first-child').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png'); {% endcomment %}
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
+            $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+            $('.finish').show().css('z-index','9');
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                  console.log('finish tab short_plumber_neck found');
+                  $('.short_plumber_neck.balance-only').show().css('z-index','9');
+                }
+                else{
+                    $('.long_plumber_neck').show();
+                }
+            }, 50); 
+        }
         else if ($(this).data('tab') === 'Shaft') {
 
-            $('div#custom-image-preview img.active:first-child').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png');
+            {% comment %} $('div#custom-image-preview img.active:first-child').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png'); {% endcomment %}
 
             $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
-            $('.shaft').css('z-index','9');
+            $('.shaft').show().css('z-index','9');
             setTimeout(function() {
-                if ($('.short_plumber_neck.balance-only').length > 0) {
-                  console.log('short_plumber_neck found');
-                  $('.short_plumber_neck.balance-only').css('z-index','9');
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                  alert('shaft tab short_plumber_neck found');
+                  $('.short_plumber_neck.balance-only').show().css('z-index','9');
+                  const short_plumber_neck_shaft_image = {
+                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_shaft_link_1.png',
+                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_shaft_link_2.png'
+                  };
+                  var color = $container.find('.shaft').attr('shaft_color');
+                  var short_plumber_neck_shaft_url = short_plumber_neck_shaft_image[color];
+                  alert(short_plumber_neck_shaft_url);
+                  $container.find('.shaft').attr('src', short_plumber_neck_shaft_url); 
+                  $container.find('.shaft').show();
+                }
+                else if($container.find('.long_plumber_neck.balance-only').length > 0){
+                  alert('shaft tab long_plumber_neck found');
+                  const long_plumber_neck_shaft_image = {
+                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_long_shaft_link_1.png',
+                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_long_shaft_link_2.png'
+                  };
+                  var color = $container.find('.shaft').attr('shaft_color');
+                  alert(color);
+                  var long_plumber_neck_shaft_url = long_plumber_neck_shaft_image[color];
+                  alert(long_plumber_neck_shaft_url);
+                  $container.find('.shaft').attr('src', long_plumber_neck_shaft_url);
+                  $container.find('.shaft').hide();
+
+                  $('.long_plumber_neck').hide();
                 }
                 else{
-                  
+                 
                 }
             }, 50);
         }
@@ -1068,8 +1141,8 @@ $(document).ready(function () {
             setTimeout(function() {
                 var $container = $('.tab1 .image-wrapper .default-image-sides');
                 if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                  console.log('short_plumber_neck found');
-                  $container.find('img.short_plumber_neck.balance-only').css('z-index','9');
+                  alert('short_plumber_neck tab short found');
+                  $('.short_plumber_neck.balance-only').css('z-index','9');
                 }
               }, 50);
         } else if ($(this).data('tab') === 'Long_plumber_neck') {
@@ -1090,8 +1163,30 @@ $(document).ready(function () {
                   }
                
             }, 50);
+        } 
+        else if ($(this).data('tab') === 'Hosel_color') {
+            $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+            $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+            $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+            $('.hosel_color').show();
+            alert('hosel_color');
 
-        } else if ($(this).data('tab') === 'Back_plate_color') {
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+                    console.log('long_plumber_neck found');
+                    var get_main_image = $('.balance.balance-only').attr('src') 
+                    
+                    $('div#custom-image-preview img.active:first-child').attr('src', get_main_image);
+                    $('.shaft').hide();
+                }
+                else{
+                    
+                }
+            }, 50);
+        }
+        else if ($(this).data('tab') === 'Back_plate_color') {
             $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
@@ -1273,6 +1368,68 @@ $(document).ready(function () {
             loadColors(selectedTab);
         });
     });
+
+    // Live-update shaft image when DOM or shaft_color changes inside the default-image-sides container
+    (function () {
+        var $container = $('.tab1 .image-wrapper .default-image-sides');
+        if ($container.length === 0) return;
+
+        const short_plumber_neck_shaft_image = {
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_shaft_link_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_shaft_link_2.png'
+        };
+        const long_plumber_neck_shaft_image = {
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_long_shaft_link_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_long_shaft_link_2.png'
+        };
+
+        function preloadAndSwap($shaft, url) {
+            if (!$shaft || $shaft.length === 0 || !url) return;
+            try {
+                if ($shaft.attr('src') === url) return;
+            } catch (e) {}
+
+            var img = new Image();
+            img.onload = function () {
+                // Fade out current image, swap src, fade in for smooth transition
+                // Use jQuery animations to avoid layout thrash
+                $shaft.stop(true, true).animate({ opacity: 0 }, 120, function () {
+                    $shaft.attr('src', url);
+                    $shaft.animate({ opacity: 1 }, 120);
+                });
+            };
+            img.src = url;
+        }
+
+        function updateShaftImage() {
+            var $shaft = $container.find('.shaft');
+            // prefer short plumber neck if present
+            if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                var color = $shaft.attr('shaft_color');
+                var url = short_plumber_neck_shaft_image[color];
+                preloadAndSwap($shaft, url);
+                return;
+            }
+            if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+                var color = $shaft.attr('shaft_color');
+                var url = long_plumber_neck_shaft_image[color];
+                preloadAndSwap($shaft, url);
+                return;
+            }
+        }
+
+        var debounceTimer = null;
+        var observer = new MutationObserver(function () {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(updateShaftImage, 30);
+        });
+
+        // Observe for added/removed nodes and attribute changes (class, custom attrs) in subtree
+        observer.observe($container[0], { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'shaft_color'] });
+
+        // initial run
+        updateShaftImage();
+    })();
 
     // Initial load
     loadColors("Finish");
