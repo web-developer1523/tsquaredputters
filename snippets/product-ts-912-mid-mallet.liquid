@@ -954,6 +954,8 @@ $(document).ready(function () {
            
             $('div#custom-image-preview img.active:first-child').attr('src', short_plumber_neck_shaft_image);
             $('div#custom-image-preview .balance').attr('src', short_plumber_neck_shaft_image);
+            $('.hosel_color').show();
+            $('.hosel-color-overlay').hide();
         } else if (altText === 'ts_912_select_balance_2') {
             alert('here clicked-2');
             $('.tab1 .style-tab .sidebar .tab[data-tab="Short_plumber_neck"]').hide();
@@ -973,9 +975,51 @@ $(document).ready(function () {
                  
                   $('div#custom-image-preview img.active:first-child').attr('src', long_plumber_neck_shaft_image);
                   $('div#custom-image-preview .balance').attr('src', long_plumber_neck_shaft_image);
-                  $('.shaft').hide();
+                  $('.shaft').show();
+                  $('.hosel_color').hide();
                 } 
             }, 50);
+        }
+        else if (altText === 'ts_503_short_plumber_neck_1' || altText === 'ts_503_short_plumber_neck_2') {
+            alert('here clicked-3');
+            setTimeout(function() {
+                $('.hosel_color').show();
+                $('.hosel-color-overlay').hide();
+            }, 50);
+        }
+        else if (altText === 'ts_503_hosel_color_1' || altText === 'ts_503_hosel_color_2' || altText === 'ts_503_hosel_color_3' || altText === 'ts_503_hosel_color_4' || altText === 'ts_503_hosel_color_5' || altText === 'ts_503_hosel_color_6' || altText === 'ts_503_hosel_color_7' || altText === 'ts_503_hosel_color_8') {
+            alert('here clicked-4');
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                    $('.hosel_color').show();
+                    $('.hosel-color-overlay').hide();
+                }
+               
+            }, 50);
+        }
+        else if (altText === 'ts_912_shaft_1' || altText === 'ts_912_shaft_2') {
+            alert('here clicked-5');
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                    $('.hosel_color').show();
+                    $('.hosel-color-overlay').hide();
+                }
+               
+            }, 50);
+        }
+        else if (altText === 'ts_912_finish_1' || altText === 'ts_912_finish_2') {
+            alert('here clicked-6');
+            setTimeout(function() {
+                var $container = $('.tab1 .image-wrapper .default-image-sides');
+                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                    $('.hosel_color').show();
+                    $('.hosel-color-overlay').hide();
+                }
+            }, 50);
+        }
+        else{
         }
     });
 
@@ -1044,6 +1088,13 @@ $(document).ready(function () {
         appendCloned(matchedImgs.filter(`.side-only.${groupClass}`).first(), wasSideActive);
         appendCloned(matchedImgs.filter(`.balance-only.${groupClass}`).first(), wasBalanceActive);
         appendCloned(matchedImgs.filter(`.back-only.${groupClass}`).first(), wasBalanceActive);
+
+        // After cloning into preview, try to update the hosel overlay (if available)
+        setTimeout(function () {
+            if (window.updateHoselColorOverlay) {
+                try { window.updateHoselColorOverlay(); } catch (e) { console.warn('updateHoselColorOverlay error', e); }
+            }
+        }, 80);
     });
 
 
@@ -1058,16 +1109,20 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-            $('#colorGrid .color-box .color-image').first().trigger('click');
+            {% comment %} $('#colorGrid .color-box .color-image').first().trigger('click');  {% endcomment %}
             setTimeout(function() {
                 var $container = $('.tab1 .image-wrapper .default-image-sides');
                 if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                   alert('short_plumber_neck found');
-                  var image_src = $('.balance').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png');
-                  $('div#custom-image-preview img.active:first-child').attr('src', image_src); 
+                  {% comment %} var image_src = $('.balance').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png');
+                  $('div#custom-image-preview img.active:first-child').attr('src', image_src);  {% endcomment %}
                   $('.shaft').show();
+                  $('.hosel_color').show();
+                  $('.hosel-color-overlay').hide();
                 } else {
                   $('.shaft').show();
+                  $('.hosel_color').hide();
+                  $('.hosel-color-overlay').show();
                 }
             }, 50);
         } 
@@ -1083,9 +1138,13 @@ $(document).ready(function () {
                 if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                   console.log('finish tab short_plumber_neck found');
                   $('.short_plumber_neck.balance-only').show().css('z-index','9');
+                  $('.hosel_color').show();
+                  $('.hosel-color-overlay').hide();
                 }
                 else{
                     $('.long_plumber_neck').show();
+                    $('.hosel_color').hide();
+                    $('.hosel-color-overlay').show();
                 }
             }, 50); 
         }
@@ -1103,15 +1162,8 @@ $(document).ready(function () {
                 if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                   alert('shaft tab short_plumber_neck found');
                   $('.short_plumber_neck.balance-only').show().css('z-index','9');
-                  const short_plumber_neck_shaft_image = {
-                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_shaft_link_1.png',
-                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_shaft_link_2.png'
-                  };
-                  var color = $container.find('.shaft').attr('shaft_color');
-                  var short_plumber_neck_shaft_url = short_plumber_neck_shaft_image[color];
-                  alert(short_plumber_neck_shaft_url);
-                  $container.find('.shaft').attr('src', short_plumber_neck_shaft_url); 
-                  $container.find('.shaft').show();
+                  $('.hosel_color').show();
+                  $('.hosel-color-overlay').hide();
                 }
                 else if($container.find('.long_plumber_neck.balance-only').length > 0){
                   alert('shaft tab long_plumber_neck found');
@@ -1124,9 +1176,11 @@ $(document).ready(function () {
                   var long_plumber_neck_shaft_url = long_plumber_neck_shaft_image[color];
                   alert(long_plumber_neck_shaft_url);
                   $container.find('.shaft').attr('src', long_plumber_neck_shaft_url);
-                  $container.find('.shaft').hide();
+                  $container.find('.shaft').show();
 
-                  $('.long_plumber_neck').hide();
+                  $('.long_plumber_neck').show();
+                  $('.hosel_color').hide();
+                  $('.hosel-color-overlay').show();
                 }
                 else{
                  
@@ -1143,6 +1197,8 @@ $(document).ready(function () {
                 if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                   alert('short_plumber_neck tab short found');
                   $('.short_plumber_neck.balance-only').css('z-index','9');
+                  $('.hosel_color').show();
+                  $('.hosel-color-overlay').hide();
                 }
               }, 50);
         } else if ($(this).data('tab') === 'Long_plumber_neck') {
@@ -1156,7 +1212,9 @@ $(document).ready(function () {
                     var get_main_image = $('.balance.balance-only').attr('src') 
                     
                     $('div#custom-image-preview img.active:first-child').attr('src', get_main_image);
-                    $('.shaft').hide();
+                    $('.shaft').show();
+                    $('.hosel_color').hide();
+                    $('.hosel-color-overlay').show();
                   }
                   else{
                     
@@ -1169,20 +1227,95 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
-            $('.hosel_color').show();
+
             alert('hosel_color');
 
             setTimeout(function() {
                 var $container = $('.tab1 .image-wrapper .default-image-sides');
                 if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                    console.log('long_plumber_neck found');
-                    var get_main_image = $('.balance.balance-only').attr('src') 
-                    
-                    $('div#custom-image-preview img.active:first-child').attr('src', get_main_image);
-                    $('.shaft').hide();
+                    alert('long_plumber_neck found hosel color');
+
+                        // Define the hosel color overlay map
+                        const hoselColorOverlayMap = {
+                          Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_red.png",
+                          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_black.png",
+                          Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_blue.png",
+                          Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_green.png",
+                          Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_gold.png",
+                          Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_pink.png",
+                          Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_purple.png",
+                          Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_orange.png"
+                        };
+
+                        function updateHoselColorOverlay() {
+                          // Find the hosel source image inside preview and read its attribute name variants
+                          const $source = $('.tab1 .image-wrapper .default-image-sides img.hosel_color').first();
+                          if (!$source || $source.length === 0) return;
+
+                          const rawColor = $source.attr('hosel_color') || $source.attr('hosel-color') || $source.attr('color') || $source.data('hosel_color') || $source.data('hosel-color');
+                          const color = rawColor ? String(rawColor).trim() : '';
+
+                          const container = document.querySelector('.tab1 .image-wrapper .default-image-sides');
+                          if (!container || !hoselColorOverlayMap[color]) return;
+
+                          // Reuse existing overlay if present, otherwise create one with the expected classes/attributes
+                          let img = container.querySelector('img.hosel-color-overlay');
+                          if (!img) {
+                            img = document.createElement('img');
+                            // Give it the same classes/attributes the codebase expects so other logic/validation sees it
+                            img.className = 'first hosel_color long front-only active hosel-color-overlay cst-hosel-color-overlay-1';
+                            img.setAttribute('hosel_color', color);
+                            img.setAttribute('alt', 'ts_912_hosel_color_' + color);
+                            container.appendChild(img);
+                          } else {
+                            // Ensure attribute is kept up-to-date
+                            img.setAttribute('hosel_color', color);
+                            img.classList.add('active', 'first', 'hosel_color', 'long', 'front-only');
+                          }
+
+                          // Style overlay explicitly for visibility and positioning
+                          $('.cst-hosel-color-overlay-1')
+                            .css('top', '0')
+                            .css('position', 'absolute')
+                            .css('z-index', '9');
+
+                          // Set image src if changed
+                          const newSrc = hoselColorOverlayMap[color];
+                          if (img.src !== newSrc) {
+                            img.src = newSrc;
+                          }
+                          
+                          // Hide any original hosel_color source images in the preview
+                          try {
+                            $(container).find('img.hosel_color').not('.hosel-color-overlay').hide();
+                          } catch (e) {}
+                        }
+
+                        // Expose for other handlers to call
+                        window.updateHoselColorOverlay = updateHoselColorOverlay;
+                        window.hoselColorOverlayMap = hoselColorOverlayMap;
+
+                        // Run on every click in hosel color tab (ensure only one handler)
+                        $(document)
+                          .off('click', '.your-color-selector, .hosel_color')
+                          .on('click', '.your-color-selector, .hosel_color', function () {
+                              setTimeout(updateHoselColorOverlay, 50);
+                          });
+
+                        // Run once when hosel color tab is opened
+                        updateHoselColorOverlay();
+                 
+                  
+                    $('.hosel_color').show();
+                    $('.shaft').show();
+                    $('.long_plumber_neck').show();
                 }
                 else{
-                    
+                   alert('short_plumber_neck not found');
+                        $('.hosel_color').show().css('z-index','9');
+                        $('.hosel-color-overlay').hide();
+                        $('.short_plumber_neck').show();
+                   
                 }
             }, 50);
         }
@@ -1191,6 +1324,171 @@ $(document).ready(function () {
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
             $('.tab1 .image-wrapper .default-image-sides .back-only').show();
+        {% comment %} Shaft Color Overlay Logic Start {% endcomment %}
+            alert('back_plate_color');
+            setTimeout(function() {
+            // Check for .shaft class inside .default-image-sides div
+            // Map for shaft color overlay images
+            const shaftColorOverlayMap = {
+              Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_shaft_color_1.png",
+              Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_shaft_color_2.png"
+            };
+
+            var $defaultImageSides = $('.default-image-sides');
+            var $foundShaft = $defaultImageSides.find('.shaft');
+            if ($foundShaft.length > 0) {
+              var shaftColor = $foundShaft.attr('shaft_color');
+              alert('found. shaft_color: ' + (shaftColor !== undefined ? shaftColor : '[attribute not set]'));
+              
+              // Determine the image overlay url based on static map
+              var overlaySrc = null;
+              if (shaftColor && shaftColorOverlayMap[shaftColor]) {
+                overlaySrc = shaftColorOverlayMap[shaftColor];
+              }
+              
+              if (overlaySrc) {
+                // Remove any previous shaft overlay images we may have added before
+                $defaultImageSides.find('img.back_plate-shaft-color-overlay').remove();
+
+                // Create the new overlay image node
+                var $overlayImg = $('<img>', {
+                  src: overlaySrc,
+                  class: 'back_plate-shaft-color-overlay back-only', // you may add classes as needed
+                  css: {
+                    position: 'absolute',
+                    'z-index': 9,
+                    'display': 'block'
+                  },
+                  alt: ''
+                });
+                // Insert overlay as last child so it's above other images, but still within .default-image-sides
+                $defaultImageSides.append($overlayImg);
+              }
+            } else {
+              alert('not found');
+              // Optionally: Remove any overlays if no shaft found
+              $defaultImageSides.find('img.shaft-color-overlay').remove();
+            }
+            // Check for .short_plumber_neck or .long_plumber_neck class inside .default-image-sides div
+            const neckColorOverlayMap = {
+              Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_neck_color_1.png",
+              Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_neck_color_2.png"
+            };
+            var $foundShortNeck = $defaultImageSides.find('.short_plumber_neck');
+            var $foundLongNeck = $defaultImageSides.find('.long_plumber_neck');
+            var $foundNeck = $foundShortNeck.length > 0 ? $foundShortNeck : $foundLongNeck;
+            if ($foundNeck.length > 0) {
+              // Use the correct attribute based on which neck type was found
+              var neckColor = $foundShortNeck.length > 0 
+                ? $foundShortNeck.attr('short_plumber_neck_color')
+                : $foundLongNeck.attr('long_plumber_neck_color');
+              // Determine the image overlay url based on static map
+              var neckOverlaySrc = null;
+              if (neckColor && neckColorOverlayMap[neckColor]) {
+                neckOverlaySrc = neckColorOverlayMap[neckColor];
+              }
+
+              if (neckOverlaySrc) {
+                // Remove any previous neck overlay images we may have added before
+                $defaultImageSides.find('img.back_plate-neck-color-overlay').remove();
+
+                // Create the new overlay image node
+                var $neckOverlayImg = $('<img>', {
+                  src: neckOverlaySrc,
+                  class: 'back_plate-neck-color-overlay back-only', // add classes as needed
+                  css: {
+                    position: 'absolute',
+                    'z-index': 9,
+                    'display': 'block'
+                  },
+                  alt: ''
+                });
+                // Insert overlay as last child so it's above other images, but still within .default-image-sides
+                $defaultImageSides.append($neckOverlayImg);
+              }
+            } else {
+              // Remove any overlays if no shaft found - and also clean up neck overlays
+              $defaultImageSides.find('img.back_plate-neck-color-overlay').remove();
+            }
+            // Check for .shaft class inside .default-image-sides div
+            const hoselColorOverlayMap = {
+              Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_1.png",
+              Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_2.png",
+              Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_3.png",
+              Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_4.png",
+              Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_5.png",
+              Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_6.png",
+              Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_7.png",
+              Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_hosel_color_8.png"
+            };
+
+            var $foundShaft = $defaultImageSides.find('.hosel_color');
+            if ($foundShaft.length > 0) {
+              var shaftColor = $foundShaft.attr('hosel_color');
+              var hoselOverlaySrc = null;
+              if (shaftColor && hoselColorOverlayMap[shaftColor]) {
+                hoselOverlaySrc = hoselColorOverlayMap[shaftColor];
+              }
+
+              // Remove any previous shaft overlay images
+              $defaultImageSides.find('img.back_plate-hosel-color-overlay').remove();
+
+              if (hoselOverlaySrc) {
+                // Create the new overlay image node
+                var $hoselOverlayImg = $('<img>', {
+                  src: hoselOverlaySrc,
+                  class: 'back_plate-hosel-color-overlay back-only', // add classes as needed
+                  css: {
+                    position: 'absolute',
+                    'z-index': 9,
+                    'display': 'block'
+                  },
+                  alt: ''
+                });
+                // Insert overlay as last child so it's above other images, but still within .default-image-sides
+                $defaultImageSides.append($hoselOverlayImg);
+              }
+            } else {
+              // Remove any overlays if no shaft found - cleanup shaft overlays
+              $defaultImageSides.find('img.back_plate-hosel-color-overlay').remove();
+            }
+            // Check for .shaft class inside .default-image-sides div
+            const finishColorOverlayMap = {
+              Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_finish_color_1.png",
+              Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_finish_color_2.png"
+            };
+
+            var $foundShaft = $defaultImageSides.find('.finish');
+            if ($foundShaft.length > 0) {
+              var shaftFinish = $foundShaft.attr('finish_color');
+              var finishOverlaySrc = null;
+              if (shaftFinish && finishColorOverlayMap[shaftFinish]) {
+                finishOverlaySrc = finishColorOverlayMap[shaftFinish];
+              }
+
+              // Remove any previous shaft overlay images
+              $defaultImageSides.find('img.back_plate-finish-color-overlay').remove();
+
+              if (finishOverlaySrc) {
+                // Create the new overlay image node
+                var $finishOverlayImg = $('<img>', {
+                  src: finishOverlaySrc,
+                  class: 'back_plate-finish-color-overlay back-only', // add classes as needed
+                  css: {
+                    position: 'absolute',
+                    'z-index': 9,
+                    'display': 'block'
+                  },
+                  alt: ''
+                });
+                // Insert overlay as last child so it's above other images, but still within .default-image-sides
+                $defaultImageSides.append($finishOverlayImg);
+              }
+            } else {
+              // Remove any overlays if no shaft found
+              $defaultImageSides.find('img.back_plate-shaft-color-overlay').remove();
+            }
+            }, 50);
         } else {
             $('.tab1 .image-wrapper .default-image-sides .front-only').show();
             $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
@@ -1389,13 +1687,44 @@ $(document).ready(function () {
                 if ($shaft.attr('src') === url) return;
             } catch (e) {}
 
+            // remove any previous overlay to avoid stacking
+            $container.find('.shaft-overlay').remove();
+
             var img = new Image();
             img.onload = function () {
-                // Fade out current image, swap src, fade in for smooth transition
-                // Use jQuery animations to avoid layout thrash
-                $shaft.stop(true, true).animate({ opacity: 0 }, 120, function () {
-                    $shaft.attr('src', url);
-                    $shaft.animate({ opacity: 1 }, 120);
+                // If shaft isn't visible just set the src and show it
+                if ($shaft.is(':hidden')) {
+                    $shaft.attr('src', url).show();
+                    return;
+                }
+
+                // Crossfade using an overlay image so the original doesn't go transparent
+                var zIndex = parseInt($shaft.css('z-index'), 10) || 1;
+                // compute position & size to exactly match the shaft element
+                var relPos = $shaft.position(); // position relative to $container
+                var shaftW = $shaft.outerWidth();
+                var shaftH = $shaft.outerHeight();
+
+                var $overlay = $('<img/>')
+                    .addClass('shaft-overlay')
+                    .attr('src', url)
+                    .css({
+                        position: 'absolute',
+                        top: relPos.top,
+                        left: relPos.left,
+                        width: shaftW,
+                        height: shaftH,
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        zIndex: zIndex + 1,
+                        objectFit: 'contain'
+                    })
+                    .appendTo($container);
+
+                // animate overlay in, then swap the real image src and remove overlay
+                $overlay.stop(true, true).animate({ opacity: 1 }, 180, function () {
+                    try { $shaft.attr('src', url); } catch (e) {}
+                    $overlay.remove();
                 });
             };
             img.src = url;
