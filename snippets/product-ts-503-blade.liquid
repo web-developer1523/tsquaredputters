@@ -1790,6 +1790,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
                 $('.hosel-color-overlay').show();
+                $('.bottom_t').css('z-index', '9');
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                 {% comment %} alert('short_plumber_neck found'); {% endcomment %}
                 $('.hosel_color').show();
@@ -1821,6 +1822,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
                 $('.hosel-color-overlay').show();
+                $('.face_t').css('z-index', '9');
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                 {% comment %} alert('short_plumber_neck found'); {% endcomment %}
                 $('.hosel_color').show();
