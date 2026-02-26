@@ -1002,14 +1002,72 @@ $(document).ready(function () {
     if (altText === 'ts_1104_select_balance_1') {
       $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').show();
       $('.tab1 .style-tab .sidebar .tab[data-tab="Flow_neck"]').hide();
-        console.log('here clicked-1');
+        alert('here clicked-1');
       $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+      $('.front-only').show().css('z-index','9');
+      $('.sidebar .tab[data-tab="Single_bend"]').trigger('click');
+      $('div#colorGrid img').first().trigger('click');
 
     } else if (altText === 'ts_1104_select_balance_2') {
       $('.tab1 .style-tab .sidebar .tab[data-tab="Flow_neck"]').show();
       $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').hide();
-      console.log('here clicked-2');
+      alert('here clicked-2');
       $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
+
+      var get_main_image = $(this).attr('src');
+      var update_main_image = $('#custom-image-preview img.active:first-child').attr('src',get_main_image);
+
+      $('.sidebar .tab[data-tab="Flow_neck"]').trigger('click');
+      $('div#colorGrid img').first().trigger('click');
+
+      const shaftOverlayColorMap = {
+        Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1104_center_shaft_link_1.png',
+        Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1104_center_shaft_link_2.png'
+      };
+      
+      function updateShaftOverlayImage() {
+        const color = $('#custom-image-preview img.shaft')
+          .attr('shaft_color')
+          ?.trim();
+      
+        const container = document.querySelector('#custom-image-preview');
+        if (!container || !shaftOverlayColorMap[color]) return;
+      
+        // 🔥 REMOVE ANY DUPLICATES FIRST
+        const existingImages = container.querySelectorAll('img.shaft-overlay');
+      
+        let img;
+        if (existingImages.length) {
+          img = existingImages[0];
+      
+          // remove extra ones if Shopify duplicated DOM
+          existingImages.forEach((el, i) => {
+            if (i !== 0) el.remove();
+          });
+        } else {
+          img = document.createElement('img');
+          img.className = 'shaft-overlay cst-balance-shaft-overlay-2 active';
+          container.appendChild(img);
+        }
+        $('.cst-balance-shaft-overlay-2').css('top','0');
+        $('.cst-balance-shaft-overlay-2').css('position','absolute');
+        $('.cst-balance-shaft-overlay-2').css('z-index','9');
+        // 🔁 REPLACE IMAGE (never append)
+        if (img.src !== shaftOverlayColorMap[color]) {
+          img.src = shaftOverlayColorMap[color];
+        }
+      }
+      
+      // 🔥 Run on every click (ensure only one handler)
+      $(document).off('click', '.your-color-selector, .shaft').on('click', '.your-color-selector, .shaft', function () {
+        setTimeout(updateShaftOverlayImage, 50);
+      });
+      
+      // 🔥 Also run once on load
+      updateShaftOverlayImage();
+      $('.front-only').show().css('z-index','9');
+      $('.shaft').hide();
+
 
     }
 
@@ -1078,24 +1136,108 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
 
 
 $('.tab1 .style-tab .sidebar .tab').click(function () {
-    if ($(this).data('tab') === 'Sightline_color') {
+    if ($(this).data('tab') === 'Finish') {
+        alert('finish clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.flow_neck.balance-only').length > 0) {
+                $('.shaft').hide();
+                $('.flow_neck').show();
+            }else{
+                $('.shaft').show();
+                $('.single_bend').show();
+            }
+        }, 50);
+    }
+    else if ($(this).data('tab') === 'Shaft') {
+        alert('shaft clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        setTimeout(function() {
+            var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+            if ($frontImg.hasClass('flow_neck')) {
+                $('.flow_neck').show();
+            }
+            else{
+                $('.single_bend').show();
+            }
+        }, 50);
+    }
+    else if ($(this).data('tab') === 'Balance') {
+        alert('balance clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+    }
+    else if ($(this).data('tab') === 'Single_bend') {
+        alert('single bend clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+            setTimeout(function() {
+                alert('single bend found');
+                var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+                if ($frontImg.hasClass('single_bend')) {
+
+                }
+                else{
+                    $('.single_bend').css('z-index','9');
+                    $('.flow_neck').hide();
+                }
+            }, 50);
+    } else if ($(this).data('tab') === 'Flow_neck') {
+        alert('flow neck clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+        setTimeout(function() {
+            var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+            if ($frontImg.hasClass('flow_neck')) {
+                alert('flow neck found');
+                $('.flow_neck').show().css('z-index','9');
+                $('.single_bend').hide();
+            }
+            else{
+                $('.flow_neck').show();
+                $('.single_bend').hide();
+            }
+        }, 50);
+    } 
+    else if ($(this).data('tab') === 'Face_color') {
+        alert('face color clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+    }
+    else if ($(this).data('tab') === 'Base_plate_color') {
+        alert('base plate color clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+    }
+    else if ($(this).data('tab') === 'Sightline_color') {
+        alert('sightline color clicked');
         $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .side-only').show();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
-    } else if ($(this).data('tab') === 'Balance') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+    }
+    else if ($(this).data('tab') === 'Hand') {
+        alert('hand clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-
-    } else if ($(this).data('tab') === 'Single_bend') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+    }
+    else if ($(this).data('tab') === 'Grip_style') {
+        alert('grip style clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-    } else if ($(this).data('tab') === 'Flow_neck') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
-        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
-        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-    } else {
+    }
+    else {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();

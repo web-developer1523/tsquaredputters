@@ -54,7 +54,7 @@
                 </div>
                 <div class="all-other-images">
                     <div class="Finish" style="display: none;">
-                        <img class="first finish front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_finish_link_1.png" alt="ts_503_finish_1" finish_color="Silver"/>
+                        <img class="first finish front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_finish_link_1.png?v=1772078885" alt="ts_503_finish_1" finish_color="Silver"/>
                         <img class="first finish front-only" src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_finish_link_2.png" alt="ts_503_finish_2" finish_color="Black"/>
                     </div>
                     <div class="Shaft" style="display: none;">
@@ -1074,7 +1074,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
         }, 50);
     }
     else if (altText === 'ts_503_hosel_color_1' || altText === 'ts_503_hosel_color_2' || altText === 'ts_503_hosel_color_3' || altText === 'ts_503_hosel_color_4' || altText === 'ts_503_hosel_color_5' || altText === 'ts_503_hosel_color_6' || altText === 'ts_503_hosel_color_7' || altText === 'ts_503_hosel_color_8') {
-        alert('here clicked-4');
+        {% comment %} alert('here clicked-4'); {% endcomment %}
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.short_plumber_neck.balance-only').length > 0) {
