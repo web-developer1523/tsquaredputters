@@ -1009,7 +1009,8 @@ $(document).ready(function () {
       $('div#colorGrid img').first().trigger('click');
         var get_main_image = $(this).attr('src');
         var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
-
+        {% comment %} $('.cst-sightline_color-shaft-overlay').hide();
+        alert('1'); {% endcomment %}
     } else if (altText === 'ts_1104_select_balance_2') {
       $('.tab1 .style-tab .sidebar .tab[data-tab="Flow_neck"]').show();
       $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').hide();
@@ -1072,8 +1073,11 @@ $(document).ready(function () {
       updateShaftOverlayImage();
       $('.front-only').show().css('z-index','9');
       $('.shaft').hide();
+      {% comment %} alert('2');
+      $('.cst-sightline_color-shaft-overlay').hide(); {% endcomment %}
 
 
+    }else{
     }
 
   });
@@ -1149,11 +1153,18 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.flow_neck.balance-only').length > 0) {
-                $('.shaft').hide();
+                $('.shaft').show();
                 $('.flow_neck').show();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }else{
                 $('.shaft').show();
                 $('.single_bend').show();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
         }, 50);
     }
@@ -1167,9 +1178,15 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
             if ($frontImg.hasClass('flow_neck')) {
                 $('.flow_neck').show();
                 $('.shaft').hide();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
             else{
                 $('.single_bend').show();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
         }, 50);
     }
@@ -1181,10 +1198,16 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         setTimeout(function() {
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
             if ($frontImg.hasClass('flow_neck')) {
-                $('.shaft').hide();
+                $('.shaft.front-only').show();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
             else{
-               
+                $('.shaft.front-only').show();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
         }, 50);
        
@@ -1194,16 +1217,23 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+
             setTimeout(function() {
                 alert('single bend found');
                 var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
                 if ($frontImg.hasClass('single_bend')) {
                     $('.single_bend').show().css('z-index','9');
                     $('.cst-balance-shaft-overlay-2').hide();
+                    $('.cst-sightline_color-shaft-overlay').hide();
+                    $('.cst-sightline_color-hosel-overlay').hide();
+                    $('.cst-sightline_color-finish-overlay').hide();
                 }
                 else{
                     $('.single_bend').css('z-index','9');
                     $('.flow_neck').hide();
+                    $('.cst-sightline_color-shaft-overlay').hide();
+                    $('.cst-sightline_color-hosel-overlay').hide();
+                    $('.cst-sightline_color-finish-overlay').hide();
                 }
             }, 50);
     } else if ($(this).data('tab') === 'Flow_neck') {
@@ -1211,17 +1241,24 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+
         setTimeout(function() {
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
             if ($frontImg.hasClass('flow_neck')) {
                 alert('flow neck found');
                 $('.flow_neck').show().css('z-index','9');
                 $('.single_bend').hide();
-                $('.shaft').hide();
+                $('.shaft').show();
+                $('.cst-sightline_color-shaft-overlay').hide()
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
             else{
-                $('.flow_neck').show();
-                $('.single_bend').hide();
+                $('.flow_neck').hide();
+                $('.single_bend').show();
+                $('.cst-sightline_color-shaft-overlay').hide();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
             }
         }, 50);
     } 
@@ -1234,10 +1271,15 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
             if ($frontImg.hasClass('flow_neck')) {
                 alert('flow neck found');
-                $('.shaft').hide();
+                $('.shaft').show();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-sightline_color-shaft-overlay').hide();
             }
             else{
-
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-sightline_color-shaft-overlay').hide();
             }
         }, 50);
     }
@@ -1250,10 +1292,15 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
             var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
             if ($frontImg.hasClass('flow_neck')) {
                 alert('flow neck found');
-                $('.shaft').hide();
+                $('.shaft').show();
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-sightline_color-shaft-overlay').hide();
             }
             else{
-
+                $('.cst-sightline_color-hosel-overlay').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-sightline_color-shaft-overlay').hide();
             }
         }, 50);
     }
@@ -1262,16 +1309,10 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .side-only').show();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
-
+        
         const FinishMap = {
-            Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Red.png?v=1768310780',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Black.png?v=1768310779',
-            Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Blue.png?v=1768310779',
-            Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Green.png?v=1768310779',
-            Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Gold.png?v=1768310779',
-            Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Pink.png?v=1768310779',
-            Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Purple.png?v=1768310780',
-            Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Orange.png?v=1768310780'
+            Sliver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_finish_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_finish_2.png'
           };
 
         function updateFinishImage() {
@@ -1316,8 +1357,8 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
           updateFinishImage();
 
           const Shaftmap = {
-            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Silver-shaft.png?v=1768997911',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Black-shaft.png?v=1768997354'
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_shaft_1.png?v=1772445222',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_shaft_2.png?v=1772445222'
           };
           function updateShaftImage() {
             const shaft_color = $('#custom-image-preview img.shaft')
@@ -1358,19 +1399,58 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         updateShaftImage();
           
           const Hoselmap = {
-            Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Red-hosel.png?v=1769000053',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Black-hosel.png?v=1768996394',
-            Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Blue-hosel.png?v=1769000053',
-            Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Green-hosel.png?v=1769000053',
-            Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Gold-hosel.png?v=1769000053',
-            Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Pink-hosel.png?v=1769000053',
-            Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Purple-hosel.png?v=1769000052',
-            Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Orange-hosel.png?v=1769000053'
+            Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_2.png',
+            Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_3.png',
+            Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_4.png',
+            Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_5.png',
+            Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_6.png',
+            Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_7.png',
+            Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104_sightline_hosel_8.png'
           };
-        function updateHoselImage() {
+          function updateHoselImage() {
+
+            let hosel_color = null;
           
-            const hosel_color = $('#custom-image-preview img.hosel_color')
-              .attr('hosel_color')
+            // check for single_bend first
+            const singleBendEl = $('#custom-image-preview img.single_bend');
+            const flowNeckEl = $('#custom-image-preview img.flow_neck');
+          
+            if (singleBendEl.length) {
+              hosel_color = singleBendEl.attr('single_bend_color')?.trim();
+            } else if (flowNeckEl.length) {
+              hosel_color = flowNeckEl.attr('flow_neck_color')?.trim();
+            }
+          
+            const container = document.querySelector('#custom-image-preview');
+            if (!container || !hosel_color || !Hoselmap[hosel_color]) return;
+          
+            // enforce SINGLE image instance
+            const existingImages = container.querySelectorAll('img.hosel-overlay');
+          
+            let img;
+            if (existingImages.length) {
+              img = existingImages[0];
+          
+              // remove duplicates
+              existingImages.forEach((el, i) => {
+                if (i !== 0) el.remove();
+              });
+            } else {
+              img = document.createElement('img');
+              img.className = 'hosel-overlay cst-sightline_color-hosel-overlay active';
+              container.appendChild(img);
+            }
+          
+            // update image
+            if (img.src !== Hoselmap[hosel_color]) {
+              img.src = Hoselmap[hosel_color];
+            }
+          }
+        {% comment %} function updateHoselImage() {
+          
+            const hosel_color = $('#custom-image-preview img.single_bend ')
+              .attr('single_bend_color')
               ?.trim();
           
             const container = document.querySelector('#custom-image-preview');
@@ -1400,15 +1480,15 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
           }
           
           // 🔥 update on every interaction that can change hosel color (ensure only one handler)
-          $(document).off('click', '#colorGrid .color-image, .hosel_color').on('click', '#colorGrid .color-image, .hosel_color', function () {
+          $(document).off('click', '#colorGrid .color-image, .single_bend').on('click', '#colorGrid .color-image, .single_bend', function () {
             setTimeout(updateHoselImage, 50);
-        });
+        }); {% endcomment %}
         updateHoselImage();
 
         var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
 
         function applyShaftOverlayCss() {
-            const $overlays = $('#custom-image-preview img.cst-sightline_color-shaft-overlay');
+            const $overlays = $('#custom-image-preview img.cst-sightline_color-hosel-overlay');
           
             console.log('shaft overlays found:', $overlays.length);
           
@@ -1437,8 +1517,9 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
               }, 50);
             });
 
-
-
+            $('.cst-sightline_color-hosel-overlay').show().css({'z-index': '9','position': 'absolute','top': '0'});
+            $('.cst-sightline_color-finish-overlay').show().css({'z-index': '9','position': 'absolute','top': '0'});
+            $('.cst-sightline_color-shaft-overlay').show().css({'z-index': '9','position': 'absolute','top': '0'});
     }
     else if ($(this).data('tab') === 'Hand') {
         alert('hand clicked');
@@ -1447,6 +1528,15 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
         $('.cst-sightline_color-finish-overlay').hide();
         $('.cst-sightline_color-shaft-overlay').hide();
+        $('.cst-balance-shaft-overlay-2').hide();
+        $('.cst-sightline_color-hosel-overlay').hide();
+        var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+        // only show if it has the center_shaft class
+        if ($frontImg.hasClass('flow_neck')) {
+            $('.flow_neck').show();
+        } else {
+            $('.single_bend').show(); // or just omit this line if you don't care
+        }
     }
     else if ($(this).data('tab') === 'Grip_style') {
         alert('grip style clicked');
@@ -1455,6 +1545,32 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
         $('.cst-sightline_color-finish-overlay').hide();
         $('.cst-sightline_color-shaft-overlay').hide();
+        $('.cst-balance-shaft-overlay-2').hide();
+        $('.cst-sightline_color-hosel-overlay').hide();
+        var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+        // only show if it has the center_shaft class
+        if ($frontImg.hasClass('flow_neck')) {
+            $('.flow_neck').show();
+        } else {
+            $('.single_bend').show(); // or just omit this line if you don't care
+        }
+    }
+    else if ($(this).data('tab') === 'Shaft_length') {
+        alert('Shaft_length style clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        $('.cst-sightline_color-finish-overlay').hide();
+        $('.cst-sightline_color-shaft-overlay').hide();
+        $('.cst-balance-shaft-overlay-2').hide();
+        $('.cst-sightline_color-hosel-overlay').hide(); 
+        var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
+        // only show if it has the center_shaft class
+        if ($frontImg.hasClass('flow_neck')) {
+            $('.flow_neck').show();
+        } else {
+            $('.single_bend').show(); // or just omit this line if you don't care
+        }
     }
     else {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
@@ -1603,18 +1719,18 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
 
 
     // Live-update shaft image when DOM or shaft_color changes inside the default-image-sides container
-    {% comment %} (function () {
-        alert('function here');
+    (function () {
+        {% comment %} alert('function here'); {% endcomment %}
         var $container = $('.tab1 .image-wrapper .default-image-sides');
         if ($container.length === 0) return;
 
-        const short_plumber_neck_shaft_image = {
-            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_shaft_link_1.png',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_503_shaft_link_2.png'
+        const single_bend_shaft_image = {
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1104_shaft_link_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1104_shaft_link_2.png'
         };
-        const long_plumber_neck_shaft_image = {
-            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-503_Silver_Long_shaft_1.png',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-503_Silver_Long_shaft_2.png'
+        const flow_neck_shaft_image = {
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1104_flow_neck_shaft_link_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1104_flow_neck_shaft_link_2.png'
         };
 
         function preloadAndSwap($shaft, url) {
@@ -1665,15 +1781,15 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
         function updateShaftImage() {
             var $shaft = $container.find('.shaft');
             // prefer short plumber neck if present
-            if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+            if ($container.find('.single_bend.balance-only').length > 0) {
                 var color = $shaft.attr('shaft_color');
-                var url = short_plumber_neck_shaft_image[color];
+                var url = single_bend_shaft_image[color];
                 preloadAndSwap($shaft, url);
                 return;
             }
-            if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+            if ($container.find('.flow_neck.balance-only').length > 0) {
                 var color = $shaft.attr('shaft_color');
-                var url = long_plumber_neck_shaft_image[color];
+                var url = flow_neck_shaft_image[color];
                 preloadAndSwap($shaft, url);
                 return;
             }
@@ -1690,7 +1806,7 @@ $('.tab1 .style-tab .sidebar .tab').click(function () {
 
         // initial run
         updateShaftImage();
-    })(); {% endcomment %}
+    })();
 
 
     // Initial load
