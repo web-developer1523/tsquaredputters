@@ -1006,7 +1006,7 @@ $(document).ready(function () {
       $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
       $('.front-only').show().css('z-index','9');
       $('.sidebar .tab[data-tab="Single_bend"]').trigger('click');
-      $('div#colorGrid img').first().trigger('click');
+      {% comment %} $('div#colorGrid img').first().trigger('click'); {% endcomment %}
         var get_main_image = $(this).attr('src');
         var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
         {% comment %} $('.cst-sightline_color-shaft-overlay').hide();
@@ -1021,7 +1021,7 @@ $(document).ready(function () {
       var update_main_image = $('#custom-image-preview img.active:first-child').attr('src',get_main_image);
 
       $('.sidebar .tab[data-tab="Flow_neck"]').trigger('click');
-      $('div#colorGrid img').first().trigger('click');
+      {% comment %} $('div#colorGrid img').first().trigger('click'); {% endcomment %}
       
       var get_main_image = $(this).attr('src');
       var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
@@ -1083,6 +1083,29 @@ $(document).ready(function () {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.flow_neck.balance-only').length > 0) {
                $('.cst-sightline_color-shaft-overlay').hide();
+            }else{
+                $('.cst-sightline_color-shaft-overlay').hide();
+            }
+        }, 50);
+    }
+    else if(altText === 'ts_1104_single_bend_1' || altText === 'ts_1104_single_bend_2' || altText === 'ts_1104_single_bend_3' || altText === 'ts_1104_single_bend_4' || altText === 'ts_1104_single_bend_5' || altText === 'ts_1104_single_bend_6' || altText === 'ts_1104_single_bend_7' || altText === 'ts_1104_single_bend_8'){
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.single_bend.balance-only').length > 0) {
+               $('.cst-sightline_color-shaft-overlay').hide();
+
+            }else{
+                $('.cst-sightline_color-shaft-overlay').hide();
+            }
+        }, 50);
+    }
+    else if(altText === 'ts_1104_flow_neck_1' || altText === 'ts_1104_flow_neck_2' || altText === 'ts_1104_flow_neck_3' || altText === 'ts_1104_flow_neck_4' || altText === 'ts_1104_flow_neck_5' || altText === 'ts_1104_flow_neck_6' || altText === 'ts_1104_flow_neck_7' || altText === 'ts_1104_flow_neck_8'){
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.flow_neck.balance-only').length > 0) {
+                alert();
+               $('.cst-sightline_color-shaft-overlay').hide();
+               $('.flow_neck').show().css('z-index', '9');
             }else{
                 $('.cst-sightline_color-shaft-overlay').hide();
             }
