@@ -1008,7 +1008,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
         $('div#colorGrid img').first().trigger('click'); 
         var $container = $('.tab1 .image-wrapper .default-image-sides');
         if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-          {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+          alert('long_plumber_neck found');
           $('.long_plumber_neck.balance-only').show().css('z-index','9');
 
           const long_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-503_Silver_Long.png"
@@ -1070,14 +1070,14 @@ $(document).on('click', '#colorGrid .color-image', function() {
     }, 50);
   }
     else if (altText === 'ts_503_short_plumber_neck_1' || altText === 'ts_503_short_plumber_neck_2') {
-        {% comment %} alert('here clicked-3'); {% endcomment %}
+        alert('here clicked-3');
         setTimeout(function() {
             $('.hosel_color').show();
             $('.hosel-color-overlay').hide();
         }, 50);
     }
     else if (altText === 'ts_503_hosel_color_1' || altText === 'ts_503_hosel_color_2' || altText === 'ts_503_hosel_color_3' || altText === 'ts_503_hosel_color_4' || altText === 'ts_503_hosel_color_5' || altText === 'ts_503_hosel_color_6' || altText === 'ts_503_hosel_color_7' || altText === 'ts_503_hosel_color_8') {
-        {% comment %} alert('here clicked-4'); {% endcomment %}
+        alert('here clicked-4');
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.short_plumber_neck.balance-only').length > 0) {
@@ -1156,11 +1156,12 @@ $(document).on('click', '#colorGrid .color-image', function() {
                   updateHoselColorOverlay();
            
             }
-        
+            $('.hosel_color').show();
+            $('.hosel-color-overlay').hide();
         }, 50);
     }
     else if (altText === 'ts_503_bottom_t_1' || altText === 'ts_503_bottom_t_2' || altText === 'ts_503_bottom_t_3' || altText === 'ts_503_bottom_t_4' || altText === 'ts_503_bottom_t_5' || altText === 'ts_503_bottom_t_6' || altText === 'ts_503_bottom_t_7' || altText === 'ts_503_bottom_t_8') {
-        {% comment %} alert('here clicked-5'); {% endcomment %}
+        alert('here clicked-5');
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.short_plumber_neck.balance-only').length > 0) {
@@ -1268,6 +1269,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.sightline-hosel_color-overlay').show();
                 $('.long_plumber_neck').show();
             }
+            $('.hosel_color').show();
+            $('.hosel-color-overlay').hide();
             $('.club_lie').hide();
             $('.club_loft').hide();
         }, 50); 
@@ -1282,13 +1285,13 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('shaft tab short_plumber_neck found'); {% endcomment %}
+                alert('shaft tab short_plumber_neck found');
                 $('.short_plumber_neck.balance-only').show().css('z-index','9');
                 $('.hosel_color').show();
                 $('.hosel-color-overlay').hide();
             }
             else if($container.find('.long_plumber_neck.balance-only').length > 0){
-                {% comment %} alert('shaft tab long_plumber_neck found');  {% endcomment %}
+                alert('shaft tab long_plumber_neck found'); 
                 const long_plumber_neck_shaft_image = {
                 Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-503_Silver_Long_shaft_1.png',
                 Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-503_Silver_Long_shaft_2.png'
@@ -1306,7 +1309,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.sightline-hosel_color-overlay').show();
             }
             else{
-                
+                $('.hosel_color').show();
+                $('.hosel-color-overlay').hide();
             }
             $('.club_lie').hide();
             $('.club_loft').hide();
@@ -1321,7 +1325,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-              {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+              alert('short_plumber_neck found');
               {% comment %} var image_src = $('.balance').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png');
               $('div#custom-image-preview img.active:first-child').attr('src', image_src);  {% endcomment %}
               $('.shaft').show();
@@ -1333,10 +1337,13 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
               $('.hosel-color-overlay').show();
               $('.sightline-hosel_color-overlay').show();
             }
+            $('.hosel_color').show();
+            $('.hosel-color-overlay').hide();
             $('.club_lie').hide();
             $('.club_loft').hide();
         }, 50);
     }
+
     else if ($(this).data('tab') === 'Short_plumber_neck') {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
@@ -1345,7 +1352,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-              {% comment %} alert('short_plumber_neck tab short found'); {% endcomment %}
+              alert('short_plumber_neck tab short found');
               $('.short_plumber_neck.balance-only').css('z-index','9');
               $('.hosel_color').show();
               $('.hosel-color-overlay').hide();
@@ -1382,7 +1389,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
 
-        {% comment %} alert('hosel_color'); {% endcomment %}
+        alert('hosel_color');
 
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
@@ -1466,12 +1473,13 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.long_plumber_neck').show();
             }
             else{
-               {% comment %} alert('short_plumber_neck not found'); {% endcomment %}
+               alert('short_plumber_neck not found');
                     $('.hosel_color').show().css('z-index','9');
                     $('.hosel-color-overlay').hide();
                     $('.short_plumber_neck').show();
                
             }
+          
             $('.club_lie').hide();
             $('.club_loft').hide();
         }, 50);
@@ -1482,7 +1490,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .back-only').show();
     {% comment %} Shaft Color Overlay Logic Start {% endcomment %}
-        {% comment %} alert('back_plate_color'); {% endcomment %}
+        alert('back_plate_color');
         setTimeout(function() {
         // Check for .shaft class inside .default-image-sides div
         // Map for shaft color overlay images
@@ -1522,7 +1530,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
             $defaultImageSides.append($overlayImg);
           }
         } else {
-          {% comment %} alert('not found'); {% endcomment %}
+          alert('not found');
           // Optionally: Remove any overlays if no shaft found
           $defaultImageSides.find('img.shaft-color-overlay').remove();
         }
@@ -1907,7 +1915,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -1917,7 +1925,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.hosel-color-overlay').show();
                 $('.bottom_t').css('z-index', '9');
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -1927,7 +1935,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.hosel-color-overlay').hide();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
     }
@@ -1939,7 +1947,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -1949,7 +1957,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.hosel-color-overlay').show();
                 $('.face_t').css('z-index', '9');
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -1959,7 +1967,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.hosel-color-overlay').hide();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
     }
@@ -1971,7 +1979,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -1979,7 +1987,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -1988,7 +1996,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.short_plumber_neck').show();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
 
@@ -2001,7 +2009,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -2009,7 +2017,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -2018,7 +2026,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.short_plumber_neck').show();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
     }
@@ -2030,7 +2038,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -2038,7 +2046,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -2047,7 +2055,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.short_plumber_neck').show();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
     }
@@ -2059,7 +2067,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -2067,7 +2075,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -2076,7 +2084,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.short_plumber_neck').show();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
     }
@@ -2088,7 +2096,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.long_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('long_plumber_neck found'); {% endcomment %}
+                alert('long_plumber_neck found');
                 $('.hosel_color').hide();
                 $('.sightline-hosel_color-overlay').show();
                 $('.face_t').css('z-index', '9');
@@ -2096,7 +2104,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.club_loft').hide();
                 $('.long_plumber_neck').show();
             }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                {% comment %} alert('short_plumber_neck found'); {% endcomment %}
+                alert('short_plumber_neck found');
                 $('.hosel_color').show();
                 $('.sightline-hosel_color-overlay').hide();
                 $('.face_t').css('z-index', '9');
@@ -2105,7 +2113,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.short_plumber_neck').show();
             }
             else {
-                {% comment %} alert('no found'); {% endcomment %}
+                alert('no found');
             }
         }, 50);
     }
