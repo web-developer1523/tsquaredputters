@@ -1588,8 +1588,8 @@ $(document).on('click', '#colorGrid .color-image', function() {
                   updateHoselColorOverlay();
            
             }
-            $('.hosel_color').hide();
-            $('.hosel-color-overlay').show();
+            {% comment %} $('.hosel_color').hide();
+            $('.hosel-color-overlay').show(); {% endcomment %}
         }, 50);
     }
     else if (altText === 'ts_503_bottom_t_1' || altText === 'ts_503_bottom_t_2' || altText === 'ts_503_bottom_t_3' || altText === 'ts_503_bottom_t_4' || altText === 'ts_503_bottom_t_5' || altText === 'ts_503_bottom_t_6' || altText === 'ts_503_bottom_t_7' || altText === 'ts_503_bottom_t_8') {
@@ -1662,7 +1662,6 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 // Set the add-to-cart button's data-variant with the actual variant ID
                 // But we'll use the title in properties later
                 $('.cst-custom-add-to-cart').attr('data-variant', img.closest('.Club_lie').find('img[alt="' + altText + '"]').data('variant-id') || {{ product.selected_or_first_available_variant.id }});
-                
             }
             });
     
@@ -1770,7 +1769,6 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
               $('.sightline-hosel_color-overlay').show();
             }
            
-           
             $('.club_lie').hide();
             $('.club_loft').hide();
         }, 50);
@@ -1791,7 +1789,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
             }
             $('.club_lie').hide();
             $('.club_loft').hide();
-          }, 50);
+        }, 50);
     }
     else if ($(this).data('tab') === 'Long_plumber_neck') {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
@@ -1905,7 +1903,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.long_plumber_neck').show();
             }
             else{
-               alert('short_plumber_neck not found');
+               alert('short_plumber_neck  found');
                     $('.hosel_color').show().css('z-index','9');
                     $('.hosel-color-overlay').hide();
                     $('.short_plumber_neck').show();
