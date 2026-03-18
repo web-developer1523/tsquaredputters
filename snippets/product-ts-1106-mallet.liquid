@@ -1380,20 +1380,16 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         }, 50);
     }
     else if ($(this).data('tab') === 'Sightline_color') {
+        alert('sightline_color clicked');
         $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .side-only').show();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
         {% comment %}  {% endcomment %}
+        setTimeout(function() {
          $('.hosel-overlay.first.side-only.active').show();
         const FinishMap = {
-            Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Red.png?v=1768310780',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Black.png?v=1768310779',
-            Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Blue.png?v=1768310779',
-            Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Green.png?v=1768310779',
-            Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Gold.png?v=1768310779',
-            Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Pink.png?v=1768310779',
-            Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Purple.png?v=1768310780',
-            Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Orange.png?v=1768310780'
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_finish_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_finish_2.png'
           };
 
         function updateFinishImage() {
@@ -1438,8 +1434,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
           updateFinishImage();
 
           const Shaftmap = {
-            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Silver-shaft.png?v=1768997911',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Black-shaft.png?v=1768997354'
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_shaft_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_shaft_2.png'
           };
           function updateShaftImage() {
             const shaft_color = $('#custom-image-preview img.shaft')
@@ -1480,19 +1476,19 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         updateShaftImage();
           
           const Hoselmap = {
-            Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Red-hosel.png?v=1769000053',
-            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Black-hosel.png?v=1768996394',
-            Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Blue-hosel.png?v=1769000053',
-            Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Green-hosel.png?v=1769000053',
-            Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Gold-hosel.png?v=1769000053',
-            Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Pink-hosel.png?v=1769000053',
-            Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Purple-hosel.png?v=1769000052',
-            Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/Orange-hosel.png?v=1769000053'
+            Red: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_2.png',
+            Blue: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_3.png',
+            Green: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_4.png',
+            Gold: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_5.png',
+            Pink: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_6.png',
+            Purple: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_7.png',
+            Orange: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_sightline_hosel_color_8.png'
           };
         function updateHoselImage() {
           
-            const hosel_color = $('#custom-image-preview img.hosel_color')
-              .attr('hosel_color')
+            const hosel_color = $('#custom-image-preview img.single_bend')
+              .attr('single_bend_color')
               ?.trim();
           
             const container = document.querySelector('#custom-image-preview');
@@ -1562,22 +1558,28 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         $('.cst-sightline_color-hosel-overlay').show();
         $('.cst-sightline_color-hosel-overlay').css('position','absolute');
         $('.cst-sightline_color-hosel-overlay').css('z-index','9');
-        if ($frontImg.hasClass('center_shaft')) {
-            $('.side-only').show();
-            $('.cst-sightline_color-finish-overlay').show();
-            $('.cst-sightline_color-finish-overlay').css('position','absolute');
-            $('.cst-sightline_color-finish-overlay').css('z-index','9');
-            $('.cst-balance-shaft-overlay-2').show();
-        }
-        else {
-            $('.cst-sightline_color-finish-overlay').css('position','absolute');
-            $('.cst-sightline_color-finish-overlay').css('z-index','9');
-            $('.cst-balance-shaft-overlay-2').show();
-            $('.cst-sightline_color-finish-overlay').show();
-            $('.sightline_color').show();
-            $('.hosel-overlay').show();
-            $('.cst-sightline_color-hosel-overlay').hide();
-        }
+
+      
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('sightline_color center_shaft.balance-only found');
+                $('.side-only').show();
+                $('.cst-sightline_color-finish-overlay').show();
+                $('.cst-sightline_color-finish-overlay').css('position','absolute');
+                $('.cst-sightline_color-finish-overlay').css('z-index','9');
+                $('.cst-balance-shaft-overlay-2').show();
+            }
+            else {
+                alert('sightline_color center_shaft.balance-only not found');
+                $('.cst-sightline_color-finish-overlay').css('position','absolute');
+                $('.cst-sightline_color-finish-overlay').css('z-index','9');
+                $('.cst-balance-shaft-overlay-2').show();
+                $('.cst-sightline_color-finish-overlay').show();
+                $('.sightline_color').show();
+                $('.hosel-overlay').show();
+            }
+        }, 50);
+        
         {% comment %}  {% endcomment %}
        
     }
