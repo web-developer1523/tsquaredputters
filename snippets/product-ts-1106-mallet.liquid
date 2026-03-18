@@ -1088,31 +1088,33 @@ $(document).on('click', '#colorGrid .color-image', function() {
 
   // Show corresponding div based on which image is clicked
   if (altText === 'ts_1106_select_balance_1') {
+
     $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').show();
     $('.tab1 .style-tab .sidebar .tab[data-tab="Center_shaft"]').hide();
-   
-      console.log('here clicked-1');
+
+    alert('here clicked-1');
     $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
     var get_main_image = $(this).attr('src');
-    var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
+    var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src', get_main_image);
     $('.front-only').show();
     $('.front-only').css('z-index','9');
     $('.shaft-overlay').hide();
-    $('.sidebar .tab[data-tab="Plumbers_neck"]').trigger('click');
-    $('div#colorGrid img').first().trigger('click');
+    $('.sidebar .tab[data-tab="Single_bend"]').trigger('click');
+    $('#colorGrid img').first().trigger('click');
+
 
   } else if (altText === 'ts_1106_select_balance_2') {
     $('.tab1 .style-tab .sidebar .tab[data-tab="Center_shaft"]').show();
     $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').hide();
 
-    console.log('here clicked-2');
+    alert('here clicked-2');
     $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
     var get_main_image = $(this).attr('src');
     var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
 
     const shaftOverlayColorMap = {
-        Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_1.png',
-        Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_2.png'
+        Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_center_shaft_link_1.png',
+        Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1106_center_shaft_link_2.png'
       };
       
       function updateShaftOverlayImage() {
@@ -1159,7 +1161,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
       $('.finish.front-only').css('z-index','9');
       $('.shaft-overlay').show();
       $('.sidebar .tab[data-tab="Center_shaft"]').trigger('click');
-      $('div#colorGrid img').first().trigger('click');
+      $('#colorGrid img').first().trigger('click');
 
   }
 
@@ -1235,76 +1237,147 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
 
   $('.tab1 .style-tab .sidebar .tab').click(function () {
     if ($(this).data('tab') === 'Finish') {
-        var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
-
-        // only show if it has the center_shaft class
-        if ($frontImg.hasClass('center_shaft')) {
-            $('.front-only').show();
-            $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
-            $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
-            $('.center_shaft').show();
-            $('.cst-balance-shaft-overlay-2').hide();
-            $('.sightline_color').hide();
-            $('.cst-sightline_color-finish-overlay').hide();
-            $('.cst-balance-shaft-overlay-2').hide();
-            $('.side-only').hide();
-            $('.plumbers_neck ').hide();
-            $('.hosel_color').hide();
-        } else {
-            $('.front-only').show(); 
-            $('.cst-sightline_color-finish-overlay').hide();
-            $('.cst-balance-shaft-overlay-2').hide();
-            $('.side-only').hide();// or just omit this line if you don't care
-        }
+        alert('finish clicked');
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('finish_center_shaft found');
+                $('.front-only').show();
+                $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
+                $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
+                $('.center_shaft').show();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.sightline_color').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();
+                $('.plumbers_neck ').hide();
+                $('.hosel_color').hide();
+            }
+            else{
+                $('.front-only').show(); 
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();// or just omit this line if you don't care
+            }
+        }, 50);
+        
     }
     else if ($(this).data('tab') === 'Shaft') {
-        var $frontImg = $('.tab1 .image-wrapper .default-image-sides img');
-
-        // only show if it has the center_shaft class
-        if ($frontImg.hasClass('center_shaft')) {
-            {% comment %} alert('center_shaft-1'); {% endcomment %}
-            $('.first.shaft.front-only').hide();
-            // Option 1: hide after showing everything
-            $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
-            $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
-            $('.center_shaft').show();
-            $('.cst-balance-shaft-overlay-2').hide();
-            const colorMap = {
-                Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_1.png',
-                Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_2.png'
-            };
-                var center_shaft_image = $('.first.shaft.front-only').attr('src');
-                var center_shaft_color = $('.first.shaft.front-only').attr('shaft_color');
-                var center_shaft_url = colorMap[center_shaft_color];
-                $('.center_shaft.balance-only').attr('src', center_shaft_url);
-
-        } else {
-            {% comment %} alert('center_shaft-2'); {% endcomment %}
-            $('.front-only').show(); 
-            $('.sightline_color').hide();
-            $('.cst-sightline_color-finish-overlay').hide();
-            $('.cst-balance-shaft-overlay-2').hide();
-            $('.side-only').hide();
-        }
+        alert('shaft clicked');
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('shaft_center_shaft found');
+                alert('shaft_center_shaft found');
+                $('.first.shaft.front-only').hide();
+                // Option 1: hide after showing everything
+                $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
+                $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
+                $('.center_shaft').show();
+                $('.cst-balance-shaft-overlay-2').hide();
+                const colorMap = {
+                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_1.png',
+                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_1029_center_shaft_link_2.png'
+                };
+                    var center_shaft_image = $('.first.shaft.front-only').attr('src');
+                    var center_shaft_color = $('.first.shaft.front-only').attr('shaft_color');
+                    var center_shaft_url = colorMap[center_shaft_color];
+                    $('.center_shaft.balance-only').attr('src', center_shaft_url);
+            }
+            else{
+                alert('shaft_center_shaft not found');
+                $('.front-only').show(); 
+                $('.sightline_color').hide();
+                $('.cst-sightline_color-finish-overlay').hide();
+                $('.cst-balance-shaft-overlay-2').hide();
+                $('.side-only').hide();
+            }
+        }, 50);
+       
     }
     else if ($(this).data('tab') === 'Balance') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('balance_center_shaft found');
+            }
+            else{
+                alert('balance_center_shaft not found');
+            }
+        }, 50);
 
-    } else if ($(this).data('tab') === 'Center_shaft') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+    } 
+    else if ($(this).data('tab') === 'Single_bend') {
+        alert('single_bend clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
-    } else if ($(this).data('tab') === 'Single_bend') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('single_bend_center_shaft found');
+              
+            }
+            else{
+                alert('single_bend_center_shaft not found');
+                $('.single_bend').show().css('z-index','9');
+            }
+        }, 50);
+    }
+    else if ($(this).data('tab') === 'Center_shaft') {
+        alert('center_shaft clicked');
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('center_shaft_center_shaft found');
+                $('.center_shaft').show().css('z-index','9');
+                $('.shaft').hide();
+                $('.shaft-overlay').hide();
+            }
+            else{
+                alert('center_shaft_center_shaft not found');
+            }
+        }, 50);
+    } 
+    else if ($(this).data('tab') === 'Face_color') {
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
+        $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('face_color_center_shaft found');
+                $('.center_shaft').show().css('z-index','9');
+                $('.shaft').hide();
+            }
+            else{
+                alert('face_color_center_shaft not found');
+
+            }
+        }, 50);
     }
     else if ($(this).data('tab') === 'Base_plate_color') {
-        $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
+        $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('base_plate_color_center_shaft found');
+                $('.center_shaft').show().css('z-index','9');
+                $('.shaft').hide();
+            }
+            else{
+                alert('base_plate_color_center_shaft not found');
+            }
+        }, 50);
     }
     else if ($(this).data('tab') === 'Sightline_color') {
         $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
@@ -1512,6 +1585,19 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.center_shaft.balance-only').length > 0) {
+                alert('sole_inlay_center_shaft found');
+                $('.finish-overlay').hide();
+                $('.shaft-overlay').hide();
+            }
+            else{
+                alert('sole_inlay_center_shaft not found');
+                $('.finish-overlay').hide();
+                $('.shaft-overlay').hide();
+            }
+        }, 50);
     }
     else if ($(this).data('tab') === 'Hand') {
            
