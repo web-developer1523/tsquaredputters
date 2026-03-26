@@ -1092,7 +1092,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
     $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').show();
     $('.tab1 .style-tab .sidebar .tab[data-tab="Center_shaft"]').hide();
 
-    alert('here clicked-1');
+    {% comment %} alert('here clicked-1'); {% endcomment %}
     $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
     var get_main_image = $(this).attr('src');
     var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src', get_main_image);
@@ -1107,7 +1107,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
     $('.tab1 .style-tab .sidebar .tab[data-tab="Center_shaft"]').show();
     $('.tab1 .style-tab .sidebar .tab[data-tab="Single_bend"]').hide();
 
-    alert('here clicked-2');
+    {% comment %} alert('here clicked-2'); {% endcomment %}
     $('.tab1 .image-wrapper .default-image-sides .balance-only').not('.balance').remove();
     var get_main_image = $(this).attr('src');
     var update_main_image = $('div#custom-image-preview img.active:first-child').attr('src',get_main_image);
@@ -1237,11 +1237,11 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
 
   $('.tab1 .style-tab .sidebar .tab').click(function () {
     if ($(this).data('tab') === 'Finish') {
-        alert('finish clicked');
+        {% comment %} alert('finish clicked'); {% endcomment %}
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('finish_center_shaft found');
+                {% comment %} alert('finish_center_shaft found'); {% endcomment %}
                 $('.front-only').show();
                 $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
                 $('.shaft.front-only[alt="ts_1029_shaft_2"]').hide();
@@ -1265,12 +1265,11 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         
     }
     else if ($(this).data('tab') === 'Shaft') {
-        alert('shaft clicked');
+        {% comment %} alert('shaft clicked'); {% endcomment %}
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('shaft_center_shaft found');
-                alert('shaft_center_shaft found');
+                {% comment %} alert('shaft_center_shaft found'); {% endcomment %}
                 $('.first.shaft.front-only').hide();
                 // Option 1: hide after showing everything
                 $('.shaft.front-only[alt="ts_1029_shaft_1"]').hide();
@@ -1287,7 +1286,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.center_shaft.balance-only').attr('src', center_shaft_url);
             }
             else{
-                alert('shaft_center_shaft not found');
+                {% comment %} alert('shaft_center_shaft not found'); {% endcomment %}
                 $('.front-only').show(); 
                 $('.sightline_color').hide();
                 $('.cst-sightline_color-finish-overlay').hide();
@@ -1307,17 +1306,17 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('balance_center_shaft found');
+                {% comment %} alert('balance_center_shaft found'); {% endcomment %}
                 $('.shaft').hide();
             }
             else{
-                alert('balance_center_shaft not found');
+                {% comment %} alert('balance_center_shaft not found'); {% endcomment %}
             }
         }, 50);
 
     } 
     else if ($(this).data('tab') === 'Single_bend') {
-        alert('single_bend clicked');
+        {% comment %} alert('single_bend clicked'); {% endcomment %}
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
@@ -1325,17 +1324,17 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('single_bend_center_shaft found');
+                {% comment %} alert('single_bend_center_shaft found'); {% endcomment %}
               
             }
             else{
-                alert('single_bend_center_shaft not found');
+                {% comment %} alert('single_bend_center_shaft not found'); {% endcomment %}
                 $('.single_bend').show().css('z-index','9');
             }
         }, 50);
     }
     else if ($(this).data('tab') === 'Center_shaft') {
-        alert('center_shaft clicked');
+        {% comment %} alert('center_shaft clicked'); {% endcomment %}
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').show();
@@ -1343,13 +1342,13 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('center_shaft_center_shaft found');
+                {% comment %} alert('center_shaft_center_shaft found'); {% endcomment %}
                 $('.center_shaft').show().css('z-index','9');
                 $('.shaft').hide();
                 $('.shaft-overlay').hide();
             }
             else{
-                alert('center_shaft_center_shaft not found');
+                {% comment %} alert('center_shaft_center_shaft not found'); {% endcomment %}
             }
             
         }, 50);
@@ -1361,12 +1360,12 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('face_color_center_shaft found');
+                {% comment %} alert('face_color_center_shaft found'); {% endcomment %}
                 $('.center_shaft').show().css('z-index','9');
                 $('.shaft').hide();
             }
             else{
-                alert('face_color_center_shaft not found');
+                {% comment %} alert('face_color_center_shaft not found'); {% endcomment %}
             }
             $('.shaft-overlay').hide();
             $('.hosel-overlay').hide();
@@ -1380,13 +1379,13 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('base_plate_color_center_shaft found');
+                {% comment %} alert('base_plate_color_center_shaft found'); {% endcomment %}
                 $('.center_shaft').show().css('z-index','9');
                 $('.shaft').hide();
                 
             }
             else{
-                alert('base_plate_color_center_shaft not found');
+                {% comment %} alert('base_plate_color_center_shaft not found'); {% endcomment %}
             }
             $('.shaft-overlay').hide();
             $('.hosel-overlay').hide();
@@ -1394,7 +1393,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         }, 50);
     }
     else if ($(this).data('tab') === 'Sightline_color') {
-        alert('sightline_color clicked');
+        {% comment %} alert('sightline_color clicked'); {% endcomment %}
         $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .side-only').show();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
@@ -1576,7 +1575,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
       
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('sightline_color center_shaft.balance-only found');
+                {% comment %} alert('sightline_color center_shaft.balance-only found'); {% endcomment %}
                 $('.side-only').show();
                 $('.cst-sightline_color-finish-overlay').show();
                 $('.cst-sightline_color-finish-overlay').css('position','absolute');
@@ -1585,7 +1584,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.hosel-overlay').hide();
             }
             else {
-                alert('sightline_color center_shaft.balance-only not found');
+                {% comment %} alert('sightline_color center_shaft.balance-only not found'); {% endcomment %}
                 $('.cst-sightline_color-finish-overlay').css('position','absolute');
                 $('.cst-sightline_color-finish-overlay').css('z-index','9');
                 $('.cst-balance-shaft-overlay-2').show();
@@ -1605,7 +1604,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
             if ($container.find('.center_shaft.balance-only').length > 0) {
-                alert('sole_inlay_center_shaft found');
+                {% comment %} alert('sole_inlay_center_shaft found'); {% endcomment %}
                 $('.finish-overlay').hide();
                 $('.shaft-overlay').hide();
                 $('.hosel-overlay').hide();
@@ -1613,7 +1612,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.center_shaft').show();
             }
             else{
-                alert('sole_inlay_center_shaft not found');
+                {% comment %} alert('sole_inlay_center_shaft not found'); {% endcomment %}
                 $('.finish-overlay').hide();
                 $('.shaft-overlay').hide();
                 $('.hosel-overlay').hide();
