@@ -980,7 +980,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
         $('.tab1 .image-wrapper .default-image-sides .front-only').show();
         $('.sidebar .tab[data-tab="Short_plumber_neck"]').trigger('click');
         $('div#colorGrid img').first().trigger('click'); 
-        const short_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png";
+        const short_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-905_Silver_Short_v2.png";
         
         $('div#custom-image-preview img.active:first-child').attr('src', short_plumber_neck_shaft_image);
         $('div#custom-image-preview .balance').attr('src', short_plumber_neck_shaft_image);
@@ -1005,7 +1005,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
                 alert('long_plumber_neck found');
                 $('.long_plumber_neck.balance-only').show().css('z-index','9');
 
-                const long_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Long_v2.png"
+                const long_plumber_neck_shaft_image = "https://tsquaredputters.com/cdn/shop/files/TS-905_Silver_Long_v2.png"
                 
                 $('div#custom-image-preview img.active:first-child').attr('src', long_plumber_neck_shaft_image);
                 $('div#custom-image-preview .balance').attr('src', long_plumber_neck_shaft_image);
@@ -1020,14 +1020,14 @@ $(document).on('click', '#colorGrid .color-image', function() {
             
             // Map for hosel_color color overlay images
             const balanceLongHoselColorOverlayMap = {
-                Red:    "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_red.png?v=1771398779",
-                Black:  "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_black.png?v=1771398779",
-                Blue:   "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_blue.png?v=1771398780",
-                Green:  "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_green.png?v=1771398780",
-                Gold:   "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_gold.png?v=1771398780",
-                Pink:   "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_pink.png?v=1771405807",
-                Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_purple.png?v=1771398779",
-                Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_orange.png?v=1771398780"
+                Red:    "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_red.png",
+                Black:  "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_black.png",
+                Blue:   "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_blue.png",
+                Green:  "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_green.png",
+                Gold:   "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_gold.png",
+                Pink:   "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_pink.png",
+                Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_purple.png",
+                Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_orange.png"
             };
 
             // Remove any previous shaft overlay images we may have added before
@@ -1104,6 +1104,7 @@ $(document).on('click', '#colorGrid .color-image', function() {
             }, 50);
     }
     else{
+
     }
 
 });
@@ -1371,8 +1372,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 else if($container.find('.long_plumber_neck.balance-only').length > 0){
                   alert('shaft tab long_plumber_neck found');
                   const long_plumber_neck_shaft_image = {
-                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_long_shaft_link_1.png',
-                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_mid_long_shaft_link_2.png'
+                    Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_long_shaft_link_1.png',
+                    Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_long_shaft_link_2.png'
                   };
                   var color = $container.find('.shaft').attr('shaft_color');
                   {% comment %} alert(color); {% endcomment %}
@@ -1445,14 +1446,14 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
 
                         // Define the hosel color overlay map
                         const hoselColorOverlayMap = {
-                          Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_red.png",
-                          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_black.png",
-                          Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_blue.png",
-                          Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_green.png",
-                          Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_gold.png",
-                          Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_pink.png",
-                          Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_purple.png",
-                          Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_long_hosel_orange.png"
+                          Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_red.png",
+                          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_black.png",
+                          Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_blue.png",
+                          Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_green.png",
+                          Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_gold.png",
+                          Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_pink.png",
+                          Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_purple.png",
+                          Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_orange.png"
                         };
 
                         function updateHoselColorOverlay() {
@@ -2050,6 +2051,99 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         });
     });
 
+    // Live-update shaft image when DOM or shaft_color changes inside the default-image-sides container
+    (function () {
+        var $container = $('.tab1 .image-wrapper .default-image-sides');
+        if ($container.length === 0) return;
+
+        const short_plumber_neck_shaft_image = {
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_shaft_link_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_shaft_link_2.png'
+        };
+        const long_plumber_neck_shaft_image = {
+            Silver: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_long_shaft_link_1.png',
+            Black: 'https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_long_shaft_link_2.png'
+        };
+
+        function preloadAndSwap($shaft, url) {
+            if (!$shaft || $shaft.length === 0 || !url) return;
+            try {
+                if ($shaft.attr('src') === url) return;
+            } catch (e) {}
+
+            // remove any previous overlay to avoid stacking
+            $container.find('.shaft-overlay').remove();
+
+            var img = new Image();
+            img.onload = function () {
+                // If shaft isn't visible just set the src and show it
+                if ($shaft.is(':hidden')) {
+                    $shaft.attr('src', url).show();
+                    return;
+                }
+
+                // Crossfade using an overlay image so the original doesn't go transparent
+                var zIndex = parseInt($shaft.css('z-index'), 10) || 1;
+                // compute position & size to exactly match the shaft element
+                var relPos = $shaft.position(); // position relative to $container
+                var shaftW = $shaft.outerWidth();
+                var shaftH = $shaft.outerHeight();
+
+                var $overlay = $('<img/>')
+                    .addClass('shaft-overlay')
+                    .attr('src', url)
+                    .css({
+                        position: 'absolute',
+                        top: relPos.top,
+                        left: relPos.left,
+                        width: shaftW,
+                        height: shaftH,
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        zIndex: zIndex + 1,
+                        objectFit: 'contain'
+                    })
+                    .appendTo($container);
+
+                // animate overlay in, then swap the real image src and remove overlay
+                $overlay.stop(true, true).animate({ opacity: 1 }, 180, function () {
+                    try { $shaft.attr('src', url); } catch (e) {}
+                    $overlay.remove();
+                });
+            };
+            img.src = url;
+        }
+
+        function updateShaftImage() {
+            var $shaft = $container.find('.shaft');
+            // prefer short plumber neck if present
+            if ($container.find('.short_plumber_neck.balance-only').length > 0) {
+                var color = $shaft.attr('shaft_color');
+                var url = short_plumber_neck_shaft_image[color];
+                preloadAndSwap($shaft, url);
+                return;
+            }
+            if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+                var color = $shaft.attr('shaft_color');
+                var url = long_plumber_neck_shaft_image[color];
+                preloadAndSwap($shaft, url);
+                return;
+            }
+        }
+
+        var debounceTimer = null;
+        var observer = new MutationObserver(function () {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(updateShaftImage, 30);
+        });
+
+        // Observe for added/removed nodes and attribute changes (class, custom attrs) in subtree
+        observer.observe($container[0], { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'shaft_color'] });
+
+        // initial run
+        updateShaftImage();
+    })();
+    
     // Initial load
     loadColors("Finish");
 
