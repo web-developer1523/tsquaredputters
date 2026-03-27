@@ -1078,6 +1078,84 @@ $(document).on('click', '#colorGrid .color-image', function() {
                 if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     $('.hosel_color').show();
                     $('.hosel-color-overlay').hide();
+                }else{
+                    alert('long_plumber_neck found hosel color');
+
+                        // Define the hosel color overlay map
+                        const hoselColorOverlayMap = {
+                          Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_red.png",
+                          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_black.png",
+                          Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_blue.png",
+                          Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_green.png",
+                          Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_gold.png",
+                          Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_pink.png",
+                          Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_purple.png",
+                          Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_long_hosel_orange.png"
+                        };
+
+                        function updateHoselColorOverlay() {
+                          // Find the hosel source image inside preview and read its attribute name variants
+                          const $source = $('.tab1 .image-wrapper .default-image-sides img.hosel_color').first();
+                          if (!$source || $source.length === 0) return;
+
+                          const rawColor = $source.attr('hosel_color') || $source.attr('hosel-color') || $source.attr('color') || $source.data('hosel_color') || $source.data('hosel-color');
+                          const color = rawColor ? String(rawColor).trim() : '';
+
+                          const container = document.querySelector('.tab1 .image-wrapper .default-image-sides');
+                          if (!container || !hoselColorOverlayMap[color]) return;
+
+                          // Reuse existing overlay if present, otherwise create one with the expected classes/attributes
+                          let img = container.querySelector('img.hosel-color-overlay');
+                          if (!img) {
+                            img = document.createElement('img');
+                            // Give it the same classes/attributes the codebase expects so other logic/validation sees it
+                            img.className = 'first hosel_color long front-only active hosel-color-overlay cst-hosel-color-overlay-1';
+                            img.setAttribute('hosel_color', color);
+                            img.setAttribute('alt', 'ts_912_hosel_color_' + color);
+                            container.appendChild(img);
+                          } else {
+                            // Ensure attribute is kept up-to-date
+                            img.setAttribute('hosel_color', color);
+                            img.classList.add('active', 'first', 'hosel_color', 'long', 'front-only');
+                          }
+
+                          // Style overlay explicitly for visibility and positioning
+                          $('.cst-hosel-color-overlay-1')
+                            .css('top', '0')
+                            .css('position', 'absolute')
+                            .css('z-index', '9');
+
+                          // Set image src if changed
+                          const newSrc = hoselColorOverlayMap[color];
+                          if (img.src !== newSrc) {
+                            img.src = newSrc;
+                          }
+                          
+                          // Hide any original hosel_color source images in the preview
+                          try {
+                            $(container).find('img.hosel_color').not('.hosel-color-overlay').hide();
+                          } catch (e) {}
+                        }
+
+                        // Expose for other handlers to call
+                        window.updateHoselColorOverlay = updateHoselColorOverlay;
+                        window.hoselColorOverlayMap = hoselColorOverlayMap;
+
+                        // Run on every click in hosel color tab (ensure only one handler)
+                        $(document)
+                          .off('click', '.your-color-selector, .hosel_color')
+                          .on('click', '.your-color-selector, .hosel_color', function () {
+                              setTimeout(updateHoselColorOverlay, 50);
+                          });
+
+                        // Run once when hosel color tab is opened
+                        updateHoselColorOverlay();
+                 
+                  
+                    $('.hosel_color').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.shaft').show();
+                    $('.long_plumber_neck').show();
                 }
                
             }, 50);
@@ -1666,8 +1744,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
             }
             // Check for .shaft class inside .default-image-sides div
             const finishColorOverlayMap = {
-              Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_finish_color_1.png",
-              Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_912_back_plate_finish_color_2.png"
+              Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_back_plate_finish_color_1.png",
+              Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_905_back_plate_finish_color_2.png"
             };
 
             var $foundShaft = $defaultImageSides.find('.finish');
@@ -1719,6 +1797,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.face_t').css('z-index', '9');
                     $('.club_lie').hide();
                     $('.club_loft').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.long_plumber_neck').show();
                 }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     alert('short_plumber_neck found');
                     $('.hosel_color').show();
@@ -1727,6 +1807,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.club_lie').hide();
                     $('.club_loft').hide();
                     $('.short_plumber_neck').show();
+                    $('.hosel-color-overlay').hide();
+                    $('.long_plumber_neck').hide();
                 }
                 else {
                     {% comment %} alert('no found'); {% endcomment %}
@@ -1747,6 +1829,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.face_t').css('z-index', '9');
                     $('.club_lie').hide();
                     $('.club_loft').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.long_plumber_neck').show();
                 }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     alert('short_plumber_neck found');
                     $('.hosel_color').show();
@@ -1755,6 +1839,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.club_lie').hide();
                     $('.club_loft').hide();
                     $('.short_plumber_neck').show();
+                    $('.hosel-color-overlay').hide();
+                    $('.long_plumber_neck').hide();
                 }
                 else {
                     {% comment %} alert('no found'); {% endcomment %}
@@ -1775,6 +1861,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.face_t').css('z-index', '9');
                     $('.club_lie').hide();
                     $('.club_loft').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.long_plumber_neck').show();
                 }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     alert('short_plumber_neck found');
                     $('.hosel_color').show();
@@ -1783,6 +1871,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.club_lie').hide();
                     $('.club_loft').hide();
                     $('.short_plumber_neck').show();
+                    $('.hosel-color-overlay').hide();
+                    $('.long_plumber_neck').hide();
                 }
                 else {
                     {% comment %} alert('no found'); {% endcomment %}
@@ -1803,6 +1893,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.face_t').css('z-index', '9');
                     $('.club_lie').hide();
                     $('.club_loft').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.long_plumber_neck').show();
                 }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     alert('short_plumber_neck found');
                     $('.hosel_color').show();
@@ -1811,6 +1903,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.club_lie').hide();
                     $('.club_loft').hide();
                     $('.short_plumber_neck').show();
+                    $('.hosel-color-overlay').hide();
+                    $('.long_plumber_neck').hide();
                 }
                 else {
                     {% comment %} alert('no found'); {% endcomment %}
@@ -1831,6 +1925,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.face_t').css('z-index', '9');
                     $('.club_lie').hide();
                     $('.club_loft').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.long_plumber_neck').show();
                 }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     alert('short_plumber_neck found');
                     $('.hosel_color').show();
@@ -1839,6 +1935,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.club_lie').hide();
                     $('.club_loft').hide();
                     $('.short_plumber_neck').show();
+                    $('.hosel-color-overlay').hide();
+                    $('.long_plumber_neck').hide();
                 }
                 else {
                     {% comment %} alert('no found'); {% endcomment %}
@@ -1859,6 +1957,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.face_t').css('z-index', '9');
                     $('.club_lie').hide();
                     $('.club_loft').hide();
+                    $('.hosel-color-overlay').show();
+                    $('.long_plumber_neck').show();
                 }else if ($container.find('.short_plumber_neck.balance-only').length > 0) {
                     alert('short_plumber_neck found');
                     $('.hosel_color').show();
@@ -1867,6 +1967,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.club_lie').hide();
                     $('.club_loft').hide();
                     $('.short_plumber_neck').show();
+                    $('.hosel-color-overlay').hide();
+                    $('.long_plumber_neck').hide();
                 }
                 else {
                     {% comment %} alert('no found'); {% endcomment %}
