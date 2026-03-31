@@ -1484,6 +1484,21 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         $('.tab1 .image-wrapper .default-image-sides .side-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .balance-only').hide();
         $('.tab1 .image-wrapper .default-image-sides .back-only').hide();
+        setTimeout(function() {
+            var $container = $('.tab1 .image-wrapper .default-image-sides');
+            if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+                alert('long_plumber_neck found face color');
+                $('.hosel_color').hide();
+                $('.hosel-color-overlay').show();
+                $('.face_color').css('z-index','9');
+                $('.long_plumber_neck').show();
+            }
+            else{
+                $('.short_plumber_neck').show();
+                $('.face_color').css('z-index','9');
+            }
+
+        }, 50);
     }
     else if ($(this).data('tab') === 'Back_plate_color') {
         $('.tab1 .image-wrapper .default-image-sides .front-only').hide();
@@ -1496,8 +1511,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         // Check for .shaft class inside .default-image-sides div
         // Map for shaft color overlay images
         const shaftColorOverlayMap = {
-          Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_shaft_color_1.png",
-          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_shaft_color_2.png"
+          Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_shaft_color_1.png",
+          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_shaft_color_2.png"
         };
 
         var $defaultImageSides = $('.default-image-sides');
@@ -1537,8 +1552,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         }
         // Check for .short_plumber_neck or .long_plumber_neck class inside .default-image-sides div
         const neckColorOverlayMap = {
-          Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_neck_color_1.png",
-          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_neck_color_2.png"
+          Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_neck_color_1.png",
+          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_neck_color_2.png"
         };
         var $foundShortNeck = $defaultImageSides.find('.short_plumber_neck');
         var $foundLongNeck = $defaultImageSides.find('.long_plumber_neck');
@@ -1578,14 +1593,14 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         }
         // Check for .shaft class inside .default-image-sides div
         const hoselColorOverlayMap = {
-          Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_1.png",
-          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_2.png",
-          Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_3.png",
-          Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_4.png",
-          Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_5.png",
-          Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_6.png",
-          Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_7.png",
-          Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_hosel_color_8.png"
+          Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_1.png",
+          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_2.png",
+          Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_3.png",
+          Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_4.png",
+          Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_5.png",
+          Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_6.png",
+          Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_7.png",
+          Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_hosel_color_8.png"
         };
 
         var $foundShaft = $defaultImageSides.find('.hosel_color');
@@ -1620,8 +1635,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         }
         // Check for .shaft class inside .default-image-sides div
         const finishColorOverlayMap = {
-          Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_finish_color_1.png",
-          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_back_plate_finish_color_2.png"
+          Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_finish_color_1.png",
+          Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_back_plate_finish_color_2.png"
         };
 
         var $foundShaft = $defaultImageSides.find('.finish');
@@ -1667,8 +1682,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         setTimeout(function() {
             // Map for sightline color overlay images
             const sightlineFinishColorOverlayMap = {
-                Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_finish_color_1.png",
-                Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_finish_color_2.png"
+                Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_finish_color_1.png",
+                Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_finish_color_2.png"
             };
 
             var $defaultImageSides = $('.default-image-sides');
@@ -1704,8 +1719,8 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         var $hoselColor = $defaultImageSides.find('.shaft');
         // Map for shaft color overlay images
         const sightlineShaftColorOverlayMap = {
-            Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_shaft_color_1.png",
-            Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_shaft_color_2.png"
+            Silver: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_shaft_color_1.png",
+            Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_shaft_color_2.png"
         };
         // Remove any previous shaft overlay images
         $defaultImageSides.find('img.sightline-shaft-color-overlay').remove();
@@ -1739,14 +1754,14 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
         var $hoselColorEl = $defaultImageSides.find('.hosel_color');
         // Map for hosel color overlay images
         const sightlineHoselColorOverlayMap = {
-            Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_1.png",
-            Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_2.png",
-            Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_3.png",
-            Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_4.png",
-            Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_5.png",
-            Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_6.png",
-            Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_7.png",
-            Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_sightline_hosel_color_8.png"
+            Red: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_1.png",
+            Black: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_2.png",
+            Blue: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_3.png",
+            Green: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_4.png",
+            Gold: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_5.png",
+            Pink: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_6.png",
+            Purple: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_7.png",
+            Orange: "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713i_sightline_hosel_color_8.png"
         };
         // Remove any previous hosel overlay images
         $defaultImageSides.find('img.sightline-hosel-color-overlay').remove();
