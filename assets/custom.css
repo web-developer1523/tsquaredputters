@@ -1,110 +1,429 @@
+/* ── T Squared Custom Putter Configurator — Dark Theme ── */
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap');
 
-.color-box:has(img[alt="ts_1029_select_balance_1"])::after {
-margin-bottom: 15px;
-}
-.main-section .sidebar{
-padding:0;
-}
-.main-section .tabs .content{
-padding:0 ; 
-}
-.main-section .cst-custom-add-to-cart{
-margin-top:10px;
-}
-.main-section .color-grid {
-gap: 15px;
-}   
-
-@media screen and (max-width: 1280px) {
-.site-nav__item a.site-nav__link , .site-nav__link--has-dropdown {
-font-size: 14px !important;
-}
-}
-@media screen and (max-width: 1200px) {
-.main-section .cst-custom-add-to-cart {
-font-size: 14px !important;
-padding: 11px 20px !important;
-}
-.main-section .tab {
-font-size: 14px;
-background: #f8f8f8;
-}
-}
-@media screen and (max-width: 991px) {
-.main-section .tabs .content section:nth-child(2) , .main-section .tabs .content section:nth-child(3){
-display:none;
-}
-body.template-product .main-content {
-min-height: auto;
-}
-.main-section .tabs .content section {
-flex-wrap: wrap;
+/* ── BASE ── */
+.main-section {
+  background: #000 !important;
+  color: #fff !important;
+  font-family: 'Oswald', sans-serif;
+  min-height: 100vh;
 }
 
-.main-section .tabs .content {
-padding: 0;
+.tabs {
+  background: #000 !important;
+  border-radius: 0 !important;
+  overflow: hidden;
 }
-.main-section .tab1 .image-wrapper {
-width: 40%;
+
+.tabs .content {
+  background: #000 !important;
+  border-top: none !important;
+  padding: 0 !important;
 }
-.main-section a.cst-custom-add-to-cart {
-width: 100%;
-max-width: 850px;
-margin: 30px 30px 0;
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 220px;
+  background: #0a0a0a !important;
+  border-right: 1px solid #222 !important;
+  padding: 0 !important;
 }
-.main-section .tab1 {
-height: 100%;
-gap: 50px;
+
+.tab {
+  padding: 14px 20px !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  color: #666 !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  cursor: pointer;
+  transition: all .15s;
+  background: #0a0a0a !important;
 }
+
+.tab:hover {
+  color: #ccc !important;
+  background: #111 !important;
 }
-@media screen and (max-width: 789px) {
-.main-section  .section-title {
-font-size: 14px;
+
+.tab.active {
+  background: #111 !important;
+  color: #fff !important;
+  border-left: 3px solid #cc0000 !important;
+  padding-left: 17px !important;
 }
-.main-section .tab1 .image-wrapper {
-width: 50%;
-margin: 0 auto;
+
+.tab svg {
+  fill: #444 !important;
 }
+
+.tab.active svg {
+  fill: #cc0000 !important;
 }
-@media screen and (max-width: 670px) {
-.main-section .tab1 {
-gap:0;
+
+/* ── COLOR SELECTOR PANEL ── */
+.color-selector {
+  background: #0a0a0a !important;
+  border-right: 1px solid #222 !important;
+  padding: 20px !important;
+  height: 920px;
+  overflow-y: scroll;
 }
-.main-section .style-tab {
-width: 35%;
+
+.color-selector::-webkit-scrollbar {
+  width: 0px;
 }
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 22px !important;
+  letter-spacing: 5px !important;
+  color: #fff !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid #222 !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
 }
-@media screen and (max-width: 575px) {
-.main-section .style-tab {
-width: 40%;
+
+/* ── CROSS / CLOSE BTN ── */
+.cross-btn svg {
+  fill: #fff !important;
 }
-.main-section .tab1 .image-wrapper {
-width: 60%;
+
+.cross-btn {
+  display: none;
+  cursor: pointer;
+  margin-bottom: 16px;
 }
-.main-section .section-title {
-letter-spacing: 0;
-font-size: 13px;
+
+/* ── COLOR GRID ── */
+.color-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(90px, 1fr)) !important;
+  gap: 8px !important;
 }
-/* .main-section .color-grid {
-gap: 25px;
-} */
-.main-section  .color-box::after {
-font-size: 13px !important;
-letter-spacing: 0;
+
+.color-box {
+  position: relative;
+  width: 100% !important;
+  height: 90px !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  border: 1px solid #222 !important;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color .15s, transform .1s;
+  background: #111 !important;
 }
-.main-section  .color-selector{
-padding:20px;
+
+.color-box:hover {
+  border-color: #555 !important;
+  transform: scale(1.02);
 }
+
+.color-box.selected,
+.color-box[style*="border: 3px solid"] {
+  border: 2px solid #cc0000 !important;
 }
-@media screen and (max-width: 480px) {
-.main-section .style-tab {
-overflow-y: scroll;
-height: 266px;
+
+.color-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+  border: none !important;
+  cursor: pointer;
 }
-.main-section .tab1 .image-wrapper img {
-height: 255px;
+
+/* ── TEXT LABELS ON COLOR BOXES (shaft length, grip, hand) ── */
+#colorGrid .color-box::after {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+}
+
+/* Override all the inline ::after styles with dark colors */
+#colorGrid .color-box:has(img[alt*="shaft_length"])::after,
+#colorGrid .color-box:has(img[alt*="grip_style"])::after,
+#colorGrid .color-box:has(img[alt*="hand_style"])::after {
+  color: #fff !important;
+  background: rgba(0,0,0,0.7) !important;
+  padding: 4px 8px !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+}
+
+/* Balance label override */
+.color-box:has(img[alt="ts_1029_select_balance_1"])::after,
+.color-box:has(img[alt="ts_1029_select_balance_2"])::after {
+  color: #fff !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  font-weight: 500 !important;
+  background: rgba(0,0,0,0.6) !important;
+  padding: 4px 8px !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* Club lie labels */
+.club-lie-title {
+  color: #fff !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  background: rgba(0,0,0,0.7) !important;
+  padding: 4px 8px !important;
+}
+
+.color-box:has(img[alt*="Club_lie"]) {
+  border: 1px solid #333 !important;
+  border-radius: 0 !important;
+  background: #111 !important;
+}
+
+.color-box:has(img[alt*="Club_lie"]) img {
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── IMAGE WRAPPER ── */
+.image-wrapper {
+  background: #050505 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-left: 1px solid #1a1a1a !important;
+  border-right: 1px solid #1a1a1a !important;
+  position: relative !important;
+}
+
+/* Ensure preview images are always visible */
+.default-image-sides {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.default-image-sides img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+#custom-image-preview {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 400px !important;
+}
+
+/* ── TAB1 LAYOUT ── */
+.tab1 {
+  display: flex !important;
+  flex-direction: row;
+  height: 920px;
+  background: #000 !important;
+}
+
+.tab1 .image-wrapper {
+  width: 50%;
+}
+
+.style-tab {
+  display: flex !important;
+  width: 30%;
+}
+
+/* ── ADD TO CART BUTTON ── */
+.cst-custom-add-to-cart {
+  background: #cc0000 !important;
+  clip-path: polygon(4% 0, 100% 0%, 96% 100%, 0% 100%) !important;
+  padding: 13px 36px !important;
+  color: #fff !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  transition: background .15s, transform .1s !important;
+  cursor: pointer !important;
+}
+
+.cst-custom-add-to-cart:hover {
+  background: #ff0000 !important;
+  transform: scale(1.02) !important;
+}
+
+.cart-button {
+  width: 25%;
+  margin-top: 24px;
+  padding: 0 20px;
+}
+
+/* ── ALERT MESSAGE ── */
+.alert-message {
+  color: #ff4444 !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+  margin-top: 12px !important;
+  max-width: 300px;
+}
+
+/* ── LOADER ── */
+.loader {
+  border: 2px solid #444 !important;
+  border-top: 2px solid #fff !important;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: none;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 991px) {
+  .cross-btn { display: block; }
+
+  .color-selector {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: #0a0a0a !important;
+    padding: 24px !important;
+    z-index: 999 !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.8) !important;
+    transform: translateX(-100%) !important;
+    transition: transform .3s ease !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    width: 280px !important;
+    border-right: 1px solid #222 !important;
+  }
+
+  .color-selector.active {
+    transform: translateX(0) !important;
+  }
+
+  .cart-button {
+    width: 100% !important;
+    padding: 0 16px !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .alert-message {
+    max-width: 100% !important;
+  }
+
+  a.cst-custom-add-to-cart {
+    width: 100% !important;
+    max-width: 260px !important;
+    display: inline-block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .tab1 {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+  .style-tab { width: 100% !important; }
+  .sidebar { width: 100% !important; border-right: none !important; border-bottom: 1px solid #222 !important; }
+  .tab1 .image-wrapper { width: 100% !important; min-height: 400px !important; }
+  .color-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important; }
+}
+
+@media (max-width: 575px) {
+  .color-box { height: 75px !important; }
+}
+
+/* ── RESPONSIVE STYLE-TAB WIDTH ── */
+@media (min-width: 1320px) and (max-width: 1755px) {
+  .style-tab { width: 40% !important; }
+}
+
+@media (max-width: 1320px) {
+  .style-tab { width: 40% !important; }
+  .color-box { height: 80px !important; }
+  .color-grid { grid-template-columns: repeat(2, minmax(80px, 1fr)) !important; }
+}
+
+@media (max-width: 1110px) {
+  .style-tab { width: 40% !important; }
+  .color-box { height: 70px !important; }
+  .color-grid { grid-template-columns: repeat(2, minmax(70px, 1fr)) !important; }
+}
+
+/* ── DISABLED STATE ── */
+.cst-disabled {
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+/* ── INFO BUTTON ── */
+.info-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(204,0,0,0.85) !important;
+  color: #fff !important;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: none;
 }
 
 
+/* ── CLUB LOFT / CLUB LIE text labels ── */
+.color-box::after {
+  color: #fff !important;
+}
+#colorGrid .color-box:has(img[alt*="shaft_length"])::after,
+#colorGrid .color-box:has(img[alt*="grip_style"])::after,
+#colorGrid .color-box:has(img[alt*="hand_style"])::after,
+#colorGrid .color-box:has(img[alt*="Club_lie"])::after,
+#colorGrid .color-box:has(img[alt*="Club_loft"])::after {
+  color: #fff !important;
+}
+
+/* Force all ::after pseudo text to white */
+.color-box[style]::after,
+.color-box::after {
+  color: #fff !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+}
+
+
+/* ── CLUB LOFT boxes — white background so putter image shows ── */
+.color-box:has(img[alt*="club_loft"]) {
+  background: #fff !important;
+}
+.color-box:has(img[alt*="club_loft"]) img {
+  object-fit: contain !important;
 }

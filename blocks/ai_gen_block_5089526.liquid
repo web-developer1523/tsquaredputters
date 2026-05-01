@@ -1,0 +1,888 @@
+{% doc %}
+  @prompt
+    <!-- T Squared Putters — Drops Page -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+    
+      .tsq-drops-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+      .tsq-drops-wrap {
+        font-family: 'DM Sans', sans-serif;
+        background: #0a0a0a;
+        color: #f0ede6;
+        padding: 64px 24px 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+    
+      .tsq-drops-wrap::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: 0;
+      }
+    
+      .tsq-drops-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+    
+      .tsq-drops-eyebrow {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #888880;
+        margin-bottom: 20px;
+      }
+    
+      .tsq-drops-headline {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(72px, 14vw, 120px);
+        line-height: 0.92;
+        letter-spacing: 0.02em;
+        color: #f0ede6;
+        margin-bottom: 8px;
+      }
+    
+      .tsq-drops-headline span {
+        display: block;
+        color: #e31b1b;
+      }
+    
+      .tsq-drops-rule {
+        width: 40px;
+        height: 2px;
+        background: #e31b1b;
+        margin: 32px auto;
+      }
+    
+      .tsq-drops-body {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.8;
+        color: #b0aca3;
+        max-width: 480px;
+        margin: 0 auto 40px;
+      }
+    
+      .tsq-drops-body strong {
+        color: #f0ede6;
+        font-weight: 500;
+      }
+    
+      .tsq-countdown-wrap {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin: 40px auto;
+      }
+    
+      .tsq-countdown-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+    
+      .tsq-countdown-num {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 52px;
+        line-height: 1;
+        color: #f0ede6;
+        min-width: 70px;
+        background: #161616;
+        border: 1px solid #2a2a2a;
+        padding: 12px 16px;
+        letter-spacing: 0.04em;
+      }
+    
+      .tsq-countdown-label {
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #555550;
+      }
+    
+      .tsq-next-drop {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #161616;
+        border: 1px solid #2a2a2a;
+        padding: 10px 20px;
+        margin-bottom: 40px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #888880;
+      }
+    
+      .tsq-next-drop-dot {
+        width: 7px;
+        height: 7px;
+        background: #e31b1b;
+        border-radius: 50%;
+        animation: tsq-pulse 1.8s ease-in-out infinite;
+      }
+    
+      @keyframes tsq-pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.8); }
+      }
+    
+      /* Waitlist Form */
+      .tsq-form-wrap {
+        max-width: 420px;
+        margin: 0 auto 16px;
+        text-align: left;
+      }
+    
+      .tsq-form-section-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #888880;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+    
+      .tsq-form-row {
+        margin-bottom: 10px;
+      }
+    
+      .tsq-input {
+        width: 100%;
+        background: #ffffff;
+        border: 2px solid #ffffff;
+        color: #0a0a0a;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 16px 18px;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        -webkit-appearance: none;
+        border-radius: 0;
+      }
+    
+      .tsq-input::placeholder {
+        color: #999999;
+        font-weight: 400;
+      }
+    
+      .tsq-input:focus {
+        border-color: #e31b1b;
+        box-shadow: 0 0 0 3px rgba(227, 27, 27, 0.15);
+      }
+    
+      .tsq-submit {
+        width: 100%;
+        background: #e31b1b;
+        color: #ffffff;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        border: none;
+        padding: 18px 40px;
+        margin-top: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
+      }
+    
+      .tsq-submit:hover {
+        background: #ff2a2a;
+        transform: translateY(-1px);
+      }
+    
+      .tsq-drops-fine {
+        font-size: 11px;
+        color: #555550;
+        margin-top: 14px;
+        letter-spacing: 0.05em;
+      }
+    
+      .tsq-drops-history {
+        margin-top: 64px;
+        padding-top: 40px;
+        border-top: 1px solid #1e1e1e;
+      }
+    
+      .tsq-drops-history-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #444440;
+        margin-bottom: 16px;
+      }
+    
+      .tsq-drops-history-item {
+        font-size: 13px;
+        color: #444440;
+        padding: 10px 0;
+        border-bottom: 1px solid #1a1a1a;
+        display: flex;
+        justif
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .tsq-drops-wrap-{{ ai_gen_id }} * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tsq-drops-wrap-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, sans-serif;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    padding: 64px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: block;
+  }
+
+  .tsq-drops-wrap-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: {{ block.settings.noise_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .tsq-drops-inner-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .tsq-drops-eyebrow-{{ ai_gen_id }} {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: {{ block.settings.eyebrow_color }};
+    margin-bottom: 20px;
+  }
+
+  .tsq-drops-headline-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, sans-serif;
+    font-size: clamp(72px, 14vw, 120px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: {{ block.settings.text_color }};
+    margin-bottom: 8px;
+  }
+
+  .tsq-drops-headline-{{ ai_gen_id }} span {
+    display: block;
+    color: {{ block.settings.accent_color }};
+  }
+
+  .tsq-drops-rule-{{ ai_gen_id }} {
+    width: 40px;
+    height: 2px;
+    background: {{ block.settings.accent_color }};
+    margin: 32px auto;
+  }
+
+  .tsq-drops-body-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: {{ block.settings.body_text_color }};
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  .tsq-drops-body-{{ ai_gen_id }} strong {
+    color: {{ block.settings.text_color }};
+    font-weight: 500;
+  }
+
+  .tsq-countdown-wrap-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 40px auto;
+    flex-wrap: wrap;
+  }
+
+  .tsq-countdown-block-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tsq-countdown-num-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: {{ block.settings.text_color }};
+    min-width: 70px;
+    background: {{ block.settings.countdown_bg }};
+    border: 1px solid {{ block.settings.countdown_border }};
+    padding: 12px 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .tsq-countdown-label-{{ ai_gen_id }} {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: {{ block.settings.countdown_label_color }};
+  }
+
+  .tsq-next-drop-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: {{ block.settings.countdown_bg }};
+    border: 1px solid {{ block.settings.countdown_border }};
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: {{ block.settings.eyebrow_color }};
+  }
+
+  .tsq-next-drop-dot-{{ ai_gen_id }} {
+    width: 7px;
+    height: 7px;
+    background: {{ block.settings.accent_color }};
+    border-radius: 50%;
+    animation: tsq-pulse-{{ ai_gen_id }} 1.8s ease-in-out infinite;
+  }
+
+  @keyframes tsq-pulse-{{ ai_gen_id }} {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .tsq-form-wrap-{{ ai_gen_id }} {
+    max-width: 420px;
+    margin: 0 auto 16px;
+    text-align: left;
+  }
+
+  .tsq-form-section-label-{{ ai_gen_id }} {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: {{ block.settings.eyebrow_color }};
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .tsq-form-row-{{ ai_gen_id }} {
+    margin-bottom: 10px;
+  }
+
+  .tsq-input-{{ ai_gen_id }} {
+    width: 100%;
+    background: {{ block.settings.input_bg }};
+    border: 2px solid {{ block.settings.input_bg }};
+    color: {{ block.settings.input_text }};
+    font-family: {{ block.settings.body_font.family }}, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 16px 18px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .tsq-input-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.input_placeholder }};
+    font-weight: 400;
+  }
+
+  .tsq-input-{{ ai_gen_id }}:focus {
+    border-color: {{ block.settings.accent_color }};
+    box-shadow: 0 0 0 3px {{ block.settings.accent_color | color_modify: 'alpha', 0.15 }};
+  }
+
+  .tsq-submit-{{ ai_gen_id }} {
+    width: 100%;
+    background: {{ block.settings.button_bg }};
+    color: {{ block.settings.button_text }};
+    font-family: {{ block.settings.body_font.family }}, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: none;
+    padding: 18px 40px;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .tsq-submit-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.button_hover_bg }};
+    transform: translateY(-1px);
+  }
+
+  .tsq-drops-fine-{{ ai_gen_id }} {
+    font-size: 11px;
+    color: {{ block.settings.countdown_label_color }};
+    margin-top: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .tsq-success-{{ ai_gen_id }} {
+    color: #4caf50;
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .tsq-error-{{ ai_gen_id }} {
+    color: #ff5252;
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .tsq-countdown-num-{{ ai_gen_id }} {
+      font-size: 40px;
+      min-width: 60px;
+      padding: 10px 12px;
+    }
+  }
+{% endstyle %}
+
+<drops-countdown-{{ ai_gen_id }} class="tsq-drops-wrap-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="tsq-drops-inner-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow != blank %}
+      <div class="tsq-drops-eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow }}</div>
+    {% endif %}
+
+    {% if block.settings.headline != blank %}
+      <h1 class="tsq-drops-headline-{{ ai_gen_id }}">
+        {{ block.settings.headline }}
+      </h1>
+    {% endif %}
+
+    <div class="tsq-drops-rule-{{ ai_gen_id }}"></div>
+
+    {% if block.settings.body_text != blank %}
+      <div class="tsq-drops-body-{{ ai_gen_id }}">
+        {{ block.settings.body_text }}
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_countdown %}
+      <div class="tsq-next-drop-{{ ai_gen_id }}">
+        <span class="tsq-next-drop-dot-{{ ai_gen_id }}"></span>
+        <span>{{ block.settings.next_drop_label }}</span>
+      </div>
+
+      <div class="tsq-countdown-wrap-{{ ai_gen_id }}" data-countdown-target="{{ block.settings.countdown_date }}">
+        <div class="tsq-countdown-block-{{ ai_gen_id }}">
+          <div class="tsq-countdown-num-{{ ai_gen_id }}" data-days>00</div>
+          <div class="tsq-countdown-label-{{ ai_gen_id }}">Days</div>
+        </div>
+        <div class="tsq-countdown-block-{{ ai_gen_id }}">
+          <div class="tsq-countdown-num-{{ ai_gen_id }}" data-hours>00</div>
+          <div class="tsq-countdown-label-{{ ai_gen_id }}">Hours</div>
+        </div>
+        <div class="tsq-countdown-block-{{ ai_gen_id }}">
+          <div class="tsq-countdown-num-{{ ai_gen_id }}" data-minutes>00</div>
+          <div class="tsq-countdown-label-{{ ai_gen_id }}">Minutes</div>
+        </div>
+        <div class="tsq-countdown-block-{{ ai_gen_id }}">
+          <div class="tsq-countdown-num-{{ ai_gen_id }}" data-seconds>00</div>
+          <div class="tsq-countdown-label-{{ ai_gen_id }}">Seconds</div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_form %}
+      <div class="tsq-form-section-label-{{ ai_gen_id }}">{{ block.settings.form_label }}</div>
+
+      {%- form 'contact' -%}
+        <input type="hidden" name="contact[tags]" value="drops-waitlist">
+        <div class="tsq-form-wrap-{{ ai_gen_id }}">
+          <div class="tsq-form-row-{{ ai_gen_id }}">
+            <input
+              type="text"
+              name="contact[first_name]"
+              class="tsq-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.first_name_placeholder }}"
+              value="{{ form.first_name }}"
+              {% if form.errors %}
+                aria-invalid="true"
+              {% endif %}
+            >
+          </div>
+          <div class="tsq-form-row-{{ ai_gen_id }}">
+            <input
+              type="text"
+              name="contact[last_name]"
+              class="tsq-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.last_name_placeholder }}"
+              value="{{ form.last_name }}"
+              {% if form.errors %}
+                aria-invalid="true"
+              {% endif %}
+            >
+          </div>
+          <div class="tsq-form-row-{{ ai_gen_id }}">
+            <input
+              type="email"
+              name="contact[email]"
+              class="tsq-input-{{ ai_gen_id }}"
+              placeholder="{{ block.settings.email_placeholder }}"
+              value="{{ form.email }}"
+              required
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                aria-invalid="true"
+                aria-describedby="tsq-error-{{ ai_gen_id }}"
+              {% endif %}
+              {% if form.posted_successfully? %}
+                aria-describedby="tsq-success-{{ ai_gen_id }}"
+              {% endif %}
+            >
+          </div>
+          <button type="submit" class="tsq-submit-{{ ai_gen_id }}">
+            {{ block.settings.submit_label }}
+          </button>
+
+          {%- if form.errors -%}
+            <div id="tsq-error-{{ ai_gen_id }}" class="tsq-error-{{ ai_gen_id }}">
+              {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+
+          {%- if form.posted_successfully? -%}
+            <div id="tsq-success-{{ ai_gen_id }}" class="tsq-success-{{ ai_gen_id }}">
+              {{ block.settings.success_message }}
+            </div>
+          {%- endif -%}
+
+          {% if block.settings.fine_print != blank %}
+            <div class="tsq-drops-fine-{{ ai_gen_id }}">{{ block.settings.fine_print }}</div>
+          {% endif %}
+        </div>
+      {%- endform -%}
+    {% endif %}
+  </div>
+</drops-countdown-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class DropsCountdown{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.countdownWrap = this.querySelector('[data-countdown-target]');
+        if (!this.countdownWrap) return;
+        
+        this.targetDate = this.countdownWrap.getAttribute('data-countdown-target');
+        if (!this.targetDate) return;
+
+        this.daysEl = this.querySelector('[data-days]');
+        this.hoursEl = this.querySelector('[data-hours]');
+        this.minutesEl = this.querySelector('[data-minutes]');
+        this.secondsEl = this.querySelector('[data-seconds]');
+      }
+
+      connectedCallback() {
+        if (!this.targetDate) return;
+        this.updateCountdown();
+        this.interval = setInterval(() => this.updateCountdown(), 1000);
+      }
+
+      disconnectedCallback() {
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+      }
+
+      updateCountdown() {
+        const now = new Date().getTime();
+        const target = new Date(this.targetDate).getTime();
+        const distance = target - now;
+
+        if (distance < 0) {
+          this.daysEl.textContent = '00';
+          this.hoursEl.textContent = '00';
+          this.minutesEl.textContent = '00';
+          this.secondsEl.textContent = '00';
+          clearInterval(this.interval);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        this.daysEl.textContent = String(days).padStart(2, '0');
+        this.hoursEl.textContent = String(hours).padStart(2, '0');
+        this.minutesEl.textContent = String(minutes).padStart(2, '0');
+        this.secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+    }
+
+    customElements.define('drops-countdown-{{ ai_gen_id }}', DropsCountdown{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Drops countdown",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "T Squared Putters"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Next <span>Drop</span>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>Be the first to know when our next limited-edition putter drops. <strong>Join the waitlist</strong> and get exclusive early access.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show countdown",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "countdown_date",
+      "label": "Countdown target date",
+      "info": "Format: YYYY-MM-DD HH:MM:SS (e.g., 2026-03-15 12:00:00)"
+    },
+    {
+      "type": "text",
+      "id": "next_drop_label",
+      "label": "Next drop label",
+      "default": "Next drop in"
+    },
+    {
+      "type": "header",
+      "content": "Waitlist form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "Show waitlist form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "form_label",
+      "label": "Form label",
+      "default": "Join the waitlist"
+    },
+    {
+      "type": "text",
+      "id": "first_name_placeholder",
+      "label": "First name placeholder",
+      "default": "First name"
+    },
+    {
+      "type": "text",
+      "id": "last_name_placeholder",
+      "label": "Last name placeholder",
+      "default": "Last name"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit button text",
+      "default": "Notify me"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks! We'll notify you when the next drop goes live."
+    },
+    {
+      "type": "text",
+      "id": "fine_print",
+      "label": "Fine print"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Headline text",
+      "default": "#f0ede6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#e31b1b"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Body text",
+      "default": "#b0aca3"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow text",
+      "default": "#888880"
+    },
+    {
+      "type": "color",
+      "id": "countdown_bg",
+      "label": "Countdown background",
+      "default": "#161616"
+    },
+    {
+      "type": "color",
+      "id": "countdown_border",
+      "label": "Countdown border",
+      "default": "#2a2a2a"
+    },
+    {
+      "type": "color",
+      "id": "countdown_label_color",
+      "label": "Countdown label",
+      "default": "#555550"
+    },
+    {
+      "type": "header",
+      "content": "Form colors"
+    },
+    {
+      "type": "color",
+      "id": "input_bg",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_text",
+      "label": "Input text",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "input_placeholder",
+      "label": "Input placeholder",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#e31b1b"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button hover background",
+      "default": "#ff2a2a"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "bebas_neue_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "noise_opacity",
+      "label": "Noise texture opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 35
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drops countdown"
+    }
+  ]
+}
+{% endschema %}

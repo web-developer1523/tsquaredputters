@@ -1,0 +1,860 @@
+{% doc %}
+  @prompt
+    <!-- T Squared — Free Engraving Drop Block -->
+    <div style="background-color:#f5f1ea;padding:48px 32px;margin:0;font-family:Arial,sans-serif;text-align:center;">
+    
+      <!-- Eyebrow -->
+      <p style="margin:0 0 10px;font-size:10px;font-weight:700;color:#aaa9a0;letter-spacing:4px;text-transform:uppercase;font-family:Arial,sans-serif;">This Weekend Only</p>
+    
+      <!-- Headline -->
+      <p style="margin:0 0 4px;font-size:38px;font-weight:700;color:#1a1a1a;line-height:1.05;letter-spacing:-0.02em;font-family:Arial,sans-serif;">Free Bumper</p>
+      <p style="margin:0 0 20px;font-size:38px;font-weight:700;color:#1a1a1a;line-height:1.05;letter-spacing:-0.02em;font-family:Arial,sans-serif;">Engraving.</p>
+    
+      <!-- Divider -->
+      <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 24px;">
+        <tr><td style="width:40px;height:2px;background-color:#1a1a1a;font-size:0;line-height:0;">&nbsp;</td></tr>
+      </table>
+    
+      <!-- Description -->
+      <p style="margin:0 auto 16px;font-size:16px;font-weight:400;color:#555555;line-height:1.8;font-family:Arial,sans-serif;max-width:480px;">Order any eligible stock putter from Friday at noon through Sunday at midnight and we will engrave both bumpers free of charge.</p>
+      <p style="margin:0 auto 32px;font-size:16px;font-weight:400;color:#555555;line-height:1.8;font-family:Arial,sans-serif;max-width:480px;">Up to 8 characters per bumper — your name, initials, a number, anything you want. Just leave your engraving text in the order notes at checkout.</p>
+    
+      <!-- Image -->
+      <div style="margin:0 auto 32px;max-width:320px;">
+        <img src="https://cdn.shopify.com/s/files/1/0597/8855/8523/files/713_bumper.jpg?v=1773343359" alt="Bumper Engraving" style="display:block;width:100%;height:auto;" />
+      </div>
+    
+      <!-- Details box -->
+      <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 32px;background-color:#1a1a1a;border:1px solid #2a2a2a;max-width:400px;width:100%;">
+        <tr>
+          <td style="padding:24px 28px;">
+            <p style="margin:0 0 14px;font-size:10px;font-weight:700;color:#aaa9a0;letter-spacing:3px;text-transform:uppercase;font-family:Arial,sans-serif;text-align:center;">Offer Details</p>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+                <td style="padding:6px 0;border-bottom:1px solid #2a2a2a;font-size:13px;color:#888880;font-family:Arial,sans-serif;">Offer</td>
+                <td style="padding:6px 0;border-bottom:1px solid #e8e3db;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;">Free Bumper Engraving</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;border-bottom:1px solid #2a2a2a;font-size:13px;color:#888880;font-family:Arial,sans-serif;">Characters</td>
+                <td style="padding:6px 0;border-bottom:1px solid #e8e3db;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;">Up to 8 per bumper</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;border-bottom:1px solid #2a2a2a;font-size:13px;color:#888880;font-family:Arial,sans-serif;">Window</td>
+                <td style="padding:6px 0;border-bottom:1px solid #e8e3db;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;">Fri Noon — Sun Midnight</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;border-bottom:1px solid #2a2a2a;font-size:13px;color:#888880;font-family:Arial,sans-serif;">Applies To</td>
+                <td style="padding:6px 0;border-bottom:1px solid #e8e3db;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;">All Stock Putters</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:13px;color:#888880;font-family:Arial,sans-serif;border-bottom:none;">Excludes</td>
+                <td style="padding:6px 0;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;">TS-1106+ / TS-1104 / TS-1029</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    
+      <!-- CTA -->
+      <table cellpadding="0" cellspacing="0" border="0" align="center">
+        <tr>
+          <td align="center" style="background-color:#1a1a1a;">
+            <a href="https://tsquaredputters.com/collections/putters" style="display:inline-block;background-color:#1a1a1a;color:#ffffff;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;padding:18px 48px;">SHOP STOCK PUTTERS &rarr;</a>
+          </td>
+        </tr>
+      </table>
+    
+      <!-- Fine print -->
+      <p style="margin:16px 0 0;font-size:11px;color:#aaa9a0;letter-spacing:1px;font-family:Arial,sans-serif;">Add engraving text in order notes at checkout. Offer ends Sunday at midnight.</p>
+    
+    </div>
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-promo-block-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    margin: 0;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    text-align: center;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-promo-block__eyebrow-{{ ai_gen_id }} {
+    margin: 0 0 10px;
+    font-size: {{ block.settings.eyebrow_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.eyebrow_color }};
+    letter-spacing: {{ block.settings.eyebrow_spacing }}px;
+    text-transform: uppercase;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+  }
+
+  .ai-promo-block__headline-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.headline_spacing }}px;
+    font-size: {{ block.settings.headline_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.headline_color }};
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+  }
+
+  .ai-promo-block__divider-{{ ai_gen_id }} {
+    width: {{ block.settings.divider_width }}px;
+    height: {{ block.settings.divider_height }}px;
+    background-color: {{ block.settings.divider_color }};
+    margin: 0 auto {{ block.settings.divider_spacing }}px;
+  }
+
+  .ai-promo-block__description-{{ ai_gen_id }} {
+    margin: 0 auto {{ block.settings.description_spacing }}px;
+    font-size: {{ block.settings.description_size }}px;
+    font-weight: 400;
+    color: {{ block.settings.description_color }};
+    line-height: 1.8;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    max-width: {{ block.settings.description_max_width }}px;
+  }
+
+  .ai-promo-block__image-{{ ai_gen_id }} {
+    margin: 0 auto {{ block.settings.image_spacing }}px;
+    max-width: {{ block.settings.image_max_width }}px;
+  }
+
+  .ai-promo-block__image-{{ ai_gen_id }} img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .ai-promo-block__details-{{ ai_gen_id }} {
+    margin: 0 auto {{ block.settings.details_spacing }}px;
+    background-color: {{ block.settings.details_bg_color }};
+    border: 1px solid {{ block.settings.details_border_color }};
+    max-width: {{ block.settings.details_max_width }}px;
+    width: 100%;
+  }
+
+  .ai-promo-block__details-inner-{{ ai_gen_id }} {
+    padding: {{ block.settings.details_padding }}px;
+  }
+
+  .ai-promo-block__details-header-{{ ai_gen_id }} {
+    margin: 0 0 14px;
+    font-size: 10px;
+    font-weight: 700;
+    color: {{ block.settings.details_header_color }};
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    text-align: center;
+  }
+
+  .ai-promo-block__details-row-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid {{ block.settings.details_row_border }};
+    font-size: 13px;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+  }
+
+  .ai-promo-block__details-row-{{ ai_gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .ai-promo-block__details-label-{{ ai_gen_id }} {
+    color: {{ block.settings.details_label_color }};
+    text-align: left;
+  }
+
+  .ai-promo-block__details-value-{{ ai_gen_id }} {
+    color: {{ block.settings.details_value_color }};
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .ai-promo-block__cta-{{ ai_gen_id }} {
+    display: inline-block;
+    background-color: {{ block.settings.cta_bg_color }};
+    color: {{ block.settings.cta_text_color }};
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-size: {{ block.settings.cta_size }}px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: {{ block.settings.cta_padding_vertical }}px {{ block.settings.cta_padding_horizontal }}px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .ai-promo-block__cta-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.cta_hover_bg_color }};
+    color: {{ block.settings.cta_hover_text_color }};
+  }
+
+  .ai-promo-block__fine-print-{{ ai_gen_id }} {
+    margin: {{ block.settings.fine_print_spacing }}px 0 0;
+    font-size: {{ block.settings.fine_print_size }}px;
+    color: {{ block.settings.fine_print_color }};
+    letter-spacing: 1px;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-promo-block-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_vertical | times: 0.7 }}px {{ block.settings.padding_horizontal | times: 0.7 }}px;
+    }
+
+    .ai-promo-block__headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.7 }}px;
+    }
+
+    .ai-promo-block__description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+
+    .ai-promo-block__details-max-width-{{ ai_gen_id }} {
+      max-width: 100%;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-promo-block-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.eyebrow != blank %}
+    <p class="ai-promo-block__eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow }}</p>
+  {% endif %}
+
+  {% if block.settings.headline_line_1 != blank %}
+    <p class="ai-promo-block__headline-{{ ai_gen_id }}">{{ block.settings.headline_line_1 }}</p>
+  {% endif %}
+
+  {% if block.settings.headline_line_2 != blank %}
+    <p class="ai-promo-block__headline-{{ ai_gen_id }}">{{ block.settings.headline_line_2 }}</p>
+  {% endif %}
+
+  {% if block.settings.show_divider %}
+    <div class="ai-promo-block__divider-{{ ai_gen_id }}"></div>
+  {% endif %}
+
+  {% if block.settings.description_line_1 != blank %}
+    <p class="ai-promo-block__description-{{ ai_gen_id }}">{{ block.settings.description_line_1 }}</p>
+  {% endif %}
+
+  {% if block.settings.description_line_2 != blank %}
+    <p class="ai-promo-block__description-{{ ai_gen_id }}">{{ block.settings.description_line_2 }}</p>
+  {% endif %}
+
+  {% if block.settings.image %}
+    <div class="ai-promo-block__image-{{ ai_gen_id }}">
+      <img
+        src="{{ block.settings.image | image_url: width: 640 }}"
+        alt="{{ block.settings.image.alt | escape }}"
+        loading="lazy"
+        width="{{ block.settings.image.width }}"
+        height="{{ block.settings.image.height }}"
+      >
+    </div>
+  {% endif %}
+
+  {% if block.settings.show_details %}
+    <div class="ai-promo-block__details-{{ ai_gen_id }}">
+      <div class="ai-promo-block__details-inner-{{ ai_gen_id }}">
+        {% if block.settings.details_header != blank %}
+          <p class="ai-promo-block__details-header-{{ ai_gen_id }}">{{ block.settings.details_header }}</p>
+        {% endif %}
+
+        {% if block.settings.detail_1_label != blank and block.settings.detail_1_value != blank %}
+          <div class="ai-promo-block__details-row-{{ ai_gen_id }}">
+            <span class="ai-promo-block__details-label-{{ ai_gen_id }}">{{ block.settings.detail_1_label }}</span>
+            <span class="ai-promo-block__details-value-{{ ai_gen_id }}">{{ block.settings.detail_1_value }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.detail_2_label != blank and block.settings.detail_2_value != blank %}
+          <div class="ai-promo-block__details-row-{{ ai_gen_id }}">
+            <span class="ai-promo-block__details-label-{{ ai_gen_id }}">{{ block.settings.detail_2_label }}</span>
+            <span class="ai-promo-block__details-value-{{ ai_gen_id }}">{{ block.settings.detail_2_value }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.detail_3_label != blank and block.settings.detail_3_value != blank %}
+          <div class="ai-promo-block__details-row-{{ ai_gen_id }}">
+            <span class="ai-promo-block__details-label-{{ ai_gen_id }}">{{ block.settings.detail_3_label }}</span>
+            <span class="ai-promo-block__details-value-{{ ai_gen_id }}">{{ block.settings.detail_3_value }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.detail_4_label != blank and block.settings.detail_4_value != blank %}
+          <div class="ai-promo-block__details-row-{{ ai_gen_id }}">
+            <span class="ai-promo-block__details-label-{{ ai_gen_id }}">{{ block.settings.detail_4_label }}</span>
+            <span class="ai-promo-block__details-value-{{ ai_gen_id }}">{{ block.settings.detail_4_value }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.detail_5_label != blank and block.settings.detail_5_value != blank %}
+          <div class="ai-promo-block__details-row-{{ ai_gen_id }}">
+            <span class="ai-promo-block__details-label-{{ ai_gen_id }}">{{ block.settings.detail_5_label }}</span>
+            <span class="ai-promo-block__details-value-{{ ai_gen_id }}">{{ block.settings.detail_5_value }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if block.settings.cta_text != blank and block.settings.cta_url != blank %}
+    <a href="{{ block.settings.cta_url }}" class="ai-promo-block__cta-{{ ai_gen_id }}">
+      {{ block.settings.cta_text }}
+    </a>
+  {% endif %}
+
+  {% if block.settings.fine_print != blank %}
+    <p class="ai-promo-block__fine-print-{{ ai_gen_id }}">{{ block.settings.fine_print }}</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Promotional banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f5f1ea"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "This Weekend Only"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Font size",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#aaa9a0"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "headline_line_1",
+      "label": "Headline line 1",
+      "default": "Free Bumper"
+    },
+    {
+      "type": "text",
+      "id": "headline_line_2",
+      "label": "Headline line 2",
+      "default": "Engraving."
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Font size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "headline_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Divider"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show divider",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "divider_width",
+      "label": "Width",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "divider_height",
+      "label": "Height",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "divider_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "textarea",
+      "id": "description_line_1",
+      "label": "Description line 1",
+      "default": "Order any eligible stock putter from Friday at noon through Sunday at midnight and we will engrave both bumpers free of charge."
+    },
+    {
+      "type": "textarea",
+      "id": "description_line_2",
+      "label": "Description line 2",
+      "default": "Up to 8 characters per bumper — your name, initials, a number, anything you want. Just leave your engraving text in the order notes at checkout."
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_max_width",
+      "label": "Max width",
+      "min": 300,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    },
+    {
+      "type": "range",
+      "id": "description_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#555555"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "label": "Max width",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 320
+    },
+    {
+      "type": "range",
+      "id": "image_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Details box"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_details",
+      "label": "Show details box",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "details_header",
+      "label": "Header text",
+      "default": "Offer Details"
+    },
+    {
+      "type": "range",
+      "id": "details_max_width",
+      "label": "Max width",
+      "min": 300,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "details_padding",
+      "label": "Padding",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "details_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "details_bg_color",
+      "label": "Background color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "details_border_color",
+      "label": "Border color",
+      "default": "#2a2a2a"
+    },
+    {
+      "type": "color",
+      "id": "details_header_color",
+      "label": "Header color",
+      "default": "#aaa9a0"
+    },
+    {
+      "type": "color",
+      "id": "details_label_color",
+      "label": "Label color",
+      "default": "#888880"
+    },
+    {
+      "type": "color",
+      "id": "details_value_color",
+      "label": "Value color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "details_row_border",
+      "label": "Row border color",
+      "default": "#2a2a2a"
+    },
+    {
+      "type": "header",
+      "content": "Detail row 1"
+    },
+    {
+      "type": "text",
+      "id": "detail_1_label",
+      "label": "Label",
+      "default": "Offer"
+    },
+    {
+      "type": "text",
+      "id": "detail_1_value",
+      "label": "Value",
+      "default": "Free Bumper Engraving"
+    },
+    {
+      "type": "header",
+      "content": "Detail row 2"
+    },
+    {
+      "type": "text",
+      "id": "detail_2_label",
+      "label": "Label",
+      "default": "Characters"
+    },
+    {
+      "type": "text",
+      "id": "detail_2_value",
+      "label": "Value",
+      "default": "Up to 8 per bumper"
+    },
+    {
+      "type": "header",
+      "content": "Detail row 3"
+    },
+    {
+      "type": "text",
+      "id": "detail_3_label",
+      "label": "Label",
+      "default": "Window"
+    },
+    {
+      "type": "text",
+      "id": "detail_3_value",
+      "label": "Value",
+      "default": "Fri Noon — Sun Midnight"
+    },
+    {
+      "type": "header",
+      "content": "Detail row 4"
+    },
+    {
+      "type": "text",
+      "id": "detail_4_label",
+      "label": "Label",
+      "default": "Applies To"
+    },
+    {
+      "type": "text",
+      "id": "detail_4_value",
+      "label": "Value",
+      "default": "All Stock Putters"
+    },
+    {
+      "type": "header",
+      "content": "Detail row 5"
+    },
+    {
+      "type": "text",
+      "id": "detail_5_label",
+      "label": "Label",
+      "default": "Excludes"
+    },
+    {
+      "type": "text",
+      "id": "detail_5_value",
+      "label": "Value",
+      "default": "TS-1106+ / TS-1104 / TS-1029"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "SHOP STOCK PUTTERS →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "cta_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "cta_padding_vertical",
+      "label": "Vertical padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "cta_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Background color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_bg_color",
+      "label": "Hover background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cta_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Fine print"
+    },
+    {
+      "type": "text",
+      "id": "fine_print",
+      "label": "Fine print text",
+      "default": "Add engraving text in order notes at checkout. Offer ends Sunday at midnight."
+    },
+    {
+      "type": "range",
+      "id": "fine_print_size",
+      "label": "Font size",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "fine_print_spacing",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "fine_print_color",
+      "label": "Color",
+      "default": "#aaa9a0"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "fjalla_one_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "roboto_n4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promotional banner"
+    }
+  ]
+}
+{% endschema %}

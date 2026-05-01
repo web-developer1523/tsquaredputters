@@ -1075,10 +1075,8 @@ $(document).on('click', '#colorGrid .color-image', function() {
             {% comment %} alert('here clicked-4'); {% endcomment %}
             setTimeout(function() {
                 var $container = $('.tab1 .image-wrapper .default-image-sides');
-                if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                    $('.hosel_color').show();
-                    $('.hosel-color-overlay').hide();
-                }else{
+                if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+
                     {% comment %} alert('long_plumber_neck found hosel color'); {% endcomment %}
 
                         // Define the hosel color overlay map
@@ -1156,6 +1154,10 @@ $(document).on('click', '#colorGrid .color-image', function() {
                     $('.hosel-color-overlay').show();
                     $('.shaft').show();
                     $('.long_plumber_neck').show();
+
+                }else{
+                    $('.hosel_color').show();
+                    $('.hosel-color-overlay').hide();
                 }
                
             }, 50);
@@ -1402,6 +1404,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                   $('.hosel_color').hide();
                   $('.hosel-color-overlay').show();
                 }
+                $('.hosel_color').show();
                 $('.club_lie').hide();
                 $('.club_loft').hide();
             }, 50);
@@ -1426,6 +1429,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                     $('.hosel_color').hide();
                     $('.hosel-color-overlay').show();
                 }
+                $('.hosel_color').show();
                 $('.club_lie').hide();
                 $('.club_loft').hide();
             }, 50); 

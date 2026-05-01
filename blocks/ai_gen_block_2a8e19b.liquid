@@ -1,0 +1,725 @@
+{% doc %}
+  @prompt
+    Create a premium dark product grid section with background color #0E0E0E.
+    
+    The TS-912 should appear first and span two columns so it feels visually dominant, but do not add any badges, labels, or additional text. Keep the product name and description exactly as they are.
+    
+    All product cards should have:
+    
+    18px rounded corners
+    
+    1px solid border rgba(255,255,255,0.05)
+    
+    Generous spacing between rows (at least 60px gap)
+    
+    Clean, minimal layout
+    
+    Typography:
+    
+    Model name large and bold
+    
+    Secondary text smaller and lighter weight
+    
+    Price muted gray (#BFBFBF), not red
+    
+    Remove large buttons. Instead, show a subtle text link “Build Yours →” on hover.
+    
+    Hover effects:
+    
+    Card lifts slightly (translateY -6px)
+    
+    Image scales smoothly to 1.04
+    
+    Soft radial glow behind product image
+    
+    The TS-912 should simply feel more important because of layout and scale, not because of added text.
+    
+    Keep everything modern, minimal, and premium.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-premium-grid-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-premium-grid__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-premium-grid__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.row_gap }}px {{ block.settings.column_gap }}px;
+  }
+
+  .ai-premium-grid__card-{{ ai_gen_id }} {
+    position: relative;
+    background-color: transparent;
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ai-premium-grid__card-{{ ai_gen_id }}--featured {
+    grid-column: span 2;
+  }
+
+  .ai-premium-grid__card-{{ ai_gen_id }}:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-premium-grid__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.image_background }};
+  }
+
+  .ai-premium-grid__image-wrapper-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ai-premium-grid__card-{{ ai_gen_id }}:hover .ai-premium-grid__image-wrapper-{{ ai_gen_id }}::before {
+    width: 300%;
+    height: 300%;
+    opacity: 1;
+  }
+
+  .ai-premium-grid__image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ai-premium-grid__card-{{ ai_gen_id }}:hover .ai-premium-grid__image-{{ ai_gen_id }} {
+    transform: scale(1.04);
+  }
+
+  .ai-premium-grid__content-{{ ai_gen_id }} {
+    padding: {{ block.settings.card_padding }}px;
+  }
+
+  .ai-premium-grid__title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.title_font.family }}, {{ block.settings.title_font.fallback_families }};
+    font-weight: {{ block.settings.title_font.weight }};
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+
+  .ai-premium-grid__description-{{ ai_gen_id }} {
+    font-family: {{ block.settings.description_font.family }}, {{ block.settings.description_font.fallback_families }};
+    font-weight: {{ block.settings.description_font.weight }};
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+  }
+
+  .ai-premium-grid__price-{{ ai_gen_id }} {
+    font-family: {{ block.settings.price_font.family }}, {{ block.settings.price_font.fallback_families }};
+    font-weight: {{ block.settings.price_font.weight }};
+    font-size: {{ block.settings.price_size }}px;
+    color: {{ block.settings.price_color }};
+    margin: 0 0 16px 0;
+  }
+
+  .ai-premium-grid__link-{{ ai_gen_id }} {
+    display: inline-block;
+    font-family: {{ block.settings.link_font.family }}, {{ block.settings.link_font.fallback_families }};
+    font-weight: {{ block.settings.link_font.weight }};
+    font-size: {{ block.settings.link_size }}px;
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+  }
+
+  .ai-premium-grid__card-{{ ai_gen_id }}:hover .ai-premium-grid__link-{{ ai_gen_id }} {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-premium-grid__link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-premium-grid__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-premium-grid__card-{{ ai_gen_id }}--featured {
+      grid-column: span 2;
+    }
+
+    .ai-premium-grid__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.9);
+    }
+
+    .ai-premium-grid__description-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.description_size }}px * 0.9);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-premium-grid__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-premium-grid__card-{{ ai_gen_id }}--featured {
+      grid-column: span {{ block.settings.columns_mobile }};
+    }
+
+    .ai-premium-grid__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.8);
+    }
+
+    .ai-premium-grid__description-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.description_size }}px * 0.85);
+    }
+
+    .ai-premium-grid__content-{{ ai_gen_id }} {
+      padding: calc({{ block.settings.card_padding }}px * 0.75);
+    }
+  }
+{% endstyle %}
+
+<premium-product-grid-{{ ai_gen_id }} class="ai-premium-grid-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-premium-grid__container-{{ ai_gen_id }}">
+    <div class="ai-premium-grid__grid-{{ ai_gen_id }}">
+      {% if block.settings.featured_product != blank %}
+        <article class="ai-premium-grid__card-{{ ai_gen_id }} ai-premium-grid__card-{{ ai_gen_id }}--featured">
+          <a href="{{ block.settings.featured_product.url }}" class="ai-premium-grid__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.featured_product.featured_image %}
+              <img
+                src="{{ block.settings.featured_product.featured_image | image_url: width: 1200 }}"
+                alt="{{ block.settings.featured_product.featured_image.alt | escape }}"
+                class="ai-premium-grid__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.featured_product.featured_image.width }}"
+                height="{{ block.settings.featured_product.featured_image.height }}"
+              >
+            {% else %}
+              <div class="ai-premium-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="ai-premium-grid__content-{{ ai_gen_id }}">
+            <h3 class="ai-premium-grid__title-{{ ai_gen_id }}">{{ block.settings.featured_product.title }}</h3>
+            {% if block.settings.featured_product.description != blank %}
+              <div class="ai-premium-grid__description-{{ ai_gen_id }}">
+                {{ block.settings.featured_product.description | strip_html | truncate: 120 }}
+              </div>
+            {% endif %}
+            <div class="ai-premium-grid__price-{{ ai_gen_id }}">
+              {{ block.settings.featured_product.price | money }}
+            </div>
+            <a href="{{ block.settings.featured_product.url }}" class="ai-premium-grid__link-{{ ai_gen_id }}">
+              {{ block.settings.link_text }} →
+            </a>
+          </div>
+        </article>
+      {% endif %}
+
+      {% if block.settings.product_2 != blank %}
+        <article class="ai-premium-grid__card-{{ ai_gen_id }}">
+          <a href="{{ block.settings.product_2.url }}" class="ai-premium-grid__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.product_2.featured_image %}
+              <img
+                src="{{ block.settings.product_2.featured_image | image_url: width: 800 }}"
+                alt="{{ block.settings.product_2.featured_image.alt | escape }}"
+                class="ai-premium-grid__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.product_2.featured_image.width }}"
+                height="{{ block.settings.product_2.featured_image.height }}"
+              >
+            {% else %}
+              <div class="ai-premium-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="ai-premium-grid__content-{{ ai_gen_id }}">
+            <h3 class="ai-premium-grid__title-{{ ai_gen_id }}">{{ block.settings.product_2.title }}</h3>
+            {% if block.settings.product_2.description != blank %}
+              <div class="ai-premium-grid__description-{{ ai_gen_id }}">
+                {{ block.settings.product_2.description | strip_html | truncate: 100 }}
+              </div>
+            {% endif %}
+            <div class="ai-premium-grid__price-{{ ai_gen_id }}">
+              {{ block.settings.product_2.price | money }}
+            </div>
+            <a href="{{ block.settings.product_2.url }}" class="ai-premium-grid__link-{{ ai_gen_id }}">
+              {{ block.settings.link_text }} →
+            </a>
+          </div>
+        </article>
+      {% endif %}
+
+      {% if block.settings.product_3 != blank %}
+        <article class="ai-premium-grid__card-{{ ai_gen_id }}">
+          <a href="{{ block.settings.product_3.url }}" class="ai-premium-grid__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.product_3.featured_image %}
+              <img
+                src="{{ block.settings.product_3.featured_image | image_url: width: 800 }}"
+                alt="{{ block.settings.product_3.featured_image.alt | escape }}"
+                class="ai-premium-grid__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.product_3.featured_image.width }}"
+                height="{{ block.settings.product_3.featured_image.height }}"
+              >
+            {% else %}
+              <div class="ai-premium-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="ai-premium-grid__content-{{ ai_gen_id }}">
+            <h3 class="ai-premium-grid__title-{{ ai_gen_id }}">{{ block.settings.product_3.title }}</h3>
+            {% if block.settings.product_3.description != blank %}
+              <div class="ai-premium-grid__description-{{ ai_gen_id }}">
+                {{ block.settings.product_3.description | strip_html | truncate: 100 }}
+              </div>
+            {% endif %}
+            <div class="ai-premium-grid__price-{{ ai_gen_id }}">
+              {{ block.settings.product_3.price | money }}
+            </div>
+            <a href="{{ block.settings.product_3.url }}" class="ai-premium-grid__link-{{ ai_gen_id }}">
+              {{ block.settings.link_text }} →
+            </a>
+          </div>
+        </article>
+      {% endif %}
+
+      {% if block.settings.product_4 != blank %}
+        <article class="ai-premium-grid__card-{{ ai_gen_id }}">
+          <a href="{{ block.settings.product_4.url }}" class="ai-premium-grid__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.product_4.featured_image %}
+              <img
+                src="{{ block.settings.product_4.featured_image | image_url: width: 800 }}"
+                alt="{{ block.settings.product_4.featured_image.alt | escape }}"
+                class="ai-premium-grid__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.product_4.featured_image.width }}"
+                height="{{ block.settings.product_4.featured_image.height }}"
+              >
+            {% else %}
+              <div class="ai-premium-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="ai-premium-grid__content-{{ ai_gen_id }}">
+            <h3 class="ai-premium-grid__title-{{ ai_gen_id }}">{{ block.settings.product_4.title }}</h3>
+            {% if block.settings.product_4.description != blank %}
+              <div class="ai-premium-grid__description-{{ ai_gen_id }}">
+                {{ block.settings.product_4.description | strip_html | truncate: 100 }}
+              </div>
+            {% endif %}
+            <div class="ai-premium-grid__price-{{ ai_gen_id }}">
+              {{ block.settings.product_4.price | money }}
+            </div>
+            <a href="{{ block.settings.product_4.url }}" class="ai-premium-grid__link-{{ ai_gen_id }}">
+              {{ block.settings.link_text }} →
+            </a>
+          </div>
+        </article>
+      {% endif %}
+
+      {% if block.settings.product_5 != blank %}
+        <article class="ai-premium-grid__card-{{ ai_gen_id }}">
+          <a href="{{ block.settings.product_5.url }}" class="ai-premium-grid__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.product_5.featured_image %}
+              <img
+                src="{{ block.settings.product_5.featured_image | image_url: width: 800 }}"
+                alt="{{ block.settings.product_5.featured_image.alt | escape }}"
+                class="ai-premium-grid__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.product_5.featured_image.width }}"
+                height="{{ block.settings.product_5.featured_image.height }}"
+              >
+            {% else %}
+              <div class="ai-premium-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="ai-premium-grid__content-{{ ai_gen_id }}">
+            <h3 class="ai-premium-grid__title-{{ ai_gen_id }}">{{ block.settings.product_5.title }}</h3>
+            {% if block.settings.product_5.description != blank %}
+              <div class="ai-premium-grid__description-{{ ai_gen_id }}">
+                {{ block.settings.product_5.description | strip_html | truncate: 100 }}
+              </div>
+            {% endif %}
+            <div class="ai-premium-grid__price-{{ ai_gen_id }}">
+              {{ block.settings.product_5.price | money }}
+            </div>
+            <a href="{{ block.settings.product_5.url }}" class="ai-premium-grid__link-{{ ai_gen_id }}">
+              {{ block.settings.link_text }} →
+            </a>
+          </div>
+        </article>
+      {% endif %}
+
+      {% if block.settings.product_6 != blank %}
+        <article class="ai-premium-grid__card-{{ ai_gen_id }}">
+          <a href="{{ block.settings.product_6.url }}" class="ai-premium-grid__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.product_6.featured_image %}
+              <img
+                src="{{ block.settings.product_6.featured_image | image_url: width: 800 }}"
+                alt="{{ block.settings.product_6.featured_image.alt | escape }}"
+                class="ai-premium-grid__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ block.settings.product_6.featured_image.width }}"
+                height="{{ block.settings.product_6.featured_image.height }}"
+              >
+            {% else %}
+              <div class="ai-premium-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="ai-premium-grid__content-{{ ai_gen_id }}">
+            <h3 class="ai-premium-grid__title-{{ ai_gen_id }}">{{ block.settings.product_6.title }}</h3>
+            {% if block.settings.product_6.description != blank %}
+              <div class="ai-premium-grid__description-{{ ai_gen_id }}">
+                {{ block.settings.product_6.description | strip_html | truncate: 100 }}
+              </div>
+            {% endif %}
+            <div class="ai-premium-grid__price-{{ ai_gen_id }}">
+              {{ block.settings.product_6.price | money }}
+            </div>
+            <a href="{{ block.settings.product_6.url }}" class="ai-premium-grid__link-{{ ai_gen_id }}">
+              {{ block.settings.link_text }} →
+            </a>
+          </div>
+        </article>
+      {% endif %}
+    </div>
+  </div>
+</premium-product-grid-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class PremiumProductGrid{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.cards = this.querySelectorAll('.ai-premium-grid__card-{{ ai_gen_id }}');
+        this.setupAccessibility();
+      }
+
+      setupAccessibility() {
+        this.cards.forEach((card) => {
+          card.setAttribute('role', 'article');
+        });
+      }
+    }
+
+    customElements.define('premium-product-grid-{{ ai_gen_id }}', PremiumProductGrid{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Premium product grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Featured product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured product (spans 2 columns)"
+    },
+    {
+      "type": "header",
+      "content": "Additional products"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Product 4"
+    },
+    {
+      "type": "product",
+      "id": "product_5",
+      "label": "Product 5"
+    },
+    {
+      "type": "product",
+      "id": "product_6",
+      "label": "Product 6"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Row gap",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 20,
+      "max": 80,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0E0E0E"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(255, 255, 255, 0.05)"
+    },
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Image background",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#A0A0A0"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price",
+      "default": "#BFBFBF"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover",
+      "default": "#BFBFBF"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "title_font",
+      "label": "Title font",
+      "default": "fjalla_one_n4"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "font_picker",
+      "id": "description_font",
+      "label": "Description font",
+      "default": "itc_conduit_n4"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "font_picker",
+      "id": "price_font",
+      "label": "Price font",
+      "default": "itc_conduit_n4"
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "label": "Price size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "font_picker",
+      "id": "link_font",
+      "label": "Link font",
+      "default": "itc_conduit_n4"
+    },
+    {
+      "type": "range",
+      "id": "link_size",
+      "label": "Link size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Link text"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Build Yours"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium product grid"
+    }
+  ]
+}
+{% endschema %}

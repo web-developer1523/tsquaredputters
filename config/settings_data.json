@@ -9,29 +9,30 @@
  */
 {
   "current": {
-    "color_body_bg": "#ffffff",
-    "color_body_text": "#000000",
+    "color_body_bg": "#000000",
+    "color_body_text": "#ffffff",
     "color_price": "#b30000",
     "color_savings_text": "#b30000",
-    "color_borders": "#231f20",
+    "color_borders": "#ffffff",
     "color_button": "#ea1e26",
     "color_button_text": "#ffffff",
     "color_sale_tag": "#990000",
     "color_cart_dot": "#b30000",
     "color_small_image_bg": "#ffffff",
     "color_large_image_bg": "#ffffff",
-    "color_header": "#ffffff",
-    "color_header_text": "#000000",
+    "color_header": "rgba(0,0,0,0)",
+    "color_header_text": "#ffffff",
     "color_announcement": "#ea1e26",
     "color_announcement_text": "#ffffff",
-    "color_footer": "#ffffff",
-    "color_footer_text": "#231f20",
-    "color_drawer_background": "#000000",
+    "color_footer": "#000000",
+    "color_footer_text": "#ffffff",
+    "color_drawer_background": "#1a1a1a",
     "color_drawer_text": "#ffffff",
-    "color_drawer_border": "#2b2a27",
+    "color_drawer_border": "#404040",
     "color_drawer_button": "#ea1e26",
     "color_drawer_button_text": "#ffffff",
     "color_modal_overlays": "#67635d",
+    "color_image_text": "#ffffff",
     "color_image_overlay": "#231f20",
     "color_image_overlay_opacity": 0,
     "color_image_overlay_text_shadow": 40,
@@ -41,7 +42,7 @@
     "type_header_line_height": 1.2,
     "type_header_capitalize": true,
     "type_headers_align_text": true,
-    "type_base_font_family": "itc_conduit_n4",
+    "type_base_font_family": "roboto_n4",
     "type_base_spacing": "50",
     "type_base_size": 18,
     "type_base_line_height": 1.4,
@@ -52,7 +53,7 @@
     "type_product_style": "heading",
     "type_collection_font": "heading",
     "type_collection_size": 23,
-    "button_style": "angled",
+    "button_style": "square",
     "icon_weight": "5px",
     "icon_linecaps": "miter",
     "quick_shop_enable": true,
@@ -269,6 +270,16 @@
       },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "5269207691391943459": {
+        "type": "shopify://apps/gtm-data-layer/blocks/gropulse-gtm/ec1066b4-8b00-4630-a216-c88f51204a28",
         "disabled": false,
         "settings": {}
       }
@@ -718,5 +729,8 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": []
   }
 }

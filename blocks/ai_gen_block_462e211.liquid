@@ -1,0 +1,933 @@
+{% doc %}
+  @prompt
+    Create a custom homepage section titled “Our Putters.”
+    
+    The section should display two putter model cards side-by-side on desktop and one per row on mobile.
+    
+    Each card must include:
+    
+    A large centered product image of the putter head
+    
+    The model name (example: DF3.1, OZ.1i HS) in bold
+    
+    A short one-sentence description below the model name
+    
+    Left and right arrow buttons on each card to cycle through different putter models within that card
+    
+    Behavior & layout requirements:
+    
+    Clicking arrows changes the image, model name, and description without reloading the page
+    
+    Clean, modern, dark background styling similar to a premium golf brand
+    
+    Images remain perfectly centered and do not stretch
+    
+    Text is high-contrast and easy to read
+    
+    Section should feel minimal, high-end, and performance-focused
+    
+    Admin customization:
+    
+    Ability to add/edit models, images, and descriptions directly in the theme editor
+    
+    Ability to choose how many models appear in each card, dont put them in two cards make each model have its own card and has a build your and discover buttom on the bottom, there needs to be 8 cards and i would like them to scrollable from right to left not stacked 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-putters-section-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ai-putters-container-{{ ai_gen_id }} {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-putters-heading-{{ ai_gen_id }} {
+    text-align: center;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .ai-putters-scroll-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+
+  .ai-putters-grid-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.card_gap }}px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: {{ block.settings.scrollbar_color }} {{ block.settings.scrollbar_track }};
+    padding-bottom: 20px;
+  }
+
+  .ai-putters-grid-{{ ai_gen_id }}::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .ai-putters-grid-{{ ai_gen_id }}::-webkit-scrollbar-track {
+    background: {{ block.settings.scrollbar_track }};
+    border-radius: 4px;
+  }
+
+  .ai-putters-grid-{{ ai_gen_id }}::-webkit-scrollbar-thumb {
+    background: {{ block.settings.scrollbar_color }};
+    border-radius: 4px;
+  }
+
+  .ai-putters-grid-{{ ai_gen_id }}::-webkit-scrollbar-thumb:hover {
+    background: {{ block.settings.scrollbar_hover }};
+  }
+
+  .ai-putter-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    display: flex;
+    flex-direction: column;
+    min-width: {{ block.settings.card_width }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-putter-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ block.settings.image_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    background-color: {{ block.settings.image_background }};
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-putter-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .ai-putter-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.image_background }};
+  }
+
+  .ai-putter-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-putter-info-{{ ai_gen_id }} {
+    text-align: center;
+    flex-grow: 1;
+    margin-bottom: 24px;
+  }
+
+  .ai-putter-model-{{ ai_gen_id }} {
+    font-size: {{ block.settings.model_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .ai-putter-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ai-putter-buttons-{{ ai_gen_id }} {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .ai-putter-button-{{ ai_gen_id }} {
+    flex: 1;
+    padding: {{ block.settings.button_padding }}px;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: inline-block;
+  }
+
+  .ai-putter-button-build-{{ ai_gen_id }} {
+    background-color: {{ block.settings.build_button_bg }};
+    color: {{ block.settings.build_button_text_color }};
+    border-color: {{ block.settings.build_button_border }};
+  }
+
+  .ai-putter-button-build-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.build_button_hover_bg }};
+    color: {{ block.settings.build_button_hover_text }};
+    border-color: {{ block.settings.build_button_hover_border }};
+    transform: translateY(-2px);
+  }
+
+  .ai-putter-button-discover-{{ ai_gen_id }} {
+    background-color: {{ block.settings.discover_button_bg }};
+    color: {{ block.settings.discover_button_text_color }};
+    border-color: {{ block.settings.discover_button_border }};
+  }
+
+  .ai-putter-button-discover-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.discover_button_hover_bg }};
+    color: {{ block.settings.discover_button_hover_text }};
+    border-color: {{ block.settings.discover_button_hover_border }};
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-putters-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-putter-card-{{ ai_gen_id }} {
+      min-width: {{ block.settings.card_width | times: 0.85 }}px;
+    }
+
+    .ai-putter-image-wrapper-{{ ai_gen_id }} {
+      height: {{ block.settings.image_height | times: 0.7 }}px;
+    }
+
+    .ai-putter-model-{{ ai_gen_id }} {
+      font-size: {{ block.settings.model_size | times: 0.8 }}px;
+    }
+
+    .ai-putter-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+
+    .ai-putter-buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-putters-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-putters-container-{{ ai_gen_id }}">
+    {% if block.settings.section_heading != blank %}
+      <h2 class="ai-putters-heading-{{ ai_gen_id }}">{{ block.settings.section_heading }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="ai-putters-scroll-wrapper-{{ ai_gen_id }}">
+    <div class="ai-putters-grid-{{ ai_gen_id }}">
+      {% for i in (1..8) %}
+        {% assign image_key = 'model_' | append: i | append: '_image' %}
+        {% assign name_key = 'model_' | append: i | append: '_name' %}
+        {% assign desc_key = 'model_' | append: i | append: '_description' %}
+        {% assign build_link_key = 'model_' | append: i | append: '_build_link' %}
+        {% assign discover_link_key = 'model_' | append: i | append: '_discover_link' %}
+        {% assign enabled_key = 'model_' | append: i | append: '_enabled' %}
+        
+        {% if block.settings[enabled_key] %}
+          <div class="ai-putter-card-{{ ai_gen_id }}">
+            <div class="ai-putter-image-wrapper-{{ ai_gen_id }}">
+              {% if block.settings[image_key] %}
+                <img 
+                  src="{{ block.settings[image_key] | image_url: width: 800 }}"
+                  alt="{{ block.settings[name_key] | escape }}"
+                  class="ai-putter-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <div class="ai-putter-placeholder-{{ ai_gen_id }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="ai-putter-info-{{ ai_gen_id }}">
+              <h3 class="ai-putter-model-{{ ai_gen_id }}">
+                {% if block.settings[name_key] != blank %}
+                  {{ block.settings[name_key] }}
+                {% else %}
+                  Model {{ i }}
+                {% endif %}
+              </h3>
+              <p class="ai-putter-description-{{ ai_gen_id }}">
+                {% if block.settings[desc_key] != blank %}
+                  {{ block.settings[desc_key] }}
+                {% else %}
+                  Premium putter crafted for precision and performance.
+                {% endif %}
+              </p>
+            </div>
+
+            <div class="ai-putter-buttons-{{ ai_gen_id }}">
+              <a 
+                href="{% if block.settings[build_link_key] != blank %}{{ block.settings[build_link_key] }}{% else %}#{% endif %}"
+                class="ai-putter-button-{{ ai_gen_id }} ai-putter-button-build-{{ ai_gen_id }}"
+              >
+                {{ block.settings.build_button_label }}
+              </a>
+              <a 
+                href="{% if block.settings[discover_link_key] != blank %}{{ block.settings[discover_link_key] }}{% else %}#{% endif %}"
+                class="ai-putter-button-{{ ai_gen_id }} ai-putter-button-discover-{{ ai_gen_id }}"
+              >
+                {{ block.settings.discover_button_label }}
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our putters",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Our Putters"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading spacing",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Scrollbar"
+    },
+    {
+      "type": "color",
+      "id": "scrollbar_color",
+      "label": "Scrollbar color",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "color",
+      "id": "scrollbar_hover",
+      "label": "Scrollbar hover color",
+      "default": "#c41820"
+    },
+    {
+      "type": "color",
+      "id": "scrollbar_track",
+      "label": "Scrollbar track color",
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 250,
+      "max": 450,
+      "step": 10,
+      "unit": "px",
+      "label": "Card width",
+      "default": 350
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#2a2a2a"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap between cards",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 200,
+      "max": 500,
+      "step": 20,
+      "unit": "px",
+      "label": "Image height",
+      "default": 400
+    },
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Image background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "range",
+      "id": "model_size",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Model name size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Model name color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "build_button_label",
+      "label": "Build button text",
+      "default": "Build Yours"
+    },
+    {
+      "type": "text",
+      "id": "discover_button_label",
+      "label": "Discover button text",
+      "default": "Discover"
+    },
+    {
+      "type": "range",
+      "id": "button_padding",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Button padding",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button font size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Build button style"
+    },
+    {
+      "type": "color",
+      "id": "build_button_bg",
+      "label": "Background",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "color",
+      "id": "build_button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "build_button_border",
+      "label": "Border color",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "color",
+      "id": "build_button_hover_bg",
+      "label": "Hover background",
+      "default": "#c41820"
+    },
+    {
+      "type": "color",
+      "id": "build_button_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "build_button_hover_border",
+      "label": "Hover border color",
+      "default": "#c41820"
+    },
+    {
+      "type": "header",
+      "content": "Discover button style"
+    },
+    {
+      "type": "color",
+      "id": "discover_button_bg",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "discover_button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "discover_button_border",
+      "label": "Border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "discover_button_hover_bg",
+      "label": "Hover background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "discover_button_hover_text",
+      "label": "Hover text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "discover_button_hover_border",
+      "label": "Hover border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Model 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_1_enabled",
+      "label": "Enable model 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_1_name",
+      "label": "Model name",
+      "default": "DF3.1"
+    },
+    {
+      "type": "textarea",
+      "id": "model_1_description",
+      "label": "Description",
+      "default": "Precision-milled face insert for unmatched feel and control."
+    },
+    {
+      "type": "url",
+      "id": "model_1_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_1_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_2_enabled",
+      "label": "Enable model 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_2_name",
+      "label": "Model name",
+      "default": "OZ.1i HS"
+    },
+    {
+      "type": "textarea",
+      "id": "model_2_description",
+      "label": "Description",
+      "default": "High-stability design with optimized weight distribution."
+    },
+    {
+      "type": "url",
+      "id": "model_2_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_2_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_3_enabled",
+      "label": "Enable model 3",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_3_name",
+      "label": "Model name",
+      "default": "TR.1"
+    },
+    {
+      "type": "textarea",
+      "id": "model_3_description",
+      "label": "Description",
+      "default": "Tour-ready performance with classic blade styling."
+    },
+    {
+      "type": "url",
+      "id": "model_3_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_3_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_4_enabled",
+      "label": "Enable model 4",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_4_name",
+      "label": "Model name",
+      "default": "MZ.1"
+    },
+    {
+      "type": "textarea",
+      "id": "model_4_description",
+      "label": "Description",
+      "default": "Modern mallet design with enhanced alignment features."
+    },
+    {
+      "type": "url",
+      "id": "model_4_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_4_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 5"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_5_enabled",
+      "label": "Enable model 5",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_5_name",
+      "label": "Model name",
+      "default": "CX.2"
+    },
+    {
+      "type": "textarea",
+      "id": "model_5_description",
+      "label": "Description",
+      "default": "Counter-balanced design for smooth, consistent strokes."
+    },
+    {
+      "type": "url",
+      "id": "model_5_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_5_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 6"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_6_enabled",
+      "label": "Enable model 6",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_6_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_6_name",
+      "label": "Model name",
+      "default": "PX.1 Pro"
+    },
+    {
+      "type": "textarea",
+      "id": "model_6_description",
+      "label": "Description",
+      "default": "Professional-grade precision with customizable weighting."
+    },
+    {
+      "type": "url",
+      "id": "model_6_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_6_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 7"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_7_enabled",
+      "label": "Enable model 7",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_7_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_7_name",
+      "label": "Model name",
+      "default": "BL.2 Elite"
+    },
+    {
+      "type": "textarea",
+      "id": "model_7_description",
+      "label": "Description",
+      "default": "Classic blade design with modern performance technology."
+    },
+    {
+      "type": "url",
+      "id": "model_7_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_7_discover_link",
+      "label": "Discover link"
+    },
+    {
+      "type": "header",
+      "content": "Model 8"
+    },
+    {
+      "type": "checkbox",
+      "id": "model_8_enabled",
+      "label": "Enable model 8",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "model_8_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "model_8_name",
+      "label": "Model name",
+      "default": "FX.3 Tour"
+    },
+    {
+      "type": "textarea",
+      "id": "model_8_description",
+      "label": "Description",
+      "default": "Tour-validated performance with exceptional stability."
+    },
+    {
+      "type": "url",
+      "id": "model_8_build_link",
+      "label": "Build yours link"
+    },
+    {
+      "type": "url",
+      "id": "model_8_discover_link",
+      "label": "Discover link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our putters"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,970 @@
+{% doc %}
+  @prompt
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Zero Putter | Reserve Your Spot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+      :root {
+        --black: #0a0a0a;
+        --red: #c8102e;
+        --white: #f5f5f5;
+        --gray: #1a1a1a;
+        --border: #2a2a2a;
+      }
+    
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: 'Barlow', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+    
+      .container {
+        width: 100%;
+        max-width: 960px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border: 1px solid var(--border);
+        animation: fadeUp 0.8s ease forwards;
+      }
+    
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    
+      /* LEFT: Image Side */
+      .image-side {
+        background: var(--gray);
+        position: relative;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid var(--border);
+        overflow: hidden;
+        cursor: pointer;
+      }
+    
+      .image-side::before {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 120px;
+        background: linear-gradient(to top, var(--black), transparent);
+        z-index: 2;
+        pointer-events: none;
+      }
+    
+      .drop-zone {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        transition: background 0.2s;
+        z-index: 1;
+      }
+    
+      .drop-zone.has-image { background: transparent; }
+      .drop-zone.dragging { background: rgba(200,16,46,0.08); }
+    
+      .drop-icon {
+        width: 52px;
+        height: 52px;
+        border: 2px dashed #444;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s;
+      }
+    
+      .drop-zone.has-image .drop-icon,
+      .drop-zone.has-image .drop-text { display: none; }
+    
+      .drop-icon svg { stroke: #555; }
+      .drop-text { color: #555; font-size: 13px; font-weight: 300; letter-spacing: 0.05em; text-align: center; }
+    
+      .drop-input { display: none; }
+    
+      #preview-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        inset: 0;
+        display: none;
+      }
+    
+      .image-label {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        z-index: 3;
+      }
+    
+      .image-label span {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        color: var(--red);
+      }
+    
+      /* RIGHT: Form Side */
+      .form-side {
+        background: var(--black);
+        padding: 52px 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    
+      .badge {
+        display: inline-block;
+        background: var(--red);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        padding: 4px 10px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+    
+      h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 58px;
+        line-height: 0.95;
+        letter-spacing: 0.02em;
+        color: var(--white);
+        margin-bottom: 6px;
+      }
+    
+      h1 span { color: var(--red); }
+    
+      .subtitle {
+        font-size: 13px;
+        font-weight: 300;
+        color: #888;
+        letter-spacing: 0.05em;
+        margin-bottom: 32px;
+        border-left: 2px solid var(--red);
+        padding-left: 12px;
+      }
+    
+      .form-group {
+        margin-bottom: 16px;
+      }
+    
+      label {
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        color: #666;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+    
+      input, select {
+        width: 100%;
+        background: var(--gray);
+        border: 1px solid var(--border);
+        border-radius: 0;
+        color: var(--white);
+        font-family: 'Barlow', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 12px 16px;
+        outline: none;
+        transition: border-color 0.2s;
+        appearance: none;
+      }
+    
+      input:focus, select:focus { border-color: var(--red); }
+      input::placeholder { color: #444; }
+    
+      select option { background: var(--gray); }
+    
+      .select-wrap { position: relative; }
+      .select-wrap::after {
+        content: '▾';
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #555;
+        pointer-events: none;
+        font-size: 12px;
+      }
+    
+      .benefits {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+    
+      .benefit {
+        background: var(--gray);
+        border: 1px solid var(--border);
+        padding: 10px 8px;
+        text-align: center;
+      }
+    
+      .benefit-icon { color: var(--red); font-size: 16px; margin-bottom: 4px; }
+      .benefit-text { font-size: 10px; font-weight: 500; letter-spa
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-tzero-reserve-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    display: block;
+  }
+
+  .ai-tzero-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid {{ block.settings.border_color }};
+    background: {{ block.settings.background_color }};
+  }
+
+  .ai-tzero-image-side-{{ ai_gen_id }} {
+    background: {{ block.settings.image_bg_color }};
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid {{ block.settings.border_color }};
+    overflow: hidden;
+  }
+
+  .ai-tzero-image-side-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, {{ block.settings.background_color }}, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .ai-tzero-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-tzero-image-wrapper-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-tzero-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: {{ block.settings.image_bg_color }};
+  }
+
+  .ai-tzero-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    opacity: 0.3;
+  }
+
+  .ai-tzero-image-label-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 3;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: {{ block.settings.accent_color }};
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ai-tzero-form-side-{{ ai_gen_id }} {
+    background: {{ block.settings.background_color }};
+    padding: 52px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ai-tzero-badge-{{ ai_gen_id }} {
+    display: inline-block;
+    background: {{ block.settings.accent_color }};
+    color: {{ block.settings.badge_text_color }};
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .ai-tzero-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: {{ block.settings.heading_color }};
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .ai-tzero-heading-{{ ai_gen_id }} span {
+    color: {{ block.settings.accent_color }};
+  }
+
+  .ai-tzero-subtitle-{{ ai_gen_id }} {
+    font-size: 13px;
+    font-weight: 300;
+    color: {{ block.settings.subtitle_color }};
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+    border-left: 2px solid {{ block.settings.accent_color }};
+    padding-left: 12px;
+  }
+
+  .ai-tzero-form-group-{{ ai_gen_id }} {
+    margin-bottom: 16px;
+  }
+
+  .ai-tzero-label-{{ ai_gen_id }} {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: {{ block.settings.label_color }};
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .ai-tzero-input-{{ ai_gen_id }},
+  .ai-tzero-select-{{ ai_gen_id }} {
+    width: 100%;
+    background: {{ block.settings.input_bg_color }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: 0;
+    color: {{ block.settings.input_text_color }};
+    font-size: 14px;
+    font-weight: 300;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .ai-tzero-input-{{ ai_gen_id }}:focus,
+  .ai-tzero-select-{{ ai_gen_id }}:focus {
+    border-color: {{ block.settings.accent_color }};
+  }
+
+  .ai-tzero-input-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.placeholder_color }};
+  }
+
+  .ai-tzero-select-wrap-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .ai-tzero-select-wrap-{{ ai_gen_id }}::after {
+    content: '▾';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: {{ block.settings.placeholder_color }};
+    pointer-events: none;
+    font-size: 12px;
+  }
+
+  .ai-tzero-benefits-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .ai-tzero-benefit-{{ ai_gen_id }} {
+    background: {{ block.settings.input_bg_color }};
+    border: 1px solid {{ block.settings.border_color }};
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .ai-tzero-benefit-icon-{{ ai_gen_id }} {
+    color: {{ block.settings.accent_color }};
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .ai-tzero-benefit-text-{{ ai_gen_id }} {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .ai-tzero-submit-{{ ai_gen_id }} {
+    width: 100%;
+    background: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    padding: 16px 24px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .ai-tzero-submit-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-tzero-success-{{ ai_gen_id }} {
+    color: {{ block.settings.success_color }};
+    margin-top: 12px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .ai-tzero-error-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-tzero-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-tzero-image-side-{{ ai_gen_id }} {
+      min-height: 400px;
+      border-right: none;
+      border-bottom: 1px solid {{ block.settings.border_color }};
+    }
+
+    .ai-tzero-form-side-{{ ai_gen_id }} {
+      padding: 32px 24px;
+    }
+
+    .ai-tzero-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-tzero-benefits-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<tzero-reserve-{{ ai_gen_id }} class="ai-tzero-reserve-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-tzero-container-{{ ai_gen_id }}">
+    <div class="ai-tzero-image-side-{{ ai_gen_id }}">
+      <div class="ai-tzero-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.product_image %}
+          <img
+            src="{{ block.settings.product_image | image_url: width: 1200 }}"
+            alt="{{ block.settings.product_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.product_image.width }}"
+            height="{{ block.settings.product_image.height }}"
+          >
+        {% else %}
+          <div class="ai-tzero-image-placeholder-{{ ai_gen_id }}">
+            {{ 'product-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+      {% if block.settings.image_label != blank %}
+        <div class="ai-tzero-image-label-{{ ai_gen_id }}">
+          {{ block.settings.image_label }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-tzero-form-side-{{ ai_gen_id }}">
+      {%- form 'contact' -%}
+        <input type="hidden" name="contact[reservation_product]" value="{{ block.settings.product_name }}">
+
+        {% if block.settings.badge_text != blank %}
+          <div class="ai-tzero-badge-{{ ai_gen_id }}">{{ block.settings.badge_text }}</div>
+        {% endif %}
+
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-tzero-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+
+        {% if block.settings.subtitle != blank %}
+          <div class="ai-tzero-subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</div>
+        {% endif %}
+
+        <div class="ai-tzero-form-group-{{ ai_gen_id }}">
+          <label class="ai-tzero-label-{{ ai_gen_id }}" for="ai-tzero-name-{{ ai_gen_id }}">
+            {{ block.settings.name_label }}
+          </label>
+          <input
+            type="text"
+            id="ai-tzero-name-{{ ai_gen_id }}"
+            name="contact[name]"
+            class="ai-tzero-input-{{ ai_gen_id }}"
+            placeholder="{{ block.settings.name_placeholder }}"
+            required
+          >
+        </div>
+
+        <div class="ai-tzero-form-group-{{ ai_gen_id }}">
+          <label class="ai-tzero-label-{{ ai_gen_id }}" for="ai-tzero-email-{{ ai_gen_id }}">
+            {{ block.settings.email_label }}
+          </label>
+          <input
+            type="email"
+            id="ai-tzero-email-{{ ai_gen_id }}"
+            name="contact[email]"
+            class="ai-tzero-input-{{ ai_gen_id }}"
+            placeholder="{{ block.settings.email_placeholder }}"
+            autocomplete="email"
+            aria-required="true"
+            {% if form.errors %}
+              aria-invalid="true"
+              aria-describedby="ai-tzero-error-{{ ai_gen_id }}"
+            {% endif %}
+            {% if form.posted_successfully? %}
+              aria-describedby="ai-tzero-success-{{ ai_gen_id }}"
+            {% endif %}
+            required
+          >
+          {%- if form.errors -%}
+            <div id="ai-tzero-error-{{ ai_gen_id }}" class="ai-tzero-error-{{ ai_gen_id }}">
+              {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="ai-tzero-form-group-{{ ai_gen_id }}">
+          <label class="ai-tzero-label-{{ ai_gen_id }}" for="ai-tzero-phone-{{ ai_gen_id }}">
+            {{ block.settings.phone_label }}
+          </label>
+          <input
+            type="tel"
+            id="ai-tzero-phone-{{ ai_gen_id }}"
+            name="contact[phone]"
+            class="ai-tzero-input-{{ ai_gen_id }}"
+            placeholder="{{ block.settings.phone_placeholder }}"
+            autocomplete="tel"
+          >
+        </div>
+
+        {% if block.settings.show_interest_level %}
+          <div class="ai-tzero-form-group-{{ ai_gen_id }}">
+            <label class="ai-tzero-label-{{ ai_gen_id }}" for="ai-tzero-interest-{{ ai_gen_id }}">
+              {{ block.settings.interest_label }}
+            </label>
+            <div class="ai-tzero-select-wrap-{{ ai_gen_id }}">
+              <select
+                id="ai-tzero-interest-{{ ai_gen_id }}"
+                name="contact[interest_level]"
+                class="ai-tzero-select-{{ ai_gen_id }}"
+              >
+                <option value="">{{ block.settings.interest_placeholder }}</option>
+                <option value="Just browsing">Just browsing</option>
+                <option value="Interested">Interested</option>
+                <option value="Very interested">Very interested</option>
+                <option value="Ready to buy">Ready to buy</option>
+              </select>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.show_benefits %}
+          <div class="ai-tzero-benefits-{{ ai_gen_id }}">
+            {% if block.settings.benefit_1_text != blank %}
+              <div class="ai-tzero-benefit-{{ ai_gen_id }}">
+                <div class="ai-tzero-benefit-icon-{{ ai_gen_id }}">{{ block.settings.benefit_1_icon }}</div>
+                <div class="ai-tzero-benefit-text-{{ ai_gen_id }}">{{ block.settings.benefit_1_text }}</div>
+              </div>
+            {% endif %}
+            {% if block.settings.benefit_2_text != blank %}
+              <div class="ai-tzero-benefit-{{ ai_gen_id }}">
+                <div class="ai-tzero-benefit-icon-{{ ai_gen_id }}">{{ block.settings.benefit_2_icon }}</div>
+                <div class="ai-tzero-benefit-text-{{ ai_gen_id }}">{{ block.settings.benefit_2_text }}</div>
+              </div>
+            {% endif %}
+            {% if block.settings.benefit_3_text != blank %}
+              <div class="ai-tzero-benefit-{{ ai_gen_id }}">
+                <div class="ai-tzero-benefit-icon-{{ ai_gen_id }}">{{ block.settings.benefit_3_icon }}</div>
+                <div class="ai-tzero-benefit-text-{{ ai_gen_id }}">{{ block.settings.benefit_3_text }}</div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <button type="submit" class="ai-tzero-submit-{{ ai_gen_id }}">
+          {{ block.settings.button_text }}
+        </button>
+
+        {%- if form.posted_successfully? -%}
+          <div id="ai-tzero-success-{{ ai_gen_id }}" class="ai-tzero-success-{{ ai_gen_id }}">
+            {{ block.settings.success_message }}
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</tzero-reserve-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TZeroReserve{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('tzero-reserve-{{ ai_gen_id }}', TZeroReserve{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product reservation",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "T-Zero Putter"
+    },
+    {
+      "type": "text",
+      "id": "image_label",
+      "label": "Image label",
+      "default": "PRECISION ENGINEERED"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "LIMITED RELEASE"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "T-ZERO <span>PUTTER</span>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Reserve your spot for the next generation"
+    },
+    {
+      "type": "header",
+      "content": "Form fields"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Enter your name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "(555) 123-4567"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_interest_level",
+      "label": "Show interest level",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "interest_label",
+      "label": "Interest label",
+      "default": "Interest Level"
+    },
+    {
+      "type": "text",
+      "id": "interest_placeholder",
+      "label": "Interest placeholder",
+      "default": "Select your interest level"
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show benefits",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_icon",
+      "label": "Benefit 1 icon",
+      "default": "★"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_text",
+      "label": "Benefit 1 text",
+      "default": "Priority Access"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_icon",
+      "label": "Benefit 2 icon",
+      "default": "✓"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_text",
+      "label": "Benefit 2 text",
+      "default": "Exclusive Pricing"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_icon",
+      "label": "Benefit 3 icon",
+      "default": "◆"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_text",
+      "label": "Benefit 3 text",
+      "default": "Limited Edition"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Reserve Your Spot"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll be in touch soon about your reservation."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 58
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "image_bg_color",
+      "label": "Image background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#2a2a2a"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#c8102e"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle",
+      "default": "#888888"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "input_bg_color",
+      "label": "Input background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#c8102e"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover",
+      "default": "#a00d24"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "Success message",
+      "default": "#4caf50"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Error message",
+      "default": "#ff5252"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product reservation"
+    }
+  ]
+}
+{% endschema %}

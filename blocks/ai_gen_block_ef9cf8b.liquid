@@ -1,0 +1,757 @@
+{% doc %}
+  @prompt
+    Perfect. We’ll have Shopify AI generate a LAB × Apple section — minimal, engineered, calm authority.
+    
+    Go to Add Section → Generate with AI and paste this exactly:
+    
+    SHOPIFY AI PROMPT (copy/paste)
+    
+    Create a full-width split section with a minimal, engineered aesthetic inspired by a blend of LAB Golf authority and Apple-level restraint.
+    
+    Layout:
+    
+    Two-column split.
+    
+    Left side: text block.
+    
+    Right side: single close-up image of a precision-milled putter head.
+    
+    Large white space around all elements.
+    
+    No borders. No shadows. No background graphics.
+    
+    Warm off-white background (not pure white).
+    
+    Tone:
+    Quiet confidence. Engineered precision. No marketing hype. No long paragraphs.
+    
+    Content:
+    
+    Small eyebrow text above headline:
+    “100% USA Milled”
+    
+    Headline:
+    “Engineered to your stroke.”
+    
+    Subtext (stacked lines, not paragraph):
+    Milled in our U.S. shop.
+    Balanced for control.
+    Finished your way.
+    
+    Primary button:
+    “Begin Custom”
+    Style: Outline button, thin border, no color fill.
+    
+    Design rules:
+    
+    Thin, modern typography.
+    
+    No red buttons.
+    
+    No heavy overlays.
+    
+    Plenty of spacing above and below.
+    
+    Image should feel industrial but clean.
+    
+    Section should feel calm and authoritative, not promotional.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-split-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-split-section__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.column_gap }}px;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 {{ block.settings.horizontal_padding }}px;
+    align-items: center;
+  }
+
+  .ai-split-section__text-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.text_spacing }}px;
+    padding-right: {{ block.settings.text_padding_right }}px;
+  }
+
+  .ai-split-section__eyebrow-{{ ai_gen_id }} {
+    font-size: {{ block.settings.eyebrow_size }}px;
+    font-weight: {{ block.settings.eyebrow_weight }};
+    letter-spacing: {{ block.settings.eyebrow_spacing }}px;
+    text-transform: uppercase;
+    color: {{ block.settings.eyebrow_color }};
+    margin: 0;
+  }
+
+  .ai-split-section__headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    font-weight: {{ block.settings.headline_weight }};
+    line-height: {{ block.settings.headline_line_height }};
+    letter-spacing: {{ block.settings.headline_spacing }}px;
+    color: {{ block.settings.headline_color }};
+    margin: 0;
+  }
+
+  .ai-split-section__subtext-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.subtext_line_gap }}px;
+    font-size: {{ block.settings.subtext_size }}px;
+    font-weight: {{ block.settings.subtext_weight }};
+    line-height: {{ block.settings.subtext_line_height }};
+    letter-spacing: {{ block.settings.subtext_spacing }}px;
+    color: {{ block.settings.subtext_color }};
+  }
+
+  .ai-split-section__subtext-line-{{ ai_gen_id }} {
+    margin: 0;
+  }
+
+  .ai-split-section__button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: {{ block.settings.button_font_weight }};
+    letter-spacing: {{ block.settings.button_letter_spacing }}px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: {{ block.settings.button_text_color }};
+    background-color: {{ block.settings.button_background }};
+    border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};
+    border-radius: {{ block.settings.button_border_radius }}px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: {{ block.settings.button_margin_top }}px;
+    align-self: flex-start;
+  }
+
+  .ai-split-section__button-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.button_hover_text_color }};
+    background-color: {{ block.settings.button_hover_background }};
+    border-color: {{ block.settings.button_hover_border_color }};
+  }
+
+  .ai-split-section__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: {{ block.settings.image_min_height }}px;
+  }
+
+  .ai-split-section__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-split-section__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    min-height: {{ block.settings.image_min_height }}px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-split-section__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .ai-split-section__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-split-section__container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.mobile_gap }}px;
+    }
+
+    .ai-split-section__text-{{ ai_gen_id }} {
+      padding-right: 0;
+      order: {{ block.settings.mobile_text_order }};
+    }
+
+    .ai-split-section__image-wrapper-{{ ai_gen_id }} {
+      order: {{ block.settings.mobile_image_order }};
+    }
+
+    .ai-split-section__headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.7 }}px;
+    }
+
+    .ai-split-section__eyebrow-{{ ai_gen_id }} {
+      font-size: {{ block.settings.eyebrow_size | times: 0.85 }}px;
+    }
+
+    .ai-split-section__subtext-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subtext_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<split-section-{{ ai_gen_id }}
+  class="ai-split-section-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-split-section__container-{{ ai_gen_id }}">
+    <div class="ai-split-section__text-{{ ai_gen_id }}">
+      {% if block.settings.eyebrow_text != blank %}
+        <p class="ai-split-section__eyebrow-{{ ai_gen_id }}">
+          {{ block.settings.eyebrow_text }}
+        </p>
+      {% endif %}
+
+      {% if block.settings.headline_text != blank %}
+        <h2 class="ai-split-section__headline-{{ ai_gen_id }}">
+          {{ block.settings.headline_text }}
+        </h2>
+      {% endif %}
+
+      {% if block.settings.subtext_line_1 != blank or block.settings.subtext_line_2 != blank or block.settings.subtext_line_3 != blank %}
+        <div class="ai-split-section__subtext-{{ ai_gen_id }}">
+          {% if block.settings.subtext_line_1 != blank %}
+            <p class="ai-split-section__subtext-line-{{ ai_gen_id }}">
+              {{ block.settings.subtext_line_1 }}
+            </p>
+          {% endif %}
+          {% if block.settings.subtext_line_2 != blank %}
+            <p class="ai-split-section__subtext-line-{{ ai_gen_id }}">
+              {{ block.settings.subtext_line_2 }}
+            </p>
+          {% endif %}
+          {% if block.settings.subtext_line_3 != blank %}
+            <p class="ai-split-section__subtext-line-{{ ai_gen_id }}">
+              {{ block.settings.subtext_line_3 }}
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.button_text != blank %}
+        <a
+          href="{{ block.settings.button_link }}"
+          class="ai-split-section__button-{{ ai_gen_id }}"
+        >
+          {{ block.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="ai-split-section__image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.image %}
+        <img
+          src="{{ block.settings.image | image_url: width: 1200 }}"
+          alt="{{ block.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+          class="ai-split-section__image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-split-section__image-placeholder-{{ ai_gen_id }}">
+          {{ 'product-1' | placeholder_svg_tag }}
+          <div class="ai-split-section__empty-state-{{ ai_gen_id }}">
+            Add a close-up image of a precision-milled putter head
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</split-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SplitSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('split-section-{{ ai_gen_id }}', SplitSection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Engineered split section",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "100% USA Milled"
+    },
+    {
+      "type": "text",
+      "id": "headline_text",
+      "label": "Headline",
+      "default": "Engineered to your stroke."
+    },
+    {
+      "type": "text",
+      "id": "subtext_line_1",
+      "label": "Subtext line 1",
+      "default": "Milled in our U.S. shop."
+    },
+    {
+      "type": "text",
+      "id": "subtext_line_2",
+      "label": "Subtext line 2",
+      "default": "Balanced for control."
+    },
+    {
+      "type": "text",
+      "id": "subtext_line_3",
+      "label": "Subtext line 3",
+      "default": "Finished your way."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Begin Custom"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 40,
+      "max": 160,
+      "step": 20,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "label": "Horizontal padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 40,
+      "max": 160,
+      "step": 20,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "text_padding_right",
+      "label": "Text padding right",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_min_height",
+      "label": "Image minimum height",
+      "min": 300,
+      "max": 700,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Mobile gap",
+      "min": 20,
+      "max": 80,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_order",
+      "label": "Text order on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "First"
+        },
+        {
+          "value": "2",
+          "label": "Second"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_order",
+      "label": "Image order on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "First"
+        },
+        {
+          "value": "2",
+          "label": "Second"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#faf9f7"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow",
+      "default": "#6b6b6b"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow style"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_weight",
+      "label": "Weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "unit": "px",
+      "default": 1.5
+    },
+    {
+      "type": "header",
+      "content": "Headline style"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Size",
+      "min": 28,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "headline_weight",
+      "label": "Weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "headline_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1.1
+    },
+    {
+      "type": "range",
+      "id": "headline_spacing",
+      "label": "Letter spacing",
+      "min": -1,
+      "max": 2,
+      "step": 0.5,
+      "unit": "px",
+      "default": -0.5
+    },
+    {
+      "type": "header",
+      "content": "Subtext style"
+    },
+    {
+      "type": "range",
+      "id": "subtext_size",
+      "label": "Size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "subtext_weight",
+      "label": "Weight",
+      "min": 300,
+      "max": 600,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "subtext_line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "subtext_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "unit": "px",
+      "default": 0.3
+    },
+    {
+      "type": "range",
+      "id": "subtext_line_gap",
+      "label": "Line gap",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "label": "Text block spacing",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_font_weight",
+      "label": "Font weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "button_letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 2,
+      "step": 0.5,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Vertical padding",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "label": "Border width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Top margin",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Hover border color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Engineered split section"
+    }
+  ]
+}
+{% endschema %}

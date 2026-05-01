@@ -1,0 +1,549 @@
+{% doc %}
+  @prompt
+    Here's your full rewritten block prompt:
+    
+    PROMPT FOR SHOPIFY AI — COMING SOON RESERVATION BLOCK
+    
+    Write a coming soon block for a Shopify product page for the T-Zero Putter by T Squared. Build it exactly as described below.
+    BLOCK COPY — use this exactly:
+    Headline: "Twenty-Five Units. One Colorway. No Second Chances."
+    Body: "The T-Zero is getting a drop-exclusive colorway that won't be seen again for a long time. Reserve your place now, before it's revealed."
+    Above the form: "Submit your information to reserve your spot. This does not guarantee a T-Zero — only 25 will be available."
+    Checkbox label: "I understand this is a reservation only and does not guarantee a purchase."
+    Closing line beneath the submit button: "Reservations are filling up. The reveal is coming."
+    
+    FORM FIELDS:
+    Full name, email address, phone number, and the reservation acknowledgment checkbox.
+    
+    AUTOMATED CONFIRMATION EMAIL — trigger this immediately upon form submission:
+    The email should go to the address entered in the form. Tone is luxury and clear. The email must include:
+    A subject line that confirms their reservation was received without overselling it.
+    A opening line thanking them for reserving their spot for the T-Zero drop by T Squared.
+    A clear bolded statement that this is a reservation only and is not a purchase. They have not been charged anything and are not guaranteed a unit.
+    A line explaining that only 25 units are available and that if they are selected for the drop, the T-Zero will be priced at $400.
+    A line telling them to watch their email for the colorway reveal and drop details.
+    A clean closing that feels premium and on-brand for a luxury golf company.
+    Do not make the email sound automated or generic. Keep it short, clean, and confident. No filler.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-tzero-reservation-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    margin: 0 auto;
+  }
+
+  .ai-tzero-reservation__content-{{ ai_gen_id }} {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .ai-tzero-reservation__headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 20px;
+    text-align: center;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .ai-tzero-reservation__body-{{ ai_gen_id }} {
+    font-size: {{ block.settings.body_size }}px;
+    color: {{ block.settings.body_color }};
+    margin: 0 0 30px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .ai-tzero-reservation__form-intro-{{ ai_gen_id }} {
+    font-size: {{ block.settings.form_intro_size }}px;
+    color: {{ block.settings.form_intro_color }};
+    margin: 0 0 20px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .ai-tzero-reservation__field-{{ ai_gen_id }} {
+    margin-bottom: 16px;
+  }
+
+  .ai-tzero-reservation__label-{{ ai_gen_id }} {
+    display: block;
+    font-size: 14px;
+    color: {{ block.settings.label_color }};
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .ai-tzero-reservation__input-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    background-color: {{ block.settings.input_background_color }};
+    color: {{ block.settings.input_text_color }};
+  }
+
+  .ai-tzero-reservation__input-{{ ai_gen_id }}:focus {
+    outline: 2px solid {{ block.settings.input_focus_color }};
+    outline-offset: 2px;
+  }
+
+  .ai-tzero-reservation__checkbox-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .ai-tzero-reservation__checkbox-{{ ai_gen_id }} {
+    margin-top: 4px;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .ai-tzero-reservation__checkbox-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.checkbox_label_color }};
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .ai-tzero-reservation__submit-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: {{ block.settings.button_size }}px;
+    font-weight: 700;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .ai-tzero-reservation__submit-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-tzero-reservation__submit-{{ ai_gen_id }}:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .ai-tzero-reservation__closing-{{ ai_gen_id }} {
+    font-size: {{ block.settings.closing_size }}px;
+    color: {{ block.settings.closing_color }};
+    margin: 20px 0 0;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .ai-tzero-reservation__message-{{ ai_gen_id }} {
+    padding: 16px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+
+  .ai-tzero-reservation__success-{{ ai_gen_id }} {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .ai-tzero-reservation__error-{{ ai_gen_id }} {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-tzero-reservation-{{ ai_gen_id }} {
+      width: 100%;
+      padding: {{ block.settings.padding | times: 0.7 }}px;
+    }
+
+    .ai-tzero-reservation__headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.8 }}px;
+    }
+
+    .ai-tzero-reservation__body-{{ ai_gen_id }} {
+      font-size: {{ block.settings.body_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<tzero-reservation-{{ ai_gen_id }}
+  class="ai-tzero-reservation-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-tzero-reservation__content-{{ ai_gen_id }}">
+    <h2 class="ai-tzero-reservation__headline-{{ ai_gen_id }}">
+      Twenty-Five Units. One Colorway. No Second Chances.
+    </h2>
+
+    <div class="ai-tzero-reservation__body-{{ ai_gen_id }}">
+      The T-Zero is getting a drop-exclusive colorway that won't be seen again for a long time. Reserve your place now, before it's revealed.
+    </div>
+
+    <div class="ai-tzero-reservation__form-intro-{{ ai_gen_id }}">
+      Submit your information to reserve your spot. This does not guarantee a T-Zero — only 25 will be available.
+    </div>
+
+    {%- form 'contact' -%}
+      <input type="hidden" name="contact[subject]" value="T-Zero Drop Reservation">
+      <input type="hidden" name="contact[product]" value="T-Zero Putter">
+      <input type="hidden" name="contact[reservation_type]" value="Drop Exclusive Colorway">
+
+      <div class="ai-tzero-reservation__field-{{ ai_gen_id }}">
+        <label for="ai-tzero-name-{{ ai_gen_id }}" class="ai-tzero-reservation__label-{{ ai_gen_id }}">
+          Full name
+        </label>
+        <input
+          type="text"
+          id="ai-tzero-name-{{ ai_gen_id }}"
+          name="contact[name]"
+          class="ai-tzero-reservation__input-{{ ai_gen_id }}"
+          required
+          {% if form.posted_successfully? %}
+            aria-describedby="ai-tzero-success-{{ ai_gen_id }}"
+          {% endif %}
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="ai-tzero-error-{{ ai_gen_id }}"
+          {% endif %}
+        >
+      </div>
+
+      <div class="ai-tzero-reservation__field-{{ ai_gen_id }}">
+        <label for="ai-tzero-email-{{ ai_gen_id }}" class="ai-tzero-reservation__label-{{ ai_gen_id }}">
+          Email address
+        </label>
+        <input
+          type="email"
+          id="ai-tzero-email-{{ ai_gen_id }}"
+          name="contact[email]"
+          class="ai-tzero-reservation__input-{{ ai_gen_id }}"
+          autocomplete="email"
+          autocorrect="off"
+          autocapitalize="off"
+          required
+          {% if form.posted_successfully? %}
+            aria-describedby="ai-tzero-success-{{ ai_gen_id }}"
+          {% endif %}
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="ai-tzero-error-{{ ai_gen_id }}"
+          {% endif %}
+        >
+      </div>
+
+      <div class="ai-tzero-reservation__field-{{ ai_gen_id }}">
+        <label for="ai-tzero-phone-{{ ai_gen_id }}" class="ai-tzero-reservation__label-{{ ai_gen_id }}">
+          Phone number
+        </label>
+        <input
+          type="tel"
+          id="ai-tzero-phone-{{ ai_gen_id }}"
+          name="contact[phone]"
+          class="ai-tzero-reservation__input-{{ ai_gen_id }}"
+          autocomplete="tel"
+          required
+          {% if form.posted_successfully? %}
+            aria-describedby="ai-tzero-success-{{ ai_gen_id }}"
+          {% endif %}
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="ai-tzero-error-{{ ai_gen_id }}"
+          {% endif %}
+        >
+      </div>
+
+      <div class="ai-tzero-reservation__checkbox-wrapper-{{ ai_gen_id }}">
+        <input
+          type="checkbox"
+          id="ai-tzero-acknowledge-{{ ai_gen_id }}"
+          name="contact[acknowledgment]"
+          class="ai-tzero-reservation__checkbox-{{ ai_gen_id }}"
+          value="acknowledged"
+          required
+        >
+        <label for="ai-tzero-acknowledge-{{ ai_gen_id }}" class="ai-tzero-reservation__checkbox-label-{{ ai_gen_id }}">
+          I understand this is a reservation only and does not guarantee a purchase.
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="ai-tzero-reservation__submit-{{ ai_gen_id }}"
+      >
+        Reserve Your Spot
+      </button>
+
+      {%- if form.posted_successfully? -%}
+        <div
+          id="ai-tzero-success-{{ ai_gen_id }}"
+          class="ai-tzero-reservation__message-{{ ai_gen_id }} ai-tzero-reservation__success-{{ ai_gen_id }}"
+        >
+          Your reservation has been received. Check your email for confirmation.
+        </div>
+      {%- endif -%}
+
+      {%- if form.errors -%}
+        <div
+          id="ai-tzero-error-{{ ai_gen_id }}"
+          class="ai-tzero-reservation__message-{{ ai_gen_id }} ai-tzero-reservation__error-{{ ai_gen_id }}"
+        >
+          Please complete all required fields correctly.
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+
+    <div class="ai-tzero-reservation__closing-{{ ai_gen_id }}">
+      Reservations are filling up. The reveal is coming.
+    </div>
+  </div>
+</tzero-reservation-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TZeroReservation{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.form = this.querySelector('form');
+        if (this.form) {
+          this.form.addEventListener('submit', this.handleSubmit.bind(this));
+        }
+      }
+
+      handleSubmit(event) {
+        const checkbox = this.querySelector('.ai-tzero-reservation__checkbox-{{ ai_gen_id }}');
+        if (!checkbox.checked) {
+          event.preventDefault();
+          alert('Please acknowledge that this is a reservation only.');
+          return false;
+        }
+      }
+    }
+
+    customElements.define('tzero-reservation-{{ ai_gen_id }}', TZeroReservation{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "T-Zero reservation",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "form_intro_color",
+      "label": "Form intro text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Field labels",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "checkbox_label_color",
+      "label": "Checkbox label",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "closing_color",
+      "label": "Closing text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Form fields"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Input background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_color",
+      "label": "Input focus outline",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Background",
+      "default": "#ea1e26"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Hover background",
+      "default": "#b30000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Headline size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "form_intro_size",
+      "label": "Form intro size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "closing_size",
+      "label": "Closing text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "T-Zero reservation"
+    }
+  ]
+}
+{% endschema %}

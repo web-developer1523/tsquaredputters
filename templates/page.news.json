@@ -21,7 +21,7 @@
           "type": "simple",
           "settings": {
             "link": "",
-            "text": "<p>Frequently Asked Questions</p>",
+            "text": "Frequently Asked Questions",
             "image": "shopify://shop_images/Putter1-1fds.png",
             "width": "100",
             "height": 200,

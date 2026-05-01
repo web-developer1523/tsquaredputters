@@ -1,0 +1,799 @@
+{% doc %}
+  @prompt
+    Layout:
+    
+    Two large side-by-side clickable tiles (50/50).
+    
+    Each tile is a single image with text overlay and a button.
+    
+    Entire tile is clickable.
+    
+    Style:
+    
+    Minimal, calm, premium.
+    
+    Lots of whitespace above and below.
+    
+    Warm off-white background (not pure white).
+    
+    No borders, no shadows, no heavy gradients.
+    
+    Typography: thin/condensed heading style like the hero, but smaller.
+    
+    Tile content:
+    Left tile:
+    Title: “READY TO PLAY”
+    Subtitle: “Our stock line. Precision milled. Available now.”
+    Button: “Explore Stock”
+    Link to: /collections/stock (or my stock collection)
+    
+    Right tile:
+    Title: “FULLY CUSTOM”
+    Subtitle: “Built from the ground up. Every detail, yours.”
+    Button: “Build Custom”
+    Link to: /collections/custom (or my custom shop)
+    
+    Interaction (no code):
+    
+    Buttons visible by default.
+    
+    Add a subtle overlay behind text for readability (very light, ~10–15%).
+    
+    Keep images bright and inviting (no dark/ominous look).
+    
+    Heading above tiles:
+    “Yours.”
+    Subheading:
+    “Stock or fully custom. Built around you.”, • Add fade-in animation when scrolling
+    • Delay the right column slightly (0.2s after left)
+    • Increase spacing above
+    
+    This makes it feel designed instead of dropped in.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-dual-tiles-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.spacing_top }}px 0 {{ block.settings.spacing_bottom }}px;
+  }
+
+  .ai-dual-tiles__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-dual-tiles__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.header_spacing }}px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .ai-dual-tiles__header-{{ ai_gen_id }}.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-dual-tiles__heading-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-style: {{ block.settings.heading_font.style }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.subheading_spacing }}px;
+    letter-spacing: 0.05em;
+  }
+
+  .ai-dual-tiles__subheading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    line-height: 1.5;
+    color: {{ block.settings.subheading_color }};
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .ai-dual-tiles__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.tile_gap }}px;
+  }
+
+  .ai-dual-tiles__tile-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    aspect-ratio: {{ block.settings.tile_aspect_ratio }};
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .ai-dual-tiles__tile-{{ ai_gen_id }}.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-dual-tiles__tile-1-{{ ai_gen_id }} {
+    transition-delay: 0.2s;
+  }
+
+  .ai-dual-tiles__tile-2-{{ ai_gen_id }} {
+    transition-delay: 0.4s;
+  }
+
+  .ai-dual-tiles__tile-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .ai-dual-tiles__tile-{{ ai_gen_id }}:hover .ai-dual-tiles__tile-image-{{ ai_gen_id }} {
+    transform: scale(1.03);
+  }
+
+  .ai-dual-tiles__tile-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }}) 0%,
+      rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }}) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .ai-dual-tiles__tile-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.tile_heading_font.family }}, {{ block.settings.tile_heading_font.fallback_families }};
+    font-weight: {{ block.settings.tile_heading_font.weight }};
+    font-style: {{ block.settings.tile_heading_font.style }};
+    font-size: {{ block.settings.tile_title_size }}px;
+    line-height: 1.2;
+    color: {{ block.settings.tile_text_color }};
+    margin: 0 0 {{ block.settings.tile_subtitle_spacing }}px;
+    letter-spacing: 0.05em;
+  }
+
+  .ai-dual-tiles__tile-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.tile_subtitle_size }}px;
+    line-height: 1.5;
+    color: {{ block.settings.tile_text_color }};
+    margin: 0 0 {{ block.settings.tile_button_spacing }}px;
+    font-weight: 300;
+    max-width: 400px;
+  }
+
+  .ai-dual-tiles__tile-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 500;
+    text-decoration: none;
+    border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+
+  .ai-dual-tiles__tile-{{ ai_gen_id }}:hover .ai-dual-tiles__tile-button-{{ ai_gen_id }} {
+    background-color: {{ block.settings.button_hover_background }};
+    color: {{ block.settings.button_hover_text_color }};
+    border-color: {{ block.settings.button_hover_border_color }};
+  }
+
+  .ai-dual-tiles__tile-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-dual-tiles__tile-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    opacity: 0.3;
+  }
+
+  .ai-dual-tiles__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-dual-tiles__grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.tile_gap_mobile }}px;
+    }
+
+    .ai-dual-tiles__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-dual-tiles__subheading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheading_size | times: 0.9 }}px;
+    }
+
+    .ai-dual-tiles__tile-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.tile_title_size | times: 0.75 }}px;
+    }
+
+    .ai-dual-tiles__tile-subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.tile_subtitle_size | times: 0.9 }}px;
+    }
+
+    .ai-dual-tiles__tile-overlay-{{ ai_gen_id }} {
+      padding: 30px 20px;
+    }
+
+    .ai-dual-tiles__tile-1-{{ ai_gen_id }},
+    .ai-dual-tiles__tile-2-{{ ai_gen_id }} {
+      transition-delay: 0.2s;
+    }
+  }
+{% endstyle %}
+
+<dual-tiles-{{ ai_gen_id }} class="ai-dual-tiles-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-dual-tiles__container-{{ ai_gen_id }}">
+    {% if block.settings.show_header %}
+      <div class="ai-dual-tiles__header-{{ ai_gen_id }}" data-animate>
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-dual-tiles__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <p class="ai-dual-tiles__subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-dual-tiles__grid-{{ ai_gen_id }}">
+      <a
+        href="{{ block.settings.tile_1_link }}"
+        class="ai-dual-tiles__tile-{{ ai_gen_id }} ai-dual-tiles__tile-1-{{ ai_gen_id }}"
+        data-animate
+      >
+        {% if block.settings.tile_1_image %}
+          <img
+            src="{{ block.settings.tile_1_image | image_url: width: 1200 }}"
+            alt="{{ block.settings.tile_1_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.tile_1_image.width }}"
+            height="{{ block.settings.tile_1_image.height }}"
+            class="ai-dual-tiles__tile-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-dual-tiles__tile-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-dual-tiles__empty-state-{{ ai_gen_id }}">
+              Add an image for the left tile
+            </div>
+          </div>
+        {% endif %}
+        <div class="ai-dual-tiles__tile-overlay-{{ ai_gen_id }}">
+          {% if block.settings.tile_1_title != blank %}
+            <h3 class="ai-dual-tiles__tile-title-{{ ai_gen_id }}">{{ block.settings.tile_1_title }}</h3>
+          {% endif %}
+          {% if block.settings.tile_1_subtitle != blank %}
+            <p class="ai-dual-tiles__tile-subtitle-{{ ai_gen_id }}">{{ block.settings.tile_1_subtitle }}</p>
+          {% endif %}
+          {% if block.settings.tile_1_button_text != blank %}
+            <span class="ai-dual-tiles__tile-button-{{ ai_gen_id }}">{{ block.settings.tile_1_button_text }}</span>
+          {% endif %}
+        </div>
+      </a>
+
+      <a
+        href="{{ block.settings.tile_2_link }}"
+        class="ai-dual-tiles__tile-{{ ai_gen_id }} ai-dual-tiles__tile-2-{{ ai_gen_id }}"
+        data-animate
+      >
+        {% if block.settings.tile_2_image %}
+          <img
+            src="{{ block.settings.tile_2_image | image_url: width: 1200 }}"
+            alt="{{ block.settings.tile_2_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.tile_2_image.width }}"
+            height="{{ block.settings.tile_2_image.height }}"
+            class="ai-dual-tiles__tile-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-dual-tiles__tile-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-dual-tiles__empty-state-{{ ai_gen_id }}">
+              Add an image for the right tile
+            </div>
+          </div>
+        {% endif %}
+        <div class="ai-dual-tiles__tile-overlay-{{ ai_gen_id }}">
+          {% if block.settings.tile_2_title != blank %}
+            <h3 class="ai-dual-tiles__tile-title-{{ ai_gen_id }}">{{ block.settings.tile_2_title }}</h3>
+          {% endif %}
+          {% if block.settings.tile_2_subtitle != blank %}
+            <p class="ai-dual-tiles__tile-subtitle-{{ ai_gen_id }}">{{ block.settings.tile_2_subtitle }}</p>
+          {% endif %}
+          {% if block.settings.tile_2_button_text != blank %}
+            <span class="ai-dual-tiles__tile-button-{{ ai_gen_id }}">{{ block.settings.tile_2_button_text }}</span>
+          {% endif %}
+        </div>
+      </a>
+    </div>
+  </div>
+</dual-tiles-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class DualTiles{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.observer = null;
+      }
+
+      connectedCallback() {
+        this.tiles = this.querySelectorAll('.ai-dual-tiles__tile-{{ ai_gen_id }}');
+        this.header = this.querySelector('.ai-dual-tiles__header-{{ ai_gen_id }}');
+        this.setupAccessibility();
+        this.setupScrollAnimation();
+      }
+
+      setupAccessibility() {
+        this.tiles.forEach((tile) => {
+          tile.setAttribute('role', 'link');
+          const title = tile.querySelector('.ai-dual-tiles__tile-title-{{ ai_gen_id }}');
+          if (title) {
+            tile.setAttribute('aria-label', title.textContent.trim());
+          }
+        });
+      }
+
+      setupScrollAnimation() {
+        const animateElements = this.querySelectorAll('[data-animate]');
+        
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -100px 0px',
+          threshold: 0.1
+        };
+
+        this.observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, observerOptions);
+
+        animateElements.forEach((element) => {
+          this.observer.observe(element);
+        });
+      }
+
+      disconnectedCallback() {
+        if (this.observer) {
+          this.observer.disconnect();
+        }
+      }
+    }
+
+    customElements.define('dual-tiles-{{ ai_gen_id }}', DualTiles{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Dual tiles",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Yours."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Stock or fully custom. Built around you."
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "fjalla_one_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "subheading_spacing",
+      "label": "Subheading spacing",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Header bottom spacing",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Left tile"
+    },
+    {
+      "type": "image_picker",
+      "id": "tile_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tile_1_title",
+      "label": "Title",
+      "default": "READY TO PLAY"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tile_1_subtitle",
+      "label": "Subtitle",
+      "default": "Our stock line. Precision milled. Available now."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tile_1_button_text",
+      "label": "Button text",
+      "default": "Explore Stock"
+    },
+    {
+      "type": "url",
+      "id": "tile_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Right tile"
+    },
+    {
+      "type": "image_picker",
+      "id": "tile_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tile_2_title",
+      "label": "Title",
+      "default": "FULLY CUSTOM"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tile_2_subtitle",
+      "label": "Subtitle",
+      "default": "Built from the ground up. Every detail, yours."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "tile_2_button_text",
+      "label": "Button text",
+      "default": "Build Custom"
+    },
+    {
+      "type": "url",
+      "id": "tile_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Tile style"
+    },
+    {
+      "type": "font_picker",
+      "id": "tile_heading_font",
+      "label": "Tile heading font",
+      "default": "fjalla_one_n4"
+    },
+    {
+      "type": "range",
+      "id": "tile_title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "tile_subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tile_subtitle_spacing",
+      "label": "Subtitle spacing",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "tile_button_spacing",
+      "label": "Button spacing",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "color",
+      "id": "tile_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "tile_aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "1 / 1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4 / 3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "3 / 4",
+          "label": "Portrait (3:4)"
+        },
+        {
+          "value": "16 / 9",
+          "label": "Wide (16:9)"
+        },
+        {
+          "value": "2 / 3",
+          "label": "Tall (2:3)"
+        }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Vertical padding",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Hover border color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "tile_gap",
+      "label": "Gap between tiles",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "tile_gap_mobile",
+      "label": "Gap on mobile",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "Top spacing",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "label": "Bottom spacing",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#faf9f7"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dual tiles"
+    }
+  ]
+}
+{% endschema %}

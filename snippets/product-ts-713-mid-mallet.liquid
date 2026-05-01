@@ -1512,11 +1512,8 @@ $(document).on('click', '#colorGrid .color-image', function() {
         {% comment %} alert('here clicked-4'); {% endcomment %}
         setTimeout(function() {
             var $container = $('.tab1 .image-wrapper .default-image-sides');
-            if ($container.find('.short_plumber_neck.balance-only').length > 0) {
-                $('.hosel_color').show();
-                $('.hosel-color-overlay').hide();
-            }
-            else{
+            if ($container.find('.long_plumber_neck.balance-only').length > 0) {
+
                 {% comment %} alert('long_plumber_neck found-----'); {% endcomment %}
                 const hoselColorOverlayMap = {
                   Red:    "https://cdn.shopify.com/s/files/1/0597/8855/8523/files/ts_713_hosel_color_long_new_1.png",
@@ -1586,6 +1583,10 @@ $(document).on('click', '#colorGrid .color-image', function() {
 
                   // Run once when hosel color tab is opened
                   updateHoselColorOverlay();
+            }
+            else{
+              $('.hosel_color').show();
+              $('.hosel-color-overlay').hide();
            
             }
             {% comment %} $('.hosel_color').hide();
@@ -1703,11 +1704,12 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
                 $('.hosel-color-overlay').show();
             }
            
-            
+            $('.hosel_color').show();
             $('.club_lie').hide();
             $('.club_loft').hide();
         }, 50); 
     }
+    
     else if ($(this).data('tab') === 'Shaft') {
         {% comment %} $('div#custom-image-preview img.active:first-child').attr('src', 'https://tsquaredputters.com/cdn/shop/files/TS-912_Silver_Short_v2.png'); {% endcomment %}
         $('.tab1 .image-wrapper .default-image-sides .front-only').show().css('z-index','9');
@@ -1770,7 +1772,7 @@ $('#colorGrid').on('click', '.color-box .color-image', function () {
               $('.hosel-color-overlay').show();
               $('.sightline-hosel_color-overlay').show();
             }
-           
+            $('.hosel_color').show();
             $('.club_lie').hide();
             $('.club_loft').hide();
         }, 50);

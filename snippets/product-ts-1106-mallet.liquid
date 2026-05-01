@@ -1985,7 +1985,7 @@ const CLOUD_NAME = "dl2scmfzl";
 const UPLOAD_PRESET = "combined image";
 
 document.getElementById("merge-btn").addEventListener("click", function() {
-    console.log('here');
+  console.log('here');
   const container = document.getElementById("custom-image-preview");
   {% comment %} const images = Array.from(container.querySelectorAll(".default-image-sides img.active")).filter(img => window.getComputedStyle(img).display !== "none"); // Filter visible images {% endcomment %}
   const images = Array.from(container.querySelectorAll(".default-image-sides img.front-only"));

@@ -31,7 +31,7 @@
         "hover_menu": true,
         "mega_menu_images": true,
         "main_menu_alignment": "left-center",
-        "header_style": "sticky",
+        "header_style": "normal",
         "sticky_index": false,
         "sticky_collection": false,
         "toolbar_menu": "",
@@ -47,7 +47,7 @@
         "announcement_84kajy": {
           "type": "announcement",
           "settings": {
-            "text": "New Year. New You. New Putter. $100 off all custom and stock putters Offer ends January 31",
+            "text": "",
             "link_text": "",
             "link": ""
           }
@@ -56,39 +56,20 @@
       "block_order": [
         "announcement_84kajy"
       ],
+      "disabled": true,
       "settings": {
         "announcement_compact": true
       }
     },
-    "blocks_iPWfXe": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_14485d1_yppAqw": {
-          "type": "ai_gen_block_14485d1",
-          "settings": {
-            "hand_label": "Hand",
-            "grip_label": "Grip Style",
-            "shaft_label": "Shaft Length"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_14485d1_yppAqw"
-      ],
-      "disabled": true,
-      "name": "Custom product options",
-      "settings": {}
-    },
-    "1766422757ef0b3406": {
+    "1770840193c0e100f2": {
       "type": "_blocks",
       "settings": {}
     },
-    "1766423840ba9ffc65": {
+    "177186559593d6bf5c": {
       "type": "_blocks",
       "settings": {}
     },
-    "1766424491359346eb": {
+    "1771865969044ca220": {
       "type": "_blocks",
       "settings": {}
     }
@@ -96,9 +77,8 @@
   "order": [
     "header",
     "announcement",
-    "blocks_iPWfXe",
-    "1766422757ef0b3406",
-    "1766423840ba9ffc65",
-    "1766424491359346eb"
+    "1770840193c0e100f2",
+    "177186559593d6bf5c",
+    "1771865969044ca220"
   ]
 }

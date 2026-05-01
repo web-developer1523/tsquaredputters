@@ -28,26 +28,6 @@
         "button_link": "https://tsquaredputters.com/pages/trade-in-program"
       }
     },
-    "blocks_9dK3wE": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_14485d1_XyaPAB": {
-          "type": "ai_gen_block_14485d1",
-          "settings": {
-            "hand_label": "Hand",
-            "grip_label": "Grip Style",
-            "shaft_label": "Shaft Length"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_14485d1_XyaPAB"
-      ],
-      "disabled": true,
-      "name": "Custom product options",
-      "settings": {}
-    },
     "age-verification-popup": {
       "type": "age-verification-popup",
       "disabled": true,
@@ -95,7 +75,6 @@
   },
   "order": [
     "newsletter-popup",
-    "blocks_9dK3wE",
     "age-verification-popup",
     "blocks_JbA96k"
   ]

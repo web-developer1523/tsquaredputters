@@ -1,0 +1,993 @@
+{% doc %}
+  @prompt
+    Create a new Shopify theme section named ts-912-hero with a headline, a paragraph, an image, and two buttons.
+    , Add a schema setting for headline text only, and output updated code.
+    
+    
+    , Add a schema setting for paragraph text only, and wire it to the paragraph in the section. Output updated code.
+    , Add a schema image picker setting only, and wire it so the section displays the selected image. Output updated code.
+    , Add schema settings for the PRIMARY button: label (text) and link (url). Wire them to the primary button. Output updated code.
+    , Add schema settings for the SECONDARY button: label (text) and link (url). Wire them to the secondary button. Output updated code.
+    
+    , Add a schema product picker setting named product. If no image is selected, use the selected product’s featured image. Output updated code.
+    , Add three clickable option buttons inside the section labeled: Straight, Slight Arc, Arc. Do not change the schema. Output updated code.
+    
+    , Fix the stroke option click behavior:
+    
+    1) Add data-stroke attributes to the three option buttons:
+    - Straight => data-stroke="Straight"
+    - Slight Arc => data-stroke="Slight Arc"
+    - Arc => data-stroke="Arc"
+    
+    2) Add a wrapper element around the three buttons with class "ts912-stroke-options".
+    
+    3) Add JavaScript that runs on DOMContentLoaded:
+    - Select all buttons inside .ts912-stroke-options
+    - On click: remove class "active" from all buttons, then add class "active" to the clicked button.
+    Do not change the schema. Output updated code.
+    , Add a text element below the stroke options with class "ts912-recommendation".
+    
+    Default text:
+    "Answer the question to see your fit."
+    
+    When a stroke option is selected, update the text to:
+    "TS-912 recommended for a [selected stroke] stroke."
+    
+    Do not change existing behavior. Output updated code.
+    , Add a simple confidence meter below the recommendation text.
+    
+    - Display a percentage text starting at "0% confidence"
+    - When a stroke is selected, update it to "33% confidence"
+    
+    Do not change schema. Output updated code.
+    , Add a small "Reset" link below the confidence meter.
+    
+    When clicked:
+    - Remove "active" class from all stroke buttons
+    - Reset recommendation text to default
+    - Reset confidence to "0% confidence"
+    
+    Output updated code.
+    , Add a small text line under the buttons that says:
+    "MyGolfSpy tested: 9.4 overall • 3rd best blade putter 2024 • best from 10 feet"
+    
+    Add a link labeled "Read review" that opens
+    https://mygolfspy.com/reviews/blade-putters/t-squared-ts-912-putter/
+    in a new tab with rel="noopener".
+    
+    Output updated code.
+    , Add a simple scroll reveal animation using IntersectionObserver.
+    
+    Apply to the headline, paragraph, stroke options area, and buttons:
+    - Start: opacity 0 and translateY(12px)
+    - On reveal: opacity 1 and translateY(0) with smooth transition
+    
+    Respect prefers-reduced-motion:
+    - If reduced motion is enabled, show everything immediately with no animation.
+    
+    Scope all selectors to this section so it works if the section is used multiple times.
+    Output updated code.
+    , Add a subtle product image tilt/parallax effect on desktop mousemove.
+    
+    Rules:
+    - Only apply if window width >= 990px
+    - Max rotation: 6 degrees
+    - Smooth return to neutral on mouseleave
+    - Disable if prefers-reduced-motion is enabled
+    
+    Implementation:
+    - Wrap the image in a container with class "ts912-tilt"
+    - Apply transform to the image or an inner element
+    - Scope everything to this section instance (use section.id in selectors)
+    
+    Do not change existing interaction logic. Output updated code.
+    , Add a subtle animated light sweep overlay on the product image.
+    
+    - Use a pseudo-element or overlay div positioned over the image
+    - On hover (desktop), the highlight sweeps across once (translateX)
+    - Keep it subtle (low opacity), and disable for prefers-reduced-motion
+    
+    Do not add external libraries. Output updated code.
+    , Add a second question block below the stroke question.
+    
+    Label: "Typical miss:"
+    Add four clickable option buttons inside a wrapper with class "ts912-miss-options":
+    Left / Right / Both / Not sure
+    
+    Do not change existing JS logic yet. Output updated code.
+    , Add data-miss attributes to the four miss buttons (Left, Right, Both, Not sure).
+    
+    Add JavaScript on DOMContentLoaded:
+    - Select buttons inside .ts912-miss-options
+    - On click: remove class "active" from all, add "active" to clicked
+    - Store selected miss value in a variable
+    
+    Do not change schema. Do not break the existing stroke selection logic. Output updated code.
+    , Add a third question block below the miss question.
+    
+    Label: "Green speed:"
+    Add a range slider (input type="range") inside a wrapper with class "ts912-speed".
+    Min 1, max 5, default 3.
+    
+    Show labels under it: "Slow" on the left and "Fast" on the right.
+    Add a small live value text with class "ts912-speed-value" that displays:
+    "Medium" when value is 3.
+    
+    Do not change existing JS logic yet. Output updated code.
+    , Add JavaScript to listen for input changes on the range slider in .ts912-speed.
+    
+    When the value changes:
+    - 1 or 2 => display "Slow"
+    - 3 => display "Medium"
+    - 4 or 5 => display "Fast"
+    Also store the current speed label in a variable.
+    
+    Do not change schema. Do not break existing click logic. Output updated code.
+    , Update the confidence meter logic:
+    
+    - If none of the three questions are answered: "0% confidence"
+    - If 1 is answered: "33% confidence"
+    - If 2 are answered: "66% confidence"
+    - If all 3 are answered: "100% confidence"
+    
+    Count an answer as:
+    - Stroke selected (one of the stroke buttons has class active)
+    - Miss selected (one of the miss buttons has class active)
+    - Speed slider changed from default value 3 OR treat default as unanswered until the user moves it
+    
+    Output updated code.
+    , Update the recommendation text to adapt using the selected answers.
+    
+    Rules:
+    - Always start with "TS-912 recommended."
+    - Add one short sentence based on stroke:
+      Straight => "Built to keep setup and face control consistent."
+      Slight Arc => "Balanced for a natural release with stable feel."
+      Arc => "Designed to support your release while staying stable."
+      Not sure => "A stable, confidence-building option while you dial in your stroke."
+    
+    - Add one short sentence based on miss:
+      Left => "If you miss left, focus on start-line control and aim."
+      Right => "If you miss right, focus on face control through impact."
+      Both/Not sure => "Consistency starts with a repeatable setup and alignment."
+    
+    - Add one short sentence based on green speed:
+      Slow => "On slower greens, prioritize solid strike and pace."
+      Medium => "A neutral setup for speed control."
+      Fast => "On fast greens, stability helps manage tempo and touch."
+    
+    No absolute claims. Output updated code.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ts-912-hero-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ts-912-hero__container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ts-912-hero__image-wrapper-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .ts912-tilt {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ts912-tilt__inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .ts912-tilt__inner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  @media (hover: hover) and (min-width: 990px) {
+    .ts912-tilt:hover .ts912-tilt__inner::after {
+      animation: ts912-light-sweep-{{ ai_gen_id }} 1.2s ease-out forwards;
+    }
+  }
+
+  @keyframes ts912-light-sweep-{{ ai_gen_id }} {
+    0% {
+      left: -100%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      left: 150%;
+      opacity: 0;
+    }
+  }
+
+  .ts-912-hero__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ts-912-hero__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ts-912-hero__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .ts-912-hero__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ts-912-hero__overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+
+  .ts-912-hero__content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .ts-912-hero__headline-{{ ai_gen_id }} {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts-912-hero__paragraph-{{ ai_gen_id }} {
+    margin: 0 0 30px;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts-912-hero__question-label-{{ ai_gen_id }} {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts912-stroke-options,
+  .ts912-miss-options {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .ts-912-hero__option-button-{{ ai_gen_id }} {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ts-912-hero__option-button-{{ ai_gen_id }}:hover {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .ts-912-hero__option-button-{{ ai_gen_id }}.active {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .ts912-speed {
+    margin-bottom: 16px;
+    padding: 0 20px;
+  }
+
+  .ts912-speed-slider {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 8px;
+    display: block;
+  }
+
+  .ts912-speed-labels {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    margin: 0 auto 8px;
+    color: #ffffff;
+    font-size: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts912-speed-value {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts912-recommendation {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.5;
+  }
+
+  .ts912-confidence-meter {
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts912-reset-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #ffffff;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts912-reset-link:hover {
+    opacity: 0.8;
+  }
+
+  .ts-912-hero__buttons-{{ ai_gen_id }} {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .ts-912-hero__button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+
+  .ts-912-hero__button--primary-{{ ai_gen_id }} {
+    background-color: #ea1e26;
+    color: #ffffff;
+  }
+
+  .ts-912-hero__button--primary-{{ ai_gen_id }}:hover {
+    background-color: #b30000;
+    color: #ffffff;
+  }
+
+  .ts-912-hero__button--secondary-{{ ai_gen_id }} {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  .ts-912-hero__button--secondary-{{ ai_gen_id }}:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+  }
+
+  .ts-912-hero__review-{{ ai_gen_id }} {
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 8px;
+  }
+
+  .ts-912-hero__review-link-{{ ai_gen_id }} {
+    color: #ffffff;
+    font-size: 13px;
+    text-decoration: underline;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ts-912-hero__review-link-{{ ai_gen_id }}:hover {
+    opacity: 0.8;
+  }
+
+  .ts-912-hero__reveal-{{ ai_gen_id }} {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .ts-912-hero__reveal-{{ ai_gen_id }}.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ts-912-hero__reveal-{{ ai_gen_id }} {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .ts912-tilt__inner {
+      transition: none !important;
+    }
+
+    .ts912-tilt__inner::after {
+      display: none;
+    }
+
+    @keyframes ts912-light-sweep-{{ ai_gen_id }} {
+      0%, 100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ts-912-hero__container-{{ ai_gen_id }} {
+      min-height: 500px;
+    }
+
+    .ts-912-hero__headline-{{ ai_gen_id }} {
+      font-size: 32px;
+    }
+
+    .ts-912-hero__paragraph-{{ ai_gen_id }} {
+      font-size: 16px;
+    }
+
+    .ts-912-hero__content-{{ ai_gen_id }} {
+      padding: 30px 15px;
+    }
+
+    .ts-912-hero__buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .ts-912-hero__button-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ts-912-hero__review-{{ ai_gen_id }},
+    .ts-912-hero__review-link-{{ ai_gen_id }} {
+      font-size: 12px;
+    }
+  }
+{% endstyle %}
+
+<ts-912-hero-{{ ai_gen_id }} class="ts-912-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ts-912-hero__container-{{ ai_gen_id }}">
+    <div class="ts-912-hero__image-wrapper-{{ ai_gen_id }}">
+      {% liquid
+        assign display_image = block.settings.hero_image
+        if display_image == blank and block.settings.product != blank
+          assign display_image = block.settings.product.featured_image
+        endif
+      %}
+
+      {% if display_image %}
+        <div class="ts912-tilt">
+          <div class="ts912-tilt__inner">
+            <img
+              src="{{ display_image | image_url: width: 2000 }}"
+              alt="{{ display_image.alt | escape }}"
+              loading="lazy"
+              width="{{ display_image.width }}"
+              height="{{ display_image.height }}"
+              class="ts-912-hero__image-{{ ai_gen_id }}"
+            >
+          </div>
+        </div>
+      {% else %}
+        <div class="ts-912-hero__image-placeholder-{{ ai_gen_id }}">
+          {{ 'hero-apparel-1' | placeholder_svg_tag }}
+          <div class="ts-912-hero__empty-state-{{ ai_gen_id }}">
+            Add a hero image or select a product
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ts-912-hero__overlay-{{ ai_gen_id }}"></div>
+
+    <div class="ts-912-hero__content-{{ ai_gen_id }}">
+      {% if block.settings.headline != blank %}
+        <h1 class="ts-912-hero__headline-{{ ai_gen_id }} ts-912-hero__reveal-{{ ai_gen_id }}">
+          {{ block.settings.headline }}
+        </h1>
+      {% endif %}
+
+      {% if block.settings.paragraph != blank %}
+        <div class="ts-912-hero__paragraph-{{ ai_gen_id }} ts-912-hero__reveal-{{ ai_gen_id }}">
+          {{ block.settings.paragraph }}
+        </div>
+      {% endif %}
+
+      <div class="ts-912-hero__reveal-{{ ai_gen_id }}">
+        <div class="ts-912-hero__question-label-{{ ai_gen_id }}">Stroke type:</div>
+        <div class="ts912-stroke-options">
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-stroke="Straight">
+            Straight
+          </button>
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-stroke="Slight Arc">
+            Slight Arc
+          </button>
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-stroke="Arc">
+            Arc
+          </button>
+        </div>
+      </div>
+
+      <div class="ts-912-hero__reveal-{{ ai_gen_id }}">
+        <div class="ts-912-hero__question-label-{{ ai_gen_id }}">Typical miss:</div>
+        <div class="ts912-miss-options">
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-miss="Left">
+            Left
+          </button>
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-miss="Right">
+            Right
+          </button>
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-miss="Both">
+            Both
+          </button>
+          <button class="ts-912-hero__option-button-{{ ai_gen_id }}" data-miss="Not sure">
+            Not sure
+          </button>
+        </div>
+      </div>
+
+      <div class="ts-912-hero__reveal-{{ ai_gen_id }}">
+        <div class="ts-912-hero__question-label-{{ ai_gen_id }}">Green speed:</div>
+        <div class="ts912-speed">
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+            class="ts912-speed-slider"
+          >
+          <div class="ts912-speed-labels">
+            <span>Slow</span>
+            <span>Fast</span>
+          </div>
+          <div class="ts912-speed-value">Medium</div>
+        </div>
+      </div>
+
+      <div class="ts912-recommendation ts-912-hero__reveal-{{ ai_gen_id }}">
+        Answer the question to see your fit.
+      </div>
+
+      <div class="ts912-confidence-meter ts-912-hero__reveal-{{ ai_gen_id }}">
+        0% confidence
+      </div>
+
+      <a class="ts912-reset-link ts-912-hero__reveal-{{ ai_gen_id }}">Reset</a>
+
+      <div class="ts-912-hero__buttons-{{ ai_gen_id }} ts-912-hero__reveal-{{ ai_gen_id }}">
+        {% if block.settings.button_primary_label != blank %}
+          <a
+            href="{{ block.settings.button_primary_link }}"
+            class="ts-912-hero__button-{{ ai_gen_id }} ts-912-hero__button--primary-{{ ai_gen_id }}"
+          >
+            {{ block.settings.button_primary_label }}
+          </a>
+        {% endif %}
+
+        {% if block.settings.button_secondary_label != blank %}
+          <a
+            href="{{ block.settings.button_secondary_link }}"
+            class="ts-912-hero__button-{{ ai_gen_id }} ts-912-hero__button--secondary-{{ ai_gen_id }}"
+          >
+            {{ block.settings.button_secondary_label }}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="ts-912-hero__review-{{ ai_gen_id }} ts-912-hero__reveal-{{ ai_gen_id }}">
+        MyGolfSpy tested: 9.4 overall • 3rd best blade putter 2024 • best from 10 feet
+      </div>
+
+      <a
+        href="https://mygolfspy.com/reviews/blade-putters/t-squared-ts-912-putter/"
+        target="_blank"
+        rel="noopener"
+        class="ts-912-hero__review-link-{{ ai_gen_id }} ts-912-hero__reveal-{{ ai_gen_id }}"
+      >
+        Read review
+      </a>
+    </div>
+  </div>
+</ts-912-hero-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TsHero{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.selectedStroke = null;
+        this.selectedMiss = null;
+        this.selectedSpeed = null;
+        this.hasStroke = false;
+        this.hasMiss = false;
+        this.hasSpeed = false;
+        this.speedTouched = false;
+      }
+
+      connectedCallback() {
+        this.setupStrokeOptions();
+        this.setupMissOptions();
+        this.setupSpeedSlider();
+        this.setupScrollReveal();
+        this.setupTiltEffect();
+      }
+
+      updateRecommendation() {
+        const recommendationText = this.querySelector('.ts912-recommendation');
+        
+        if (!this.hasStroke && !this.hasMiss && !this.hasSpeed) {
+          recommendationText.textContent = 'Answer the question to see your fit.';
+          return;
+        }
+
+        let recommendation = 'TS-912 recommended.';
+
+        if (this.selectedStroke) {
+          if (this.selectedStroke === 'Straight') {
+            recommendation += ' Built to keep setup and face control consistent.';
+          } else if (this.selectedStroke === 'Slight Arc') {
+            recommendation += ' Balanced for a natural release with stable feel.';
+          } else if (this.selectedStroke === 'Arc') {
+            recommendation += ' Designed to support your release while staying stable.';
+          }
+        }
+
+        if (this.selectedMiss) {
+          if (this.selectedMiss === 'Left') {
+            recommendation += ' If you miss left, focus on start-line control and aim.';
+          } else if (this.selectedMiss === 'Right') {
+            recommendation += ' If you miss right, focus on face control through impact.';
+          } else if (this.selectedMiss === 'Both' || this.selectedMiss === 'Not sure') {
+            recommendation += ' Consistency starts with a repeatable setup and alignment.';
+          }
+        }
+
+        if (this.selectedSpeed) {
+          if (this.selectedSpeed === 'Slow') {
+            recommendation += ' On slower greens, prioritize solid strike and pace.';
+          } else if (this.selectedSpeed === 'Medium') {
+            recommendation += ' A neutral setup for speed control.';
+          } else if (this.selectedSpeed === 'Fast') {
+            recommendation += ' On fast greens, stability helps manage tempo and touch.';
+          }
+        }
+
+        recommendationText.textContent = recommendation;
+      }
+
+      updateConfidence() {
+        const confidenceMeter = this.querySelector('.ts912-confidence-meter');
+        let answeredCount = 0;
+        
+        if (this.hasStroke) answeredCount++;
+        if (this.hasMiss) answeredCount++;
+        if (this.hasSpeed) answeredCount++;
+        
+        const confidencePercent = answeredCount * 33;
+        const displayPercent = answeredCount === 3 ? 100 : confidencePercent;
+        
+        confidenceMeter.textContent = `${displayPercent}% confidence`;
+      }
+
+      setupStrokeOptions() {
+        document.addEventListener('DOMContentLoaded', () => {
+          const strokeButtons = this.querySelectorAll('.ts912-stroke-options button');
+          const resetLink = this.querySelector('.ts912-reset-link');
+          
+          strokeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              strokeButtons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+              
+              this.hasStroke = true;
+              this.selectedStroke = button.getAttribute('data-stroke');
+              this.updateRecommendation();
+              this.updateConfidence();
+            });
+          });
+
+          resetLink.addEventListener('click', () => {
+            strokeButtons.forEach(btn => btn.classList.remove('active'));
+            const missButtons = this.querySelectorAll('.ts912-miss-options button');
+            missButtons.forEach(btn => btn.classList.remove('active'));
+            
+            const speedSlider = this.querySelector('.ts912-speed-slider');
+            const speedValue = this.querySelector('.ts912-speed-value');
+            if (speedSlider) {
+              speedSlider.value = 3;
+              speedValue.textContent = 'Medium';
+              this.speedTouched = false;
+            }
+            
+            this.hasStroke = false;
+            this.hasMiss = false;
+            this.hasSpeed = false;
+            this.selectedStroke = null;
+            this.selectedMiss = null;
+            this.selectedSpeed = null;
+            this.updateRecommendation();
+            this.updateConfidence();
+          });
+        });
+      }
+
+      setupMissOptions() {
+        document.addEventListener('DOMContentLoaded', () => {
+          const missButtons = this.querySelectorAll('.ts912-miss-options button');
+          
+          missButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              missButtons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+              
+              this.hasMiss = true;
+              this.selectedMiss = button.getAttribute('data-miss');
+              this.updateRecommendation();
+              this.updateConfidence();
+            });
+          });
+        });
+      }
+
+      setupSpeedSlider() {
+        document.addEventListener('DOMContentLoaded', () => {
+          const speedSlider = this.querySelector('.ts912-speed-slider');
+          const speedValue = this.querySelector('.ts912-speed-value');
+          
+          if (!speedSlider || !speedValue) return;
+          
+          speedSlider.addEventListener('input', (e) => {
+            const value = parseInt(e.target.value);
+            let label = 'Medium';
+            
+            if (value === 1 || value === 2) {
+              label = 'Slow';
+            } else if (value === 3) {
+              label = 'Medium';
+            } else if (value === 4 || value === 5) {
+              label = 'Fast';
+            }
+            
+            speedValue.textContent = label;
+            
+            if (!this.speedTouched) {
+              this.speedTouched = true;
+            }
+            
+            this.hasSpeed = this.speedTouched;
+            this.selectedSpeed = label;
+            this.updateRecommendation();
+            this.updateConfidence();
+          });
+        });
+      }
+
+      setupScrollReveal() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (prefersReducedMotion) {
+          const revealElements = this.querySelectorAll('.ts-912-hero__reveal-{{ ai_gen_id }}');
+          revealElements.forEach(el => el.classList.add('is-visible'));
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        const revealElements = this.querySelectorAll('.ts-912-hero__reveal-{{ ai_gen_id }}');
+        revealElements.forEach((el, index) => {
+          el.style.transitionDelay = `${index * 0.1}s`;
+          observer.observe(el);
+        });
+      }
+
+      setupTiltEffect() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        const tiltContainer = this.querySelector('.ts912-tilt');
+        const tiltInner = this.querySelector('.ts912-tilt__inner');
+        
+        if (!tiltContainer || !tiltInner) return;
+
+        const maxRotation = 6;
+
+        const handleMouseMove = (e) => {
+          if (window.innerWidth < 990) return;
+
+          const rect = tiltContainer.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * maxRotation;
+          const rotateY = ((centerX - x) / centerX) * maxRotation;
+          
+          tiltInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        };
+
+        const handleMouseLeave = () => {
+          tiltInner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        };
+
+        tiltContainer.addEventListener('mousemove', handleMouseMove);
+        tiltContainer.addEventListener('mouseleave', handleMouseLeave);
+      }
+    }
+
+    customElements.define('ts-912-hero-{{ ai_gen_id }}', TsHero{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "ts-912-hero",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline text",
+      "default": "Precision Crafted Putters"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph text",
+      "default": "Experience unmatched precision and control with our handcrafted putters, designed for golfers who demand excellence."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "button_primary_label",
+      "label": "Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_primary_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_label",
+      "label": "Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ts-912-hero"
+    }
+  ]
+}
+{% endschema %}

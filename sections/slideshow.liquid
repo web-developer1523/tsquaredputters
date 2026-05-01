@@ -237,11 +237,11 @@
                           </div>
                         {%- endunless -%}
                         {%- unless block.settings.title == blank -%}
-                          <h1 class="h1 hero__title">
+                          <h2 class="h1 hero__title">
                             <div class="animation-cropper"><div class="animation-contents">
                             {{ block.settings.title | newline_to_br }}
                             </div></div>
-                          </h1>
+                          </h2>
                         {%- endunless -%}
                         {%- if block.settings.subheading or block.settings.link or block.settings.link_2 -%}
                           {%- unless block.settings.subheading == blank -%}

@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "blocks_iK4qwj": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_c0753ad_d93zEn": {
+          "type": "ai_gen_block_c0753ad",
+          "settings": {
+            "headline": "Premium Corporate Gifting",
+            "body_copy": "<p>Ideal for client gifts, employee recognition, tournaments, outings, and special events. All corporate orders are custom quoted based on quantity, customization, and timeline.</p>",
+            "bullet_1": "Custom quoting for every order",
+            "bullet_2": "Branding and customization options available",
+            "bullet_3": "Production and delivery timeline support",
+            "bullet_4": "Dedicated account support",
+            "reassurance_text": "<p>Our team will confirm pricing, options, and delivery timeline within 1 business day.</p>",
+            "cta_text": "Request a Custom Quote",
+            "carousel_image_1": "shopify://shop_images/IMG_9953.jpg",
+            "carousel_image_2": "shopify://shop_images/IMG_9869.heic",
+            "carousel_image_3": "shopify://shop_images/IMG_9823.heic",
+            "carousel_image_4": "shopify://shop_images/IMG_9826.jpg",
+            "carousel_image_5": "shopify://shop_images/IMG_3DCA1E2A4ACD-1.jpg",
+            "carousel_image_6": "shopify://shop_images/IMG_3D220025C152-1.jpg",
+            "form_title": "Request a Custom Quote",
+            "form_submit_text": "Submit Request",
+            "success_message": "<p>Thank you for your inquiry! Our team will respond within 1 business day with pricing, options, and timeline details.</p>",
+            "how_it_works_title": "How It Works",
+            "step_1_title": "Submit your request",
+            "step_1_description": "Fill out the form with your requirements and timeline",
+            "step_2_title": "We confirm pricing and options",
+            "step_2_description": "Our team reviews and sends a detailed quote within 1 business day",
+            "step_3_title": "Approve details and finalize",
+            "step_3_description": "Review the quote, approve, and we begin production",
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "accent_color": "#ea1e26",
+            "button_color": "#ea1e26",
+            "button_hover_color": "#b30000",
+            "button_text_color": "#ffffff",
+            "form_background_color": "#f8f8f8",
+            "input_border_color": "#cccccc",
+            "how_it_works_bg": "#ffffff",
+            "section_padding": 60,
+            "headline_size": 42,
+            "body_size": 18,
+            "button_size": 18,
+            "form_title_size": 36,
+            "image_border_radius": 12,
+            "form_border_radius": 12,
+            "carousel_image_width": 320,
+            "carousel_image_height": 240,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_c0753ad_d93zEn"
+      ],
+      "disabled": true,
+      "name": "Corporate gifts program",
+      "settings": {}
+    },
+    "shogun_custom_html_Cd9k6Q": {
+      "type": "shogun-custom-html",
+      "disabled": true,
+      "name": "Shogun Custom HTML",
+      "settings": {
+        "html": "<!-- T Squared Putters — Drops Page -->\n<style>\n  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');\n\n  .tsq-drops-wrap * { box-sizing: border-box; margin: 0; padding: 0; }\n\n  .tsq-drops-wrap {\n    font-family: 'DM Sans', sans-serif;\n    background: #0a0a0a;\n    color: #f0ede6;\n    padding: 64px 24px 80px;\n    text-align: center;\n    position: relative;\n    overflow: hidden;\n  }\n\n  .tsq-drops-wrap::before {\n    content: '';\n    position: absolute;\n    inset: 0;\n    background-image: url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\");\n    opacity: 0.35;\n    pointer-events: none;\n    z-index: 0;\n  }\n\n  .tsq-drops-inner {\n    position: relative;\n    z-index: 1;\n    max-width: 680px;\n    margin: 0 auto;\n  }\n\n  .tsq-drops-eyebrow {\n    font-size: 11px;\n    font-weight: 600;\n    letter-spacing: 0.22em;\n    text-transform: uppercase;\n    color: #888880;\n    margin-bottom: 20px;\n  }\n\n  .tsq-drops-headline {\n    font-family: 'Bebas Neue', sans-serif;\n    font-size: clamp(72px, 14vw, 120px);\n    line-height: 0.92;\n    letter-spacing: 0.02em;\n    color: #f0ede6;\n    margin-bottom: 8px;\n  }\n\n  .tsq-drops-headline span {\n    display: block;\n    color: #e31b1b;\n  }\n\n  .tsq-drops-rule {\n    width: 40px;\n    height: 2px;\n    background: #e31b1b;\n    margin: 32px auto;\n  }\n\n  .tsq-drops-body {\n    font-size: 16px;\n    font-weight: 300;\n    line-height: 1.8;\n    color: #b0aca3;\n    max-width: 480px;\n    margin: 0 auto 40px;\n  }\n\n  .tsq-drops-body strong {\n    color: #f0ede6;\n    font-weight: 500;\n  }\n\n  .tsq-countdown-wrap {\n    display: flex;\n    justify-content: center;\n    gap: 24px;\n    margin: 40px auto;\n  }\n\n  .tsq-countdown-block {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 6px;\n  }\n\n  .tsq-countdown-num {\n    font-family: 'Bebas Neue', sans-serif;\n    font-size: 52px;\n    line-height: 1;\n    color: #f0ede6;\n    min-width: 70px;\n    background: #161616;\n    border: 1px solid #2a2a2a;\n    padding: 12px 16px;\n    letter-spacing: 0.04em;\n  }\n\n  .tsq-countdown-label {\n    font-size: 9px;\n    font-weight: 600;\n    letter-spacing: 0.2em;\n    text-transform: uppercase;\n    color: #555550;\n  }\n\n  .tsq-next-drop {\n    display: inline-flex;\n    align-items: center;\n    gap: 8px;\n    background: #161616;\n    border: 1px solid #2a2a2a;\n    padding: 10px 20px;\n    margin-bottom: 40px;\n    font-size: 12px;\n    font-weight: 500;\n    letter-spacing: 0.1em;\n    text-transform: uppercase;\n    color: #888880;\n  }\n\n  .tsq-next-drop-dot {\n    width: 7px;\n    height: 7px;\n    background: #e31b1b;\n    border-radius: 50%;\n    animation: tsq-pulse 1.8s ease-in-out infinite;\n  }\n\n  @keyframes tsq-pulse {\n    0%, 100% { opacity: 1; transform: scale(1); }\n    50% { opacity: 0.4; transform: scale(0.8); }\n  }\n\n  /* Waitlist Form */\n  .tsq-form-wrap {\n    max-width: 420px;\n    margin: 0 auto 16px;\n    text-align: left;\n  }\n\n  .tsq-form-section-label {\n    font-size: 10px;\n    font-weight: 600;\n    letter-spacing: 0.22em;\n    text-transform: uppercase;\n    color: #888880;\n    margin-bottom: 16px;\n    text-align: center;\n  }\n\n  .tsq-form-row {\n    margin-bottom: 10px;\n  }\n\n  .tsq-input {\n    width: 100%;\n    background: #ffffff;\n    border: 2px solid #ffffff;\n    color: #0a0a0a;\n    font-family: 'DM Sans', sans-serif;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 16px 18px;\n    outline: none;\n    transition: border-color 0.2s ease, box-shadow 0.2s ease;\n    -webkit-appearance: none;\n    border-radius: 0;\n  }\n\n  .tsq-input::placeholder {\n    color: #999999;\n    font-weight: 400;\n  }\n\n  .tsq-input:focus {\n    border-color: #e31b1b;\n    box-shadow: 0 0 0 3px rgba(227, 27, 27, 0.15);\n  }\n\n  .tsq-submit {\n    width: 100%;\n    background: #e31b1b;\n    color: #ffffff;\n    font-family: 'DM Sans', sans-serif;\n    font-size: 13px;\n    font-weight: 700;\n    letter-spacing: 0.18em;\n    text-transform: uppercase;\n    border: none;\n    padding: 18px 40px;\n    margin-top: 6px;\n    cursor: pointer;\n    transition: background 0.2s ease, transform 0.15s ease;\n  }\n\n  .tsq-submit:hover {\n    background: #ff2a2a;\n    transform: translateY(-1px);\n  }\n\n  .tsq-drops-fine {\n    font-size: 11px;\n    color: #555550;\n    margin-top: 14px;\n    letter-spacing: 0.05em;\n  }\n\n  .tsq-drops-history {\n    margin-top: 64px;\n    padding-top: 40px;\n    border-top: 1px solid #1e1e1e;\n  }\n\n  .tsq-drops-history-label {\n    font-size: 10px;\n    font-weight: 600;\n    letter-spacing: 0.2em;\n    text-transform: uppercase;\n    color: #444440;\n    margin-bottom: 16px;\n  }\n\n  .tsq-drops-history-item {\n    font-size: 13px;\n    color: #444440;\n    padding: 10px 0;\n    border-bottom: 1px solid #1a1a1a;\n    display: flex;\n    justify-content: space-between;\n    max-width: 400px;\n    margin: 0 auto;\n  }\n\n  .tsq-drops-history-item:last-child { border-bottom: none; }\n\n  .tsq-sold-out {\n    font-size: 10px;\n    font-weight: 600;\n    letter-spacing: 0.12em;\n    text-transform: uppercase;\n    color: #e31b1b;\n  }\n\n  @media (max-width: 480px) {\n    .tsq-drops-wrap { padding: 48px 20px 64px; }\n    .tsq-countdown-num { font-size: 40px; min-width: 56px; padding: 10px 12px; }\n    .tsq-countdown-wrap { gap: 14px; }\n  }\n</style>\n\n<div class=\"tsq-drops-wrap\">\n  <div class=\"tsq-drops-inner\">\n\n    <div class=\"tsq-drops-eyebrow\">T Squared Access — Reserve Your Spot</div>\n\n    <div class=\"tsq-drops-headline\">\n      Friday<span>Drops.</span>\n    </div>\n\n    <div class=\"tsq-drops-rule\"></div>\n\n    <p class=\"tsq-drops-body\">\n      Every <strong>Friday at noon</strong>, the drop opens to our email list.<br><br>\n      Sign up below and your spot is <strong>reserved for 2 hours.</strong> At 2PM, any unclaimed spots open to everyone else. Once it's gone, it's gone.\n    </p>\n\n    <div class=\"tsq-next-drop\">\n      <div class=\"tsq-next-drop-dot\"></div>\n      Every Friday at 12:00 PM EST — Reserved spots held until 2:00 PM\n    </div>\n\n    <div class=\"tsq-form-wrap\">\n      <div class=\"tsq-form-section-label\">Reserve Your Spot</div>\n      <form action=\"https://formsubmit.co/info@tsquaredputters.com\" method=\"POST\">\n        <input type=\"hidden\" name=\"_subject\" value=\"New Drops Waitlist Signup\">\n        <input type=\"hidden\" name=\"_captcha\" value=\"false\">\n        <input type=\"hidden\" name=\"_next\" value=\"https://tsquaredputters.com/pages/tsquared-drops\">\n        <input type=\"hidden\" name=\"_autoresponse\" value=\"You're on the list! 🏌️ Your spot is reserved for this Friday's drop. The drop opens at noon EST — you'll have until 2:00 PM EST to claim your spot before it opens to everyone else. Built in Buffalo. — T Squared Putters\">\n        <div class=\"tsq-form-row\">\n          <input class=\"tsq-input\" type=\"text\" name=\"name\" placeholder=\"Full Name\" required=\"\">\n        </div>\n        <div class=\"tsq-form-row\">\n          <input class=\"tsq-input\" type=\"email\" name=\"email\" placeholder=\"Email Address\" required=\"\">\n        </div>\n        <div class=\"tsq-form-row\">\n          <input class=\"tsq-input\" type=\"tel\" name=\"phone\" placeholder=\"Phone Number\" required=\"\">\n        </div>\n        <button type=\"submit\" class=\"tsq-submit\">Reserve My Spot</button>\n      </form>\n    </div>\n    <div class=\"tsq-drops-fine\">Reserved spots are held for 2 hours. Unclaimed spots open to all at 2:00 PM EST.</div>\n\n    <div style=\"margin-top:64px;padding-top:40px;border-top:1px solid #1e1e1e;\">\n      <p style=\"font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#444440;margin-bottom:16px;text-align:center;\">Previous Drops</p>\n      <div style=\"font-size:13px;color:#444440;padding:10px 0;border-bottom:1px solid #1a1a1a;display:flex;justify-content:space-between;max-width:400px;margin:0 auto;\">\n        <span>T-Zero Putter — 001–025</span>\n        <span style=\"font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#e31b1b;\">Closed</span>\n      </div>\n      <div style=\"font-size:13px;color:#444440;padding:10px 0;border-bottom:1px solid #1a1a1a;display:flex;justify-content:space-between;max-width:400px;margin:0 auto;\">\n        <span>All Black USA Edition — TS-1029</span>\n        <span style=\"font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#e31b1b;\">Closed</span>\n      </div>\n      <div style=\"font-size:13px;color:#444440;padding:10px 0;border-bottom:none;display:flex;justify-content:space-between;max-width:400px;margin:0 auto;\">\n        <span>TS-912 Founder's Edition</span>\n        <span style=\"font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#e31b1b;\">Closed</span>\n      </div>\n    </div>\n\n  </div>\n</div>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "blocks_iK4qwj",
+    "shogun_custom_html_Cd9k6Q"
+  ]
+}

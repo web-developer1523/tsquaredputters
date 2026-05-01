@@ -55,23 +55,57 @@
         "enable_sort": false
       }
     },
-    "featured_collection_hkmwVC": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Featured collection",
-        "home_featured_products": "",
-        "per_row": 4,
-        "rows": 1,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "divider": false
-      }
+    "17709999642de6009d": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2a8e19b_pHHkrR": {
+          "type": "ai_gen_block_2a8e19b",
+          "disabled": true,
+          "settings": {
+            "featured_product": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": "",
+            "max_width": 1400,
+            "section_padding": 60,
+            "row_gap": 60,
+            "column_gap": 40,
+            "columns_desktop": 3,
+            "columns_mobile": "1",
+            "background_color": "#0E0E0E",
+            "card_border_color": "rgba(255, 255, 255, 0.05)",
+            "image_background": "#1A1A1A",
+            "title_color": "#FFFFFF",
+            "description_color": "#A0A0A0",
+            "price_color": "#BFBFBF",
+            "link_color": "#FFFFFF",
+            "link_hover_color": "#BFBFBF",
+            "card_border_radius": 18,
+            "card_padding": 28,
+            "title_font": "fjalla_one_n4",
+            "title_size": 24,
+            "description_font": "barlow_n5",
+            "description_size": 14,
+            "price_font": "barlow_n5",
+            "price_size": 16,
+            "link_font": "barlow_n5",
+            "link_size": 14,
+            "link_text": "Build Yours"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2a8e19b_pHHkrR"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "collection-header",
     "main-collection",
-    "featured_collection_hkmwVC"
+    "17709999642de6009d"
   ]
 }

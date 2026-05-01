@@ -55,13 +55,6 @@ This file can be re-written at any time.
   })(window,document,'script','dataLayer','GTM-PN9G82R');</script>
   <!-- End Google Tag Manager -->
   
-  <!-- Google Tag Manager - Special Install - do not remove  -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-T5ML9CW5');</script>
-  <!-- End Google Tag Manager -->
 
 
   <!-- Google Ads Remarketing Tag By FeedArmy Version 2.12 START -->
@@ -231,6 +224,68 @@ This file can be re-written at any time.
   {% endif %}
 
   {% render 'shogun-head' %}
+  {% comment %} seo scripts {% endcomment %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "T Squared Putters",
+      "image": "https://tsquaredputters.com/cdn/shop/files/TSquaredPutters_FullColor_Horizontal_1.png?v=1736954678&width=180",
+      "url": "https://tsquaredputters.com/",
+      "telephone": "+1-716-667-9215",
+      "email": "info@tsquaredputters.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "10 Centre Drive",
+        "addressLocality": "Orchard Park",
+        "addressRegion": "New York",
+        "postalCode": "14127",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is T Squared Putters?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "T Squared Putters is a premium USA-made golf putter brand that helps golfers put with confidence and consistency."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is T Squared Putters located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "T Squared Putters is located at 10 Centre Drive, Orchard Park, New York, 14127, United States."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I contact T Squared Putters?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can contact T Squared Putters via phone at +1-716-667-9215 or email at info@tsquaredputters.com."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do T Squared Putters offer custom putters?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, T Squared Putters specializes in optimizing putters to match each golfer's unique putting stroke and feel preference."
+            }
+          }
+        ]
+      }
+      </script>
+
+                
 </head>
   <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-center-text="{{ settings.type_body_align_text }}" data-button_style="{{ settings.button_style }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-type_headers_align_text="{{ settings.type_headers_align_text }}" data-type_product_capitalize="{{ settings.type_product_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" if settings.disable_animations endif>
     {% include 'shogun-content-handler' %}

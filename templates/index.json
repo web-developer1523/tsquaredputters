@@ -9,140 +9,115 @@
  */
 {
   "sections": {
-    "163640658021db15c9": {
-      "type": "hero-video",
-      "settings": {
-        "title": "Custom Golf Putters <br> Built for Performance.<br> Designed for you",
-        "title_size": 40,
-        "subheading": "",
-        "link_text": "shop putters",
-        "link": "shopify://collections/putters",
-        "color_accent": "#ea1e26",
-        "text_align": "vertical-center horizontal-left",
-        "video_url": "https://youtu.be/Hk0bKIY0vHI",
-        "overlay_opacity": 0,
-        "section_height": "650px",
-        "mobile_height": "300px"
-      }
-    },
-    "17664994056238499e": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "176762968612ad8719": {
+    "1770843110e207ca76": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_8260758_BJtxEC": {
-          "type": "ai_gen_block_8260758",
+        "ai_gen_block_5348ee2_VxYfpU": {
+          "type": "ai_gen_block_5348ee2",
           "settings": {
-            "headline": "New Year. New You. New Putter.",
-            "subheadline": "$100 off all custom and stock putters",
-            "expiry_text": "Offer ends January 31",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
-            "product_4": "",
-            "primary_button_label": "Shop Stock Putters",
-            "primary_button_link": "https://tsquaredputters.com/collections/putters",
-            "primary_button_bg": "#000000",
-            "primary_button_text_color": "#ffffff",
-            "primary_button_hover_bg": "#ea1e26",
-            "primary_button_hover_text": "#ffffff",
-            "secondary_button_label": "Build a Custom Putter",
-            "secondary_button_link": "https://tsquaredputters.com/collections/custom-putters",
-            "secondary_button_bg": "#ffffff",
-            "secondary_button_text_color": "#000000",
-            "secondary_button_border": "#000000",
-            "secondary_button_hover_bg": "#000000",
-            "secondary_button_hover_text": "#ffffff",
-            "secondary_button_hover_border": "#000000",
-            "background_color": "#ffffff",
-            "headline_color": "#000000",
-            "subheadline_color": "#ea1e26",
-            "expiry_color": "#000000",
-            "product_bg_color": "#ffffff",
-            "product_title_color": "#000000",
-            "product_price_color": "#b30000",
-            "section_padding": 60,
-            "headline_size": 48,
-            "subheadline_size": 24,
-            "expiry_size": 16,
-            "button_font_size": 16,
+            "image": "shopify://shop_images/ChatGPT_Image_Feb_11_2026_03_00_06_PM.webp",
+            "min_height_desktop": 75,
+            "min_height_mobile": 75,
+            "show_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 5,
+            "heading": "Custom Golf Putters Built for Performance and Designed for You",
+            "subheading": "Yours From ready-to-play to fully custom.",
+            "content_max_width": 700,
+            "vertical_offset": 20,
+            "heading_font": "fjalla_one_n4",
+            "heading_size": 45,
+            "heading_line_height": 1.1,
+            "heading_letter_spacing": 0,
+            "heading_color": "#ffffff",
+            "heading_spacing": 20,
+            "subheading_font": "fjalla_one_n4",
+            "subheading_size": 20,
+            "subheading_line_height": 1,
+            "subheading_letter_spacing": 0.1,
+            "subheading_color": "#ffffff",
+            "text_shadow_strength": 1,
+            "text_shadow_opacity": 20,
+            "button_text": "Build Yours",
+            "button_link": "",
+            "button_font": "assistant_n4",
+            "button_size": 14,
+            "button_letter_spacing": 0.1,
+            "button_spacing": 40,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 40,
+            "button_text_color": "#ffffff",
+            "button_background_color": "rgba(0,0,0,0)",
+            "button_border_color": "#ffffff",
+            "button_border_width": 1,
             "button_border_radius": 0,
-            "product_border_radius": 0
+            "button_hover_text_color": "#000000",
+            "button_hover_background_color": "#ffffff",
+            "button_hover_border_color": "#ffffff"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_8260758_BJtxEC"
+        "ai_gen_block_5348ee2_VxYfpU"
       ],
       "settings": {}
     },
-    "featured_collection_acTr8j": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.featured_collection.name",
+    "shogun_custom_html_3mgfix": {
+      "type": "shogun-custom-html",
+      "disabled": true,
+      "name": "Shogun Custom HTML",
       "settings": {
-        "title": "T Squared custom shop",
-        "home_featured_products": "custom-putters",
-        "per_row": 4,
-        "rows": 1,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "divider": false
+        "html": "<!-- T Squared — TS-905 Drop Block (Homepage + Drops Page) -->\n<div style=\"background-color:#0a0a0a;padding:48px 32px;margin:0;font-family:Arial,sans-serif;text-align:center;\">\n\n  <!-- Eyebrow -->\n  <p style=\"margin:0 0 10px;font-size:10px;font-weight:700;color:#aaa9a0;letter-spacing:4px;text-transform:uppercase;font-family:Arial,sans-serif;\">This Friday at Noon</p>\n\n  <!-- Headline -->\n  <p style=\"margin:0 0 4px;font-size:42px;font-weight:700;color:#ffffff;line-height:1.05;letter-spacing:-0.02em;font-family:Arial,sans-serif;\">First 10 Orders.</p>\n  <p style=\"margin:0 0 20px;font-size:42px;font-weight:700;color:#ffffff;line-height:1.05;letter-spacing:-0.02em;font-family:Arial,sans-serif;\">TS-905 at <span style=\"color:#e31b1b;\">$299.</span></p>\n\n  <!-- Divider -->\n  <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" style=\"margin:0 auto 24px;\">\n    <tbody>\n<tr><td style=\"width:40px;height:2px;background-color:#e31b1b;font-size:0;line-height:0;\"> </td></tr>\n  </tbody>\n</table>\n\n  <!-- Description -->\n  <p style=\"margin:0 auto 16px;font-size:16px;font-weight:400;color:#b0aca3;line-height:1.8;font-family:Arial,sans-serif;max-width:480px;\">The first 10 orders on the TS-905 Mid-Mallet this Friday get it at <strong style=\"color:#ffffff;\">$299 — $50 off the regular price.</strong></p>\n  <p style=\"margin:0 auto 32px;font-size:16px;font-weight:400;color:#b0aca3;line-height:1.8;font-family:Arial,sans-serif;max-width:480px;\">Once those 10 are gone the price goes back to $349. No code needed. First come first served.</p>\n\n  <!-- Image -->\n  <div style=\"margin:0 auto 32px;max-width:320px;\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_Back_Silver_Short.webp?v=1771494925\" alt=\"TS-905 Mid-Mallet\" style=\"display:block;width:100%;height:auto;\">\n  </div>\n\n  <!-- Details box -->\n  <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" style=\"margin:0 auto 32px;background-color:#161616;border:1px solid #2a2a2a;max-width:400px;width:100%;\">\n    <tbody>\n<tr>\n      <td style=\"padding:24px 28px;\">\n        <p style=\"margin:0 0 14px;font-size:10px;font-weight:700;color:#666660;letter-spacing:3px;text-transform:uppercase;font-family:Arial,sans-serif;text-align:center;\">Drop Details</p>\n        <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\">\n          <tbody>\n<tr>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#888880;font-family:Arial,sans-serif;\">Model</td>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;\">TS-905 Mid-Mallet</td>\n          </tr>\n          <tr>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#888880;font-family:Arial,sans-serif;\">Drop Price</td>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#e31b1b;font-weight:700;font-family:Arial,sans-serif;text-align:right;\">$299</td>\n          </tr>\n          <tr>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#888880;font-family:Arial,sans-serif;\">Regular Price</td>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;\">$349</td>\n          </tr>\n          <tr>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#888880;font-family:Arial,sans-serif;\">Available To</td>\n            <td style=\"padding:6px 0;border-bottom:1px solid #222222;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;\">First 10 Orders Only</td>\n          </tr>\n          <tr>\n            <td style=\"padding:6px 0;font-size:13px;color:#888880;font-family:Arial,sans-serif;\">Drops</td>\n            <td style=\"padding:6px 0;font-size:13px;color:#ffffff;font-weight:700;font-family:Arial,sans-serif;text-align:right;\">Friday at 12:00 PM EST</td>\n          </tr>\n        </tbody>\n</table>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!-- Drop badge -->\n  <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" style=\"margin:0 auto 28px;\">\n    <tbody>\n<tr>\n      <td style=\"background-color:#161616;border:1px solid #2a2a2a;padding:10px 20px;\">\n        <p style=\"margin:0;font-size:11px;font-weight:600;color:#888880;letter-spacing:3px;text-transform:uppercase;font-family:Arial,sans-serif;\">\n          <span style=\"display:inline-block;width:7px;height:7px;background-color:#e31b1b;border-radius:50%;margin-right:8px;vertical-align:middle;\"></span>\n          Friday 12:00 PM EST — First 10 Orders at $299\n        </p>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!-- CTA -->\n  <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">\n    <tbody>\n<tr>\n      <td align=\"center\" style=\"background-color:#e31b1b;\">\n        <a href=\"https://tsquaredputters.com/products/ts-905\" style=\"display:inline-block;background-color:#e31b1b;color:#ffffff;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;padding:18px 48px;\">SHOP THE TS-905 →</a>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n  <!-- Fine print -->\n  <p style=\"margin:16px 0 0;font-size:11px;color:#555550;letter-spacing:1px;font-family:Arial,sans-serif;\">First 10 orders only. Price returns to $349 after. No code needed.</p>\n\n</div>"
       }
     },
-    "promo_grid_MXijTb": {
-      "type": "promo-grid",
+    "advanced_content_QQiBH6": {
+      "type": "advanced-content",
       "blocks": {
-        "advanced_tGwE4P": {
-          "type": "advanced",
+        "image_TndjzN": {
+          "type": "image",
           "settings": {
-            "subheading": "Limited time",
-            "heading": "T Squared Putters: Father’s Day Exclusive Offer",
-            "textarea": "$100 OFF Custom Putters – Limited Time Only",
-            "cta_text1": "",
-            "cta_link1": "",
-            "cta_text2": "Shop All",
-            "cta_link2": "https://tsquaredputters.com/collections/putters",
-            "image": "shopify://shop_images/263416871_276891371034922_861190369552206248_n.jpg",
-            "video_url": "",
-            "width": "50",
-            "height": 500,
-            "text_size": 100,
-            "text_align": "vertical-center horizontal-center",
-            "color_accent": "rgba(0,0,0,0)",
-            "boxed": false,
-            "framed": false
+            "image": "shopify://shop_images/IMG_0267.jpg",
+            "link": "https://tsquaredputters.com/pages/tsquared-drops",
+            "width": "50%",
+            "alignment": "center"
+          }
+        },
+        "liquid_NC6t47": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!-- T Squared — USA Edition Homepage Block -->\n<div style=\"background-color:#0a0a0a;padding:0;margin:0;font-family:Arial,sans-serif;\">\n\n  <!-- Content -->\n  <div style=\"background-color:#0a0a0a;padding:48px 32px;text-align:center;\">\n\n    <!-- Eyebrow -->\n    <p style=\"margin:0 0 12px;font-size:10px;font-weight:700;color:#666660;letter-spacing:4px;text-transform:uppercase;font-family:Arial,sans-serif;\">Limited Release</p>\n\n    <!-- Headline -->\n    <p style=\"margin:0 0 4px;font-size:36px;font-weight:700;color:#ffffff;line-height:1.1;letter-spacing:-0.02em;font-family:Arial,sans-serif;\">All Black</p>\n    <p style=\"margin:0 0 20px;font-size:36px;font-weight:700;color:#BF0A30;line-height:1.1;letter-spacing:-0.02em;font-family:Arial,sans-serif;\">USA Edition.</p>\n\n    <!-- Divider -->\n    <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" style=\"margin:0 auto 24px;\">\n      <tr><td style=\"width:40px;height:2px;background-color:#BF0A30;font-size:0;line-height:0;\">&nbsp;</td></tr>\n    </table>\n\n    <!-- Details -->\n    <p style=\"margin:0 0 8px;font-size:15px;font-weight:400;color:#b0aca3;line-height:1.8;font-family:Arial,sans-serif;\">Precision milled in Buffalo, NY.</p>\n    <p style=\"margin:0 0 8px;font-size:15px;font-weight:400;color:#b0aca3;line-height:1.8;font-family:Arial,sans-serif;\">All black finish. USA engraved. Limited run.</p>\n    <p style=\"margin:0 0 32px;font-size:22px;font-weight:700;color:#ffffff;font-family:Arial,sans-serif;\">$350</p>\n\n    <!-- Drop info -->\n    <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" style=\"margin:0 auto 32px;\">\n      <tr>\n        <td style=\"background-color:#161616;border:1px solid #2a2a2a;padding:10px 20px;\">\n          <p style=\"margin:0;font-size:11px;font-weight:600;color:#888880;letter-spacing:3px;text-transform:uppercase;font-family:Arial,sans-serif;\">\n            <span style=\"display:inline-block;width:7px;height:7px;background-color:#BF0A30;border-radius:50%;margin-right:8px;vertical-align:middle;\"></span>\n            Drops Friday at 12:00 PM EST\n          </p>\n        </td>\n      </tr>\n    </table>\n\n    <!-- CTA -->\n    <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">\n      <tr>\n        <td align=\"center\" style=\"background-color:#BF0A30;\">\n          <a href=\"https://tsquaredputters.com/pages/tsquared-drops\" style=\"display:inline-block;background-color:#BF0A30;color:#ffffff;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;padding:18px 48px;\">RESERVE YOUR SPOT &rarr;</a>\n        </td>\n      </tr>\n    </table>\n\n    <!-- Fine print -->\n    <p style=\"margin:16px 0 0;font-size:11px;color:#555550;letter-spacing:1px;font-family:Arial,sans-serif;\">Waitlist members get first access · noon–2PM EST</p>\n\n  </div>\n</div>",
+            "width": "50%",
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "advanced_tGwE4P"
+        "image_TndjzN",
+        "liquid_NC6t47"
       ],
       "disabled": true,
+      "name": "t:sections.advanced-content.presets.custom_content.name",
       "settings": {
-        "full_width": true,
-        "gutter_size": 20,
-        "space_above": true,
-        "space_below": true,
+        "full_width": false,
+        "space_around": true,
         "lazyload_images": true
       }
     },
-    "featured_product_KxkDV7": {
+    "featured_product_gTwk8N": {
       "type": "featured-product",
       "blocks": {
-        "price_gVQgME": {
+        "price_zVYtYK": {
           "type": "price",
           "settings": {}
         },
-        "description_FftPG6": {
+        "description_hmJ8HB": {
           "type": "description",
           "settings": {
             "is_tab": false
           }
         },
-        "variant_picker_P86HWP": {
+        "variant_picker_EDjUi3": {
           "type": "variant_picker",
           "settings": {
             "variant_labels": true,
@@ -151,7 +126,7 @@
             "color_swatches": false
           }
         },
-        "buy_buttons_meqpgg": {
+        "buy_buttons_4zt4Ha": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
@@ -161,14 +136,15 @@
         }
       },
       "block_order": [
-        "price_gVQgME",
-        "description_FftPG6",
-        "variant_picker_P86HWP",
-        "buy_buttons_meqpgg"
+        "price_zVYtYK",
+        "description_hmJ8HB",
+        "variant_picker_EDjUi3",
+        "buy_buttons_4zt4Ha"
       ],
       "disabled": true,
+      "name": "t:sections.featured-product.presets.featured_product.name",
       "settings": {
-        "featured_product": "buffalo-bills-themed-ball-marker",
+        "featured_product": "ts-912-founders-edition",
         "divider": false,
         "sku_enable": false,
         "image_position": "left",
@@ -181,42 +157,20 @@
         "product_video_style": "muted"
       }
     },
-    "text_and_image_FWJhk8": {
-      "type": "text-and-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/Screen_Shot_2024-03-27_at_4.22.22_PM.png",
-        "image_mask": "none",
-        "image2_mask": "none",
-        "subtitle": "",
-        "title": "the TS-912 Earns an outstanding 94 Overall rating",
-        "text": "<p><strong>Discover the TS-912 Putter - MyGolfSpy's Top 3 Choice with a Stellar 94 Rating! Dominate Your Putts from 10 Feet and Experience Elite Performance on the Green! </strong>(<em>By </em>Phillip Bishop)</p>",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "align_text": "left",
-        "image_width": "50",
-        "layout": "left",
-        "divider": false,
-        "top_padding": true,
-        "bottom_padding": true,
-        "lazyload_images": true
-      }
-    },
-    "featured_product_Wye9aB": {
+    "featured_product_xfM9cz": {
       "type": "featured-product",
       "blocks": {
-        "price_mtaL6D": {
+        "price_xYe47Q": {
           "type": "price",
           "settings": {}
         },
-        "description_nxFtwM": {
+        "description_h4KY4J": {
           "type": "description",
           "settings": {
             "is_tab": false
           }
         },
-        "variant_picker_4cdTGA": {
+        "variant_picker_xWnmbU": {
           "type": "variant_picker",
           "settings": {
             "variant_labels": true,
@@ -225,7 +179,7 @@
             "color_swatches": false
           }
         },
-        "buy_buttons_8YaUBR": {
+        "buy_buttons_QD7GwA": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
@@ -235,14 +189,15 @@
         }
       },
       "block_order": [
-        "price_mtaL6D",
-        "description_nxFtwM",
-        "variant_picker_4cdTGA",
-        "buy_buttons_8YaUBR"
+        "price_xYe47Q",
+        "description_h4KY4J",
+        "variant_picker_xWnmbU",
+        "buy_buttons_QD7GwA"
       ],
       "disabled": true,
+      "name": "t:sections.featured-product.presets.featured_product.name",
       "settings": {
-        "featured_product": "ts-1104-special",
+        "featured_product": "ts-912-founders-edition",
         "divider": false,
         "sku_enable": false,
         "image_position": "left",
@@ -252,118 +207,304 @@
         "thumbnail_arrows": false,
         "mobile_layout": "partial",
         "enable_video_looping": true,
-        "product_video_style": "unmuted"
+        "product_video_style": "muted"
       }
     },
-    "2c939109-3df2-4a17-b003-45b8154052a8": {
-      "type": "rich-text",
+    "17708437451d196ef4": {
+      "type": "_blocks",
       "blocks": {
-        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-heading-1": {
-          "type": "heading",
+        "ai_gen_block_600a39d_7heRGp": {
+          "type": "ai_gen_block_600a39d",
           "disabled": true,
           "settings": {
-            "title": "912 sale happening now"
+            "product_image": "shopify://shop_images/IMG_0768.jpg",
+            "product_name": "T-Zero Putter",
+            "image_label": "PRECISION ENGINEERED",
+            "badge_text": "LIMITED RELEASE",
+            "heading": "T-ZERO PUTTER",
+            "subtitle": "Reserve your spot.                                                If selected the T-ZERO is $300. No obligation to purchase if selected. No discount codes can be applied.",
+            "name_label": "Full Name",
+            "name_placeholder": "Enter your name",
+            "email_label": "Email Address",
+            "email_placeholder": "your@email.com",
+            "phone_label": "Phone Number",
+            "phone_placeholder": "(555) 123-4567",
+            "show_interest_level": true,
+            "interest_label": "Interest Level",
+            "interest_placeholder": "Select your interest level",
+            "show_benefits": true,
+            "benefit_1_icon": "",
+            "benefit_1_text": "",
+            "benefit_2_icon": "",
+            "benefit_2_text": "",
+            "benefit_3_icon": "◆",
+            "benefit_3_text": "Limited Edition",
+            "button_text": "Reserve Your Spot",
+            "success_message": "Thank you! We'll be in touch soon about your reservation.",
+            "desktop_width_percent": 100,
+            "heading_size": 58,
+            "background_color": "#0a0a0a",
+            "image_bg_color": "#1a1a1a",
+            "border_color": "#2a2a2a",
+            "accent_color": "#c8102e",
+            "heading_color": "#f5f5f5",
+            "subtitle_color": "#888888",
+            "label_color": "#666666",
+            "input_bg_color": "#1a1a1a",
+            "input_text_color": "#f5f5f5",
+            "placeholder_color": "#444444",
+            "button_color": "#c8102e",
+            "button_hover_color": "#a00d24",
+            "button_text_color": "#ffffff",
+            "badge_text_color": "#ffffff",
+            "success_color": "#4caf50",
+            "error_color": "#ff5252"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_5a60e9f_NJcEnj": {
+          "type": "ai_gen_block_5a60e9f",
+          "disabled": true,
+          "settings": {
+            "desktop_width_percent": 100,
+            "max_width": 780,
+            "padding_vertical": 48,
+            "padding_horizontal": 48,
+            "grid_gap": 32,
+            "show_badge": true,
+            "badge_text": "limited edition",
+            "headline": "T-ZERO",
+            "headline_size": 56,
+            "headline_line_height": 0.9,
+            "subhead": "",
+            "subhead_size": 15,
+            "show_divider": true,
+            "divider_width": 48,
+            "body_text": "<p>Precision-milled from aerospace-grade aluminum with <strong>zero tolerance</strong> engineering. Every T-Zero putter delivers tour-level performance with unmatched consistency.</p>",
+            "body_size": 15,
+            "body_line_height": 1.7,
+            "show_stat": true,
+            "stat_number": "Sold out",
+            "stat_label": "under 24 hours",
+            "stat_unit": "",
+            "stat_number_size": 60,
+            "stat_padding": 32,
+            "stat_min_width": 140,
+            "show_strip": true,
+            "strip_text": "Precision-milled · Made in USA",
+            "background_color": "#0d0d0d",
+            "border_color": "#2a2a2a",
+            "accent_color": "#cc1111",
+            "accent_color_mid": "#ff2222",
+            "headline_color": "#f5f0e8",
+            "subhead_color": "#888888",
+            "body_color": "#bbbbbb",
+            "stat_bg_color": "#080808",
+            "stat_label_color": "#555555",
+            "badge_bg_color": "#cc111117",
+            "badge_border_color": "#cc111154",
+            "strip_border_color": "#1e1e1e",
+            "strip_text_color": "#666666",
+            "accent_line_width": 4,
+            "grain_opacity": 0.4
+          },
+          "blocks": {}
+        },
+        "judge_me_reviews_cards_carousel_qA6NTe": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "small",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1600,
+            "corner_styling": "soft",
+            "header_text_color": "#ffffff",
+            "text_color": "#ffffff",
+            "card_color": "#4a4a4a",
+            "stars_color": "#8a8508",
+            "arrows_color": "#ea1e26",
+            "transition_speed": 5,
+            "header_text": "Trusted on the green",
+            "show_average_rating": false
           }
         },
-        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-text-1": {
-          "type": "text",
-          "disabled": true,
+        "ai_gen_block_86a1136_NXzm8i": {
+          "type": "ai_gen_block_86a1136",
           "settings": {
-            "enlarge_text": true,
-            "text": "<p>Don't let this exclusive 21% discount on all 912 models pass you by; it's available only until September 21st. Elevate your game with a brand-new, handcrafted 912 putter  designed by a tour professional for ultimate performance and precision.</p>"
-          }
+            "show_header": true,
+            "heading": "Two ways. One standard.",
+            "subheading": "Stock or fully custom. Built around you.",
+            "heading_font": "fjalla_one_n4",
+            "heading_size": 48,
+            "heading_color": "#ffffff",
+            "subheading_size": 18,
+            "subheading_color": "#666666",
+            "subheading_spacing": 10,
+            "header_spacing": 50,
+            "tile_1_image": "shopify://shop_images/T-Squared_912.jpg",
+            "tile_1_title": "READY TO PLAY",
+            "tile_1_subtitle": "Our stock line. Precision milled. Available now.",
+            "tile_1_button_text": "Explore Stock",
+            "tile_1_link": "https://tsquaredputters.com/pages/putters",
+            "tile_2_image": "shopify://shop_images/Screengrab2.jpg",
+            "tile_2_title": "FULLY CUSTOM",
+            "tile_2_subtitle": "Built from the ground up. Every detail, yours.",
+            "tile_2_button_text": "Build Custom",
+            "tile_2_link": "https://tsquaredputters.com/pages/custom-shop",
+            "tile_heading_font": "fjalla_one_n4",
+            "tile_title_size": 32,
+            "tile_subtitle_size": 16,
+            "tile_subtitle_spacing": 20,
+            "tile_button_spacing": 25,
+            "tile_text_color": "#ffffff",
+            "overlay_opacity": 15,
+            "tile_aspect_ratio": "4 / 3",
+            "button_font_size": 14,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 30,
+            "button_background": "rgba(0,0,0,0)",
+            "button_text_color": "#ffffff",
+            "button_border_width": 2,
+            "button_border_color": "#ffffff",
+            "button_hover_background": "#ffffff",
+            "button_hover_text_color": "#000000",
+            "button_hover_border_color": "#ffffff",
+            "max_width": 1400,
+            "tile_gap": 30,
+            "tile_gap_mobile": 20,
+            "spacing_top": 120,
+            "spacing_bottom": 80,
+            "background_color": "#000000"
+          },
+          "blocks": {}
         },
-        "f06e4d26-5d17-4ad1-b3b2-32e862ddbbd5": {
-          "type": "text",
+        "ai_gen_block_ef9cf8b_fLUepd": {
+          "type": "ai_gen_block_ef9cf8b",
           "disabled": true,
           "settings": {
-            "enlarge_text": true,
-            "text": "<p>google-site-verification: google15ea093d797e288e.html</p>"
-          }
+            "eyebrow_text": "USA Milled",
+            "headline_text": "Engineered to your stroke.",
+            "subtext_line_1": "Milled in our Buffalo, NY shop.",
+            "subtext_line_2": "Balanced for control.",
+            "subtext_line_3": "Finished your way.",
+            "button_text": "Begin Custom",
+            "button_link": "https://tsquaredputters.com/pages/custom-shop",
+            "image": "shopify://shop_images/Screenshot_2026-02-11_at_4.41.37_PM.png",
+            "max_width": 1400,
+            "section_padding": 100,
+            "horizontal_padding": 40,
+            "column_gap": 80,
+            "text_padding_right": 40,
+            "image_min_height": 500,
+            "mobile_gap": 40,
+            "mobile_text_order": "1",
+            "mobile_image_order": "2",
+            "background_color": "#000000",
+            "eyebrow_color": "#ffffff",
+            "headline_color": "#ffffff",
+            "subtext_color": "#4a4a4a",
+            "eyebrow_size": 12,
+            "eyebrow_weight": 500,
+            "eyebrow_spacing": 1.5,
+            "headline_size": 36,
+            "headline_weight": 300,
+            "headline_line_height": 1.1,
+            "headline_spacing": -0.5,
+            "subtext_size": 17,
+            "subtext_weight": 400,
+            "subtext_line_height": 1.5,
+            "subtext_spacing": 0.3,
+            "subtext_line_gap": 8,
+            "text_spacing": 28,
+            "button_font_size": 13,
+            "button_font_weight": 500,
+            "button_letter_spacing": 1,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 40,
+            "button_border_width": 1,
+            "button_border_radius": 0,
+            "button_margin_top": 20,
+            "button_text_color": "#1a1a1a",
+            "button_background": "rgba(0,0,0,0)",
+            "button_border_color": "#1a1a1a",
+            "button_hover_text_color": "#ffffff",
+            "button_hover_background": "#ea1e26",
+            "button_hover_border_color": "#1a1a1a"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_ab49a8d_zdD8Ax": {
+          "type": "ai_gen_block_ab49a8d",
+          "settings": {
+            "background_image": "shopify://shop_images/Group2_26f5d2aa-0870-47fd-a32d-3a5d05eb3460.jpg",
+            "overlay_color": "#000000",
+            "overlay_opacity": 20,
+            "section_height": 600,
+            "eyebrow_text": "Origin",
+            "headline_text": "Made where it matters. Buffalo, New York.",
+            "subtext": "Proudly manufactured in Buffalo, New York, every T Squared putter is crafted with absolute precision. Our hands-on approach ensures top-quality performance, feel, and accuracy, giving golfers a USA-made putter they can rely on for every putt.",
+            "content_max_width": 800,
+            "vertical_spacing": 100,
+            "text_color": "#ffffff",
+            "eyebrow_size": 12,
+            "eyebrow_spacing": 2,
+            "eyebrow_margin": 16,
+            "headline_size": 48,
+            "headline_line_height": 1.2,
+            "headline_weight": 400,
+            "headline_spacing": 0,
+            "headline_margin": 24,
+            "subtext_size": 16,
+            "subtext_line_height": 1.6,
+            "subtext_max_width": 700,
+            "subtext_margin": 40,
+            "button_text": "Our process",
+            "button_link": "",
+            "button_size": 14,
+            "button_weight": 400,
+            "button_letter_spacing": 1,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 40,
+            "button_border_width": 1,
+            "button_text_color": "#ffffff",
+            "button_background": "rgba(0,0,0,0)",
+            "button_border_color": "#ffffff",
+            "button_hover_text_color": "#000000",
+            "button_hover_background": "#ffffff",
+            "button_hover_border_color": "#ffffff"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-heading-1",
-        "template--15119622373563__2c939109-3df2-4a17-b003-45b8154052a8-text-1",
-        "f06e4d26-5d17-4ad1-b3b2-32e862ddbbd5"
+        "ai_gen_block_600a39d_7heRGp",
+        "ai_gen_block_5a60e9f_NJcEnj",
+        "judge_me_reviews_cards_carousel_qA6NTe",
+        "ai_gen_block_86a1136_NXzm8i",
+        "ai_gen_block_ef9cf8b_fLUepd",
+        "ai_gen_block_ab49a8d_zdD8Ax"
       ],
-      "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "divider": false
-      }
-    },
-    "86deb567-8a28-4f82-a202-0509ba2ed80d": {
-      "type": "text-and-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/ScreenShot2023-12-26at4.10.20PM.png",
-        "image_mask": "none",
-        "image2": "shopify://shop_images/ScreenShot2023-12-26at3.46.44PM.png",
-        "image2_mask": "none",
-        "subtitle": "",
-        "title": "New Years sale $125 off 1106+ and 905 models",
-        "text": "<p>Perfect your putt in style this New Year with exclusive savings on our 1106+ and 905 models. Elevate your game with precision engineering and unparalleled performance. Seize the opportunity to enhance your putting prowess with this limited-time discount</p>",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "align_text": "left",
-        "image_width": "50",
-        "layout": "right",
-        "divider": false,
-        "top_padding": true,
-        "bottom_padding": true,
-        "lazyload_images": true
-      }
-    },
-    "4690b693-cacc-4d49-a398-748314391f84": {
-      "type": "text-and-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/1106-silver_-single-bend_-shaft-in_-_face-balanced_---black-slimRevB_95d6651d-0b50-400b-9517-a1e6fbc693e0.png",
-        "image_mask": "none",
-        "image2_mask": "none",
-        "subtitle": "Save Today",
-        "title": "Holiday Sale Happening $150 off all putter models",
-        "text": "<p>Happy Holidays Special: Sink More Savings with $150 Off on All Putter Models</p>",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "align_text": "left",
-        "image_width": "50",
-        "layout": "right",
-        "divider": false,
-        "top_padding": true,
-        "bottom_padding": true,
-        "lazyload_images": true
-      }
-    },
-    "163406921145b72a4b": {
-      "type": "text-and-image",
-      "settings": {
-        "image": "shopify://shop_images/587652654_18050116709663614_4700174378431117122_n.jpg",
-        "image_mask": "square",
-        "image2_mask": "square",
-        "subtitle": "100% USA Built",
-        "title": "Uniquely Designed for You",
-        "text": "<p>Every T Squared Putter is custom built at our U.S. factory to match your stroke and specifications. Our engineers focus on precision, balance, and control so your putter performs exactly how you need it to. Finish it your way with dozens of design options including colors, alignment aids, names, logos, and personal messages. Build a truly one of a kind premium putter.</p>",
-        "button_label": "design your putter",
-        "button_link": "shopify://collections/custom-putters",
-        "button_style": "primary",
-        "align_text": "left",
-        "image_width": "66",
-        "layout": "right",
-        "divider": false,
-        "top_padding": true,
-        "bottom_padding": true,
-        "lazyload_images": true
-      }
+      "settings": {}
     },
     "176651208336719ae0": {
       "type": "apps",
       "blocks": {
         "judge_me_reviews_featured_carousel_JmKdjq": {
           "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {
             "maxwidth": 1080
           }
@@ -375,41 +516,6 @@
       "settings": {
         "full_width": false,
         "space_around": true
-      }
-    },
-    "1632306127a25fc521": {
-      "type": "slideshow",
-      "blocks": {
-        "1632306127a25fc521-0": {
-          "type": "image",
-          "settings": {
-            "top_subheading": "",
-            "title": "PROUDLY MADE IN THE USA",
-            "title_size": 47,
-            "subheading": "T Squared isn’t just another golf company. We design, mill, assemble, and personalize every putter in-house at our Buffalo, New York facility with one goal in mind: absolute perfection",
-            "link": "shopify://pages/about",
-            "link_text": "About T-Squared Putters",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#ea1e26",
-            "text_align": "vertical-center horizontal-center",
-            "image": "shopify://shop_images/Group2.jpg",
-            "parallax_direction": "top",
-            "overlay_opacity": 32
-          }
-        }
-      },
-      "block_order": [
-        "1632306127a25fc521-0"
-      ],
-      "settings": {
-        "section_height": "750px",
-        "mobile_height": "400px",
-        "parallax": false,
-        "style": "bars",
-        "autoplay": false,
-        "autoplay_speed": 7,
-        "lazyload_images": true
       }
     },
     "163407003164a35c44": {
@@ -460,33 +566,6 @@
         "divider": false,
         "per_row": 4,
         "enable_gutter": true
-      }
-    },
-    "1638473849f3e6addd": {
-      "type": "promo-grid",
-      "blocks": {
-        "d89c138d-1101-4edd-90cc-fe34cf8fdff9": {
-          "type": "banner",
-          "settings": {
-            "heading": "",
-            "text": "",
-            "link": "",
-            "label": "",
-            "color_tint": "#000000",
-            "color_tint_opacity": 8,
-            "framed": false
-          }
-        }
-      },
-      "block_order": [
-        "d89c138d-1101-4edd-90cc-fe34cf8fdff9"
-      ],
-      "settings": {
-        "full_width": true,
-        "gutter_size": 0,
-        "space_above": false,
-        "space_below": false,
-        "lazyload_images": true
       }
     },
     "16340689613dd51383": {
@@ -575,25 +654,25 @@
         "show_button": true,
         "lazyload_images": true
       }
+    },
+    "shogun_custom_html_rwfPia": {
+      "type": "shogun-custom-html",
+      "name": "Shogun Custom HTML",
+      "settings": {
+        "html": "<meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>T Squared — Putters</title>\n  <link href=\"https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&amp;family=Barlow:wght@400;500&amp;display=swap\" rel=\"stylesheet\">\n  <style>\n    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }\n\n    :root {\n      --bg:        #0d0d0d;\n      --card-bg:   #141414;\n      --accent:    #c8102e;   /* T Squared red */\n      --text:      #ffffff;\n      --muted:     rgba(255,255,255,0.55);\n      --card-w:    300px;\n      --card-h:    400px;\n    }\n\n    body {\n      background: var(--bg);\n      font-family: 'Barlow', sans-serif;\n      color: var(--text);\n    }\n\n    /* ── Section ── */\n    .products-section {\n      padding: 60px 0 80px;\n    }\n\n    .section-header {\n      padding: 0 48px 32px;\n      display: flex;\n      align-items: baseline;\n      gap: 16px;\n    }\n    .section-title {\n      font-family: 'Barlow Condensed', sans-serif;\n      font-size: 13px;\n      font-weight: 700;\n      letter-spacing: .2em;\n      text-transform: uppercase;\n      color: var(--muted);\n    }\n    .section-title span {\n      color: var(--accent);\n      margin-right: 6px;\n    }\n\n    /* ── Scroll wrapper ── */\n    .scroll-wrapper {\n      position: relative;\n    }\n\n    .scroll-track {\n      display: flex;\n      gap: 2px;\n      overflow-x: auto;\n      scroll-behavior: smooth;\n      padding: 0 48px 28px;\n      scrollbar-width: none;\n      -ms-overflow-style: none;\n      cursor: grab;\n      user-select: none;\n    }\n    .scroll-track:active { cursor: grabbing; }\n    .scroll-track::-webkit-scrollbar { display: none; }\n\n    /* ── Arrows ── */\n    .arrow {\n      position: absolute;\n      top: calc(50% - 14px);\n      transform: translateY(-50%);\n      z-index: 10;\n      width: 40px;\n      height: 40px;\n      border: 1px solid rgba(255,255,255,0.2);\n      background: rgba(13,13,13,0.9);\n      color: #fff;\n      font-size: 20px;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      transition: border-color .2s, background .2s;\n    }\n    .arrow:hover { border-color: var(--accent); background: rgba(200,16,46,.12); color: var(--accent); }\n    .arrow.prev { left: 4px; }\n    .arrow.next { right: 4px; }\n\n    /* ── Card ── */\n    .product-card {\n      flex: 0 0 var(--card-w);\n      height: var(--card-h);\n      position: relative;\n      overflow: hidden;\n      background: var(--card-bg);\n      cursor: pointer;\n    }\n\n    /* Red left-border accent on hover */\n    .product-card::before {\n      content: '';\n      position: absolute;\n      left: 0; top: 0; bottom: 0;\n      width: 2px;\n      background: var(--accent);\n      transform: scaleY(0);\n      transform-origin: bottom;\n      transition: transform .35s ease;\n      z-index: 4;\n    }\n    .product-card:hover::before { transform: scaleY(1); }\n\n    /* category tag */\n    .card-category {\n      position: absolute;\n      top: 14px;\n      left: 14px;\n      z-index: 3;\n      font-family: 'Barlow', sans-serif;\n      font-size: 10px;\n      font-weight: 500;\n      letter-spacing: .18em;\n      color: var(--muted);\n      text-transform: uppercase;\n      display: flex;\n      align-items: center;\n      gap: 6px;\n    }\n    .card-category::before {\n      content: '';\n      width: 6px; height: 6px;\n      border-radius: 50%;\n      background: var(--accent);\n      display: inline-block;\n    }\n\n    /* image layers */\n    .card-img-wrap {\n      position: absolute;\n      inset: 0;\n    }\n    .card-img-wrap img {\n      position: absolute;\n      inset: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      transition: opacity .55s cubic-bezier(.4,0,.2,1);\n    }\n    /* Default image: slightly zoomed out, centered */\n    .card-img-wrap .img-default { opacity: 1; }\n    .card-img-wrap .img-hover   { opacity: 0; }\n\n    .product-card:hover .img-default { opacity: 0; }\n    .product-card:hover .img-hover   { opacity: 1; }\n\n    /* bottom info overlay */\n    .card-info {\n      position: absolute;\n      bottom: 0; left: 0; right: 0;\n      z-index: 3;\n      padding: 0 18px 20px;\n      background: linear-gradient(to top,\n        rgba(13,13,13,.97) 0%,\n        rgba(13,13,13,.8) 55%,\n        rgba(13,13,13,0) 100%);\n    }\n\n    /* buttons — hidden until hover */\n    .card-actions {\n      display: flex;\n      gap: 8px;\n      margin-bottom: 14px;\n      opacity: 0;\n      transform: translateY(8px);\n      transition: opacity .3s ease, transform .3s ease;\n    }\n    .product-card:hover .card-actions {\n      opacity: 1;\n      transform: translateY(0);\n    }\n\n    .btn {\n      flex: 1;\n      padding: 9px 4px;\n      font-family: 'Barlow Condensed', sans-serif;\n      font-size: 11px;\n      font-weight: 700;\n      letter-spacing: .18em;\n      text-transform: uppercase;\n      text-align: center;\n      border: 1px solid rgba(255,255,255,.35);\n      cursor: pointer;\n      transition: background .2s, color .2s, border-color .2s;\n      text-decoration: none;\n      display: block;\n    }\n    .btn-outline { background: transparent; color: #fff; }\n    .btn-outline:hover { background: #fff; color: #000; border-color: #fff; }\n    .btn-fill   { background: var(--accent); color: #fff; border-color: var(--accent); }\n    .btn-fill:hover { background: #a00d24; border-color: #a00d24; }\n\n    .card-name {\n      font-family: 'Barlow Condensed', sans-serif;\n      font-size: 22px;\n      font-weight: 900;\n      letter-spacing: .04em;\n      text-transform: uppercase;\n      line-height: 1.1;\n      margin-bottom: 5px;\n    }\n    .card-desc {\n      font-size: 12px;\n      line-height: 1.5;\n      color: var(--muted);\n      margin-bottom: 8px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n    }\n    .card-price {\n      font-family: 'Barlow Condensed', sans-serif;\n      font-size: 15px;\n      font-weight: 700;\n      letter-spacing: .05em;\n      color: var(--accent);\n    }\n  </style>\n\n\n\n<section class=\"products-section\">\n\n  <div class=\"section-header\">\n    <p class=\"section-title\"><span>//</span> Our Putters</p>\n  </div>\n\n  <div class=\"scroll-wrapper\">\n    <button class=\"arrow prev\" id=\"prevBtn\">‹</button>\n    <button class=\"arrow next\" id=\"nextBtn\">›</button>\n\n    <div class=\"scroll-track\" id=\"track\">\n\n      <!-- ══════════════════════════════════════\n           CARD 1 — TS-1029 MALLET\n           img-default: front/address view\n           img-hover:   different angle of same putter\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0770.jpg?v=1774461129\" alt=\"TS-1029 Mallet\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1029-Hero_Center.webp?v=1771563611\" alt=\"TS-1029 Mallet alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-1029-mallet\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-1029-mallet\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-1029 Mallet</div>\n          <div class=\"card-desc\">Engineered for ultimate forgiveness, built from a full aerospace-grade aluminum body.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 2 — TS-912 MID-MALLET (TOUR)\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mid-Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0757.jpg?v=1774460564\" alt=\"TS-912 Mid-Mallet Tour\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-912_Silver_Short_v2.png?v=1736350780\" alt=\"TS-912 Mid-Mallet Tour alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-912-mid-mallet-tour\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-912-mid-mallet-tour\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-912 Mid-Mallet (Tour)</div>\n          <div class=\"card-desc\">A square mid-mallet with soft subtle sloping lines and a refined curved sole.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 3 — TS-1106+ MALLET\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0773_2.jpg?v=1774461129\" alt=\"TS-1106+ Mallet\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1106__TH_Silver_Hero.webp?v=1771565910\" alt=\"TS-1106+ Mallet alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-1106\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-1106\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-1106+ Mallet</div>\n          <div class=\"card-desc\">Affectionately known as \"The CAT.\" Face balanced only. A defining shape in our lineup.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 4 — TS-503 BLADE\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Blade</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0755.jpg?v=1774460564\" alt=\"TS-503 Blade\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-503_Silver_Short.png?v=1736353340\" alt=\"TS-503 Blade alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-503-blade\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-503-blade\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-503 Blade</div>\n          <div class=\"card-desc\">A sleek version of the classic blade providing a compact setup at address.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 5 — TS-713 MID-MALLET\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mid-Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0766_2.jpg?v=1774461157\" alt=\"TS-713 Mid-Mallet\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-713_Silver_Short_v2.png?v=1724979211\" alt=\"TS-713 Mid-Mallet alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/713-mid-mallet\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/713-mid-mallet\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-713 Mid-Mallet</div>\n          <div class=\"card-desc\">An update on the classic blade, featuring soft subtle sloping flanges for added forgiveness.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 6 — TS-713I MID-MALLET\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mid-Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0763.jpg?v=1774461157\" alt=\"TS-713I Mid-Mallet\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-713i_Silver_Short_v2.webp?v=1771506832\" alt=\"TS-713I Mid-Mallet alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-713i-mid-mallet\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-713i-mid-mallet\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-713I Mid-Mallet</div>\n          <div class=\"card-desc\">An update on the classic blade, featuring soft subtle sloping flanges with an insert face.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 7 — TS-1104 MALLET\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0761_2.jpg?v=1774460564\" alt=\"TS-1104 Mallet\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-1104-Silver_Hero.png?v=1726772615\" alt=\"TS-1104 Mallet alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-1104-mallet\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-1104-mallet\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-1104 Mallet</div>\n          <div class=\"card-desc\">Known as the BIG PAPA — our boldest mallet addition to the T Squared lineup.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n      <!-- ══════════════════════════════════════\n           CARD 8 — TS-905 MID-MALLET\n      ══════════════════════════════════════ -->\n      <div class=\"product-card\">\n        <span class=\"card-category\">Mid-Mallet</span>\n        <div class=\"card-img-wrap\">\n          <img class=\"img-default\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/IMG_0758.jpg?v=1774460564\" alt=\"TS-905 Mid-Mallet\">\n          <img class=\"img-hover\" src=\"https://cdn.shopify.com/s/files/1/0597/8855/8523/files/TS-905_Silver_Short_v2.png?v=1736350733\" alt=\"TS-905 Mid-Mallet alternate angle\">\n        </div>\n        <div class=\"card-info\">\n          <div class=\"card-actions\">\n            <a href=\"https://tsquaredputters.com/products/ts-905\" class=\"btn btn-outline\">Shop Now</a>\n            <a href=\"https://tsquaredputters.com/products/ts-905\" class=\"btn btn-fill\">Learn More</a>\n          </div>\n          <div class=\"card-name\">TS-905 Mid-Mallet</div>\n          <div class=\"card-desc\">A distinctive half-moon-shaped mid-mallet that boasts soft, subtle lines and premium feel.</div>\n          <div class=\"card-price\">$349.00</div>\n        </div>\n      </div>\n\n    </div>\n<!-- /track -->\n  </div>\n<!-- /scroll-wrapper -->\n</section>\n\n<script>\n  const track   = document.getElementById('track');\n  const prevBtn = document.getElementById('prevBtn');\n  const nextBtn = document.getElementById('nextBtn');\n  const SCROLL  = 302; // card width + gap\n\n  nextBtn.addEventListener('click', () => track.scrollBy({ left:  SCROLL, behavior: 'smooth' }));\n  prevBtn.addEventListener('click', () => track.scrollBy({ left: -SCROLL, behavior: 'smooth' }));\n\n  // Click-drag scroll\n  let isDown = false, startX, scrollLeft;\n  track.addEventListener('mousedown', e => {\n    isDown = true;\n    startX = e.pageX - track.offsetLeft;\n    scrollLeft = track.scrollLeft;\n  });\n  track.addEventListener('mouseleave', () => isDown = false);\n  track.addEventListener('mouseup',    () => isDown = false);\n  track.addEventListener('mousemove',  e => {\n    if (!isDown) return;\n    e.preventDefault();\n    const x = e.pageX - track.offsetLeft;\n    track.scrollLeft = scrollLeft - (x - startX) * 1.2;\n  });\n</script>"
+      }
     }
   },
   "order": [
-    "163640658021db15c9",
-    "17664994056238499e",
-    "176762968612ad8719",
-    "featured_collection_acTr8j",
-    "promo_grid_MXijTb",
-    "featured_product_KxkDV7",
-    "text_and_image_FWJhk8",
-    "featured_product_Wye9aB",
-    "2c939109-3df2-4a17-b003-45b8154052a8",
-    "86deb567-8a28-4f82-a202-0509ba2ed80d",
-    "4690b693-cacc-4d49-a398-748314391f84",
-    "163406921145b72a4b",
+    "1770843110e207ca76",
+    "shogun_custom_html_rwfPia",
+    "shogun_custom_html_3mgfix",
+    "advanced_content_QQiBH6",
+    "featured_product_gTwk8N",
+    "featured_product_xfM9cz",
+    "17708437451d196ef4",
     "176651208336719ae0",
-    "1632306127a25fc521",
     "163407003164a35c44",
-    "1638473849f3e6addd",
     "16340689613dd51383",
     "map"
   ]
